@@ -23,6 +23,9 @@ Launch the game with cataclysm_loader.exe instead of cataclysm.exe.
 
 Edit CataclysmEngineTweaks.ini to change these settings.
 
+![Video](https://github.com/ncblakely/CataclysmEngineTweaks/assets/4529049/a8a97d71-01a8-48cc-8e22-cd200a6ab0b2)
+
+
 ## Known Issues
 
 * The increased update rate is still in beta and may affect game balance/functionality due to timers running too quickly. Many of these have been fixed already, but please report any issues you find.
