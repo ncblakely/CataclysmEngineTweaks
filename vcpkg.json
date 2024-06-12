@@ -1,0 +1,9 @@
+{
+  "dependencies": [
+    "keystone",
+    "spdlog",
+    "fmt",
+    "inih",
+    "minhook"
+  ]
+}

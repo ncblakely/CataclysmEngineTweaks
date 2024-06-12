@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{16f7d881-155d-4986-9b64-4e6775bb0d92}</ProjectGuid>
+    <RootNamespace>CataclysmEngineTweaks</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Label="Vcpkg">
+    <VcpkgEnableManifest>true</VcpkgEnableManifest>
+  </PropertyGroup>
+  <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <VcpkgTriplet>x86-windows-static</VcpkgTriplet>
+  </PropertyGroup>
+  <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <VcpkgTriplet>x86-windows-static</VcpkgTriplet>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PreprocessorDefinitions>HW_Release;_CRT_SECURE_NO_WARNINGS;NOMINMAX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>./game/Game;./game/Win32;$(ProjectDir)</AdditionalIncludeDirectories>
+      <OmitFramePointers>true</OmitFramePointers>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PreprocessorDefinitions>HW_Release;_CRT_SECURE_NO_WARNINGS;NOMINMAX;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>./game/Game;./game/Win32;$(ProjectDir)</AdditionalIncludeDirectories>
+      <OmitFramePointers>true</OmitFramePointers>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="Assembler.h" />
+    <ClInclude Include="Config.h" />
+    <ClInclude Include="framework.h" />
+    <ClInclude Include="Cataclysm.h" />
+    <ClInclude Include="GameHooks.h" />
+    <ClInclude Include="GameState.h" />
+    <ClInclude Include="game\Game\AIUtilities.h" />
+    <ClInclude Include="game\Game\Attributes.h" />
+    <ClInclude Include="game\Game\b-spline.h" />
+    <ClInclude Include="game\Game\blobs.h" />
+    <ClInclude Include="game\Game\camera.h" />
+    <ClInclude Include="game\Game\CameraCommand.h" />
+    <ClInclude Include="game\Game\ClassDefs.h" />
+    <ClInclude Include="game\Game\clouds.h" />
+    <ClInclude Include="game\Game\CommandDefs.h" />
+    <ClInclude Include="game\Game\CommandLayer.h" />
+    <ClInclude Include="game\Game\consMgr.h" />
+    <ClInclude Include="game\Game\crc32.h" />
+    <ClInclude Include="game\Game\Debug.h" />
+    <ClInclude Include="game\Game\dock.h" />
+    <ClInclude Include="game\Game\etg.h" />
+    <ClInclude Include="game\Game\FeFlow.h" />
+    <ClInclude Include="game\Game\formation.h" />
+    <ClInclude Include="game\Game\FormationDefs.h" />
+    <ClInclude Include="game\Game\gamestats.h" />
+    <ClInclude Include="game\Game\Globals.h" />
+    <ClInclude Include="game\Game\KAS.h" />
+    <ClInclude Include="game\Game\KASFunc.h" />
+    <ClInclude Include="game\Game\KEY.H" />
+    <ClInclude Include="game\Game\linkedlist.h" />
+    <ClInclude Include="game\Game\LOD.h" />
+    <ClInclude Include="game\Game\matrix.h" />
+    <ClInclude Include="game\Game\MaxMultiPlayer.h" />
+    <ClInclude Include="game\Game\mesh.h" />
+    <ClInclude Include="game\Game\meshanim.h" />
+    <ClInclude Include="game\Game\nebulae.h" />
+    <ClInclude Include="game\Game\objtypes.h" />
+    <ClInclude Include="game\Game\particle.h" />
+    <ClInclude Include="game\Game\RaceDefs.h" />
+    <ClInclude Include="game\Game\region.h" />
+    <ClInclude Include="game\Game\rescollect.h" />
+    <ClInclude Include="game\Game\researchapi.h" />
+    <ClInclude Include="game\Game\ShipDefs.h" />
+    <ClInclude Include="game\Game\shipselect.h" />
+    <ClInclude Include="game\Game\singleplayer.h" />
+    <ClInclude Include="game\Game\soundstructs.h" />
+    <ClInclude Include="game\Game\spaceobj.h" />
+    <ClInclude Include="game\Game\star3d.h" />
+    <ClInclude Include="game\Game\statscript.h" />
+    <ClInclude Include="game\Game\task.h" />
+    <ClInclude Include="game\Game\tweak.h" />
+    <ClInclude Include="game\Game\TYPES.h" />
+    <ClInclude Include="game\Game\UIcontrols.h" />
+    <ClInclude Include="game\Game\universe.h" />
+    <ClInclude Include="game\Game\vector.h" />
+    <ClInclude Include="game\Game\Volume.h" />
+    <ClInclude Include="game\Win32\color.h" />
+    <ClInclude Include="game\Win32\font.h" />
+    <ClInclude Include="game\Win32\prim2d.h" />
+    <ClInclude Include="game\Win32\Queue.h" />
+    <ClInclude Include="game\Win32\rinit.h" />
+    <ClInclude Include="game\Win32\texreg.h" />
+    <ClInclude Include="game\Win32\TitanInterfaceC.h" />
+    <ClInclude Include="game\Win32\trails.h" />
+    <ClInclude Include="PatchLOD.h" />
+    <ClInclude Include="Main.h" />
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="PatchRGL.h" />
+    <ClInclude Include="PatchUpdateRate.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Assembler.cpp" />
+    <ClCompile Include="Config.cpp" />
+    <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="GameHooks.cpp" />
+    <ClCompile Include="GameState.cpp" />
+    <ClCompile Include="game\Game\MultiplayerGame.cpp" />
+    <ClCompile Include="game\Game\rinit.cpp" />
+    <ClCompile Include="PatchLOD.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="pch.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="PatchRGL.cpp" />
+    <ClCompile Include="PatchUpdateRate.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CataclysmEngineTweaks.ini" />
+    <None Include="LICENSE" />
+    <None Include="README.md" />
+    <None Include="vcpkg.json" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

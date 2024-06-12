@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="HW1">
+      <UniqueIdentifier>{499bddf1-b05c-42f3-b396-729507c1d091}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HW1\Game">
+      <UniqueIdentifier>{56e1a730-8909-4e55-9c33-875a95ff48cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HW1\Win32">
+      <UniqueIdentifier>{aea63ee7-663f-49b7-b3d3-2af8481679b2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="framework.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Assembler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cataclysm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PatchUpdateRate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Main.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PatchRGL.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\b-spline.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\ClassDefs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\clouds.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\crc32.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\Debug.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\etg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\FeFlow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\Globals.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\KEY.H">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\linkedlist.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\LOD.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\matrix.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\MaxMultiPlayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\mesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\meshanim.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\nebulae.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\objtypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\particle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\RaceDefs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\region.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\ShipDefs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\soundstructs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\spaceobj.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\task.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\tweak.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\TYPES.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\UIcontrols.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\vector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Win32\color.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Win32\font.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Win32\prim2d.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Win32\Queue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Win32\rinit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Win32\texreg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Win32\TitanInterfaceC.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Win32\trails.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\AIUtilities.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\Attributes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\blobs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\CameraCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\CommandDefs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\CommandLayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\consMgr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\dock.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\formation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\FormationDefs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\gamestats.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\KAS.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\KASFunc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\rescollect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\researchapi.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\shipselect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\singleplayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\star3d.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\statscript.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\universe.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game\Volume.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PatchLOD.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameHooks.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Assembler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Config.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PatchUpdateRate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PatchRGL.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="game\Game\MultiplayerGame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="game\Game\rinit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PatchLOD.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameHooks.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="vcpkg.json">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="CataclysmEngineTweaks.ini" />
+    <None Include="LICENSE" />
+    <None Include="README.md" />
+  </ItemGroup>
+</Project>
