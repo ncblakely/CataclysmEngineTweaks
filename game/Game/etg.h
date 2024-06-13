@@ -607,6 +607,8 @@ extern bool   etgBulletEffectsEnabled;
     Functions:
 =============================================================================*/
 
+/*
+
 //startup/shutdown effects module
 void etgStartup(void);
 void etgShutdown(void);
@@ -642,6 +644,8 @@ extern udword etgFRandom(real32 low, real32 high);
 // Save Game stuff
 sdword saveEtglodGunEventToIndex(etglod *lod);
 etglod *saveIndexToEtglodGunEvent(sdword index);
+
+*/
 
 #endif //___ETG_H
 

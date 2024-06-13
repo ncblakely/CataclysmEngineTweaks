@@ -14,9 +14,18 @@ static int lodLevelGet(void* spaceObj, vector* camera, vector* ship)
     return 0; 
 }
 
+static BOOL etgFrequencyExceeded(etgeffectstatic* stat)
+{
+    // Always display all ETG effects in high detail mode
+    return FALSE;
+}
+
 static void CreateAndEnableHooks(Assembler& assembler, Config& config)
 {
+    void* _discard = nullptr;
+
     CreateAndEnableHook(Functions::lodLevelGet, lodLevelGet, &orig_lodLevelGet);
+    CreateAndEnableHook(Functions::etgFrequencyExceeded, lodLevelGet, &_discard);
 }
 
 void ApplyLODPatches(Assembler& assembler, Config& config)
