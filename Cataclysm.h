@@ -66,6 +66,11 @@ namespace Instructions
 	DEFINE_ADDRESS(etgDefineAt_UpdateRate1, 0x0046E042);
 	DEFINE_ADDRESS(etgDefineAt_UpdateRate2, 0x0046E04F);
 	DEFINE_ADDRESS(etgDefineAt_UpdateRate3, 0x0046E05B);
+
+	DEFINE_ADDRESS(nisUpdateTask_UniverseUpdatePeriod1, 0x004CC634);
+	DEFINE_ADDRESS(nisUpdateTask_UniverseUpdatePeriod2, 0x004CC701);
+	DEFINE_ADDRESS(nisUpdateTask_UniverseUpdatePeriod3, 0x004CC72C);
+	DEFINE_ADDRESS(nisUpdateTask_UniverseUpdatePeriod4, 0x004CC7B8);
 }
 
 // Addresses of game functions.
@@ -137,6 +142,9 @@ namespace Functions
 
 	typedef int (*fn_lodLevelGet)(void* spaceObj, vector* camera, vector* ship);
 	inline fn_lodLevelGet lodLevelGet = (fn_lodLevelGet)0x004A4D70;
+
+	typedef BOOL(*fn_etgFrequencyExceeded)(etgeffectstatic* stat);
+	inline fn_etgFrequencyExceeded etgFrequencyExceeded = (fn_etgFrequencyExceeded)0x00470BD0;
 
 	typedef bool (*fn_univUpdate)(real32 phystimeelapsed);
 	inline fn_univUpdate univUpdate = (fn_univUpdate)0x0054C3F0;

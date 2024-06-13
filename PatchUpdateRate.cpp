@@ -282,27 +282,37 @@ static void PatchEtgDefineAt(Assembler& assembler)
 	assembler.Write(fmt::format("fld dword ptr ds:[{}]", etgUpdateRoundOffHex), Instructions::etgDefineAt_UpdateRate3);
 }
 
-static void PatchUtyGameSystemsInit(Assembler& assembler, std::string& updatePeriodHex)
+static void PatchNisUpdateTask(Assembler& assembler)
+{
+	std::string universeUpdatePeriodAddressStr = IntToHex(sdword(&s_UniverseUpdatePeriod));
+
+	assembler.Write(fmt::format("fadd dword ptr ds:[{}]", universeUpdatePeriodAddressStr), Instructions::nisUpdateTask_UniverseUpdatePeriod1);
+	assembler.Write(fmt::format("fcomp dword ptr ds:[{}]", universeUpdatePeriodAddressStr), Instructions::nisUpdateTask_UniverseUpdatePeriod2);
+	assembler.Write(fmt::format("fmul dword ptr ds:[{}]", universeUpdatePeriodAddressStr), Instructions::nisUpdateTask_UniverseUpdatePeriod3);
+	assembler.Write(fmt::format("fadd dword ptr ds:[{}]", universeUpdatePeriodAddressStr), Instructions::nisUpdateTask_UniverseUpdatePeriod4);
+}
+
+static void PatchUtyGameSystemsInit(Assembler& assembler, std::string& updatePeriodValueStr)
 {
 	// Register universe update task with new frequency
-	assembler.Write(fmt::format("push {}", updatePeriodHex), Instructions::utyGameSystemsInit_UNIVERSE_UPDATE_PERIOD);
+	assembler.Write(fmt::format("push {}", updatePeriodValueStr), Instructions::utyGameSystemsInit_UNIVERSE_UPDATE_PERIOD);
 
 	// Update timer frequency
 	std::string timerResolutionHex = IntToHex(s_TimerResolutionMax);
 	assembler.Write(fmt::format("push {}", timerResolutionHex), Instructions::utyGameSystemsInit_TimerResolutionMax);
 }
 
-static void PatchNisStartup(Assembler& assembler, std::string& updatePeriodHex)
+static void PatchNisStartup(Assembler& assembler, std::string& updatePeriodValueStr)
 {
 	// Register NIS update task with new frequency
-	assembler.Write(fmt::format("push {}", updatePeriodHex), Instructions::nisStartup_UNIVERSE_UPDATE_PERIOD);
+	assembler.Write(fmt::format("push {}", updatePeriodValueStr), Instructions::nisStartup_UNIVERSE_UPDATE_PERIOD);
 }
 
-static void PatchNisUpdateTask(Assembler& assembler, std::string& updatePeriodHex)
+static void PatchNisUpdateTask(Assembler& assembler, std::string& updatePeriodAddressStr)
 {
 	// Update NIS cinematics at new frequency
-	assembler.Write(fmt::format("mov dword ptr ds:[0x00A4CAB4], {}", updatePeriodHex), Instructions::nisUpdateTask_UNIVERSE_UPDATE_PERIOD_1);
-	assembler.Write(fmt::format("push {}", updatePeriodHex), Instructions::nisUpdateTask_UNIVERSE_UPDATE_PERIOD_2);
+	assembler.Write(fmt::format("mov dword ptr ds:[0x00A4CAB4], {}", updatePeriodAddressStr), Instructions::nisUpdateTask_UNIVERSE_UPDATE_PERIOD_1);
+	assembler.Write(fmt::format("push {}", updatePeriodAddressStr), Instructions::nisUpdateTask_UNIVERSE_UPDATE_PERIOD_2);
 }
 
 static void PatchBabyTasksStartup(Assembler& assembler, std::string& updatePeriodHex)
@@ -311,27 +321,27 @@ static void PatchBabyTasksStartup(Assembler& assembler, std::string& updatePerio
 	assembler.Write(fmt::format("push {}", updatePeriodHex), Instructions::BabyTasksStartup_UNIVERSE_UPDATE_PERIOD);
 }
 
-static void PatchUnivUpdate(Assembler& assembler, std::string& updatePeriodHex)
+static void PatchUnivUpdate(Assembler& assembler, std::string& updatePeriodValueStr)
 {
 	// Push modified UNIVERSE_UPDATE_PERIOD in calls to univUpdate
-	assembler.Write(fmt::format("push {}", updatePeriodHex), Instructions::univUpdate1);
-	assembler.Write(fmt::format("push {}", updatePeriodHex), Instructions::univUpdate2);
-	assembler.Write(fmt::format("push {}", updatePeriodHex), Instructions::univUpdate3);
-	assembler.Write(fmt::format("push {}", updatePeriodHex), Instructions::univUpdate4);
-	assembler.Write(fmt::format("push {}", updatePeriodHex), Instructions::univUpdate5);
+	assembler.Write(fmt::format("push {}", updatePeriodValueStr), Instructions::univUpdate1);
+	assembler.Write(fmt::format("push {}", updatePeriodValueStr), Instructions::univUpdate2);
+	assembler.Write(fmt::format("push {}", updatePeriodValueStr), Instructions::univUpdate3);
+	assembler.Write(fmt::format("push {}", updatePeriodValueStr), Instructions::univUpdate4);
+	assembler.Write(fmt::format("push {}", updatePeriodValueStr), Instructions::univUpdate5);
 }
 
-static void PatchUnivUpdateReset(Assembler& assembler, std::string& updatePeriodHex)
+static void PatchUnivUpdateReset(Assembler& assembler, std::string& updatePeriodValueStr)
 {
 	// Set new update rate when resetting universe
-	assembler.Write(fmt::format("mov dword ptr ds:[0x00B62ABC], {}", updatePeriodHex), Instructions::univUpdateReset_UNIVERSE_UPDATE_PERIOD);
+	assembler.Write(fmt::format("mov dword ptr ds:[0x00B62ABC], {}", updatePeriodValueStr), Instructions::univUpdateReset_UNIVERSE_UPDATE_PERIOD);
 }
 
-static void PatchGunShipFirePower(Assembler& assembler, std::string& updatePeriodHex)
+static void PatchGunShipFirePower(Assembler& assembler, std::string& updatePeriodValueStr)
 {
 	// Set new update rate for gunship fire power
-	assembler.Write(fmt::format("mov dword ptr ss:[esp+0x1C], {}", updatePeriodHex), Instructions::gunShipFirePower_UniverseUpdatePeriod1);
-	assembler.Write(fmt::format("mov dword ptr ss:[esp+0x1C], {}", updatePeriodHex), Instructions::gunShipFirePower_UniverseUpdatePeriod2);
+	assembler.Write(fmt::format("mov dword ptr ss:[esp+0x1C], {}", updatePeriodValueStr), Instructions::gunShipFirePower_UniverseUpdatePeriod1);
+	assembler.Write(fmt::format("mov dword ptr ss:[esp+0x1C], {}", updatePeriodValueStr), Instructions::gunShipFirePower_UniverseUpdatePeriod2);
 }
 
 void ApplyUpdateRatePatch(Assembler& assembler, Config& config)
@@ -344,16 +354,17 @@ void ApplyUpdateRatePatch(Assembler& assembler, Config& config)
 	CalculateTimestepConstants(config);
 
 	float universeUpdatePeriod = config.GetUniverseUpdatePeriod();
-	std::string updatePeriodHex = FloatToHex(universeUpdatePeriod);
+	std::string updatePeriodValueStr = FloatToHex(universeUpdatePeriod);
 
-	PatchUnivUpdate(assembler, updatePeriodHex);
-	PatchUtyGameSystemsInit(assembler, updatePeriodHex);
-	PatchNisStartup(assembler, updatePeriodHex);
-	PatchNisUpdateTask(assembler, updatePeriodHex);
-	PatchBabyTasksStartup(assembler, updatePeriodHex);
-	PatchUnivUpdateReset(assembler, updatePeriodHex);
+	PatchUnivUpdate(assembler, updatePeriodValueStr);
+	PatchUtyGameSystemsInit(assembler, updatePeriodValueStr);
+	PatchNisStartup(assembler, updatePeriodValueStr);
+	PatchNisUpdateTask(assembler, updatePeriodValueStr);
+	PatchBabyTasksStartup(assembler, updatePeriodValueStr);
+	PatchUnivUpdateReset(assembler, updatePeriodValueStr);
 	PatchEtgDefineAt(assembler);
-	PatchGunShipFirePower(assembler, updatePeriodHex);
+	PatchGunShipFirePower(assembler, updatePeriodValueStr);
+	PatchNisUpdateTask(assembler);
 
 	*Globals::TimerResolutionMax = (float)s_TimerResolutionMax;
 
