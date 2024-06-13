@@ -59,6 +59,11 @@ public:
 		return m_autoSaveInterval;
 	}
 
+	bool OpenGLFix() const
+	{
+		return m_openGLFix;
+	}
+
 private:
 	real32 m_updateRate = 0;
 	udword m_updateRateShift = 0;
@@ -67,6 +72,7 @@ private:
 	bool m_borderlessWindow = false;
 	bool m_disableIntroMovies = false;
 	udword m_autoSaveInterval = 0;
+	bool m_openGLFix = false;
 };
 
 extern Config g_Config;

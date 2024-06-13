@@ -14,18 +14,18 @@ static void CreateAndEnableHooks(Assembler& assembler, Config& config)
 {
     void* _discard = nullptr;
 
-    CreateAndEnableHook(Functions::rinSortModes, rinSortModes, &_discard);
-    CreateAndEnableHook(Functions::rinEnumDisplayModes_cb, rinEnumDisplayModes_cb, &_discard);
-    CreateAndEnableHook(Functions::rinEnumPrimaryDisplayModes_cb, rinEnumPrimaryDisplayModes_cb, &_discard);
+    if (config.IsNewResolutionPickerEnabled())
+    {
+        CreateAndEnableHook(Functions::rinSortModes, rinSortModes, &_discard);
+        CreateAndEnableHook(Functions::rinEnumDisplayModes_cb, rinEnumDisplayModes_cb, &_discard);
+        CreateAndEnableHook(Functions::rinEnumPrimaryDisplayModes_cb, rinEnumPrimaryDisplayModes_cb, &_discard);
+    }
+
+    CreateAndEnableHook(Functions::glCapNT, glCapNT, &_discard);
 }
 
 void ApplyRGLPatches(Assembler& assembler, Config& config)
 {
-    if (!config.IsNewResolutionPickerEnabled())
-    {
-        return;
-    }
-
     CreateAndEnableHooks(assembler, config);
 
     spdlog::info("RGL patches applied");

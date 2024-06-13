@@ -8,6 +8,7 @@
 #include "spaceobj.h"
 #include "universe.h"
 #include "singleplayer.h"
+#include "glcaps.h"
 
 #define DEFINE_ADDRESS(name, address) \
 	inline void* name = (void*)address;
@@ -146,8 +147,8 @@ namespace Functions
 	typedef void (*fn_clCommandMessage)(const char CommandMessage[MAX_MESSAGE_LENGTH], udword flags);
 	inline fn_clCommandMessage clCommandMessage = (fn_clCommandMessage)0x004AC820;
 
-	typedef sdword(*fn_speechEventQueue)(void* object, sdword event, sdword var, sdword variation, sdword actornum, sdword playernum, sdword linkto, real32 timeout, sword volume);
-	inline fn_speechEventQueue speechEventQueue = (fn_speechEventQueue)0x00522560;
+	typedef BOOL(*fn_glCapNT)();
+	inline fn_glCapNT glCapNT = (fn_glCapNT)0x00559AC0;
 }
 
 // Global/static variables in the game executable.

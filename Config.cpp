@@ -20,6 +20,7 @@ Config Config::FromFile(const char* path)
 	config.m_newResolutionPicker = reader.GetBoolean("Display", "NewResolutionPicker", false);
 	config.m_borderlessWindow = reader.GetBoolean("Display", "BorderlessWindow", false);
 	config.m_disableIntroMovies = reader.GetBoolean("Display", "DisableIntroMovies", false);
+	config.m_openGLFix = reader.GetBoolean("Display", "OpenGLFix", false);
 
 	////////////////////////////////////////////////////////////////
 	// Game section
