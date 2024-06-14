@@ -185,9 +185,11 @@ namespace Globals
 
 	inline CaptainGameInfo* tpGameCreated = (CaptainGameInfo*)0x00886028;
 
-	inline BOOL* showBorder = (BOOL*)0x008B8628;
-	inline BOOL* fullScreen = (BOOL*)0x008B8638;
-	inline BOOL* enableAVI = (BOOL*)0x008B8610;
+	// Command line options
+	inline bool32* showBorder = (bool32*)0x008B8628;
+	inline bool32* fullScreen = (bool32*)0x008B8638;
+	inline bool32* enableAVI = (bool32*)0x008B8610;
+	inline bool32* mainSafeGL = (bool32*)0x00A74D38;
 
 	inline BOOL* singlePlayerGame = (BOOL*)0x00A43C9C;
 

@@ -64,6 +64,11 @@ public:
 		return m_openGLFix;
 	}
 
+	bool IsSafeGL() const
+	{
+		return m_safeGL;
+	}
+
 private:
 	real32 m_updateRate = 0;
 	udword m_updateRateShift = 0;
@@ -72,7 +77,8 @@ private:
 	bool m_borderlessWindow = false;
 	bool m_disableIntroMovies = false;
 	udword m_autoSaveInterval = 0;
-	bool m_openGLFix = false;
+	bool m_openGLFix = true;
+	bool m_safeGL = false;
 };
 
 extern Config g_Config;

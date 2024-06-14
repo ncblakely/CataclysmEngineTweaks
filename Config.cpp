@@ -20,12 +20,17 @@ Config Config::FromFile(const char* path)
 	config.m_newResolutionPicker = reader.GetBoolean("Display", "NewResolutionPicker", false);
 	config.m_borderlessWindow = reader.GetBoolean("Display", "BorderlessWindow", false);
 	config.m_disableIntroMovies = reader.GetBoolean("Display", "DisableIntroMovies", false);
-	config.m_openGLFix = reader.GetBoolean("Display", "OpenGLFix", false);
 
 	////////////////////////////////////////////////////////////////
 	// Game section
 
 	config.m_autoSaveInterval = (udword)std::max(0l, reader.GetInteger("Game", "AutoSaveInterval", 0));
+
+	////////////////////////////////////////////////////////////////
+	// OpenGL section
+
+	config.m_openGLFix = reader.GetBoolean("OpenGL", "FixWindowsNTBug", true);
+	config.m_safeGL = reader.GetBoolean("OpenGL", "SafeGL", false);
 
 	return config;
 }

@@ -24,6 +24,11 @@ static void ApplyStartupPatches(Config& config)
     {
         *Globals::enableAVI = FALSE;
     }
+
+    if (config.IsSafeGL())
+    {
+        *Globals::mainSafeGL = true;
+    }
 }
 
 void ApplyPatches(Config& config)
