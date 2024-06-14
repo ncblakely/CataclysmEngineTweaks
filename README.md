@@ -16,9 +16,9 @@ To install:
 Launch the game with cataclysm_loader.exe instead of cataclysm.exe.
 
 ## Features
-- Allows for increasing the default universe update rate of 16 FPS. This is why ship movement appears choppy in the classic Homeworld games. Supported values are 32 or 64 FPS; higher will cause crashes currently.
+- Allows for increasing the default universe update rate of 16 FPS. This is why ship movement appears choppy in the classic Homeworld games. Supported values are 32 or 64 FPS; higher settings are possible but may cause instability or bugs.
 - Unlocks selection of any resolution your system supports in the in-game video options. No need to edit the registry anymore!
-- High-detail mode, disabling the aggressive object LODs to render ships at full detail regardless of distance.
+- High-detail mode: renders objects at maximum detail and removes active effects cap.
 - Configurable autosave interval for SP/MP games.
 
 Edit CataclysmEngineTweaks.ini to change these settings.
