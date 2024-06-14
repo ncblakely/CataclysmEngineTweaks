@@ -168,6 +168,7 @@
     <ClInclude Include="game\Win32\texreg.h" />
     <ClInclude Include="game\Win32\TitanInterfaceC.h" />
     <ClInclude Include="game\Win32\trails.h" />
+    <ClInclude Include="PatchETG.h" />
     <ClInclude Include="PatchLOD.h" />
     <ClInclude Include="Main.h" />
     <ClInclude Include="pch.h" />
@@ -183,6 +184,7 @@
     <ClCompile Include="game\Game\MultiplayerGame.cpp" />
     <ClCompile Include="game\Game\rinit.cpp" />
     <ClCompile Include="game\Win32\glcaps.cpp" />
+    <ClCompile Include="PatchETG.cpp" />
     <ClCompile Include="PatchLOD.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="pch.cpp">

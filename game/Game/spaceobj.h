@@ -1524,6 +1524,7 @@ typedef struct Effect
     Node objlink;
     ObjType objtype;                            // object type (ship or bullet, etc)
     udword flags;                               // flags whether the object is rotatable, etc.
+    sdword unknown[2];
     StaticInfo *staticinfo;                     // pointer to static info
     Node renderlink;        // link for rendering list
     ubyte currentLOD;                           // current level of detail

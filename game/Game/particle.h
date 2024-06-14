@@ -205,6 +205,104 @@ typedef struct
     matrix* partMat;
 } billSystem;
 
+// @CATA: Moved here from particle.c.
+typedef struct
+{
+    vector  worldVel;
+    vector  effectVelocity; // @CATA: This was moved from a local static in particle.c
+    udword  flags;
+    real32  drag;
+    real32  scale;
+    real32  xScale, yScale, zScale;
+    real32  scaleDist;
+    real32  deltaScale;
+    real32  deltaScaleDist;
+    //position
+    real32  offsetLOF;
+    real32  offsetR;
+    real32  offsetTheta;
+    vector* offsetArray;
+    real32  deltaLOF;
+    real32  deltaLOFDist;
+    real32  deltaR[2];
+    real32  deltaRDist[2];
+    //velocity
+    real32  velLOF;
+    real32  velLOFDist;
+    real32  velR;
+    real32  velRDist;
+    real32  deltaVelLOF;
+    real32  deltaVelLOFDist;
+    real32  deltaVelR;
+    real32  deltaVelRDist;
+    real32  ang;
+    real32  angDist;
+    real32  angDelta;
+    real32  angDeltaDist;
+    //line thingz
+    real32  length;
+    real32  lengthDist;
+    real32  deltaLength;
+    real32  deltaLengthDist;
+    sdword unknown[3];
+    //appearance
+    real32  icolor[4];
+    real32  colorDist[4];
+    real32  deltaColor[4];
+    real32  deltaColorDist[4];
+    bool8   lit;
+    real32  illum;
+    real32  illumDist;
+    real32  deltaIllum;
+    real32  deltaIllumDist;
+    //lifespan
+    real32  lifespan;
+    real32  lifespanDist;
+    real32  waitspan;
+    real32  waitspanDist;
+    //mesh
+    meshdata* mesh;
+    real32  exponent;
+    real32  exponentDist;
+    ubyte   colorScheme;
+    sdword  loopCount;
+    //texture
+    trhandle tex;
+    //billboard
+    real32  position[3];
+    matrix* mat;
+    udword  slices;
+    udword  uv[2][2];
+    void* tstruct;
+    void* mstruct;
+    real32  rate;
+    real32  meshRate;
+    real32  startMeshFrame;
+    bool8   loop;
+    uword   startFrame;
+    //mesh tumble attribs
+    real32  tumble[3];
+    real32  tumbleDist[3];
+    real32  deltaTumble[3];
+    real32  deltaTumbleDist[3];
+    //color biasing
+    real32  rbias;
+    real32  gbias;
+    real32  bbias;
+    real32  rbiasDist;
+    real32  gbiasDist;
+    real32  bbiasDist;
+    //flags
+    bool32    specularOnly;
+    bool32    stippleAlpha;
+    bool32    noDepthWrite;
+    bool32    additiveBlends;
+    bool32    pseudoBillboard;
+    bool32    trueBillboard;
+} particleAttribs;
+
+static_assert(sizeof(particleAttribs) == 456);
+
 extern matrix partEffectOwnerSystem;
 extern vector partEffectOwnerPosition;
 extern color  partEffectColor;

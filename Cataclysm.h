@@ -157,6 +157,15 @@ namespace Functions
 
 	typedef BOOL(*fn_glCapNT)();
 	inline fn_glCapNT glCapNT = (fn_glCapNT)0x00559AC0;
+
+	typedef sdword(*fn_etgFunctionCall)(Effect* effect, struct etgeffectstatic* stat, ubyte* opcode);
+	inline fn_etgFunctionCall etgFunctionCall = (fn_etgFunctionCall)0x0046E7B0;
+
+	typedef void (*fn_etgEffectDelete)(Effect* effect);
+	inline fn_etgEffectDelete etgEffectDelete = (fn_etgEffectDelete)0x0046A6F0;
+
+	typedef sdword(*fn_etgNParticleBlocksSet)(struct etgeffectstatic* stat, ubyte* dest, char* opcodeString, char* params, char* ret);
+	inline fn_etgNParticleBlocksSet etgNParticleBlocksSet = (fn_etgNParticleBlocksSet)0x0046E110;
 }
 
 // Global/static variables in the game executable.
@@ -191,4 +200,6 @@ namespace Globals
 	inline LARGE_INTEGER* realtimeremainder = (LARGE_INTEGER*)0x00A6D9A0;
 
 	inline LONGLONG* utyTimerDivisor = (LONGLONG*)0x00AB7520;
+
+	inline float* etgTotalTimeElapsed = (float*)0x00C41C74;
 }

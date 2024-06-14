@@ -21,6 +21,7 @@ typedef double              real64;
 
 typedef sbyte               bool8;
 typedef sword               bool16;
+typedef sdword              bool32;
 
 /*-------------------------------------------------------------------------
    Declare common numbers etc.

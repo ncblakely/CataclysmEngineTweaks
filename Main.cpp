@@ -3,6 +3,7 @@
 #include "Config.h"
 #include "GameHooks.h"
 #include "PatchUpdateRate.h"
+#include "PatchETG.h"
 #include "PatchLOD.h"
 #include "PatchRGL.h"
 
@@ -29,12 +30,14 @@ void ApplyPatches(Config& config)
 {
     Assembler assembler;
 
+    ApplyStartupPatches(config);
     InstallGameHooks(assembler, config);
 
-    ApplyStartupPatches(config);
-    ApplyUpdateRatePatch(assembler, config);
-    ApplyRGLPatches(assembler, config);
+    ApplyETGPatches(assembler, config);
     ApplyLODPatches(assembler, config);
+    ApplyRGLPatches(assembler, config);
+    
+    ApplyUpdateRatePatch(assembler, config);
 
     spdlog::info("Patches applied");
 }
