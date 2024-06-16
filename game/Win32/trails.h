@@ -94,11 +94,15 @@ typedef struct
     real32 ran;
     real32 exponent;
     real32 scalecap;
+    sdword unknown;
     sdword grainCounter;                //counter to reflect if the trail should be updated this time around
     sdword iHead, iTail, nLength;       //circular queue members
     trailsegment segments[1];           //trail segments
 }
 shiptrail;
+
+static_assert(offsetof(shiptrail, style) == 0x18);
+static_assert(offsetof(shiptrail, grainCounter) == 0x3C);
 
 typedef struct
 {

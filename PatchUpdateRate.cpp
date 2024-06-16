@@ -103,13 +103,16 @@ static void mistrailUpdate(missiletrail* trail, vector* position)
 	}
 }
 
-static Functions::fn_trailUpdate orig_trailUpdate;
-static void trailUpdate(shiptrail* trail, vector* position)
+static Functions::fn_trailSegmentsRead orig_trailSegmentsRead;
+static void trailSegmentsRead(char* directory, char* field, void* dataToFillIn)
 {
-	if ((*Globals::universe_univUpdateCounter % g_Config.GetUniverseUpdateRateFactor()) == 0)
-	{
-		orig_trailUpdate(trail, position);
-	}
+	sdword tpNSegments;
+	sscanf(field, "%d", &tpNSegments);
+
+	// Adjust the number of segments for the new update rate
+	tpNSegments <<= g_Config.GetUniverseUpdateRateShift();
+
+	orig_trailSegmentsRead(directory, (char*)fmt::format("{}", tpNSegments).c_str(), dataToFillIn);
 }
 
 static Functions::fn_BeastMothershipSelfDamage orig_BeastMothershipSelfDamage;
@@ -253,13 +256,12 @@ static void CreateAndEnableHooks(Assembler& assembler)
 	// Function hooks
 	CreateAndEnableHook(Functions::univUpdateReset, univUpdateReset, &orig_univUpdateReset);
 	CreateAndEnableHook(Functions::scriptSetFramesCB, scriptSetFramesCB, &_discard);
-	CreateAndEnableHook(Functions::mistrailUpdate, mistrailUpdate, &orig_mistrailUpdate);
-	CreateAndEnableHook(Functions::trailUpdate, trailUpdate, &orig_trailUpdate);
 	CreateAndEnableHook(Functions::mgResourceInjectionInterval, mgResourceInjectionInterval, &_discard);
 	CreateAndEnableHook(Functions::mgResourceLumpSumInterval, mgResourceLumpSumInterval, &_discard);
 	CreateAndEnableHook(Functions::beastMothershipSelfDamage, beastMothershipSelfDamage, &orig_BeastMothershipSelfDamage);
 	CreateAndEnableHook(Functions::univBulletCollidedWithTarget, univBulletCollidedWithTarget, &orig_univBulletCollidedWithTarget);
 	CreateAndEnableHook(Functions::singlePlayerGameUpdate, singlePlayerGameUpdate, &orig_singlePlayerGameUpdate);
+	CreateAndEnableHook(Functions::trailSegmentsRead, trailSegmentsRead, &orig_trailSegmentsRead);
 
 	// Mid-function hooks
 	CreateAndEnableHook(Instructions::CollectResources_HarvestRateCheck, CollectResourcesHarvestRateCheck, &_discard);

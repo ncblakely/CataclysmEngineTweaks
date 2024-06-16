@@ -91,8 +91,8 @@ namespace Functions
 	typedef void (*fn_mistrailUpdate)(missiletrail* trail, vector* position);
 	inline fn_mistrailUpdate mistrailUpdate = (fn_mistrailUpdate)0x005A4D90;
 
-	typedef void (*fn_trailUpdate)(shiptrail* trail, vector* position);
-	inline fn_trailUpdate trailUpdate = (fn_trailUpdate)0x005A4E10;
+	typedef void (*fn_trailSegmentsRead)(char* directory, char* field, void* dataToFillIn);
+	inline fn_trailSegmentsRead trailSegmentsRead = (fn_trailSegmentsRead)0x005A7A70;
 
 	typedef void (*fn_rinSortModes)(rdevice* dev);
 	inline fn_rinSortModes rinSortModes = (fn_rinSortModes)0x0057DE00;
