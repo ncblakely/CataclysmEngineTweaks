@@ -39,9 +39,14 @@ public:
 		return m_highDetailMode;
 	}
 
-	bool IsNewResolutionPickerEnabled() const
+	bool IsNewRendererSelectionEnabled() const
 	{
-		return m_newResolutionPicker;
+		return m_newRendererSelection;
+	}
+
+	bool IsUnlimitedVideoMemoryEnabled() const
+	{
+		return m_unlimitedVideoMemory;
 	}
 
 	bool IsBorderlessWindowEnabled() const
@@ -73,10 +78,11 @@ private:
 	real32 m_updateRate = 0;
 	udword m_updateRateShift = 0;
 	bool m_highDetailMode = false;
-	bool m_newResolutionPicker = false;
+	bool m_newRendererSelection = false;
 	bool m_borderlessWindow = false;
 	bool m_disableIntroMovies = false;
 	udword m_autoSaveInterval = 0;
+	bool m_unlimitedVideoMemory = false;
 	bool m_openGLFix = true;
 	bool m_safeGL = false;
 };

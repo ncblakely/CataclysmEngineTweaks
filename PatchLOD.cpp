@@ -14,11 +14,24 @@ static int lodLevelGet(void* spaceObj, vector* camera, vector* ship)
     return 0; 
 }
 
+static void trCramRAMComputeAndScale()
+{
+    // Do nothing
+}
+
 static void CreateAndEnableHooks(Assembler& assembler, Config& config)
 {
     void* _discard = nullptr;
 
     CreateAndEnableHook(Functions::lodLevelGet, lodLevelGet, &orig_lodLevelGet);
+
+    // Not working yet, disable for now
+    /*
+    if (g_Config.IsUnlimitedVideoMemoryEnabled())
+    {
+        CreateAndEnableHook(Functions::trCramRAMComputeAndScale, &trCramRAMComputeAndScale, &_discard);
+    }
+    */
 }
 
 void ApplyLODPatches(Assembler& assembler, Config& config)

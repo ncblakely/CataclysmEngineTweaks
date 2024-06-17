@@ -17,9 +17,10 @@ Config Config::FromFile(const char* path)
 	// Display section
 
 	config.m_highDetailMode = reader.GetBoolean("Display", "HighDetailMode", false);
-	config.m_newResolutionPicker = reader.GetBoolean("Display", "NewResolutionPicker", false);
+	config.m_newRendererSelection = reader.GetBoolean("Display", "NewRendererSelection", false);
 	config.m_borderlessWindow = reader.GetBoolean("Display", "BorderlessWindow", false);
 	config.m_disableIntroMovies = reader.GetBoolean("Display", "DisableIntroMovies", false);
+	config.m_unlimitedVideoMemory = reader.GetBoolean("Display", "UnlimitedVideoMemory", false);
 
 	////////////////////////////////////////////////////////////////
 	// Game section

@@ -71,6 +71,8 @@ namespace Instructions
 	DEFINE_ADDRESS(nisUpdateTask_UniverseUpdatePeriod2, 0x004CC701);
 	DEFINE_ADDRESS(nisUpdateTask_UniverseUpdatePeriod3, 0x004CC72C);
 	DEFINE_ADDRESS(nisUpdateTask_UniverseUpdatePeriod4, 0x004CC7B8);
+
+	DEFINE_ADDRESS(InitWindow_DeviceCrcCheck, 0x00563563);
 }
 
 // Addresses of game functions.
@@ -158,14 +160,23 @@ namespace Functions
 	typedef BOOL(*fn_glCapNT)();
 	inline fn_glCapNT glCapNT = (fn_glCapNT)0x00559AC0;
 
-	typedef sdword(*fn_etgFunctionCall)(Effect* effect, struct etgeffectstatic* stat, ubyte* opcode);
+	typedef sdword (*fn_etgFunctionCall)(Effect* effect, struct etgeffectstatic* stat, ubyte* opcode);
 	inline fn_etgFunctionCall etgFunctionCall = (fn_etgFunctionCall)0x0046E7B0;
 
 	typedef void (*fn_etgEffectDelete)(Effect* effect);
 	inline fn_etgEffectDelete etgEffectDelete = (fn_etgEffectDelete)0x0046A6F0;
 
-	typedef sdword(*fn_etgNParticleBlocksSet)(struct etgeffectstatic* stat, ubyte* dest, char* opcodeString, char* params, char* ret);
+	typedef sdword (*fn_etgNParticleBlocksSet)(struct etgeffectstatic* stat, ubyte* dest, char* opcodeString, char* params, char* ret);
 	inline fn_etgNParticleBlocksSet etgNParticleBlocksSet = (fn_etgNParticleBlocksSet)0x0046E110;
+
+	typedef void(*fn_trCramRAMComputeAndScale)();
+	inline fn_trCramRAMComputeAndScale trCramRAMComputeAndScale = (fn_trCramRAMComputeAndScale)0x00589A50;
+
+	typedef udword (*fn_rinDeviceCRC)();
+	inline fn_rinDeviceCRC rinDeviceCRC = (fn_rinDeviceCRC)0x0057DCF0;
+
+	typedef void(*fn_mainRescaleMainWindow)();
+	inline fn_mainRescaleMainWindow mainRescaleMainWindow = (fn_mainRescaleMainWindow)0x0055FC70;
 }
 
 // Global/static variables in the game executable.
@@ -204,4 +215,12 @@ namespace Globals
 	inline LONGLONG* utyTimerDivisor = (LONGLONG*)0x00AB7520;
 
 	inline float* etgTotalTimeElapsed = (float*)0x00C41C74;
+
+	inline udword* opDeviceCRC = (udword*)0x00A4CC20;
+
+	// Resolution/renderer selection
+	inline char* glToSelect = (char*)0x008B8644;
+	inline sdword* MAIN_WindowWidth = (sdword*)0x008B85E8;
+	inline sdword* MAIN_WindowHeight = (sdword*)0x008B85EC;
+	inline sdword* MAIN_WindowDepth = (sdword*)0x008B85F0;
 }

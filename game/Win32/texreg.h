@@ -176,6 +176,10 @@ typedef struct
 }
 texreg;
 
+static_assert(offsetof(texreg, scaledWidth) == 0x4);
+static_assert(offsetof(texreg, scaledHeight) == 0x6);
+static_assert(offsetof(texreg, flags) == 0xC);
+
 //structure for an entry in the no-palette texture registry
 typedef struct
 {
@@ -304,6 +308,8 @@ extern bool GLOBAL_NO_TEXTURES;
 /*=============================================================================
     Functions:
 =============================================================================*/
+
+#if 0
 //startup/shutdown and reset texture registry
 void trStartup(void);
 void trShutdown(void);
@@ -364,6 +370,8 @@ udword trNoPalTextureCreate(ubyte* data, ubyte* palette, sdword width, sdword he
 void trNoPalResizePool(sdword mb);
 void trNoPalReadjust(void);
 void trNoPalFilter(sdword bEnable, sdword handle);
+
+#endif
 
 #endif //___TEXREG_H
 

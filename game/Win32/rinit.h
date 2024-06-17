@@ -37,12 +37,16 @@ typedef struct rdevice
 extern "C" {
 #endif
 
+/*
+
 int rinEnumerateDevices(void);
 int rinFreeDevices(void);
 unsigned int rinDirectXVersion(void);
 rdevice* rinGetDeviceList(void);
 
 unsigned int rinDeviceCRC(void);
+
+*/
 
 #ifdef __cplusplus
 }
