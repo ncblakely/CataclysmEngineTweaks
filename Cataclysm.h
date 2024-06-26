@@ -223,4 +223,6 @@ namespace Globals
 	inline sdword* MAIN_WindowWidth = (sdword*)0x008B85E8;
 	inline sdword* MAIN_WindowHeight = (sdword*)0x008B85EC;
 	inline sdword* MAIN_WindowDepth = (sdword*)0x008B85F0;
+
+	inline sdword** SongNumberLoadGameOffset = (sdword**)0x00892670;
 }

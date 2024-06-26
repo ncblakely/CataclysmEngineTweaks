@@ -171,6 +171,7 @@
     <ClInclude Include="PatchETG.h" />
     <ClInclude Include="PatchLOD.h" />
     <ClInclude Include="Main.h" />
+    <ClInclude Include="PatchSaveGame.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="PatchRGL.h" />
     <ClInclude Include="PatchUpdateRate.h" />
@@ -187,6 +188,7 @@
     <ClCompile Include="PatchETG.cpp" />
     <ClCompile Include="PatchLOD.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="PatchSaveGame.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

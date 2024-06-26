@@ -3,4 +3,4 @@
 #include "Assembler.h"
 #include "Config.h"
 
-void ApplyUpdateRatePatch(Assembler& assembler, Config& config);
+void ApplyUpdateRatePatches(Assembler& assembler, Config& config);

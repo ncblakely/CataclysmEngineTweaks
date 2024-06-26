@@ -346,7 +346,7 @@ static void PatchGunShipFirePower(Assembler& assembler, std::string& updatePerio
 	assembler.Write(fmt::format("mov dword ptr ss:[esp+0x1C], {}", updatePeriodValueStr), Instructions::gunShipFirePower_UniverseUpdatePeriod2);
 }
 
-void ApplyUpdateRatePatch(Assembler& assembler, Config& config)
+void ApplyUpdateRatePatches(Assembler& assembler, Config& config)
 {
 	if (config.GetUniverseUpdateRateShift() == 0)
 	{
