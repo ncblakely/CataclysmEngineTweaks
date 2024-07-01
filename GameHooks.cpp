@@ -35,8 +35,20 @@ static bool univUpdate(real32 phystimeelapsed)
 	return orig_univUpdate(phystimeelapsed);
 }
 
+static Functions::fn_opOptionsAccept orig_opOptionsAccept;
+static void opOptionsAccept(char* name, featom* atom)
+{
+	using namespace Globals;
+
+	orig_opOptionsAccept(name, atom);
+
+	// Ensure the aspect ratio is updated when the resolution changes
+	*rndAspectRatio = (real32)*MAIN_WindowWidth / (real32)*MAIN_WindowHeight;
+}
+
 void InstallGameHooks(Assembler& assembler, Config& config)
 {
 	CreateAndEnableHook(Functions::univUpdate, univUpdate, &orig_univUpdate);
+	CreateAndEnableHook(Functions::opOptionsAccept, opOptionsAccept, &orig_opOptionsAccept);
 }
 

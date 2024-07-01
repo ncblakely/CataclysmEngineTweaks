@@ -31,7 +31,6 @@ Edit CataclysmEngineTweaks.ini to change these settings.
 * The increased update rate is still in beta and may affect game balance/functionality due to timers running too quickly. Many of these have been fixed already, but please report any issues you find.
 * The D3D renderer has visual corruption in menus in non-4:3 resolutions.
 * The D3D renderer does not support high resolutions (> 2048x1536) due to a limitation in DirectX 7. OpenGL should support 4K+ without issues.
-* The game must be restarted after changing to a different aspect ratio in the menu, or the graphics will appear to be stretched.
 
 ## Contributing
 

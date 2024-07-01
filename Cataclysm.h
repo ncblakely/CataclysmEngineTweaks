@@ -179,6 +179,9 @@ namespace Functions
 
 	typedef void(*fn_mainRescaleMainWindow)();
 	inline fn_mainRescaleMainWindow mainRescaleMainWindow = (fn_mainRescaleMainWindow)0x0055FC70;
+
+	typedef void (*fn_opOptionsAccept)(char* name, featom* atom);
+	inline fn_opOptionsAccept opOptionsAccept = (fn_opOptionsAccept)0x004D7E30;
 }
 
 // Global/static variables in the game executable.
@@ -225,6 +228,7 @@ namespace Globals
 	inline sdword* MAIN_WindowWidth = (sdword*)0x008B85E8;
 	inline sdword* MAIN_WindowHeight = (sdword*)0x008B85EC;
 	inline sdword* MAIN_WindowDepth = (sdword*)0x008B85F0;
+	inline real32* rndAspectRatio = (real32*)0x00B377A4;
 
 	inline sdword** SongNumberLoadGameOffset = (sdword**)0x00892670;
 }
