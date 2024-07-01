@@ -75,6 +75,9 @@ namespace Instructions
 	DEFINE_ADDRESS(InitWindow_DeviceCrcCheck, 0x00563563);
 
 	DEFINE_ADDRESS(ActivateMe_ReInitRenderer, 0x00562084);
+
+	DEFINE_ADDRESS(CheckPlayerWin_GameTypeCheck, 0x0054860C);
+	DEFINE_ADDRESS(CheckPlayerWin_IsMultiplayerGame, 0x00548619);
 }
 
 // Addresses of game functions.
@@ -207,7 +210,8 @@ namespace Globals
 	inline bool32* enableAVI = (bool32*)0x008B8610;
 	inline bool32* mainSafeGL = (bool32*)0x00A74D38;
 
-	inline BOOL* singlePlayerGame = (BOOL*)0x00A43C9C;
+	inline bool32* multiPlayerGame = (bool32*)0x00A43C94;
+	inline bool32* singlePlayerGame = (bool32*)0x00A43C9C;
 
 	inline Universe* universe = (Universe*)0x00B62A00;
 

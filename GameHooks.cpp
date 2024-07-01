@@ -46,9 +46,31 @@ static void opOptionsAccept(char* name, featom* atom)
 	*rndAspectRatio = (real32)*MAIN_WindowWidth / (real32)*MAIN_WindowHeight;
 }
 
+static void* orig_CheckPlayerWin_GameTypeCheck;
+static void __declspec(naked) CheckPlayerWin_GameTypeCheck()
+{
+	using namespace Globals;
+	using namespace Instructions;
+
+	if (!*multiPlayerGame && !*singlePlayerGame)
+	{
+		// Fix win condition for skirmish games: in skirmish, neither variable is true. 
+		// Jump to the win condition case for multiplayer games, which works properly.
+		__asm
+		{
+			jmp dword ptr ds: [CheckPlayerWin_IsMultiplayerGame]
+		}
+	}
+	else
+	{
+		__asm jmp orig_CheckPlayerWin_GameTypeCheck
+	}
+}
+
 void InstallGameHooks(Assembler& assembler, Config& config)
 {
 	CreateAndEnableHook(Functions::univUpdate, univUpdate, &orig_univUpdate);
 	CreateAndEnableHook(Functions::opOptionsAccept, opOptionsAccept, &orig_opOptionsAccept);
+	CreateAndEnableHook(Instructions::CheckPlayerWin_GameTypeCheck, CheckPlayerWin_GameTypeCheck, &orig_CheckPlayerWin_GameTypeCheck);
 }
 
