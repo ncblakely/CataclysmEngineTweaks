@@ -74,6 +74,11 @@ public:
 		return m_safeGL;
 	}
 
+	bool IsFramerateLimitDisabled() const
+	{
+		return m_disableFramerateLimit;
+	}
+
 private:
 	real32 m_updateRate = 0;
 	udword m_updateRateShift = 0;
@@ -85,6 +90,7 @@ private:
 	bool m_unlimitedVideoMemory = false;
 	bool m_openGLFix = true;
 	bool m_safeGL = false;
+	bool m_disableFramerateLimit = false;
 };
 
 extern Config g_Config;

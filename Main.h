@@ -45,4 +45,10 @@ inline std::string IntToHex(sdword value)
     return fmt::format("{:#x}", *reinterpret_cast<sdword*>(&value));
 }
 
+template<typename T>
+inline T Clamp(T min, T max, T value)
+{
+    return std::max(min, std::min(max, value));
+}
+
 ////////////////////////////////////////////////////////////////////////

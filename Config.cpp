@@ -2,6 +2,8 @@
 #include "Config.h"
 #include "INIReader.h"
 
+static constexpr long MaxUpdateRateShift = 3;
+
 Config Config::FromFile(const char* path)
 {
 	Config config{};
@@ -10,8 +12,9 @@ Config Config::FromFile(const char* path)
 	////////////////////////////////////////////////////////////////
 	// Engine section
 
-	config.m_updateRateShift = (udword)std::max(0l, reader.GetInteger("Engine", "UpdateRateShift", 0));
+	config.m_updateRateShift = (udword)Clamp(0l, MaxUpdateRateShift, reader.GetInteger("Engine", "UpdateRateShift", 0));
 	config.m_updateRate = (float)(16 << config.m_updateRateShift);
+	config.m_disableFramerateLimit = reader.GetBoolean("Engine", "DisableFramerateLimit", false);
 	
 	////////////////////////////////////////////////////////////////
 	// Display section

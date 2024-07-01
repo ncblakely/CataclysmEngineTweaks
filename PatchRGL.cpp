@@ -80,6 +80,12 @@ static void CreateAndEnableHooks(Assembler& assembler, Config& config)
         assembler.Write("jmp 0x0056208E", Instructions::ActivateMe_ReInitRenderer);
     }
 
+    if (config.IsFramerateLimitDisabled())
+    {
+        assembler.Write("nop; nop; nop; nop; nop; nop; nop; nop", (void*)0x0057B78B);
+        assembler.Write("nop; nop; nop; nop; nop; nop; nop; nop", (void*)0x0057B7A1);
+    }
+
     CreateAndEnableHook(Functions::glCapNT, glCapNT, &_discard);
 }
 
