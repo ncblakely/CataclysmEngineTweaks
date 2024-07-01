@@ -74,6 +74,12 @@ static void CreateAndEnableHooks(Assembler& assembler, Config& config)
         GetPrimaryMonitorResolution();
     }
 
+    // Disable renderer re-initialization on WM_ACTIVATE in windowed mode; this is unnecessary and causes alt-tabs to take longer than they should
+    if (!*Globals::fullScreen)
+    {
+        assembler.Write("jmp 0x0056208E", Instructions::ActivateMe_ReInitRenderer);
+    }
+
     CreateAndEnableHook(Functions::glCapNT, glCapNT, &_discard);
 }
 

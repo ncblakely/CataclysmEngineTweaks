@@ -73,6 +73,8 @@ namespace Instructions
 	DEFINE_ADDRESS(nisUpdateTask_UniverseUpdatePeriod4, 0x004CC7B8);
 
 	DEFINE_ADDRESS(InitWindow_DeviceCrcCheck, 0x00563563);
+
+	DEFINE_ADDRESS(ActivateMe_ReInitRenderer, 0x00562084);
 }
 
 // Addresses of game functions.
