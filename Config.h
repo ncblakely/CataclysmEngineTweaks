@@ -85,6 +85,9 @@ public:
 	bool m_noPointSmooth = false;
 	bool m_noLineSmooth = false;
 	bool m_coopDSound = true;
+	bool m_disableVolPan = false;
+	bool m_disablePitchShift = false;
+	bool m_disableEqualizer = false;
 private:
 	real32 m_updateRate = 0;
 	udword m_updateRateShift = 0;

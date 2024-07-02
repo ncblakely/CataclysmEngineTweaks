@@ -72,5 +72,24 @@ void InstallGameHooks(Assembler& assembler, Config& config)
 	CreateAndEnableHook(Functions::univUpdate, univUpdate, &orig_univUpdate);
 	CreateAndEnableHook(Functions::opOptionsAccept, opOptionsAccept, &orig_opOptionsAccept);
 	CreateAndEnableHook(Instructions::CheckPlayerWin_GameTypeCheck, CheckPlayerWin_GameTypeCheck, &orig_CheckPlayerWin_GameTypeCheck);
+
+	// Temporary sound debugging stuff
+	if (config.m_disableVolPan)
+	{
+		spdlog::info("Disabling volume panning");
+		assembler.Write("ret", (void*)0x00581660);
+	}
+
+	if (config.m_disablePitchShift)
+	{
+		spdlog::info("Disabling pitch shift");
+		assembler.Write("ret", (void*)0x00558E50);
+	}
+
+	if (config.m_disableEqualizer)
+	{
+		spdlog::info("Disabling equalizer");
+		assembler.Write("ret", (void*)0x00558F20);
+	}
 }
 

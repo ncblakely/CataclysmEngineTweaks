@@ -42,6 +42,9 @@ Config Config::FromFile(const char* path)
 	config.m_noCompiledVertexArrays = reader.GetBoolean("Debug", "NoCompiledVertexArrays", false);
 	config.m_noPointSmooth = reader.GetBoolean("Debug", "NoPointSmooth", false);
 	config.m_noLineSmooth = reader.GetBoolean("Debug", "NoLineSmooth", false);
+	config.m_disableEqualizer = reader.GetBoolean("Debug", "DisableEqualizer", false);
+	config.m_disablePitchShift = reader.GetBoolean("Debug", "DisablePitchShift", false);
+	config.m_disableVolPan = reader.GetBoolean("Debug", "DisableVolPan", false);
 
 	return config;
 }

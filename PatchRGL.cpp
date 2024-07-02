@@ -69,27 +69,32 @@ static void glCapStartup()
 
     if (g_Config.m_noVertexArrays)
     {
+        spdlog::info("Disabling vertex arrays");
         *glCapVertexArray = false;
     }
 
     if (g_Config.m_noCompiledVertexArrays)
     {
+        spdlog::info("Disabling compiled vertex arrays");
         *glCapCompiledVertexArray = true;
     }
 
     if (g_Config.m_noPointSmooth)
 	{
+        spdlog::info("Disabling point smoothing");
 		*glCapPointSmooth = false;
 	}
 
     if (g_Config.m_noLineSmooth)
 	{
+        spdlog::info("Disabling line smoothing");
 		*glCapLineSmooth = false;
 	}
 
     if (g_Config.m_noPalettes)
 	{
-		*trNoPalettes = false;
+        spdlog::info("Disabling palettes");
+		*trNoPalettes = true;
 	}
 }
 
@@ -120,6 +125,7 @@ static void CreateAndEnableHooks(Assembler& assembler, Config& config)
     }
 
     CreateAndEnableHook(Functions::glCapNT, glCapNT, &_discard);
+    CreateAndEnableHook(Functions::glCapStartup, glCapStartup, &orig_glCapStartup);
 }
 
 void ApplyRGLPatches(Assembler& assembler, Config& config)
