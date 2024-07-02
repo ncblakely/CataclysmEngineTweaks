@@ -36,7 +36,7 @@ static void CreateAndEnableHooks(Assembler& assembler, Config& config)
 
 void ApplyLODPatches(Assembler& assembler, Config& config)
 {
-    if (g_Config.IsHighDetailModeEnabled())
+    if (g_Config.HighDetailMode)
     {
         CreateAndEnableHooks(assembler, config);
     }

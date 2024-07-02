@@ -5,10 +5,9 @@ GameState g_GameState;
 
 void GameState::ResetAutosaveTimer()
 {
-	udword autosaveInterval = g_Config.GetAutosaveInterval();
-	if (autosaveInterval > 0)
+	if (g_Config.AutoSaveInterval > 0)
 	{
-		this->autosaveTimer = autosaveInterval * 60.0f;
+		this->autosaveTimer = g_Config.AutoSaveInterval * 60.0f;
 	}
 	else
 	{

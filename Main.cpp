@@ -7,6 +7,7 @@
 #include "PatchLOD.h"
 #include "PatchRGL.h"
 #include "PatchSaveGame.h"
+#include "PatchSound.h"
 
 #include "Cataclysm.h"
 
@@ -15,20 +16,15 @@
 
 static void ApplyStartupPatches(Config& config)
 {
-    if (config.IsBorderlessWindowEnabled())
+    if (config.BorderlessWindow)
     {
         *Globals::fullScreen = FALSE;
         *Globals::showBorder = FALSE;
     }
 
-    if (config.IsIntroMovieDisabled())
+    if (config.DisableIntroMovies)
     {
         *Globals::enableAVI = FALSE;
-    }
-
-    if (config.IsSafeGL())
-    {
-        *Globals::mainSafeGL = true;
     }
 }
 
@@ -44,6 +40,7 @@ void ApplyPatches(Config& config)
     ApplyRGLPatches(assembler, config);
     ApplySaveGamePatches(assembler, config);
     ApplyUpdateRatePatches(assembler, config);
+    ApplySoundPatches(assembler, config);
 
     spdlog::info("Patches applied");
 }

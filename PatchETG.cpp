@@ -81,7 +81,7 @@ static void CreateAndEnableHooks(Assembler& assembler, Config& config)
 #endif
 	CreateAndEnableHook(Functions::etgNParticleBlocksSet, etgNParticleBlocksSet, &_discard);
 
-	if (g_Config.IsHighDetailModeEnabled())
+	if (g_Config.HighDetailMode)
 	{
 		CreateAndEnableHook(Functions::etgFrequencyExceeded, etgFrequencyExceeded, &_discard);
 	}
@@ -89,7 +89,7 @@ static void CreateAndEnableHooks(Assembler& assembler, Config& config)
 
 void ApplyETGPatches(Assembler& assembler, Config& config)
 {
-	if (g_Config.IsHighDetailModeEnabled())
+	if (g_Config.HighDetailMode)
 	{
 		CreateAndEnableHooks(assembler, config);
 	}

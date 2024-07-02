@@ -12,29 +12,34 @@ Config Config::FromFile(const char* path)
 	////////////////////////////////////////////////////////////////
 	// Engine section
 
-	config.m_updateRateShift = (udword)Clamp(0l, MaxUpdateRateShift, reader.GetInteger("Engine", "UpdateRateShift", 0));
-	config.m_updateRate = (float)(16 << config.m_updateRateShift);
-	config.m_disableFramerateLimit = reader.GetBoolean("Engine", "DisableFramerateLimit", false);
+	config.UpdateRateShift = (udword)Clamp(0l, MaxUpdateRateShift, reader.GetInteger("Engine", "UpdateRateShift", 0));
+	config.UpdateRate = (float)(16 << config.UpdateRateShift);
+	config.DisableFramerateLimit = reader.GetBoolean("Engine", "DisableFramerateLimit", false);
 	
 	////////////////////////////////////////////////////////////////
 	// Display section
 
-	config.m_highDetailMode = reader.GetBoolean("Display", "HighDetailMode", false);
-	config.m_newRendererSelection = reader.GetBoolean("Display", "NewRendererSelection", false);
-	config.m_borderlessWindow = reader.GetBoolean("Display", "BorderlessWindow", false);
-	config.m_disableIntroMovies = reader.GetBoolean("Display", "DisableIntroMovies", false);
-	config.m_unlimitedVideoMemory = reader.GetBoolean("Display", "UnlimitedVideoMemory", false);
+	config.HighDetailMode = reader.GetBoolean("Display", "HighDetailMode", false);
+	config.NewRendererSelection = reader.GetBoolean("Display", "NewRendererSelection", false);
+	config.BorderlessWindow = reader.GetBoolean("Display", "BorderlessWindow", false);
+	config.DisableIntroMovies = reader.GetBoolean("Display", "DisableIntroMovies", false);
+	config.UnlimitedVideoMemory = reader.GetBoolean("Display", "UnlimitedVideoMemory", false);
 
 	////////////////////////////////////////////////////////////////
 	// Game section
 
-	config.m_autoSaveInterval = (udword)std::max(0l, reader.GetInteger("Game", "AutoSaveInterval", 0));
+	config.AutoSaveInterval = (udword)std::max(0l, reader.GetInteger("Game", "AutoSaveInterval", 0));
 
 	////////////////////////////////////////////////////////////////
 	// OpenGL section
 
-	config.m_openGLFix = reader.GetBoolean("OpenGL", "FixWindowsNTBug", true);
-	config.m_safeGL = reader.GetBoolean("OpenGL", "SafeGL", false);
+	config.OpenGLFix = reader.GetBoolean("OpenGL", "FixWindowsNTBug", true);
+	config.NoCompiledVertexArrays = reader.GetBoolean("OpenGL", "NoCompiledVertexArrays", false);
+
+	////////////////////////////////////////////////////////////////
+	// Audio section
+	config.ForceWaveOut = reader.GetBoolean("Audio", "ForceWaveOut", false);
+	config.DisableEqualizer = reader.GetBoolean("Audio", "DisableEqualizer", false);
 
 	return config;
 }

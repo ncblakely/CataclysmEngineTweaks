@@ -185,6 +185,15 @@ namespace Functions
 
 	typedef void (*fn_opOptionsAccept)(char* name, featom* atom);
 	inline fn_opOptionsAccept opOptionsAccept = (fn_opOptionsAccept)0x004D7E30;
+
+	typedef void (*fn_glCapStartup)();
+	inline fn_glCapStartup glCapStartup = (fn_glCapStartup)0x00559BE0;
+
+	typedef sdword(*fn_soundStartDSound)(HWND hWnd);
+	inline fn_soundStartDSound soundStartDSound = (fn_soundStartDSound)0x005808E0;
+
+	typedef int (*fn_fqEqualize)(float* aBlock, float* aEq);
+	inline fn_fqEqualize fqEqualize = (fn_fqEqualize)0x00558F20;
 }
 
 // Global/static variables in the game executable.
@@ -208,7 +217,7 @@ namespace Globals
 	inline bool32* showBorder = (bool32*)0x008B8628;
 	inline bool32* fullScreen = (bool32*)0x008B8638;
 	inline bool32* enableAVI = (bool32*)0x008B8610;
-	inline bool32* mainSafeGL = (bool32*)0x00A74D38;
+	inline bool32* glCapCompiledVertexArray = (bool32*)0x00A72548;
 
 	inline bool32* multiPlayerGame = (bool32*)0x00A43C94;
 	inline bool32* singlePlayerGame = (bool32*)0x00A43C9C;
@@ -235,4 +244,11 @@ namespace Globals
 	inline real32* rndAspectRatio = (real32*)0x00B377A4;
 
 	inline sdword** SongNumberLoadGameOffset = (sdword**)0x00892670;
+
+	// DirectSound globals
+	inline LPDIRECTSOUND* lpDirectSound = (LPDIRECTSOUND*)0x00A75F28;
+	inline LPDIRECTSOUNDBUFFER* lpPrimaryBuffer = (LPDIRECTSOUNDBUFFER*)0x00A75F2C;
+	inline bool32* bDirectSoundCertified = (bool32*)0x00A75F3C;
+	inline WAVEFORMATEX* waveFormatEX = (WAVEFORMATEX*)0x00B06C80;
+	inline bool32* coopDSound = (bool32*)0x00A74DC8;
 }

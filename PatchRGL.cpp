@@ -60,11 +60,24 @@ static void __declspec(naked) InitWindow_DeviceCrcCheck()
     }
 }
 
+static Functions::fn_glCapStartup orig_glCapStartup;
+static void glCapStartup()
+{
+    using namespace Globals;
+
+    orig_glCapStartup();
+
+    if (g_Config.NoCompiledVertexArrays)
+    {
+        *glCapCompiledVertexArray = FALSE;
+    }
+}
+
 static void CreateAndEnableHooks(Assembler& assembler, Config& config)
 {
     void* _discard = nullptr;
 
-    if (config.IsNewRendererSelectionEnabled())
+    if (config.NewRendererSelection)
     {
         CreateAndEnableHook(Functions::rinSortModes, rinSortModes, &_discard);
         CreateAndEnableHook(Functions::rinEnumDisplayModes_cb, rinEnumDisplayModes_cb, &_discard);
@@ -80,13 +93,14 @@ static void CreateAndEnableHooks(Assembler& assembler, Config& config)
         assembler.Write("jmp 0x0056208E", Instructions::ActivateMe_ReInitRenderer);
     }
 
-    if (config.IsFramerateLimitDisabled())
+    if (config.DisableFramerateLimit)
     {
         assembler.Write("nop; nop; nop; nop; nop; nop; nop; nop", (void*)0x0057B78B);
         assembler.Write("nop; nop; nop; nop; nop; nop; nop; nop", (void*)0x0057B7A1);
     }
 
     CreateAndEnableHook(Functions::glCapNT, glCapNT, &_discard);
+    CreateAndEnableHook(Functions::glCapStartup, glCapStartup, &orig_glCapStartup);
 }
 
 void ApplyRGLPatches(Assembler& assembler, Config& config)

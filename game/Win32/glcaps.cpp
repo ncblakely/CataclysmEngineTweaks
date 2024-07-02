@@ -22,7 +22,7 @@ BOOL glCapNT(void)
 {
     // If the OpenGL fix is enabled, just return true here rather than doing the old version check below.
     // This causes Homeworld to use the newer Windows NT-based APIs in opengl32.dll, fixing compatibility on newer Windows versions.
-    if (g_Config.OpenGLFix())
+    if (g_Config.OpenGLFix)
     {
         return TRUE;
     }
