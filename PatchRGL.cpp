@@ -75,8 +75,8 @@ static void glCapStartup()
 
     if (g_Config.m_noCompiledVertexArrays)
     {
-        spdlog::info("Disabling compiled vertex arrays");
-        *glCapCompiledVertexArray = true;
+        spdlog::info("Disabling compiled vertex arrays (for real now)");
+        *glCapCompiledVertexArray = false;
     }
 
     if (g_Config.m_noPointSmooth)
