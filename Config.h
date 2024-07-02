@@ -84,6 +84,7 @@ public:
 	bool m_noCompiledVertexArrays = false;
 	bool m_noPointSmooth = false;
 	bool m_noLineSmooth = false;
+	bool m_coopDSound = true;
 private:
 	real32 m_updateRate = 0;
 	udword m_updateRateShift = 0;

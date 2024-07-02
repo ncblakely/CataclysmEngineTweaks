@@ -243,4 +243,9 @@ namespace Globals
 	inline real32* rndAspectRatio = (real32*)0x00B377A4;
 
 	inline sdword** SongNumberLoadGameOffset = (sdword**)0x00892670;
+
+	inline LPDIRECTSOUND* lpDirectSound = (LPDIRECTSOUND*)0x00A75F28;
+	inline LPDIRECTSOUNDBUFFER* lpPrimaryBuffer = (LPDIRECTSOUNDBUFFER*)0x00A75F2C;
+	inline bool32* bDirectSoundCertified = (bool32*)0x00A75F3C;
+	inline WAVEFORMATEX* waveFormatEX = (WAVEFORMATEX*)0x00B06C80;
 }

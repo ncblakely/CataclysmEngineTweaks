@@ -10,6 +10,8 @@
 // Windows
 #include "framework.h"
 #include "ddraw.h"
+#include "mmeapi.h"
+#include "./dsound.h"
 
 // STL
 #include <iostream>

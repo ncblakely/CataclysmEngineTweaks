@@ -7,6 +7,7 @@
 #include "PatchLOD.h"
 #include "PatchRGL.h"
 #include "PatchSaveGame.h"
+#include "PatchSound.h"
 
 #include "Cataclysm.h"
 
@@ -44,6 +45,7 @@ void ApplyPatches(Config& config)
     ApplyRGLPatches(assembler, config);
     ApplySaveGamePatches(assembler, config);
     ApplyUpdateRatePatches(assembler, config);
+    ApplySoundPatches(assembler, config);
 
     spdlog::info("Patches applied");
 }

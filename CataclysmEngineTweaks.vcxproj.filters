@@ -251,6 +251,9 @@
     <ClInclude Include="PatchSaveGame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="PatchSound.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -296,6 +299,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PatchSaveGame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PatchSound.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
