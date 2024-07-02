@@ -79,6 +79,11 @@ public:
 		return m_disableFramerateLimit;
 	}
 
+	bool m_noPalettes = false;
+	bool m_noVertexArrays = false;
+	bool m_noCompiledVertexArrays = false;
+	bool m_noPointSmooth = false;
+	bool m_noLineSmooth = false;
 private:
 	real32 m_updateRate = 0;
 	udword m_updateRateShift = 0;

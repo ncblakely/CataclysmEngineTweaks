@@ -60,6 +60,39 @@ static void __declspec(naked) InitWindow_DeviceCrcCheck()
     }
 }
 
+static Functions::fn_glCapStartup orig_glCapStartup;
+static void glCapStartup()
+{
+    using namespace Globals;
+
+    orig_glCapStartup();
+
+    if (g_Config.m_noVertexArrays)
+    {
+        *glCapVertexArray = false;
+    }
+
+    if (g_Config.m_noCompiledVertexArrays)
+    {
+        *glCapCompiledVertexArray = true;
+    }
+
+    if (g_Config.m_noPointSmooth)
+	{
+		*glCapPointSmooth = false;
+	}
+
+    if (g_Config.m_noLineSmooth)
+	{
+		*glCapLineSmooth = false;
+	}
+
+    if (g_Config.m_noPalettes)
+	{
+		*trNoPalettes = false;
+	}
+}
+
 static void CreateAndEnableHooks(Assembler& assembler, Config& config)
 {
     void* _discard = nullptr;

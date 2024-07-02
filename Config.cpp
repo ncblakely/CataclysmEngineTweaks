@@ -36,5 +36,12 @@ Config Config::FromFile(const char* path)
 	config.m_openGLFix = reader.GetBoolean("OpenGL", "FixWindowsNTBug", true);
 	config.m_safeGL = reader.GetBoolean("OpenGL", "SafeGL", false);
 
+	// Debug options
+	config.m_noPalettes = reader.GetBoolean("Debug", "NoPalettes", false);
+	config.m_noVertexArrays = reader.GetBoolean("Debug", "NoVertexArrays", false);
+	config.m_noCompiledVertexArrays = reader.GetBoolean("Debug", "NoCompiledVertexArrays", false);
+	config.m_noPointSmooth = reader.GetBoolean("Debug", "NoPointSmooth", false);
+	config.m_noLineSmooth = reader.GetBoolean("Debug", "NoLineSmooth", false);
+
 	return config;
 }

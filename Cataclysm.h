@@ -185,6 +185,9 @@ namespace Functions
 
 	typedef void (*fn_opOptionsAccept)(char* name, featom* atom);
 	inline fn_opOptionsAccept opOptionsAccept = (fn_opOptionsAccept)0x004D7E30;
+
+	typedef void (*fn_glCapStartup)();
+	inline fn_glCapStartup glCapStartup = (fn_glCapStartup)0x00559BE0;
 }
 
 // Global/static variables in the game executable.
@@ -209,6 +212,11 @@ namespace Globals
 	inline bool32* fullScreen = (bool32*)0x008B8638;
 	inline bool32* enableAVI = (bool32*)0x008B8610;
 	inline bool32* mainSafeGL = (bool32*)0x00A74D38;
+	inline bool32* trNoPalettes = (bool32*)0x00A75F98;
+	inline bool32* glCapVertexArray = (bool32*)0x00A7253C;
+	inline bool32* glCapCompiledVertexArray = (bool32*)0x00A72548;
+	inline bool32* glCapLineSmooth = (bool32*)0x00A72524;
+	inline bool32* glCapPointSmooth = (bool32*)0x00A72530;
 
 	inline bool32* multiPlayerGame = (bool32*)0x00A43C94;
 	inline bool32* singlePlayerGame = (bool32*)0x00A43C9C;
