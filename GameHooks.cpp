@@ -72,5 +72,18 @@ void InstallGameHooks(Assembler& assembler, Config& config)
 	CreateAndEnableHook(Functions::univUpdate, univUpdate, &orig_univUpdate);
 	CreateAndEnableHook(Functions::opOptionsAccept, opOptionsAccept, &orig_opOptionsAccept);
 	CreateAndEnableHook(Instructions::CheckPlayerWin_GameTypeCheck, CheckPlayerWin_GameTypeCheck, &orig_CheckPlayerWin_GameTypeCheck);
+
+	//////////////////////////////////////////////
+	// Bug fixes:
+
+	// Skip some buggy code in partRenderBillSystem that can cause non-particle textures to switch to point filtering at random.
+	assembler.Write(
+		fmt::format("jmp 0x{:x}", (udword)Instructions::partRenderBillSystem_AfterSetPointFiltering),
+		Instructions::partRenderBillSystem_SetPointFiltering);
+
+	// Remove VRAM pool downscaling for mission 17.
+	assembler.Write(
+		fmt::format("jmp 0x{:x}", (udword)Instructions::textureRegistry_NotMission17), 
+		Instructions::textureRegistry_Mission17Check);
 }
 
