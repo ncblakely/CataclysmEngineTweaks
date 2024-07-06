@@ -6,6 +6,9 @@
 
 #include "Cataclysm.h"
 
+constexpr const char* NetworkVersion = "v1.02";
+constexpr const char* MinorBuildVersion = "0";
+
 static Functions::fn_univUpdate orig_univUpdate;
 static bool univUpdate(real32 phystimeelapsed)
 {
@@ -72,6 +75,13 @@ void InstallGameHooks(Assembler& assembler, Config& config)
 	CreateAndEnableHook(Functions::univUpdate, univUpdate, &orig_univUpdate);
 	CreateAndEnableHook(Functions::opOptionsAccept, opOptionsAccept, &orig_opOptionsAccept);
 	CreateAndEnableHook(Instructions::CheckPlayerWin_GameTypeCheck, CheckPlayerWin_GameTypeCheck, &orig_CheckPlayerWin_GameTypeCheck);
+
+	//////////////////////////////////////////////
+	// Version number
+	using namespace Globals;
+
+	strcpy(networkVersion, NetworkVersion);
+	strcpy(minorBuildVersion, MinorBuildVersion);
 
 	//////////////////////////////////////////////
 	// Bug fixes:

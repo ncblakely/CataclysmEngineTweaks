@@ -257,4 +257,8 @@ namespace Globals
 	inline bool32* bDirectSoundCertified = (bool32*)0x00A75F3C;
 	inline WAVEFORMATEX* waveFormatEX = (WAVEFORMATEX*)0x00B06C80;
 	inline bool32* coopDSound = (bool32*)0x00A74DC8;
+
+	// Version number
+	inline char* networkVersion = (char*)0x008B8850;
+	inline char* minorBuildVersion = (char*)0x008B8860;
 }
