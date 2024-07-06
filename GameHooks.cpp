@@ -95,5 +95,10 @@ void InstallGameHooks(Assembler& assembler, Config& config)
 	assembler.Write(
 		fmt::format("jmp 0x{:x}", (udword)Instructions::textureRegistry_NotMission17), 
 		Instructions::textureRegistry_Mission17Check);
+
+	// Fix F12 key up events not being recognized: disable debug key handler for F12
+	assembler.Write(
+		fmt::format("je 0x{:x}", udword(Instructions::WindowProc_NormalKeyUpEvent)),
+		Instructions::WindowProc_JumpIfF12KeyUp);
 }
 
