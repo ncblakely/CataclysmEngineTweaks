@@ -187,7 +187,6 @@ typedef struct
     udword lasttimeadded;       // for resource injections
 
     uword shipMaxUnits[TOTAL_NUM_SHIPS];
-    ubyte unk2[0xBA];
 
     sbyte aiplayerEnemy[MAX_MULTIPLAYER_PLAYERS];
     BOOL  aiplayerProcessing;
@@ -199,7 +198,7 @@ typedef struct
     sdword bountySize;
 
     GameStats gameStats;
-    BYTE unk3[0x2A78];
+    BYTE unk3[0x33C];
     BOOL DerelictTech;              //variable that needs to be saved that controls the salvagability of technology holding derelicts
 
     real32 crateTimer;

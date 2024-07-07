@@ -203,6 +203,9 @@ namespace Functions
 
 	typedef int (*fn_fqEqualize)(float* aBlock, float* aEq);
 	inline fn_fqEqualize fqEqualize = (fn_fqEqualize)0x00558F20;
+
+	typedef char* (*fn_ShipTypeToStr)(ShipType shiptype);
+	inline fn_ShipTypeToStr ShipTypeToStr = (fn_ShipTypeToStr)0x004D6BC0;
 }
 
 // Global/static variables in the game executable.

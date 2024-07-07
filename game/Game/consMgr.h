@@ -105,6 +105,8 @@ CarrierInfo;
     Data:
 =============================================================================*/
 
+#if 0
+
 extern CarrierInfo *cmCarriers;
 extern sdword cmNumCarriers;
 extern sdword cmNumPlayersCarriers;
@@ -173,5 +175,7 @@ void cmBuildTaskFunction(void);
 
 void LoadConsMgrDetermOptional();
 void SaveConsMgrDetermOptional();
+
+#endif
 
 #endif //___CONSMGR_H

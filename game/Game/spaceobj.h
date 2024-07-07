@@ -1448,6 +1448,8 @@ typedef struct Ship         // Ship object
 
 typedef Ship *ShipPtr;
 
+static_assert(offsetof(Ship, flags) == 0x14);
+
 /*-----------------------------------------------------------------------------
     Missile Object
 -----------------------------------------------------------------------------*/
