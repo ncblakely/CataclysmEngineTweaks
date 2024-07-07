@@ -165,14 +165,15 @@ typedef struct
 
     // tactics stuff
     LinkedList RetreatList;
-    LinkedList AttackMemory;
+    // LinkedList AttackMemory; // @CATA: Either RetreatList or AttackMemory was removed
 
     // regrow resources stuff
     LinkedList ResourceVolumeList;
 
     GrowSelection HousekeepShipList;       // special GrowSelect which can have NULL's in it
+    GrowSelection unk1;
 
-    //Star3dInfo *star3dinfo; // @CATA: TODO: This may still be present, just removing one dword to correct the offset of univUpdateCounter.
+    Star3dInfo *star3dinfo; 
     udword univUpdateCounter;
     color backgroundColor;
     uword resourceNumber;
@@ -186,6 +187,7 @@ typedef struct
     udword lasttimeadded;       // for resource injections
 
     uword shipMaxUnits[TOTAL_NUM_SHIPS];
+    ubyte unk2[0xBA];
 
     sbyte aiplayerEnemy[MAX_MULTIPLAYER_PLAYERS];
     BOOL  aiplayerProcessing;
@@ -197,12 +199,13 @@ typedef struct
     sdword bountySize;
 
     GameStats gameStats;
+    BYTE unk3[0x2A78];
     BOOL DerelictTech;              //variable that needs to be saved that controls the salvagability of technology holding derelicts
 
     real32 crateTimer;
     udword numCratesInWorld;
 
-    bool collUpdateAllBlobs;        // put in here so it gets saved with SaveGame
+    bool32 collUpdateAllBlobs;        // put in here so it gets saved with SaveGame
 
     uword numPlayers;
     uword curPlayerIndex;
@@ -211,10 +214,30 @@ typedef struct
     Derelict *world[UNIV_NUMBER_WORLDS];        //list of planets
 } Universe;
 
-static_assert(offsetof(Universe, univUpdateCounter) == 0x1AC);
 static_assert(offsetof(Universe, phystimeelapsed) == 0xBC);
 static_assert(offsetof(Universe, totaltimeelapsed) == 0xC0);
 static_assert(offsetof(Universe, realtimeelapsed) == 0xC4);
+static_assert(offsetof(Universe, radius) == 0xC8);
+static_assert(offsetof(Universe, effectList) == 0xE4);
+static_assert(offsetof(Universe, ShipList) == 0xF0);
+static_assert(offsetof(Universe, HousekeepShipList) == 0x198);
+static_assert(offsetof(Universe, unk1) == 0x1A0);
+static_assert(offsetof(Universe, star3dinfo) == 0x1A8);
+static_assert(offsetof(Universe, univUpdateCounter) == 0x1AC);
+static_assert(offsetof(Universe, wintime) == 0x1BC);
+static_assert(offsetof(Universe, quittime) == 0x1C0);
+static_assert(offsetof(Universe, lasttimeadded) == 0x1C4);
+static_assert(offsetof(Universe, aiplayerEnemy) == 0x2EA);
+static_assert(offsetof(Universe, aiplayerProcessing) == 0x2F4);
+static_assert(offsetof(Universe, CapitalShipCaptured) == 0x2F8);
+static_assert(offsetof(Universe, PlayerWhoWon) == 0x2FC);
+static_assert(offsetof(Universe, bounties) == 0x300);
+static_assert(offsetof(Universe, bountySize) == 0x304);
+static_assert(offsetof(Universe, gameStats) == 0x308);
+static_assert(offsetof(Universe, gameStats.universeRUWorth) == 0x328);
+static_assert(offsetof(Universe, numCratesInWorld) == 0x4AF0);
+static_assert(offsetof(Universe, numPlayers) == 0x4AF8);
+static_assert(offsetof(Universe, players) == 0x4B00);
 
 extern GrowSelection ClampedShipList;       // special GrowSelect which can have NULL's in it
 

@@ -74,7 +74,7 @@
 #define TRADERS_LAST_SHIP               ResearchStationTower
 
 #define DefaultShip                     (TRADERS_LAST_SHIP+1)    // not really a ship, just a flag indicating we should use Default ship behaviour
-#define TOTAL_NUM_SHIPS                 (TRADERS_LAST_SHIP+1)
+#define TOTAL_NUM_SHIPS                 52 // (TRADERS_LAST_SHIP+1) // @CATA: Reduced to 52
 
 #define TOTAL_STD_SHIPS                 (STD_LAST_SHIP - STD_FIRST_SHIP + 1)
 #define TOTAL_P1_SHIPS                  (P1_LAST_SHIP - P1_FIRST_SHIP + 1)
