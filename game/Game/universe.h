@@ -135,6 +135,7 @@ typedef struct Player
 
 static_assert(offsetof(Player, resourceUnits) == 0x4);
 static_assert(offsetof(Player, aiPlayer) == 0x1C);
+static_assert(offsetof(Player, playerIndex) == 0x24);
 static_assert(offsetof(Player, timeMoShipAttacked) == 0x28);
 static_assert(offsetof(Player, totalships) == 0x2C);
 static_assert(offsetof(Player, shiptotals) == 0x30);

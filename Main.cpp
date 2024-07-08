@@ -2,7 +2,7 @@
 #include "Assembler.h"
 #include "Config.h"
 #include "GameHooks.h"
-#include "PatchUpdateRate.h"
+#include "PatchUniverse.h"
 #include "PatchETG.h"
 #include "PatchLOD.h"
 #include "PatchRGL.h"
@@ -39,7 +39,7 @@ void ApplyPatches(Config& config)
     ApplyLODPatches(assembler, config);
     ApplyRGLPatches(assembler, config);
     ApplySaveGamePatches(assembler, config);
-    ApplyUpdateRatePatches(assembler, config);
+    ApplyUniversePatches(assembler, config);
     ApplySoundPatches(assembler, config);
 
     spdlog::info("Patches applied");

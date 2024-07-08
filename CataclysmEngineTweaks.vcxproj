@@ -184,7 +184,7 @@
     <ClInclude Include="PatchSound.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="PatchRGL.h" />
-    <ClInclude Include="PatchUpdateRate.h" />
+    <ClInclude Include="PatchUniverse.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Assembler.cpp" />
@@ -206,7 +206,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="PatchRGL.cpp" />
-    <ClCompile Include="PatchUpdateRate.cpp" />
+    <ClCompile Include="PatchUniverse.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="CataclysmEngineTweaks.ini" />

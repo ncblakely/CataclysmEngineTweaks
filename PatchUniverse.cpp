@@ -1,7 +1,7 @@
 #include "pch.h"
 
 #include "GameState.h"
-#include "PatchUpdateRate.h"
+#include "PatchUniverse.h"
 
 #include "Cataclysm.h"
 #include "particle.h"
@@ -160,9 +160,47 @@ static void __declspec(naked) startRmUpdateResearch()
 	}
 }
 
+bool IsMothershipOrModule(ShipType shiptype)
+{
+	switch (shiptype)
+	{
+		case sMothership:
+		case sMothershipSpecial:
+		case sMothershipEngineering:
+		case sMothershipArmour:
+		case sMothershipMicro:
+		case sMothershipWeapons:
+		case sMothershipDockingBay:
+		case bMothership:
+		case bMothershipDockingBay:
+		case bMothershipSupport:
+		case bMothershipEnginesLower:
+			return true;
+		default:
+			return false;
+	}
+}
+
 static Functions::fn_univBulletCollidedWithTarget orig_univBulletCollidedWithTarget;
 static void univBulletCollidedWithTarget(int unknown, SpaceObjRotImpTarg* target, StaticHeader* targetstaticheader, Bullet* bullet, real32 collideLineDist, sdword collSide)
 {
+	// Hack to fix self-damage caused by buggy firing arcs on Somtaaw/Beast motherships
+	if (target &&
+		target->objtype == OBJ_ShipType &&
+		bullet->owner)
+	{
+		Ship* bulletOwner = bullet->owner;
+		Ship* targetShip = (Ship*)target;
+		Player* targetOwner = targetShip->playerowner;
+		Player* bulletOwnerPlayer = bulletOwner->playerowner;
+
+		if (IsMothershipOrModule(targetShip->shiptype) &&
+			targetOwner == bulletOwnerPlayer)
+		{
+			// Skip collision
+			return;
+		}
+	}
 	// Adjust for higher update rates: skip the bullet collision for beam weapons if we aren't on the correct frame
 	if (bullet->bulletType == BULLET_Beam)
 	{
@@ -346,7 +384,7 @@ static void PatchGunShipFirePower(Assembler& assembler, std::string& updatePerio
 	assembler.Write(fmt::format("mov dword ptr ss:[esp+0x1C], {}", updatePeriodValueStr), Instructions::gunShipFirePower_UniverseUpdatePeriod2);
 }
 
-void ApplyUpdateRatePatches(Assembler& assembler, Config& config)
+void ApplyUniversePatches(Assembler& assembler, Config& config)
 {
 	if (config.GetUniverseUpdateRateShift() == 0)
 	{
