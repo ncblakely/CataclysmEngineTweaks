@@ -47,6 +47,10 @@ struct Config
 	bool ForceWaveOut = false;
 	bool DisableEqualizer = false;
 	bool EnableNewAI = false;
+
+#ifdef _DEBUG
+	bool SensorHack = false;
+#endif
 };
 
 extern Config g_Config;

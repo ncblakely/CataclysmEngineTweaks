@@ -141,5 +141,15 @@ void InstallGameHooks(Assembler& assembler, Config& config)
 	}
 
 	// assembler.Write("push 0", (void*)0x00589115);
+
+#ifdef _DEBUG
+	//////////////////////////////////////////////
+	// Debug
+
+	if (g_Config.SensorHack)
+	{
+		assembler.Write("nop; nop", (void*)0x0050A43B);
+	}
+#endif
 }
 

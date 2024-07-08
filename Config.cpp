@@ -45,5 +45,11 @@ Config Config::FromFile(const char* path)
 	// AI section
 	config.EnableNewAI = reader.GetBoolean("AI", "EnableNewAI", false);
 
+#ifdef _DEBUG
+	////////////////////////////////////////////////////////////////
+	// Debug section
+	config.SensorHack = reader.GetBoolean("Debug", "SensorHack", false);
+#endif
+
 	return config;
 }
