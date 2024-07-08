@@ -1598,12 +1598,13 @@ typedef struct                                  // Bullet object
     real32 lengthmag;
     real32 traveldist;
     real32 beamtraveldist;                      // only used for BULLET_Beam
-    // @CATA: Most of these offsets are probably wrong. Only correcting bulletType's position for now.
+    // @CATA: Most of these offsets are probably wrong. Only correcting the asserted ones for now.
     sdword unknown[9];
     BulletType bulletType;
     GunSoundType soundType;
     real32 timelived;
     real32 totallifetime;
+    sdword unknown2;
     Ship *owner;                                // pointer to bullet's owner
     Gun *gunowner;                              // pointer to bullet's gun from which it was fired
     SpaceObjRotImpTarg *target;                 // target of bullet
@@ -1620,6 +1621,7 @@ typedef struct                                  // Bullet object
 } Bullet;
 
 static_assert(offsetof(Bullet, bulletType) == 0x108);
+static_assert(offsetof(Bullet, owner) == 0x11C);
 
 typedef Bullet *BulletPtr;
 

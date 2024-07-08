@@ -35,7 +35,7 @@
     <ClInclude Include="Cataclysm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PatchUpdateRate.h">
+    <ClInclude Include="PatchUniverse.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Main.h">
@@ -292,7 +292,7 @@
     <ClCompile Include="Config.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PatchUpdateRate.cpp">
+    <ClCompile Include="PatchUniverse.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PatchRGL.cpp">
