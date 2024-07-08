@@ -113,6 +113,7 @@ typedef struct Player
     sdword resourceUnits;
     ShipRace race;
     PlayerState playerState;
+    udword unk1[3]; // @CATA: Unsure of the position of this
     struct AIPlayer *aiPlayer;      // if non-null, then player has a computer AI Player
     udword autoLaunch;
     uword playerIndex;
@@ -128,6 +129,16 @@ typedef struct Player
     udword AllianceProposalsTimeout;    // timeout counter for proposals to expire!
     sdword initialShipCost;				// total ship cost at game start
 } Player;
+
+// TODO: This is significantly larger in Cataclysm. Needs reversing.
+// static_assert(sizeof(Player) == 0x6530u);
+
+static_assert(offsetof(Player, resourceUnits) == 0x4);
+static_assert(offsetof(Player, aiPlayer) == 0x1C);
+static_assert(offsetof(Player, timeMoShipAttacked) == 0x28);
+static_assert(offsetof(Player, totalships) == 0x2C);
+static_assert(offsetof(Player, shiptotals) == 0x30);
+static_assert(offsetof(Player, classtotals) == 0x274);
 
 typedef struct
 {

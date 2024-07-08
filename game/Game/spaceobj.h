@@ -1331,16 +1331,17 @@ typedef struct Ship         // Ship object
     struct Ship *rowGetOutOfWay;    // Right of way - ship to get out of way of
     vector rowOriginalPoint;        // Right of way - my original point
     vector rowOutOfWayPoint;        // Right of way - point to go to be out of way
+    ubyte unk1[0x6C]; // @CATA: Unsure of the location of this
     ShipType shiptype;
     ShipRace shiprace;
     //*******Tactics stuff start
     //FIX LATER to support fewer variables using bitmasks
     TacticsType tacticstype;        //ships current tactcis setting
-    bool isDodging;                 //flag, true if ship is performing a dodge
+    bool32 isDodging;                 //flag, true if ship is performing a dodge
     real32 DodgeTime;               //variable used to control when a ship will stop dodging
     uword  DodgeDir;
     uword  pad2;
-    bool tacticsFormationVar1;      //variable for formation attacking
+    bool32 tacticsFormationVar1;      //variable for formation attacking
     udword DodgeFlag;               //info flag for dodging
     sdword tactics_ordertype;       //ships order type convulved into the Tactics Domain
     udword tacticsTalk;             //var used for intership comunication
@@ -1449,6 +1450,8 @@ typedef struct Ship         // Ship object
 typedef Ship *ShipPtr;
 
 static_assert(offsetof(Ship, flags) == 0x14);
+static_assert(offsetof(Ship, shiptype) == 0x2B0);
+static_assert(offsetof(Ship, playerowner) == 0x32C);
 
 /*-----------------------------------------------------------------------------
     Missile Object

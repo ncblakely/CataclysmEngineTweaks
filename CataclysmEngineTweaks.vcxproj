@@ -106,7 +106,13 @@
     <ClInclude Include="Cataclysm.h" />
     <ClInclude Include="GameHooks.h" />
     <ClInclude Include="GameState.h" />
+    <ClInclude Include="game\Game\AIAttackMan.h" />
+    <ClInclude Include="game\Game\AINew.h" />
+    <ClInclude Include="game\Game\AIFeatures.h" />
+    <ClInclude Include="game\Game\AIPlayer.h" />
+    <ClInclude Include="game\Game\AIResourceMan.h" />
     <ClInclude Include="game\Game\AIUtilities.h" />
+    <ClInclude Include="game\Game\AIVar.h" />
     <ClInclude Include="game\Game\Attributes.h" />
     <ClInclude Include="game\Game\b-spline.h" />
     <ClInclude Include="game\Game\blobs.h" />
