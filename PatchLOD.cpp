@@ -11,6 +11,9 @@ static int lodLevelGet(void* spaceObj, vector* camera, vector* ship)
 
     // Skip all of this and just set and return the highest LOD level.
     obj->currentLOD = 0;
+
+    vecSub(obj->cameraDistanceVector, *camera, *ship);
+    obj->cameraDistanceSquared = vecMagnitudeSquared(obj->cameraDistanceVector);
     return 0; 
 }
 
