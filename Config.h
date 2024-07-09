@@ -40,7 +40,6 @@ struct Config
 	bool BorderlessWindow = false;
 	bool DisableIntroMovies = false;
 	udword AutoSaveInterval = 0;
-	bool UnlimitedVideoMemory = false;
 	bool OpenGLFix = true;
 	bool DisableFramerateLimit = false;
 	bool NoCompiledVertexArrays = false;

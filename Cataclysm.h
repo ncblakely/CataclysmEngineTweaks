@@ -82,8 +82,8 @@ namespace Instructions
 	DEFINE_ADDRESS(partRenderBillSystem_SetPointFiltering, 0x004DD43E);
 	DEFINE_ADDRESS(partRenderBillSystem_AfterSetPointFiltering, 0x004DD468);
 
-	DEFINE_ADDRESS(textureRegistry_Mission17Check, 0x00589AEC);
-	DEFINE_ADDRESS(textureRegistry_NotMission17, 0x00589B1F);
+	DEFINE_ADDRESS(LoadMission_AdjustTextureMemoryLimit, 0x00589AEA);
+	DEFINE_ADDRESS(LoadMission_AfterTextureMemoryLimitAdjustment, 0x00589B1F);
 
 	DEFINE_ADDRESS(WindowProc_JumpIfF12KeyUp, 0x00562401)
 	DEFINE_ADDRESS(WindowProc_NormalKeyUpEvent, 0x00562943)
