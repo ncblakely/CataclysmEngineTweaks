@@ -12,23 +12,23 @@ Config Config::FromFile(const char* path)
 	////////////////////////////////////////////////////////////////
 	// Engine section
 
-	config.UpdateRateShift = (udword)Clamp(0l, MaxUpdateRateShift, reader.GetInteger("Engine", "UpdateRateShift", 0));
+	config.UpdateRateShift = (udword)Clamp(0l, MaxUpdateRateShift, reader.GetInteger("Engine", "UpdateRateShift", 2));
 	config.UpdateRate = (float)(16 << config.UpdateRateShift);
 	config.DisableFramerateLimit = reader.GetBoolean("Engine", "DisableFramerateLimit", false);
 	
 	////////////////////////////////////////////////////////////////
 	// Display section
 
-	config.HighDetailMode = reader.GetBoolean("Display", "HighDetailMode", false);
-	config.NewRendererSelection = reader.GetBoolean("Display", "NewRendererSelection", false);
-	config.BorderlessWindow = reader.GetBoolean("Display", "BorderlessWindow", false);
-	config.DisableIntroMovies = reader.GetBoolean("Display", "DisableIntroMovies", false);
+	config.HighDetailMode = reader.GetBoolean("Display", "HighDetailMode", true);
+	config.NewRendererSelection = reader.GetBoolean("Display", "NewRendererSelection", true);
+	config.BorderlessWindow = reader.GetBoolean("Display", "BorderlessWindow", true);
+	config.DisableIntroMovies = reader.GetBoolean("Display", "DisableIntroMovies", true);
 	config.UnlimitedVideoMemory = reader.GetBoolean("Display", "UnlimitedVideoMemory", false);
 
 	////////////////////////////////////////////////////////////////
 	// Game section
 
-	config.AutoSaveInterval = (udword)std::max(0l, reader.GetInteger("Game", "AutoSaveInterval", 0));
+	config.AutoSaveInterval = (udword)std::max(0l, reader.GetInteger("Game", "AutoSaveInterval", 5));
 
 	////////////////////////////////////////////////////////////////
 	// OpenGL section

@@ -1,0 +1,3 @@
+[submodule "game/rgl"]
+	path = game/rgl
+	url = https://github.com/ncblakely/hw_rgl
