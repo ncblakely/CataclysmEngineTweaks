@@ -49,6 +49,23 @@ static void opOptionsAccept(char* name, featom* atom)
 	*rndAspectRatio = (real32)*MAIN_WindowWidth / (real32)*MAIN_WindowHeight;
 }
 
+static void __declspec(naked) LoadMission_AdjustTextureMemoryLimit()
+{
+	using namespace Globals;
+
+	if (g_Config.UnlimitedVideoMemory)
+	{
+		__asm
+		{
+			mov eax, INT32_MAX
+			mov dword ptr ss: [esp+0x18], eax // Set the texture memory limit to INT32_MAX
+		}
+	}
+
+	// Jump back, skipping over the code that limits the VRAM pool on SP mission 17
+	__asm jmp dword ptr ds: [Instructions::LoadMission_AfterTextureMemoryLimitAdjustment]
+}
+
 static void* orig_CheckPlayerWin_GameTypeCheck;
 static void __declspec(naked) CheckPlayerWin_GameTypeCheck()
 {
@@ -72,9 +89,12 @@ static void __declspec(naked) CheckPlayerWin_GameTypeCheck()
 
 void InstallGameHooks(Assembler& assembler, Config& config)
 {
+	void* _discard = nullptr;
+
 	CreateAndEnableHook(Functions::univUpdate, univUpdate, &orig_univUpdate);
 	CreateAndEnableHook(Functions::opOptionsAccept, opOptionsAccept, &orig_opOptionsAccept);
 	CreateAndEnableHook(Instructions::CheckPlayerWin_GameTypeCheck, CheckPlayerWin_GameTypeCheck, &orig_CheckPlayerWin_GameTypeCheck);
+	CreateAndEnableHook(Instructions::LoadMission_AdjustTextureMemoryLimit, LoadMission_AdjustTextureMemoryLimit, &_discard);
 
 	//////////////////////////////////////////////
 	// Version number
@@ -91,14 +111,13 @@ void InstallGameHooks(Assembler& assembler, Config& config)
 		fmt::format("jmp 0x{:x}", (udword)Instructions::partRenderBillSystem_AfterSetPointFiltering),
 		Instructions::partRenderBillSystem_SetPointFiltering);
 
-	// Remove VRAM pool downscaling for mission 17.
-	assembler.Write(
-		fmt::format("jmp 0x{:x}", (udword)Instructions::textureRegistry_NotMission17), 
-		Instructions::textureRegistry_Mission17Check);
-
 	// Fix F12 key up events not being recognized: disable debug key handler for F12
 	assembler.Write(
 		fmt::format("je 0x{:x}", udword(Instructions::WindowProc_NormalKeyUpEvent)),
 		Instructions::WindowProc_JumpIfF12KeyUp);
+	
+	// int3 breakpoints are enabled by default, which prevents the assertion failure message from showing.
+	// Turn this off.
+	*dbgInt3Enabled = FALSE; 
 }
 

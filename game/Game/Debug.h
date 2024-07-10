@@ -50,6 +50,8 @@
 //default exit code
 #define DBG_ExitCode            0xfed5
 
+#if 0
+
 /*=============================================================================
     Data:
 =============================================================================*/
@@ -57,6 +59,8 @@ extern char dbgFatalErrorString[DBG_BufferLength];
 extern sdword dbgInt3Enabled;
 #if DBG_STACK_CONTEXT
 extern udword dbgStackBase;
+#endif
+
 #endif
 
 /*=============================================================================
@@ -78,6 +82,7 @@ extern udword dbgStackBase;
 /*=============================================================================
     Functions:
 =============================================================================*/
+#if 0
 //general message handling
 sdword dbgMessage(char *string);
 sdword dbgMessagef(char *format, ...);
@@ -100,6 +105,8 @@ char *dbgStackDump(void);
 #endif
 
 //special debug mode functions not implemented yet
+
+#endif
 
 #endif //___DEBUG_H
 

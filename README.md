@@ -33,7 +33,7 @@ Edit CataclysmEngineTweaks.ini to change these settings.
 - Fixed OpenGL renderer being unavailable on newer operating systems (NT4 compatibility fix is no longer needed).
 - Fixed current music track not being saved/loaded properly in SP games.
 - Fixed F12 key not responding to keypresses after the first one (bound to military parade by default).
-- Fixed ship textures randomly reverting to point instead of bilinear filtering, causing them to look pixellated.
+- Fixed ship textures randomly reverting to point instead of bilinear filtering, causing them to look pixelated.
 - Fixed command ships damaging themselves when firing at certain angles.
 - Add .ini option `NoCompiledVertexArrays` to fix graphical corruption in OpenGL for some AMD Radeon users.
 - Add .ini option `DisableEqualizer` to fix a rare audio bug causing loud distortions for some users.

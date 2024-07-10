@@ -11,12 +11,10 @@ static int lodLevelGet(void* spaceObj, vector* camera, vector* ship)
 
     // Skip all of this and just set and return the highest LOD level.
     obj->currentLOD = 0;
-    return 0; 
-}
 
-static void trCramRAMComputeAndScale()
-{
-    // Do nothing
+    vecSub(obj->cameraDistanceVector, *camera, *ship);
+    obj->cameraDistanceSquared = vecMagnitudeSquared(obj->cameraDistanceVector);
+    return 0; 
 }
 
 static void CreateAndEnableHooks(Assembler& assembler, Config& config)
@@ -24,14 +22,6 @@ static void CreateAndEnableHooks(Assembler& assembler, Config& config)
     void* _discard = nullptr;
 
     CreateAndEnableHook(Functions::lodLevelGet, lodLevelGet, &orig_lodLevelGet);
-
-    // Not working yet, disable for now
-    /*
-    if (g_Config.IsUnlimitedVideoMemoryEnabled())
-    {
-        CreateAndEnableHook(Functions::trCramRAMComputeAndScale, &trCramRAMComputeAndScale, &_discard);
-    }
-    */
 }
 
 void ApplyLODPatches(Assembler& assembler, Config& config)

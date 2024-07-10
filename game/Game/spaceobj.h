@@ -977,6 +977,7 @@ typedef struct
     uword attributes;               // settable attributes from mission editor
     sword attributesParam;           // parameter for attributes, set from mission editor
     ubyte attributesPad[2];          // leftover, free space
+    udword unknown2;
     real32 cameraDistanceSquared;    // distance to camera (for sound, level of detail)
     vector cameraDistanceVector;     // vector to camera (camera eyeposition - obj->posinfo.position)
     real32 collOptimizeDist;         // distance used for optimizing collision checking
@@ -985,6 +986,10 @@ typedef struct
 } SpaceObj;
 
 static_assert(offsetof(SpaceObj, currentLOD) == 0x34);
+static_assert(offsetof(SpaceObj, cameraDistanceSquared) == 0x40);
+static_assert(offsetof(SpaceObj, cameraDistanceVector.x) == 0x44);
+static_assert(offsetof(SpaceObj, cameraDistanceVector.y) == 0x48);
+static_assert(offsetof(SpaceObj, cameraDistanceVector.z) == 0x4C);
 
 typedef SpaceObj *SpaceObjPtr;
 

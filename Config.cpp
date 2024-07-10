@@ -15,6 +15,7 @@ Config Config::FromFile(const char* path)
 	config.UpdateRateShift = (udword)Clamp(0l, MaxUpdateRateShift, reader.GetInteger("Engine", "UpdateRateShift", 2));
 	config.UpdateRate = (float)(16 << config.UpdateRateShift);
 	config.DisableFramerateLimit = reader.GetBoolean("Engine", "DisableFramerateLimit", false);
+	config.UnlimitedVideoMemory = reader.GetBoolean("Engine", "UnlimitedVideoMemory", true);
 	
 	////////////////////////////////////////////////////////////////
 	// Display section
@@ -23,7 +24,6 @@ Config Config::FromFile(const char* path)
 	config.NewRendererSelection = reader.GetBoolean("Display", "NewRendererSelection", true);
 	config.BorderlessWindow = reader.GetBoolean("Display", "BorderlessWindow", true);
 	config.DisableIntroMovies = reader.GetBoolean("Display", "DisableIntroMovies", true);
-	config.UnlimitedVideoMemory = reader.GetBoolean("Display", "UnlimitedVideoMemory", false);
 
 	////////////////////////////////////////////////////////////////
 	// Game section

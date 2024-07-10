@@ -35,12 +35,12 @@ struct Config
 
 	real32 UpdateRate = 0;
 	udword UpdateRateShift = 0;
-	bool HighDetailMode = false;
-	bool NewRendererSelection = false;
-	bool BorderlessWindow = false;
-	bool DisableIntroMovies = false;
-	udword AutoSaveInterval = 0;
-	bool UnlimitedVideoMemory = false;
+	bool HighDetailMode = true;
+	bool UnlimitedVideoMemory = true;
+	bool NewRendererSelection = true;
+	bool BorderlessWindow = true;
+	bool DisableIntroMovies = true;
+	udword AutoSaveInterval = 5;
 	bool OpenGLFix = true;
 	bool DisableFramerateLimit = false;
 	bool NoCompiledVertexArrays = false;
