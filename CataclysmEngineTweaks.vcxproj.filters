@@ -275,6 +275,12 @@
     <ClInclude Include="game\Game\AINew.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="PatchMesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PatchMesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">

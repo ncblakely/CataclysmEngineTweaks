@@ -118,6 +118,11 @@ void InstallGameHooks(Assembler& assembler, Config& config)
 	
 	// int3 breakpoints are enabled by default, which prevents the assertion failure message from showing.
 	// Turn this off.
-	*dbgInt3Enabled = FALSE; 
+	if (!IsDebuggerPresent())
+	{
+		*dbgInt3Enabled = FALSE;
+	}
+
+	// assembler.Write("push 0", (void*)0x00589115);
 }
 
