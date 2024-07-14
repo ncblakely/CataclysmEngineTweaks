@@ -5,7 +5,7 @@
 constexpr const char* ConfigFileName = "CataclysmEngineTweaks.ini";
 
 void ApplyPatches(Config& config);
-void InitLogger();
+void InitLogger(std::string_view logFileName);
 
 ////////////////////////////////////////////////////////////////////////
 // Utilities

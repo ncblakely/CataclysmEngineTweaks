@@ -13,7 +13,8 @@
 #include "Cataclysm.h"
 
 #include "spdlog/sinks/basic_file_sink.h"
-#include "spdlog/sinks/stdout_color_sinks.h"
+#include "spdlog/sinks/msvc_sink.h"
+#include "spdlog/sinks/dup_filter_sink.h"
 
 static void ApplyStartupPatches(Config& config)
 {
@@ -47,19 +48,31 @@ void ApplyPatches(Config& config)
     spdlog::info("Patches applied");
 }
 
-void InitLogger()
+void InitLogger(std::string_view logFileName)
 {
 #ifdef _DEBUG
-    auto file_sink = std::make_shared<spdlog::sinks::basic_file_sink_mt>("CataclysmEngineTweaks.log", true);
-    auto console_sink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
-    auto multi_sink = std::shared_ptr<spdlog::logger>(new spdlog::logger("default", {console_sink, file_sink}));
+    // In debug mode, add an additional debug target
+    auto file_sink = std::make_shared<spdlog::sinks::basic_file_sink_mt>(logFileName.data(), true);
+    auto debug_sink = std::make_shared<spdlog::sinks::msvc_sink_mt>();
 
-    spdlog::set_default_logger(multi_sink);
+    // Filter repeated messages
+    auto dup_filter_sink = std::make_shared<spdlog::sinks::dup_filter_sink_mt>(std::chrono::milliseconds(100));
+    dup_filter_sink->add_sink(file_sink);
+    dup_filter_sink->add_sink(debug_sink);
+
+    auto multi_logger = std::shared_ptr<spdlog::logger>(new spdlog::logger("default", dup_filter_sink));
+
+    spdlog::set_default_logger(multi_logger);
 #else
-    auto basic_logger_mt = spdlog::basic_logger_mt("default", "CataclysmEngineTweaks.log", true);
-    spdlog::set_default_logger(basic_logger_mt);
+    // Filter repeated messages
+    auto dup_filter_sink = std::make_shared<spdlog::sinks::dup_filter_sink_mt>(std::chrono::milliseconds(100));
+    auto file_sink = std::make_shared<spdlog::sinks::basic_file_sink_mt>(logFileName.data(), true);
+
+    dup_filter_sink->add_sink(file_sink);
+
+    auto logger = std::shared_ptr<spdlog::logger>(new spdlog::logger("default", dup_filter_sink));
+    spdlog::set_default_logger(logger);
 #endif
     spdlog::default_logger()->flush_on(spdlog::level::trace);
-
-    spdlog::info("Cataclysm Engine Tweaks loaded");
+    spdlog::default_logger()->set_pattern("[%Y-%m-%d %H:%M:%S.%e] [%l] %v");
 }

@@ -4,6 +4,8 @@
 
 Config g_Config;
 
+constexpr const char* LOG_FILE_NAME = "CataclysmEngineTweaks.log";
+
 static void CheckModuleLoadAddress()
 {
     static DWORD ExpectedImageBase = 0x400000;
@@ -33,7 +35,7 @@ BOOL APIENTRY DllMain(
                     LogAndThrow("Failed to initialize MinHook");
                 }
 
-                InitLogger();
+                InitLogger(LOG_FILE_NAME);
                 g_Config = Config::FromFile(ConfigFileName);
 
                 ApplyPatches(g_Config);
