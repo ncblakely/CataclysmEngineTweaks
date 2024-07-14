@@ -107,7 +107,7 @@
     <ClInclude Include="GameHooks.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="game\Game\AIAttackMan.h" />
-    <ClInclude Include="game\Game\AINew.h" />
+    <ClInclude Include="game\Game\AISkirmish.h" />
     <ClInclude Include="game\Game\AIFeatures.h" />
     <ClInclude Include="game\Game\AIPlayer.h" />
     <ClInclude Include="game\Game\AIResourceMan.h" />
@@ -122,6 +122,7 @@
     <ClInclude Include="game\Game\clouds.h" />
     <ClInclude Include="game\Game\CommandDefs.h" />
     <ClInclude Include="game\Game\CommandLayer.h" />
+    <ClInclude Include="game\Game\CommandNetwork.h" />
     <ClInclude Include="game\Game\consMgr.h" />
     <ClInclude Include="game\Game\crc32.h" />
     <ClInclude Include="game\Game\Debug.h" />
@@ -177,6 +178,7 @@
     <ClInclude Include="game\Win32\texreg.h" />
     <ClInclude Include="game\Win32\TitanInterfaceC.h" />
     <ClInclude Include="game\Win32\trails.h" />
+    <ClInclude Include="PatchAI.h" />
     <ClInclude Include="PatchETG.h" />
     <ClInclude Include="PatchLOD.h" />
     <ClInclude Include="Main.h" />
@@ -192,10 +194,12 @@
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="GameHooks.cpp" />
     <ClCompile Include="GameState.cpp" />
+    <ClCompile Include="game\Game\AISkirmish.cpp" />
     <ClCompile Include="game\Game\MultiplayerGame.cpp" />
     <ClCompile Include="game\Game\rinit.cpp" />
     <ClCompile Include="game\Win32\glcaps.cpp" />
     <ClCompile Include="game\Win32\soundlow.cpp" />
+    <ClCompile Include="PatchAI.cpp" />
     <ClCompile Include="PatchETG.cpp" />
     <ClCompile Include="PatchLOD.cpp" />
     <ClCompile Include="Main.cpp" />

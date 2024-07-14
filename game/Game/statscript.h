@@ -28,13 +28,17 @@ typedef struct
 
 typedef struct
 {
-    char *name;
+    const char *name;
     setVarCback setVarCB;
     void *dataPtr;
 } scriptEntry;
 
+#if 0
+
 ///////DATA!!!!
 extern char globalScriptFileName[50];  //file name of file loaded in a script callback function
+
+#endif
 
 
 /*=============================================================================
@@ -48,6 +52,8 @@ extern char globalScriptFileName[50];  //file name of file loaded in a script ca
 /*=============================================================================
     Functions:
 =============================================================================*/
+
+#if 0
 
 void RemoveCommasFromString(char *field);
 void StripTrailingSpaces(char *value);
@@ -112,6 +118,8 @@ void mgGameTypeScriptInit();
 
 #ifndef HW_Release
 void CheckValidTacticsClass(TacticsType tactic,ShipClass shipclass,char *field);
+#endif
+
 #endif
 
 #endif

@@ -562,6 +562,8 @@ etgratergba;
 /*=============================================================================
     Data:
 =============================================================================*/
+
+#if 0
 //dispatch tables for standard events
 extern etgeffectstatic *etgDefaultBoom;
 extern etgeffectstatic *etgDefaultBlast;
@@ -592,6 +594,8 @@ extern bool   etgDamageEffectsEnabled;
 extern bool   etgHitEffectsEnabled;
 extern bool   etgFireEffectsEnabled;
 extern bool   etgBulletEffectsEnabled;
+
+#endif
 
 /*=============================================================================
     Macros:

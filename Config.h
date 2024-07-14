@@ -46,6 +46,7 @@ struct Config
 	bool NoCompiledVertexArrays = false;
 	bool ForceWaveOut = false;
 	bool DisableEqualizer = false;
+	bool EnableNewAI = false;
 };
 
 extern Config g_Config;

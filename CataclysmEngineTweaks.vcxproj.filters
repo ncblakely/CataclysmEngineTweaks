@@ -272,13 +272,13 @@
     <ClInclude Include="game\Game\AIVar.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="game\Game\AINew.h">
+    <ClInclude Include="game\Game\AISkirmish.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PatchMesh.h">
+    <ClInclude Include="game\Game\CommandNetwork.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PatchMesh.h">
+    <ClInclude Include="PatchAI.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -332,6 +332,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="game\Win32\soundlow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PatchAI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="game\Game\AISkirmish.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

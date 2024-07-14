@@ -573,6 +573,7 @@ typedef struct ShipStaticInfo
     real32 passiveRetaliateZone;
     real32 collSideModifiers[NUM_TRANS_DEGOFFREEDOM];
 
+    BYTE unk[76];
     ShipType shiptype;
     ShipRace shiprace;
     ShipClass shipclass;
@@ -688,6 +689,8 @@ typedef struct ShipStaticInfo
     bool (*ShipXDocksAtShipY) (struct CommandToDo *docktodo,struct Ship *ship,struct Ship *dockwith);
     bool (*LaunchShipXFromShipY) (struct Ship *ship,struct Ship *dockwith);
 } ShipStaticInfo;
+
+static_assert(offsetof(ShipStaticInfo, shipclass) == 0x1E8);
 
 typedef struct
 {
@@ -967,21 +970,21 @@ matrix as follows:
 typedef struct
 {
     Node objlink;
-    ObjType objtype;        // object type (ship or bullet, etc)
-    udword flags;           // flags whether the object is rotatable, etc.
-    StaticInfo *staticinfo; // pointer to static info
+    ObjType objtype;                // object type (ship or bullet, etc)
+    udword flags;                   // flags whether the object is rotatable, etc.
+    ubyte unk1[0x8];
+    ShipStaticInfo* staticinfo;         // pointer to static info
     Node renderlink;        // link for rendering list
-    udword unknown[2];
-    ubyte currentLOD;       // current level of detail
+    ubyte currentLOD;               // current level of detail
     ubyte renderedLODs;     //what LODs have been rendered already
     uword attributes;               // settable attributes from mission editor
-    sword attributesParam;           // parameter for attributes, set from mission editor
+    sword attributesParam;          // parameter for attributes, set from mission editor
     ubyte attributesPad[2];          // leftover, free space
     udword unknown2;
     real32 cameraDistanceSquared;    // distance to camera (for sound, level of detail)
     vector cameraDistanceVector;     // vector to camera (camera eyeposition - obj->posinfo.position)
     real32 collOptimizeDist;         // distance used for optimizing collision checking
-    struct blob *collMyBlob;         // collision blob I belong to
+    struct blob* collMyBlob;         // collision blob I belong to
     PosInfo posinfo;
 } SpaceObj;
 
@@ -1292,6 +1295,7 @@ typedef struct Ship         // Ship object
     Node objlink;
     ObjType objtype;                // object type (ship or bullet, etc)
     udword flags;                   // flags whether the object is rotatable, etc.
+    ubyte unk1[0x8];
     ShipStaticInfo *staticinfo;         // pointer to static info
     Node renderlink;        // link for rendering list
     ubyte currentLOD;               // current level of detail
@@ -1299,6 +1303,7 @@ typedef struct Ship         // Ship object
     uword attributes;               // settable attributes from mission editor
     sword attributesParam;          // parameter for attributes, set from mission editor
     ubyte attributesPad[2];          // leftover, free space
+    udword unknown2;
     real32 cameraDistanceSquared;    // distance to camera (for sound, level of detail)
     vector cameraDistanceVector;     // vector to camera (camera eyeposition - obj->posinfo.position)
     real32 collOptimizeDist;         // distance used for optimizing collision checking
@@ -1326,6 +1331,7 @@ typedef struct Ship         // Ship object
     NAVLightInfo *navLightInfo;
     // HERE UP SAME for Derelicts and Ships
 
+    ubyte unk2[0x60]; // @CATA: Unsure of the location of this
     Node shiplink;
     vector moveTo;                  // move destination of the ship
     vector moveFrom;                // where the ship is moving from
@@ -1336,7 +1342,6 @@ typedef struct Ship         // Ship object
     struct Ship *rowGetOutOfWay;    // Right of way - ship to get out of way of
     vector rowOriginalPoint;        // Right of way - my original point
     vector rowOutOfWayPoint;        // Right of way - point to go to be out of way
-    ubyte unk1[0x6C]; // @CATA: Unsure of the location of this
     ShipType shiptype;
     ShipRace shiprace;
     //*******Tactics stuff start
@@ -1454,9 +1459,33 @@ typedef struct Ship         // Ship object
 
 typedef Ship *ShipPtr;
 
+static_assert(offsetof(Ship, objtype) == 0x10);
 static_assert(offsetof(Ship, flags) == 0x14);
+static_assert(offsetof(Ship, staticinfo) == 0x20);
+static_assert(offsetof(Ship, renderlink) == 0x24);
+static_assert(offsetof(Ship, currentLOD) == 0x34);
+static_assert(offsetof(Ship, renderedLODs) == 0x35);
+static_assert(offsetof(Ship, cameraDistanceSquared) == 0x40);
+static_assert(offsetof(Ship, cameraDistanceVector.x) == 0x44);
+static_assert(offsetof(Ship, cameraDistanceVector.y) == 0x48);
+static_assert(offsetof(Ship, cameraDistanceVector.z) == 0x4C);
+static_assert(offsetof(Ship, collMyBlob) == 0x54);
+// static_assert(offsetof(Ship, putOnDoor) == 0x1C3);
+// static_assert(offsetof(Ship, dockingship) == 0x1C4);
+static_assert(offsetof(Ship, shiplink) == 0x23C);
 static_assert(offsetof(Ship, shiptype) == 0x2B0);
+static_assert(offsetof(Ship, shiprace) == 0x2B4);
+static_assert(offsetof(Ship, tacticstype) == 0x2B8);
+static_assert(offsetof(Ship, isDodging) == 0x2BC);
+static_assert(offsetof(Ship, DodgeTime) == 0x2C0);
+static_assert(offsetof(Ship, tacticsFormationVar1) == 0x2C8);
+static_assert(offsetof(Ship, tactics_ordertype) == 0x2D0);
+static_assert(offsetof(Ship, tacticsTalk) == 0x2D4);
+static_assert(offsetof(Ship, tacticsNeedToFlightMan) == 0x2D8);
+static_assert(offsetof(Ship, dockwaitforNorm) == 0x2DC);
+static_assert(offsetof(Ship, timeCreated) == 0x2E0);
 static_assert(offsetof(Ship, playerowner) == 0x32C);
+// static_assert(offsetof(Ship, damageModifier) == 0x3DC);
 
 /*-----------------------------------------------------------------------------
     Missile Object

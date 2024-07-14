@@ -115,7 +115,7 @@ static void trailSegmentsRead(char* directory, char* field, void* dataToFillIn)
 	orig_trailSegmentsRead(directory, (char*)fmt::format("{}", tpNSegments).c_str(), dataToFillIn);
 }
 
-static Functions::fn_BeastMothershipSelfDamage orig_BeastMothershipSelfDamage;
+static Functions::fn_beastMothershipSelfDamage orig_BeastMothershipSelfDamage;
 static void beastMothershipSelfDamage(ShipStaticInfo* shipstatic)
 {
 	if ((*Globals::universe_univUpdateCounter % g_Config.GetUniverseUpdateRateFactor()) == 0)

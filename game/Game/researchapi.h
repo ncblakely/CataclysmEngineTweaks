@@ -116,6 +116,8 @@ typedef struct
     Data:
 =============================================================================*/
 
+#if 0
+
 //extern TechnologyType         SetTechLevel;
 extern udword         SetTechLevel;
 
@@ -163,5 +165,7 @@ void rmResetStaticInfo(void);
 //start the Research Manager.
 void   rmAPIStartup(void);
 void   rmAPIShutdown(void);
+
+#endif
 
 #endif

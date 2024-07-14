@@ -9,6 +9,8 @@
 constexpr const char* NetworkVersion = "v1.02";
 constexpr const char* MinorBuildVersion = "0";
 
+extern scriptEntry AISkirmishTweaks[];
+
 static Functions::fn_univUpdate orig_univUpdate;
 static bool univUpdate(real32 phystimeelapsed)
 {
@@ -87,12 +89,27 @@ static void __declspec(naked) CheckPlayerWin_GameTypeCheck()
 	}
 }
 
+
+static Functions::fn_scriptSetTweakableGlobals orig_scriptSetTweakableGlobals;
+void scriptSetTweakableGlobals()
+{
+	using namespace Functions;
+
+	orig_scriptSetTweakableGlobals();
+
+	if (g_Config.EnableNewAI)
+	{
+		scriptSet(nullptr, "AISkirmish.script", AISkirmishTweaks);
+	}
+}
+
 void InstallGameHooks(Assembler& assembler, Config& config)
 {
 	void* _discard = nullptr;
 
 	CreateAndEnableHook(Functions::univUpdate, univUpdate, &orig_univUpdate);
 	CreateAndEnableHook(Functions::opOptionsAccept, opOptionsAccept, &orig_opOptionsAccept);
+	CreateAndEnableHook(Functions::scriptSetTweakableGlobals, scriptSetTweakableGlobals, &orig_scriptSetTweakableGlobals);
 	CreateAndEnableHook(Instructions::CheckPlayerWin_GameTypeCheck, CheckPlayerWin_GameTypeCheck, &orig_CheckPlayerWin_GameTypeCheck);
 	CreateAndEnableHook(Instructions::LoadMission_AdjustTextureMemoryLimit, LoadMission_AdjustTextureMemoryLimit, &_discard);
 

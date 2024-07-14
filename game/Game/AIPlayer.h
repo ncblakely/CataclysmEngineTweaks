@@ -207,10 +207,14 @@ static_assert(offsetof(AIPlayer, DefenseFeatures) == 0x10);
 /*=============================================================================
     Global Variables:
 =============================================================================*/
+
+#if 0
 extern bool aiplayerLogEnable;
 
 extern AIPlayer *aiCurrentAIPlayer;
 extern uword    aiIndex;
+
+#endif
 
 /*=============================================================================
     Multiplayer Defines:
@@ -227,6 +231,8 @@ typedef enum
 /*=============================================================================
     Public Data:
 =============================================================================*/
+
+#if 0
 
 extern real32 ATTMAN_BUILDPRIORITY_RATIO;
 extern real32 DEFMAN_BUILDPRIORITY_RATIO;
@@ -446,5 +452,7 @@ struct AITeam *AITeamIndexToTeam(AIPlayer *aiplayer,sdword index);
 sdword AITeamToTeamIndex(struct AITeam *team);
 
 extern AIPlayer *fixingThisAIPlayer;
+
+#endif
 
 #endif

@@ -111,9 +111,9 @@ typedef struct Player
 {
     Ship *PlayerMothership;
     sdword resourceUnits;
+    udword unk1[3]; // @CATA: Unsure of the position of this
     ShipRace race;
     PlayerState playerState;
-    udword unk1[3]; // @CATA: Unsure of the position of this
     struct AIPlayer *aiPlayer;      // if non-null, then player has a computer AI Player
     udword autoLaunch;
     uword playerIndex;
@@ -134,6 +134,7 @@ typedef struct Player
 // static_assert(sizeof(Player) == 0x6530u);
 
 static_assert(offsetof(Player, resourceUnits) == 0x4);
+static_assert(offsetof(Player, race) == 0x14);
 static_assert(offsetof(Player, aiPlayer) == 0x1C);
 static_assert(offsetof(Player, playerIndex) == 0x24);
 static_assert(offsetof(Player, timeMoShipAttacked) == 0x28);
@@ -210,7 +211,7 @@ typedef struct
     sdword bountySize;
 
     GameStats gameStats;
-    BYTE unk3[0x33C];
+    BYTE unk3[0x1F8];
     BOOL DerelictTech;              //variable that needs to be saved that controls the salvagability of technology holding derelicts
 
     real32 crateTimer;
@@ -250,7 +251,10 @@ static_assert(offsetof(Universe, numCratesInWorld) == 0x4AF0);
 static_assert(offsetof(Universe, numPlayers) == 0x4AF8);
 static_assert(offsetof(Universe, players) == 0x4B00);
 
+#if 0
 extern GrowSelection ClampedShipList;       // special GrowSelect which can have NULL's in it
+
+#endif
 
 
 typedef void (*univstatcallback)(StaticInfo *info, ObjType objType);

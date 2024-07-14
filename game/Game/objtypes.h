@@ -303,6 +303,8 @@ typedef udword SpecialEffectType;
     Data:
 =============================================================================*/
 
+#if 0
+
 extern ShipType FirstShipTypeOfRace[NUM_RACES];
 extern ShipType LastShipTypeOfRace[NUM_RACES];
 extern uword NumShipTypesInRace[NUM_RACES];
@@ -379,6 +381,8 @@ ObjType StrToObjType(char *str);
 
 char *NisRaceToStr(ShipRace race);
 ShipRace StrToNisRace(char *string);
+
+#endif
 
 #endif
 

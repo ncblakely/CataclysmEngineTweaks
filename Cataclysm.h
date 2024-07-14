@@ -9,9 +9,30 @@
 #include "universe.h"
 #include "singleplayer.h"
 #include "glcaps.h"
+#include "AISkirmish.h"
 
 #define DEFINE_ADDRESS(name, address) \
-	inline void* name = (void*)address;
+	inline void* name = (void*)address
+
+#define DEFINE_FUNCTION(name, ret, signature, address) \
+	typedef ret (*fn_##name) signature; \
+	inline fn_##name name = (fn_##name)##address
+
+#define DEF_VAR(type, p) type p = (type)a1
+
+// Generic pointer template to make the syntax for dereferencing multiple levels of indirection a bit less cumbersome
+template <typename T>
+class GamePointer
+{
+public:
+	GamePointer(unsigned int offset) { m_offset = (T**)offset; }
+
+	T* operator->() const { return *m_offset; }
+	operator T* () const { return *m_offset; }
+
+protected:
+	T** m_offset;
+};
 
 // Addresses of specific instructions in game functions.
 namespace Instructions
@@ -85,127 +106,68 @@ namespace Instructions
 	DEFINE_ADDRESS(LoadMission_AdjustTextureMemoryLimit, 0x00589AEA);
 	DEFINE_ADDRESS(LoadMission_AfterTextureMemoryLimitAdjustment, 0x00589B1F);
 
-	DEFINE_ADDRESS(WindowProc_JumpIfF12KeyUp, 0x00562401)
-	DEFINE_ADDRESS(WindowProc_NormalKeyUpEvent, 0x00562943)
+	DEFINE_ADDRESS(WindowProc_JumpIfF12KeyUp, 0x00562401);
+	DEFINE_ADDRESS(WindowProc_NormalKeyUpEvent, 0x00562943);
+
+	DEFINE_ADDRESS(allianceFormWith_UniverseUpdatePeriod, 0x0042090D);
+
+	DEFINE_ADDRESS(caiProcessBuildShips_CheckBuildMimic, 0x00431F0C);
+	DEFINE_ADDRESS(caiProcessBuildShips_DoBuildMimic, 0x00431F14);
+	DEFINE_ADDRESS(caiProcessBuildShips_DontBuildMimic, 0x00431F7B);
 }
 
 // Addresses of game functions.
 namespace Functions
 {
-	typedef void (*fn_univUpdateReset)();
-	inline fn_univUpdateReset univUpdateReset = (fn_univUpdateReset)0x0054ACD0;
-
-	typedef void (*fn_setframesCB)(char* directory, char* field, void* dataToFillIn);
-	inline fn_setframesCB scriptSetFramesCB = (fn_setframesCB)0x0053AC70;
-
-	typedef void (*fn_singlePlayerGameUpdate)();
-	inline fn_singlePlayerGameUpdate singlePlayerGameUpdate = (fn_singlePlayerGameUpdate)0x005197D0;
-
-	typedef void (*fn_UpdateMidLevelHyperspacingShips)();
-	inline fn_UpdateMidLevelHyperspacingShips UpdateMidLevelHyperspacingShips = (fn_UpdateMidLevelHyperspacingShips)0x00519700;
-
-	typedef void (*fn_mistrailUpdate)(missiletrail* trail, vector* position);
-	inline fn_mistrailUpdate mistrailUpdate = (fn_mistrailUpdate)0x005A4D90;
-
-	typedef void (*fn_trailSegmentsRead)(char* directory, char* field, void* dataToFillIn);
-	inline fn_trailSegmentsRead trailSegmentsRead = (fn_trailSegmentsRead)0x005A7A70;
-
-	typedef void (*fn_rinSortModes)(rdevice* dev);
-	inline fn_rinSortModes rinSortModes = (fn_rinSortModes)0x0057DE00;
-
-	typedef HRESULT (__stdcall *fn_rinEnumDisplayModes_cb)(LPDDSURFACEDESC2 ddsd, LPVOID lpContext);
-	inline fn_rinEnumDisplayModes_cb rinEnumDisplayModes_cb = (fn_rinEnumDisplayModes_cb)0x0057E5C0;
-	inline fn_rinEnumDisplayModes_cb rinEnumPrimaryDisplayModes_cb = (fn_rinEnumDisplayModes_cb)0x0057E710;
-
-	typedef void* (*fn_memAlloc)(size_t size);
-	inline fn_memAlloc memAlloc = (fn_memAlloc)0x006725D0;
-
-	typedef void (*fn_memFree)(void* ptr);
-	inline fn_memFree memFree = (fn_memFree)0x00673080;
-
-	typedef void (*fn_mgGameTypesOtherButtonPressed)();
-	inline fn_mgGameTypesOtherButtonPressed mgGameTypesOtherButtonPressed = (fn_mgGameTypesOtherButtonPressed)0x004C2590;
-
-    typedef void (*fn_uicTextEntrySet)(textentryhandle entry, char* text, sdword cursorPos);
-    inline fn_uicTextEntrySet uicTextEntrySet = (fn_uicTextEntrySet)0x00538980;
-
-    typedef void (*fn_uicTextBufferResize)(textentryhandle entry, sdword size);
-    inline fn_uicTextBufferResize uicTextBufferResize = (fn_uicTextBufferResize)0x005388F0;
-
-    typedef void (*fn_uicTextEntryInit)(textentryhandle entry, udword flags);
-    inline fn_uicTextEntryInit uicTextEntryInit = (fn_uicTextEntryInit)0x00538A30;
-
-    typedef void (*fn_feToggleButtonSet)(char* name, sdword bPressed);
-    inline fn_feToggleButtonSet feToggleButtonSet = (fn_feToggleButtonSet)0x00475990;
-
-    typedef void (*fn_mgResourceInjectionInterval)(char* name, featom* atom);
-    inline fn_mgResourceInjectionInterval mgResourceInjectionInterval = (fn_mgResourceInjectionInterval)0x004BDE80;
-
-	typedef void (*fn_mgResourceLumpSumInterval)(char* name, featom* atom);
-	inline fn_mgResourceLumpSumInterval mgResourceLumpSumInterval = (fn_mgResourceLumpSumInterval)0x004BE090;
-
-	typedef void (*fn_univCheckRegrowResources)();
-	inline fn_univCheckRegrowResources univCheckRegrowResources = (fn_univCheckRegrowResources)0x0054C270;
-
-	typedef void (*fn_rmUpdateResearch)();
-	inline fn_rmUpdateResearch rmUpdateResearch = (fn_rmUpdateResearch)0x004F2A20;
-
-	typedef void (*fn_BeastMothershipSelfDamage)(ShipStaticInfo* shipstatic);
-	inline fn_BeastMothershipSelfDamage beastMothershipSelfDamage = (fn_BeastMothershipSelfDamage)0x005BC900;
-
-    typedef void (*fn_univBulletCollidedWithTarget)(int unknown, SpaceObjRotImpTarg* target, StaticHeader* targetstaticheader, Bullet* bullet, real32 collideLineDist, sdword collSide);
-	inline fn_univBulletCollidedWithTarget univBulletCollidedWithTarget = (fn_univBulletCollidedWithTarget)0x00546A20;
-
-	typedef int (*fn_lodLevelGet)(void* spaceObj, vector* camera, vector* ship);
-	inline fn_lodLevelGet lodLevelGet = (fn_lodLevelGet)0x004A4D70;
-
-	typedef BOOL(*fn_etgFrequencyExceeded)(etgeffectstatic* stat);
-	inline fn_etgFrequencyExceeded etgFrequencyExceeded = (fn_etgFrequencyExceeded)0x00470BD0;
-
-	typedef bool (*fn_univUpdate)(real32 phystimeelapsed);
-	inline fn_univUpdate univUpdate = (fn_univUpdate)0x0054C3F0;
-
-	typedef bool (*fn_SaveGame)(const char* filename);
-	inline fn_SaveGame SaveGame = (fn_SaveGame)0x004FDAF0;
-
-	typedef void (*fn_clCommandMessage)(const char CommandMessage[MAX_MESSAGE_LENGTH], udword flags);
-	inline fn_clCommandMessage clCommandMessage = (fn_clCommandMessage)0x004AC820;
-
-	typedef BOOL(*fn_glCapNT)();
-	inline fn_glCapNT glCapNT = (fn_glCapNT)0x00559AC0;
-
-	typedef sdword (*fn_etgFunctionCall)(Effect* effect, struct etgeffectstatic* stat, ubyte* opcode);
-	inline fn_etgFunctionCall etgFunctionCall = (fn_etgFunctionCall)0x0046E7B0;
-
-	typedef void (*fn_etgEffectDelete)(Effect* effect);
-	inline fn_etgEffectDelete etgEffectDelete = (fn_etgEffectDelete)0x0046A6F0;
-
-	typedef sdword (*fn_etgNParticleBlocksSet)(struct etgeffectstatic* stat, ubyte* dest, char* opcodeString, char* params, char* ret);
-	inline fn_etgNParticleBlocksSet etgNParticleBlocksSet = (fn_etgNParticleBlocksSet)0x0046E110;
-
-	typedef void(*fn_trCramRAMComputeAndScale)();
-	inline fn_trCramRAMComputeAndScale trCramRAMComputeAndScale = (fn_trCramRAMComputeAndScale)0x00589A50;
-
-	typedef udword (*fn_rinDeviceCRC)();
-	inline fn_rinDeviceCRC rinDeviceCRC = (fn_rinDeviceCRC)0x0057DCF0;
-
-	typedef void(*fn_mainRescaleMainWindow)();
-	inline fn_mainRescaleMainWindow mainRescaleMainWindow = (fn_mainRescaleMainWindow)0x0055FC70;
-
-	typedef void (*fn_opOptionsAccept)(char* name, featom* atom);
-	inline fn_opOptionsAccept opOptionsAccept = (fn_opOptionsAccept)0x004D7E30;
-
-	typedef void (*fn_glCapStartup)();
-	inline fn_glCapStartup glCapStartup = (fn_glCapStartup)0x00559BE0;
-
-	typedef sdword(*fn_soundStartDSound)(HWND hWnd);
-	inline fn_soundStartDSound soundStartDSound = (fn_soundStartDSound)0x005808E0;
-
-	typedef int (*fn_fqEqualize)(float* aBlock, float* aEq);
-	inline fn_fqEqualize fqEqualize = (fn_fqEqualize)0x00558F20;
-
-	typedef char* (*fn_ShipTypeToStr)(ShipType shiptype);
-	inline fn_ShipTypeToStr ShipTypeToStr = (fn_ShipTypeToStr)0x004D6BC0;
+	DEFINE_FUNCTION(aisFleetUpdate, void, (), 0x00431750);
+	DEFINE_FUNCTION(aisRequestShip, void, (Player* player, ShipType shipType, int weight), 0x00431510);
+	DEFINE_FUNCTION(allianceFormWith, void, (udword playerindex), 0x00420880);
+	DEFINE_FUNCTION(beastMothershipSelfDamage, void, (ShipStaticInfo* shipstatic), 0x005BC900);
+	DEFINE_FUNCTION(clCommandMessage, void, (const char CommandMessage[MAX_MESSAGE_LENGTH], udword flags), 0x004AC820);
+	DEFINE_FUNCTION(clWrapCreateShip, void, (CommandLayer* comlayer, ShipType shipType, ShipRace shipRace, uword playerIndex, ShipPtr creator), 0x00452F30);
+	DEFINE_FUNCTION(etgEffectDelete, void, (Effect* effect), 0x0046A6F0);
+	DEFINE_FUNCTION(etgFrequencyExceeded, bool32, (etgeffectstatic* stat), 0x00470BD0);
+	DEFINE_FUNCTION(etgFunctionCall, sdword, (Effect* effect, struct etgeffectstatic* stat, ubyte* opcode), 0x0046E7B0);
+	DEFINE_FUNCTION(etgNParticleBlocksSet, sdword, (struct etgeffectstatic* stat, ubyte* dest, char* opcodeString, char* params, char* ret), 0x0046E110);
+	DEFINE_FUNCTION(feToggleButtonSet, void, (char* name, sdword bPressed), 0x00475990);
+	DEFINE_FUNCTION(fqEqualize, int, (float* aBlock, float* aEq), 0x00558F20);
+	DEFINE_FUNCTION(glCapNT, bool32, (), 0x00559AC0);
+	DEFINE_FUNCTION(glCapStartup, void, (), 0x00559BE0);
+	DEFINE_FUNCTION(lodLevelGet, int, (void* spaceObj, vector* camera, vector* ship), 0x004A4D70);
+	DEFINE_FUNCTION(mainRescaleMainWindow, void, (), 0x0055FC70);
+	DEFINE_FUNCTION(memAlloc, void*, (size_t size), 0x006725D0);
+	DEFINE_FUNCTION(memFree, void, (void* ptr), 0x00673080);
+	DEFINE_FUNCTION(mgGameTypesOtherButtonPressed, void, (), 0x004C2590);
+	DEFINE_FUNCTION(mgResourceInjectionInterval, void, (char* name, featom* atom), 0x004BDE80);
+	DEFINE_FUNCTION(mgResourceLumpSumInterval, void, (char* name, featom* atom), 0x004BE090);
+	DEFINE_FUNCTION(mistrailUpdate, void, (missiletrail* trail, vector* position), 0x005A4D90);
+	DEFINE_FUNCTION(opOptionsAccept, void, (char* name, featom* atom), 0x004D7E30);
+	DEFINE_FUNCTION(rinDeviceCRC, udword, (), 0x0057DCF0);
+	DEFINE_FUNCTION(rinEnumDisplayModes_cb, HRESULT, (LPDDSURFACEDESC2 ddsd, LPVOID lpContext), 0x0057E5C0);
+	DEFINE_FUNCTION(rinEnumPrimaryDisplayModes_cb, HRESULT, (LPDDSURFACEDESC2 ddsd, LPVOID lpContext), 0x0057E710);
+	DEFINE_FUNCTION(rinSortModes, void, (rdevice* dev), 0x0057DE00);
+	DEFINE_FUNCTION(rmCanBuildShip, bool32, (Player* player, ShipType type, int p3), 0x004F2630);
+	DEFINE_FUNCTION(rmUpdateResearch, void, (), 0x004F2A20);
+	DEFINE_FUNCTION(SaveGame, bool32, (const char* filename), 0x004FDAF0);
+	DEFINE_FUNCTION(scriptSet, void, (const char* directory, const char* filename, scriptEntry info[]), 0x00526420);
+	DEFINE_FUNCTION(scriptSetFramesCB, void, (char* directory, char* field, void* dataToFillIn), 0x0053AC70);
+	DEFINE_FUNCTION(scriptSetTweakableGlobals, void, (), 0x00527820);
+	DEFINE_FUNCTION(scriptSetUdwordCB, void, (char* directory, char* field, void* dataToFillIn), 0x00525C20);
+	DEFINE_FUNCTION(ShipTypeToStr, char*, (ShipType shiptype), 0x004D6BC0);
+	DEFINE_FUNCTION(selNumShipsInSelection, int, (MaxSelection* sel, ShipType shipType), 0x005118D0);
+	DEFINE_FUNCTION(singlePlayerGameUpdate, void, (), 0x005197D0);
+	DEFINE_FUNCTION(soundStartDSound, sdword, (HWND hWnd), 0x005808E0);
+	DEFINE_FUNCTION(speechEventQueue, sdword, (void* object, sdword event, sdword var, sdword variation, sdword actornum, sdword playernum, sdword linkto, real32 timeout, sword volume), 0x00522560);
+	DEFINE_FUNCTION(trailSegmentsRead, void, (char* directory, char* field, void* dataToFillIn), 0x005A7A70);
+	DEFINE_FUNCTION(trCramRAMComputeAndScale, void, (), 0x00589A50);
+	DEFINE_FUNCTION(uicTextBufferResize, void, (textentryhandle entry, sdword size), 0x005388F0);
+	DEFINE_FUNCTION(uicTextEntryInit, void, (textentryhandle entry, udword flags), 0x00538A30);
+	DEFINE_FUNCTION(uicTextEntrySet, void, (textentryhandle entry, char* text, sdword cursorPos), 0x00538980);
+	DEFINE_FUNCTION(univBulletCollidedWithTarget, void, (int unknown, SpaceObjRotImpTarg* target, StaticHeader* targetstaticheader, Bullet* bullet, real32 collideLineDist, sdword collSide), 0x00546A20);
+	DEFINE_FUNCTION(univCheckRegrowResources, void, (), 0x0054C270);
+	DEFINE_FUNCTION(univUpdate, bool32, (real32 phystimeelapsed), 0x0054C3F0);
+	DEFINE_FUNCTION(univUpdateReset, void, (), 0x0054ACD0);
+	DEFINE_FUNCTION(UpdateMidLevelHyperspacingShips, void, (), 0x00519700);
 }
 
 // Global/static variables in the game executable.
@@ -269,4 +231,10 @@ namespace Globals
 	inline char* minorBuildVersion = (char*)0x008B8860;
 
 	inline sdword* dbgInt3Enabled = (sdword*)0x0087922C;
+
+	// AI
+	inline GamePointer<AIPlayer> aiCurrentAIPlayer(0x008DF604);
+	inline AISTeamEntry* aisTeams = (AISTeamEntry*)0x008DFD60; // Array, NUM_AIS_TEAMS
+	inline udword* dword_A2D9B4 = (udword*)0x00A2D9B4;
+	inline bool32* aiHasSupportModuleQueued = (bool32*)0x00A2D994;
 }

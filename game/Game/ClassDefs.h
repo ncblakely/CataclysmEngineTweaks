@@ -7,5 +7,8 @@
 #define CLASS_Fighter		6
 #define CLASS_Resource		7
 #define CLASS_NonCombat		8
-#define NUM_CLASSES		(CLASS_NonCombat + 1)
+#define CLASS_MonsterShip	9
+#define CLASS_Component	    10
+#define CLASS_Micro	        11
+#define NUM_CLASSES		(CLASS_Micro + 1)
 

@@ -41,5 +41,9 @@ Config Config::FromFile(const char* path)
 	config.ForceWaveOut = reader.GetBoolean("Audio", "ForceWaveOut", false);
 	config.DisableEqualizer = reader.GetBoolean("Audio", "DisableEqualizer", false);
 
+	////////////////////////////////////////////////////////////////
+	// AI section
+	config.EnableNewAI = reader.GetBoolean("AI", "EnableNewAI", false);
+
 	return config;
 }

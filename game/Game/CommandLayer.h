@@ -132,6 +132,8 @@ extern bool enableTextFeedback;
     Functions:
 =============================================================================*/
 
+#if 0
+
 // Initializing, Closing, Processing
 void clInit(CommandLayer *comlayer);
 void clClose(CommandLayer *comlayer);
@@ -308,6 +310,8 @@ void protectShip(Ship *ship,Ship *protectThisShip,bool passiveAttacked);
 /*=============================================================================
     Data:
 =============================================================================*/
+
+#endif
 
 #endif //___COMMAND_LAYER_H
 
