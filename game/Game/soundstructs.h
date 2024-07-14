@@ -53,6 +53,9 @@ typedef struct
 	sword	lookup[];
 } SFXLUT;
 
+static_assert(offsetof(SFXLUT, numvariations) == 0x8);
+static_assert(offsetof(SFXLUT, numevents) == 0xA);
+
 
 typedef struct
 {
