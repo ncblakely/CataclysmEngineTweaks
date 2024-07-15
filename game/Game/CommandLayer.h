@@ -106,6 +106,8 @@ typedef struct CommandToDo
     void *updatedPing;                      //what ping it was last updated for
 } CommandToDo;
 
+// @CATA: Size is now 0x330
+
 typedef struct CommandLayer
 {
     LinkedList todolist;

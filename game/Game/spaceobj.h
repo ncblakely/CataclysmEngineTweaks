@@ -691,6 +691,7 @@ typedef struct ShipStaticInfo
 } ShipStaticInfo;
 
 static_assert(offsetof(ShipStaticInfo, shipclass) == 0x1E8);
+static_assert(offsetof(ShipStaticInfo, canReceiveShipsForRetire) == 0x1F0);
 
 typedef struct
 {
@@ -1262,7 +1263,7 @@ typedef struct ShipID
 #define SPECIAL_Finished_Resource                   0x00004000  //flag indicates when a resource collector has just finished collecting resources from one particular resource (computer player specific)
 #define SPECIAL_Resourcing                          0x00008000  //flag indicates when a resource collector has started resourcing - computer player specific
 #define SPECIAL_SinglePlayerInParade                0x00010000
-#define SPECIAL_rowGettingOutOfWay                  0x00020000
+#define SPECIAL_rowGettingOutOfWay                  0x00020000 // @CATA: This is likely 0x00010000 now
 #define SPECIAL_ATTACKMOVECANCEL                    0x00040000
 #define SPECIAL_FriendlyStatus                      0x00080000  //set by KAS - player's ships don't autoretaliate against this ship.  Also allows you to dock with them.
 #define SPECIAL_IsASalvager                         0x00100000  //used by junkyard dawg and salcap corvette...elminates double checks of the ship types!

@@ -235,6 +235,7 @@ namespace Globals
 	// AI
 	inline GamePointer<AIPlayer> aiCurrentAIPlayer(0x008DF604);
 	inline AISTeamEntry* aisTeams = (AISTeamEntry*)0x008DFD60; // Array, NUM_AIS_TEAMS
+	inline bool32* aiHasExternalConstruction = (bool32*)0x00A2D984;
 	inline udword* dword_A2D9B4 = (udword*)0x00A2D9B4;
 	inline bool32* aiHasSupportModuleQueued = (bool32*)0x00A2D994;
 }

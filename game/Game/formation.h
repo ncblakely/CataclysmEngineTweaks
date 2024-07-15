@@ -54,21 +54,21 @@ typedef udword TypeOfFormation;
 typedef struct
 {
     TypeOfFormation formationtype;
-    bool formationLocked;            //flag indicating status of formation
+    bool32 formationLocked;            //flag indicating status of formation
     matrix coordsys;
     //fix later to make these bit masks
     sdword tacticalState;            //loose or tight
     real32 tacticsUpdate;            //time formation was updated..so it is only updated once per univupdate
-    bool flipselectionfixed;        //flag to indicate a certain state of the formation
-    bool needFix;                   //another state flag for formation
-    bool enders;                    //flag set if formation has been 'modified' to include target at center...should fix later and put in sphere specifics
+    bool32 flipselectionfixed;        //flag to indicate a certain state of the formation
+    bool32 needFix;                   //another state flag for formation
+    bool32 enders;                    //flag set if formation has been 'modified' to include target at center...should fix later and put in sphere specifics
     real32 travelvel;               // formation's travel velocity
     real32 percentmaxspeed;         // how much error is in formation positioning
     bool16 flagTravelSlowestShip;
     bool16 doneInitialAttack;
     udword sortorder;
     //for the tactical overlay
-    bool pulse;
+    bool32 pulse;
     sdword flipState;               //variable used to determine that flipped state of the formation <if it has been flipped or not during a combat turnaround>
     void *formationSpecificInfo;    // if you use this, first sdword of custom structure should be size of structure
 //    bool formAroundProtectedShip;
