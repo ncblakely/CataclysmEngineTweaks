@@ -4,7 +4,8 @@
 #include "AIPlayer.h"
 #include "AISkirmish.h"
 
-#define MAX_SUPPORT_MODULES 12
+#define CARRIER_MAX_SUPPORT_MODULES 6
+#define MOTHERSHIP_MAX_SUPPORT_MODULES 12
 
 void aisFleetUpdate()
 {
@@ -19,7 +20,7 @@ void aisFleetUpdate()
 		if (player->race == RACE_Beast)
 		{
 			udword supportModuleCount = aisTeams[AISTeamType::MothershipSupport].team.teamsize;
-			if (aisTeams[AISTeamType::Mothership].team.teamsize > 0 && supportModuleCount < MAX_SUPPORT_MODULES && !*aiHasSupportModuleQueued)
+			if (aisTeams[AISTeamType::Mothership].team.teamsize > 0 && supportModuleCount < MOTHERSHIP_MAX_SUPPORT_MODULES && !*aiHasSupportModuleQueued)
 			{
 				Ship* leader = aisTeams[AISTeamType::Mothership].team.sel[0].ShipPtr[0];
 
@@ -42,43 +43,43 @@ void aisFleetUpdate()
 			{
 				// Build sect command ship modules
 				if (!selNumShipsInSelection(aisTeams[AISTeamType::Main].team.sel, sMothershipDockingBay) 
-					&& !selNumShipsInSelection(aisTeams[AISTeamType::SMothershipModules].team.sel, sMothershipDockingBay))
+					&& !selNumShipsInSelection(aisTeams[AISTeamType::MothershipModules].team.sel, sMothershipDockingBay))
 				{
 					aisRequestShip(player, sMothershipDockingBay, 0);
 				}
 
 				if (!selNumShipsInSelection(aisTeams[AISTeamType::Main].team.sel, sMothershipMicro)
-					&& !selNumShipsInSelection(aisTeams[AISTeamType::SMothershipModules].team.sel, sMothershipMicro))
+					&& !selNumShipsInSelection(aisTeams[AISTeamType::MothershipModules].team.sel, sMothershipMicro))
 				{
 					aisRequestShip(player, sMothershipMicro, 0);
 				}
 
 				if (!selNumShipsInSelection(aisTeams[AISTeamType::Main].team.sel, sMothershipWeapons)
-					&& !selNumShipsInSelection(aisTeams[AISTeamType::SMothershipModules].team.sel, sMothershipWeapons))
+					&& !selNumShipsInSelection(aisTeams[AISTeamType::MothershipModules].team.sel, sMothershipWeapons))
 				{
 					aisRequestShip(player, sMothershipWeapons, 0);
 				}
 
 				if (!selNumShipsInSelection(aisTeams[AISTeamType::Main].team.sel, sMothershipSpecial)
-					&& !selNumShipsInSelection(aisTeams[AISTeamType::SMothershipModules].team.sel, sMothershipSpecial))
+					&& !selNumShipsInSelection(aisTeams[AISTeamType::MothershipModules].team.sel, sMothershipSpecial))
 				{
 					aisRequestShip(player, sMothershipSpecial, 0);
 				}
 
 				if (!selNumShipsInSelection(aisTeams[AISTeamType::Main].team.sel, sMothershipArmour)
-					&& !selNumShipsInSelection(aisTeams[AISTeamType::SMothershipModules].team.sel, sMothershipArmour))
+					&& !selNumShipsInSelection(aisTeams[AISTeamType::MothershipModules].team.sel, sMothershipArmour))
 				{
 					aisRequestShip(player, sMothershipArmour, 0);
 				}
 
 				if (!selNumShipsInSelection(aisTeams[AISTeamType::Main].team.sel, sMothershipBigGun)
-					&& !selNumShipsInSelection(aisTeams[AISTeamType::SMothershipModules].team.sel, sMothershipBigGun))
+					&& !selNumShipsInSelection(aisTeams[AISTeamType::MothershipModules].team.sel, sMothershipBigGun))
 				{
 					aisRequestShip(player, sMothershipBigGun, 5000);
 				}
 
 				auto supportModuleCount = aisTeams[AISTeamType::MothershipSupport].totalteamsize;
-				if (aisTeams[AISTeamType::Mothership].totalteamsize > 0 && supportModuleCount < MAX_SUPPORT_MODULES && !*aiHasSupportModuleQueued)
+				if (aisTeams[AISTeamType::Mothership].totalteamsize > 0 && supportModuleCount < MOTHERSHIP_MAX_SUPPORT_MODULES && !*aiHasSupportModuleQueued)
 				{
 					Ship* leader = aisTeams[AISTeamType::Mothership].team.sel[0].ShipPtr[0];
 					if (rmCanBuildShip(player, sMothershipSupport, 1))
@@ -176,5 +177,25 @@ void aisFleetUpdate()
 
 			aisRequestShip(player, shipToBuild, weight);
 		}
+	}
+
+	Ship* carrier1 = aiCarrier1Ship;
+	if (carrier1
+		&& carrier1->playerowner->race == RACE_Sect
+		&& (int)aisTeams[AISTeamType::CarrierSupport1].totalteamsize < CARRIER_MAX_SUPPORT_MODULES
+		&& !*aiHasCarrier1ModuleQueued
+		&& rmCanBuildShip(player, sCarrierSupport, 1))
+	{
+		clWrapCreateShip(&universe->mainCommandLayer, sCarrierSupport, player->race, player->playerIndex, carrier1);
+	}
+
+	Ship* carrier2 = aiCarrier2Ship;
+	if (carrier2
+		&& carrier2->playerowner->race == RACE_Sect
+		&& (int)aisTeams[AISTeamType::CarrierSupport2].totalteamsize < CARRIER_MAX_SUPPORT_MODULES
+		&& !*aiHasCarrier2ModuleQueued
+		&& rmCanBuildShip(player, sCarrierSupport, 1))
+	{
+		clWrapCreateShip(&universe->mainCommandLayer, sCarrierSupport, player->race, player->playerIndex, carrier2);
 	}
 }
