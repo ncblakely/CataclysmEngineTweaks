@@ -4,15 +4,15 @@
 
 constexpr int NUM_AIS_TEAMS = 34;
 
-struct AISTeam
+struct AISTeamSelection
 {
-	MaxSelection sel[10];
-	ubyte unk1[0x78];
+	MaxSelection sel;
+	BYTE unk[0xC];
 };
 
 struct AISTeamEntry
 {
-	AISTeam team;
+	AISTeamSelection selection[10];
 	udword numselections;
 	udword totalteamsize;
 };
