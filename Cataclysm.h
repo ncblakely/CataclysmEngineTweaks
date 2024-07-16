@@ -120,7 +120,7 @@ namespace Instructions
 namespace Functions
 {
 	DEFINE_FUNCTION(aisFleetUpdate, void, (), 0x00431750);
-	DEFINE_FUNCTION(aisRequestShip, void, (Player* player, ShipType shipType, int weight), 0x00431510);
+	DEFINE_FUNCTION(aisRequestShip, void, (Player* player, ShipType shipType, sdword buildCost), 0x00431510);
 	DEFINE_FUNCTION(allianceFormWith, void, (udword playerindex), 0x00420880);
 	DEFINE_FUNCTION(beastMothershipSelfDamage, void, (ShipStaticInfo* shipstatic), 0x005BC900);
 	DEFINE_FUNCTION(clCommandMessage, void, (const char CommandMessage[MAX_MESSAGE_LENGTH], udword flags), 0x004AC820);
@@ -168,6 +168,8 @@ namespace Functions
 	DEFINE_FUNCTION(univUpdate, bool32, (real32 phystimeelapsed), 0x0054C3F0);
 	DEFINE_FUNCTION(univUpdateReset, void, (), 0x0054ACD0);
 	DEFINE_FUNCTION(UpdateMidLevelHyperspacingShips, void, (), 0x00519700);
+	DEFINE_FUNCTION(ranRandomFn, udword, (sdword ranIndex), 0x004EF860);
+	DEFINE_FUNCTION(GetShipStaticInfo, ShipStaticInfo*, (ShipType shiptype), 0x0053EA50);
 }
 
 // Global/static variables in the game executable.
@@ -233,6 +235,19 @@ namespace Globals
 	inline sdword* dbgInt3Enabled = (sdword*)0x0087922C;
 
 	// AI
+	inline udword* dword_8DFC74 = (udword*)0x008DFC74;
+	inline udword* dword_8DFC68 = (udword*)0x008DFC68;
+	inline udword* dword_8DFCFC = (udword*)0x008DFCFC;
+	inline udword* dword_8DFCF8 = (udword*)0x008DFCF8;
+	inline udword* dword_8DFCF4 = (udword*)0x008DFCF4;
+	inline udword* dword_8DFCF0 = (udword*)0x008DFCF0;
+	inline udword* dword_8DFCEC = (udword*)0x008DFCEC;
+	inline udword* dword_8DFD4C = (udword*)0x008DFD4C;
+	inline udword* dword_8DFC6C = (udword*)0x008DFC6C;
+	inline udword* dword_8DFC70 = (udword*)0x008DFC70;
+	inline udword* dword_8DFD18 = (udword*)0x008DFD18;
+	inline udword* dword_8DFC64 = (udword*)0x008DFC64;
+	inline udword* dword_8DFCE8 = (udword*)0x008DFCE8;
 	inline udword* dword_8DFD28 = (udword*)0x008DFD28;
 	inline udword* dword_8DFC9C = (udword*)0x008DFC9C;
 	inline GamePointer<Ship> aiCarrier1Ship(0x008DFC38);
@@ -244,5 +259,6 @@ namespace Globals
 	inline udword* dword_A2D9B4 = (udword*)0x00A2D9B4;
 	inline bool32* aiHasSupportModuleQueued = (bool32*)0x00A2D994;
 	inline bool32* aiHasCarrier2ModuleQueued = (bool32*)0x00A2D9A8;
+	inline scriptStructEntry* ShipStaticScriptTable = (scriptStructEntry*)0x008B2428;
 	
 }

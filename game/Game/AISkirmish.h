@@ -64,7 +64,7 @@ namespace AISTeamType
 		MediumCombat = 8,
 		MediumCombatEnemy = 9,
 
-		Main = 10,
+		Main = 10, // Guessing on the name for this one. Needs more investigation
 
         // sMothershipSpecial
 		// sMothershipEngineering
@@ -131,8 +131,8 @@ namespace AISTeamType
 	};
 }
 
-static_assert(offsetof(AISTeamEntry, numselections) == 0x9D08);
-static_assert(offsetof(AISTeamEntry, totalteamsize) == 0x9D0C);
+ASSERT_OFFSET(AISTeamEntry, numselections, 0x9D08);
+ASSERT_OFFSET(AISTeamEntry, totalteamsize, 0x9D0C);
 static_assert(sizeof(AISTeamEntry) == 0x9D10);
 
 // Check for overflow between the first and last AI team entry in the executable

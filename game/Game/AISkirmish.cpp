@@ -64,6 +64,28 @@ void DumpAITeams()
 	}
 }
 
+inline udword GetUnassignedShipCount(ShipType shipType, udword* queuedCount)
+{
+	using namespace Globals;
+
+	udword shipCount = *queuedCount;
+
+	for (udword i = 0; i < aisTeams[AISTeamType::Main].numselections; i++)
+	{
+		MaxSelection* sel = &aisTeams[AISTeamType::Main].selection[i].sel;
+		for (sdword i = 0; i < sel->numShips; i++)
+		{
+			Ship* ship = sel->ShipPtr[i];
+			if (ship->shiptype == sWorker)
+			{
+				shipCount++;
+			}
+		}
+	}
+
+	return shipCount;
+}
+
 void aisFleetUpdate()
 {
 	using namespace Functions;
@@ -72,7 +94,7 @@ void aisFleetUpdate()
 	Player* player = aiCurrentAIPlayer->player;
 	Ship* playerMothership = player->PlayerMothership;
 
-	DumpAITeams();
+	// DumpAITeams();
 
 	if (playerMothership && playerMothership->staticinfo->shipclass == CLASS_Mothership)
 	{
@@ -170,7 +192,7 @@ void aisFleetUpdate()
 						if (ship->playerowner == player)
 						{
 							ShipStaticInfo* shipstatic = ship->staticinfo;
-							if (shipstatic->canReceiveShipsForRetire)
+							if (shipstatic->externalBuild)
 							{
 								if (shipstatic->shipclass != CLASS_Component)
 								{
@@ -188,25 +210,25 @@ void aisFleetUpdate()
 		if (!hasExternalConstruction)
 		{
 			ShipType shipToBuild = 0;
-			int weight = 0;
+			sdword buildCost = 0;
 			if (player->race == RACE_Beast)
 			{
 				if (rmCanBuildShip(player, bCarrier, RACE_Beast) && (int)aisTeams[AISTeamType::Carrier].totalteamsize < MAX_CARRIERS)
 				{
 					shipToBuild = bCarrier;
-					weight = 2000;
+					buildCost = 2000;
 				}
 				else if (rmCanBuildShip(player, bHeavyCruiser, 1) && player->resourceUnits > 2000)
 				{
 					shipToBuild = bHeavyCruiser;
-					weight = 3000;
+					buildCost = 3000;
 				}
 				else if (rmCanBuildShip(player, bProcessor, 1)
 					&& player->resourceUnits > 1000
 					&& !aisTeams[AISTeamType::Processor].totalteamsize)
 				{
 					shipToBuild = bProcessor;
-					weight = 1000;
+					buildCost = 1000;
 				}
 			}
 			else
@@ -214,27 +236,27 @@ void aisFleetUpdate()
 				if (rmCanBuildShip(player, sCarrier, 1) && (int)aisTeams[AISTeamType::Carrier].totalteamsize < MAX_CARRIERS)
 				{
 					shipToBuild = sCarrier;
-					weight = 2000;
-					aisRequestShip(player, shipToBuild, weight);
+					buildCost = 2000;
+					aisRequestShip(player, shipToBuild, buildCost);
 				}
 				else if (rmCanBuildShip(player, sDreadnought, 1) && player->resourceUnits > 2000)
 				{
 					shipToBuild = sDreadnought;
-					weight = 3000;
+					buildCost = 3000;
 				}
 				else if (rmCanBuildShip(player, sDestroyer, 1) && player->resourceUnits > 1000)
 				{
 					shipToBuild = sDestroyer;
-					weight = 1500;
+					buildCost = 1500;
 				}
 				else if (rmCanBuildShip(player, sProcessor, 1) && player->resourceUnits > 1000 && !aisTeams[AISTeamType::Processor].totalteamsize)
 				{
 					shipToBuild = sProcessor;
-					weight = 1000;
+					buildCost = 1000;
 				}
 			}
 
-			aisRequestShip(player, shipToBuild, weight);
+			aisRequestShip(player, shipToBuild, buildCost);
 		}
 	}
 
@@ -258,47 +280,11 @@ void aisFleetUpdate()
 		clWrapCreateShip(&universe->mainCommandLayer, sCarrierSupport, player->race, player->playerIndex, carrier2);
 	}
 
-	udword workerCount;
-	if (player->race == RACE_Beast)
-	{
-		workerCount = *dword_8DFD28;
+	udword workerCount = aisTeams[AISTeamType::Worker].totalteamsize;
 
-		udword count = aisTeams[AISTeamType::Main].numselections;
-		for (int i = 0; i < count; i++)
-		{
-			MaxSelection* sel = &aisTeams[AISTeamType::Main].selection[i].sel;
-			for (udword i = 0; i < sel->numShips; i++)
-			{
-				Ship* ship = sel->ShipPtr[i];
-				if (ship->shiptype == bWorker)
-				{
-					workerCount++;
-				}
-			}
-		}
-
-		workerCount += aisTeams[AISTeamType::Worker].totalteamsize;
-	}
-	else // RACE_Sect
-	{
-		workerCount = *dword_8DFC9C;
-
-		udword count = aisTeams[AISTeamType::Main].numselections;
-		for (int i = 0; i < count; i++)
-		{
-			MaxSelection* sel = &aisTeams[AISTeamType::Main].selection[i].sel;
-			for (udword i = 0; i < sel->numShips; i++)
-			{
-				Ship* ship = sel->ShipPtr[i];
-				if (ship->shiptype == sWorker)
-				{
-					workerCount++;
-				}
-			}
-		}
-
-		workerCount += aisTeams[AISTeamType::Worker].totalteamsize;
-	}
+	workerCount += player->race == RACE_Beast 
+		? GetUnassignedShipCount(bWorker, dword_8DFD28)
+		: GetUnassignedShipCount(sWorker, dword_8DFC9C);
 
 	udword workerTargetCount;
 	sdword resourceUnits = aiCurrentAIPlayer->player->resourceUnits;
@@ -320,4 +306,292 @@ void aisFleetUpdate()
 	{
 		aisRequestShip(player, workerType, 0);
 	}
+
+	udword reconTargetCount;
+	switch (aiCurrentAIPlayer->aiplayerDifficultyLevel)
+	{
+		case AI_BEG:
+			reconTargetCount = 5;
+			break;
+		case AI_INT:
+			reconTargetCount = 8;
+			break;
+		default: // AI_ADV
+			reconTargetCount = 12;
+			break;
+	}
+
+	udword enemyReconCount = aisTeams[AISTeamType::ReconEnemy].totalteamsize;
+	if (enemyReconCount < reconTargetCount)
+	{
+		reconTargetCount = enemyReconCount;
+	}
+
+	if (aisTeams[AISTeamType::Recon].totalteamsize < reconTargetCount)
+	{
+		udword reconCount =
+			aisTeams[AISTeamType::Recon].totalteamsize;
+
+		reconCount += player->race == RACE_Beast
+			? GetUnassignedShipCount(bRecon, dword_8DFCE8)
+			: GetUnassignedShipCount(sRecon, dword_8DFC64);
+
+		ShipType reconType = player->race == RACE_Sect ? sRecon : bRecon;
+		if (reconTargetCount > reconCount)
+		{
+			aisRequestShip(player, reconType, 50);
+		}
+	}
+
+	if (player->race == RACE_Beast)
+	{
+		udword dfgFrigateTargetCount;
+		switch (aiCurrentAIPlayer->aiplayerDifficultyLevel)
+		{
+			case AI_BEG:
+				dfgFrigateTargetCount = 0;
+				break;
+			case AI_INT:
+				dfgFrigateTargetCount = 1;
+				break;
+			default: // AI_ADV
+				dfgFrigateTargetCount = 2;
+				break;
+		}
+
+		udword dfgFrigateCount = 
+			aisTeams[AISTeamType::DFGFrigate].totalteamsize +
+			GetUnassignedShipCount(bDFGFrigate, dword_8DFD18);
+
+		if (dfgFrigateCount < dfgFrigateTargetCount)
+		{
+			aisRequestShip(player, bDFGFrigate, 2000);
+		}
+	}
+	
+	if (player->race == RACE_Sect)
+	{
+		udword leechTargetCount;
+		switch (aiCurrentAIPlayer->aiplayerDifficultyLevel)
+		{
+			case AI_BEG:
+				leechTargetCount = 0;
+				break;
+			case AI_INT:
+				leechTargetCount = 10;
+				break;
+			default: // AI_ADV
+				leechTargetCount = 20;
+				break;
+		}
+
+		udword leechCount = 
+			aisTeams[AISTeamType::Leech].totalteamsize +
+			GetUnassignedShipCount(sLeech, dword_8DFC70);
+
+		if (leechCount < leechTargetCount)
+		{
+			aisRequestShip(player, sLeech, 100);
+		}
+	}
+
+	if (player->race == RACE_Sect)
+	{
+		udword mimicTargetCount;
+		switch (aiCurrentAIPlayer->aiplayerDifficultyLevel)
+		{
+			case AI_BEG:
+				mimicTargetCount = 0;
+				break;
+			case AI_INT:
+				mimicTargetCount = 0;
+				break;
+			default: // AI_ADV
+				mimicTargetCount = 20;
+				break;
+		}
+
+		// MCV count is not checked here. Original game bug?
+		udword mimicCount = 
+			aisTeams[AISTeamType::Mimic].totalteamsize +
+			GetUnassignedShipCount(sMimic, dword_8DFC6C);
+
+		if (mimicCount < mimicTargetCount)
+		{
+			aisRequestShip(player, sMimic, 150);
+			aisRequestShip(player, sMCV, 300);
+		}
+	}
+
+	if (player->race == RACE_Beast)
+	{
+		udword cruiseMissileTargetCount;
+		switch (aiCurrentAIPlayer->aiplayerDifficultyLevel)
+		{
+			case AI_BEG:
+				cruiseMissileTargetCount = 0;
+				break;
+			case AI_INT:
+				cruiseMissileTargetCount = 0;
+				break;
+			default: // AI_ADV
+				cruiseMissileTargetCount = 10;
+				break;
+		}
+
+		udword cruiseMissileCount = 
+			aisTeams[AISTeamType::CruiseMissile].totalteamsize +
+			GetUnassignedShipCount(bCruiseMissile, dword_8DFD4C);
+
+		if (cruiseMissileCount < cruiseMissileTargetCount)
+		{
+			aisRequestShip(player, bCruiseMissile, 100);
+		}
+	}
+
+	if (aisTeams[AISTeamType::InterceptorEnemy].totalteamsize > 15)
+	{
+		if (player->race == RACE_Beast)
+		{
+			aisRequestShip(player, bMultiBeamFrigate, 800);
+			aisRequestShip(player, bMultiGunCorvette, 400);
+		}
+		else
+		{
+			aisRequestShip(player, sMultiBeamFrigate, 800);
+		}
+
+// LABEL_230:
+
+		udword interceptorTargetCount;
+		switch (aiCurrentAIPlayer->aiplayerDifficultyLevel)
+		{
+			case AI_BEG:
+				interceptorTargetCount = 25;
+				break;
+			case AI_INT:
+				interceptorTargetCount = 35;
+				break;
+			default: // AI_ADV
+				interceptorTargetCount = 60;
+				break;
+		}
+
+		// Why does this return?
+		if (aisTeams[AISTeamType::Interceptor].totalteamsize >= interceptorTargetCount)
+			return;
+
+		udword interceptorCount = aisTeams[AISTeamType::Interceptor].totalteamsize;
+		if (player->race == RACE_Beast)
+		{
+			interceptorCount += GetUnassignedShipCount(bAcolyte, dword_8DFCEC);
+			interceptorCount += GetUnassignedShipCount(bInterceptor, dword_8DFCF0);
+			interceptorCount += GetUnassignedShipCount(bCloakedFighter, dword_8DFCF0);
+			interceptorCount += GetUnassignedShipCount(bAttackBomber, dword_8DFCF8);
+			interceptorCount += GetUnassignedShipCount(bACV, dword_8DFCFC);
+		}
+		else
+		{
+			interceptorCount += GetUnassignedShipCount(sAcolyte, dword_8DFC68);
+			interceptorCount += GetUnassignedShipCount(sACV, dword_8DFC74);
+		}
+
+		if (interceptorCount < interceptorTargetCount)
+		{
+			if (player->race == RACE_Beast)
+			{
+				aisRequestShip(player, bInterceptor, 100);
+
+				if (aiCurrentAIPlayer->aiplayerDifficultyLevel > AI_BEG)
+				{
+					aisRequestShip(player, bAttackBomber, 150);
+					aisRequestShip(player, bCloakedFighter, 150);
+				}
+
+				if (aiCurrentAIPlayer->aiplayerDifficultyLevel > AI_INT)
+				{
+					aisRequestShip(player, bAcolyte, 150);
+					aisRequestShip(player, bACV, 300);
+				}
+			}
+			else // RACE_Sect
+			{
+				aisRequestShip(player, sAcolyte, 150);
+				if (aiCurrentAIPlayer->aiplayerDifficultyLevel > AI_BEG)
+				{
+					aisRequestShip(player, sACV, 300);
+				}
+			}
+		}
+
+		return;
+	}
+
+	bool32 v82;
+	ShipType mediumShipToBuild = -1;
+	if (player->race == RACE_Beast)
+	{
+		if (!rmCanBuildShip(player, bHeavyCruiser, 1 || *aiHasExternalConstruction))
+		{
+			switch (ranRandomFn(6) % 7)
+			{
+				case 0:
+					mediumShipToBuild = bHeavyCorvette;
+					break;
+				case 1:
+					mediumShipToBuild = bHiveFrigate;
+					break;
+				case 2:
+				case 3:
+					mediumShipToBuild = bIonArrayFrigate;
+					break;
+				case 4:
+					mediumShipToBuild = bRammingFrigate;
+					break;
+				case 5:
+					mediumShipToBuild = bCruiseMissile;
+					break;
+				case 6:
+					mediumShipToBuild = bMissileCorvette;
+					break;
+				default:
+					return; // FIXME
+			}
+		}
+		else
+		{
+			v82 = true;
+		}
+	}
+	else
+	{
+		if (!rmCanBuildShip(player, sDreadnought, 1) && !rmCanBuildShip(player, sDestroyer, 1) || *aiHasExternalConstruction)
+		{
+			switch (ranRandomFn(6) % 6)
+			{
+				case 0:
+					mediumShipToBuild = sRammingFrigate;
+					break;
+				case 1:
+				case 2:
+				case 3:
+				case 4:
+				case 5:
+					mediumShipToBuild = sHiveFrigate;
+					break;
+				default:
+					return; // FIXME
+			}
+		}
+		else
+		{
+			v82 = true;
+		}
+	}
+
+	assert(mediumShipToBuild >= 0);
+	ShipStaticInfo* shipstatic = GetShipStaticInfo(mediumShipToBuild);
+	aisRequestShip(player, mediumShipToBuild, shipstatic->buildCost);
+
+	// FIXME: Add scuttle/kamikaze logic
 }
