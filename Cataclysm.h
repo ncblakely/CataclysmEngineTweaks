@@ -25,10 +25,10 @@ template <typename T>
 class GamePointer
 {
 public:
-	GamePointer(unsigned int offset) { m_offset = (T**)offset; }
+	__forceinline explicit GamePointer(unsigned int offset) { m_offset = (T**)offset; }
 
-	T* operator->() const { return *m_offset; }
-	operator T* () const { return *m_offset; }
+	__forceinline T* operator->() const { return *m_offset; }
+	__forceinline operator T* () const { return *m_offset; }
 
 protected:
 	T** m_offset;
@@ -233,6 +233,8 @@ namespace Globals
 	inline sdword* dbgInt3Enabled = (sdword*)0x0087922C;
 
 	// AI
+	inline udword* dword_8DFD28 = (udword*)0x008DFD28;
+	inline udword* dword_8DFC9C = (udword*)0x008DFC9C;
 	inline GamePointer<Ship> aiCarrier1Ship(0x008DFC38);
 	inline GamePointer<Ship> aiCarrier2Ship(0x008DFC3C);
 	inline GamePointer<AIPlayer> aiCurrentAIPlayer(0x008DF604);

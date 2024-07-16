@@ -17,17 +17,30 @@ scriptEntry AISkirmishTweaks[] =
 	endEntry
 };
 
+static Functions::fn_aisFleetUpdate orig_aisFleetUpdate = nullptr;
+static void aisFleetUpdateDebug()
+{
+	DumpAITeams();
+	orig_aisFleetUpdate();
+}
+
 static void CreateAndEnableHooks(Assembler& assembler, Config& config)
 {
 	void* _discard = nullptr;
 
-	CreateAndEnableHook(Functions::aisFleetUpdate, aisFleetUpdate, &_discard);
+	if (g_Config.EnableNewAI)
+	{
+		CreateAndEnableHook(Functions::aisFleetUpdate, aisFleetUpdate, &_discard);
+	}
+#ifdef _DEBUG
+	else
+	{
+		CreateAndEnableHook(Functions::aisFleetUpdate, aisFleetUpdateDebug, &orig_aisFleetUpdate);
+	}
+#endif
 }
 
 void ApplyAIPatches(Assembler& assembler, Config& config)
 {
-	if (g_Config.EnableNewAI)
-	{
-		CreateAndEnableHooks(assembler, config);
-	}
+	CreateAndEnableHooks(assembler, config);
 }

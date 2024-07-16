@@ -3,16 +3,19 @@
 // Reverse engineered structures for Cataclysm's new skirmish AI
 
 constexpr int NUM_AIS_TEAMS = 34;
+constexpr int MAX_TEAM_SELECTIONS = 10;
 
 struct AISTeamSelection
 {
 	MaxSelection sel;
-	BYTE unk[0xC];
+	udword unk1;
+	udword unk2;
+	udword unk3;
 };
 
 struct AISTeamEntry
 {
-	AISTeamSelection selection[10];
+	AISTeamSelection selection[MAX_TEAM_SELECTIONS];
 	udword numselections;
 	udword totalteamsize;
 };
@@ -39,7 +42,7 @@ namespace AISTeamType
 		// sMultiBeamFrigate
 		// bMultiGunCorvette
 		// bMultiBeamFrigate
-		AntiFighter = 4, // Multibeam, multigun corvette
+		AntiFighter = 4,
 		AntiFighterEnemy = 5,
 
 		// sSentinel
@@ -74,8 +77,8 @@ namespace AISTeamType
 		MothershipModules = 11,
 
 		// sCarrierSupport
-		CarrierSupport1 = 12,
-		CarrierSupport2 = 13,
+		CarrierSupport1 = 12, // For carrier 1
+		CarrierSupport2 = 13, // For carrier 2
 
 		// sMothershipSupport
 		// bMothershipSupport
@@ -106,6 +109,7 @@ namespace AISTeamType
 		MimicEnemy1 = 24, // sub_53F9F0 determines which enemy group is assigned
 		MimicEnemy2 = 25,
 
+		// bCruiseMissile
 		CruiseMissile = 26,
 
 		// sLeech
@@ -130,6 +134,8 @@ namespace AISTeamType
 static_assert(offsetof(AISTeamEntry, numselections) == 0x9D08);
 static_assert(offsetof(AISTeamEntry, totalteamsize) == 0x9D0C);
 static_assert(sizeof(AISTeamEntry) == 0x9D10);
+
+// Check for overflow between the first and last AI team entry in the executable
 static_assert(sizeof(AISTeamEntry)* NUM_AIS_TEAMS == (0xA2D980 - 0x008DFD60), "AI team info overflow");
 
 void DumpAITeams();
