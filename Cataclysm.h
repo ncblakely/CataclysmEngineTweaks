@@ -110,10 +110,6 @@ namespace Instructions
 	DEFINE_ADDRESS(WindowProc_NormalKeyUpEvent, 0x00562943);
 
 	DEFINE_ADDRESS(allianceFormWith_UniverseUpdatePeriod, 0x0042090D);
-
-	DEFINE_ADDRESS(caiProcessBuildShips_CheckBuildMimic, 0x00431F0C);
-	DEFINE_ADDRESS(caiProcessBuildShips_DoBuildMimic, 0x00431F14);
-	DEFINE_ADDRESS(caiProcessBuildShips_DontBuildMimic, 0x00431F7B);
 }
 
 // Addresses of game functions.
@@ -170,6 +166,8 @@ namespace Functions
 	DEFINE_FUNCTION(UpdateMidLevelHyperspacingShips, void, (), 0x00519700);
 	DEFINE_FUNCTION(ranRandomFn, udword, (sdword ranIndex), 0x004EF860);
 	DEFINE_FUNCTION(GetShipStaticInfo, ShipStaticInfo*, (ShipType shiptype), 0x0053EA50);
+	DEFINE_FUNCTION(clWrapSetKamikaze, void, (CommandLayer* comlayer, SelectCommand* selectcom), 0x00453820);
+	DEFINE_FUNCTION(clWrapScuttle, void, (CommandLayer* comlayer, SelectCommand* selectcom), 0x00453390);
 }
 
 // Global/static variables in the game executable.
@@ -212,6 +210,8 @@ namespace Globals
 
 	inline udword* opDeviceCRC = (udword*)0x00A4CC20;
 
+	inline scriptStructEntry* ShipStaticScriptTable = (scriptStructEntry*)0x008B2428;
+
 	// Resolution/renderer selection
 	inline char* glToSelect = (char*)0x008B8644;
 	inline sdword* MAIN_WindowWidth = (sdword*)0x008B85E8;
@@ -242,9 +242,7 @@ namespace Globals
 	inline AISTeamEntry* aisTeams = (AISTeamEntry*)0x008DFD60; // Array, NUM_AIS_TEAMS
 	inline bool32* aiHasExternalConstruction = (bool32*)0x00A2D984;
 	inline bool32* aiHasCarrier1ModuleQueued = (bool32*)0x00A2D98C;
-	inline udword* dword_A2D9B4 = (udword*)0x00A2D9B4;
 	inline bool32* aiHasSupportModuleQueued = (bool32*)0x00A2D994;
 	inline bool32* aiHasCarrier2ModuleQueued = (bool32*)0x00A2D9A8;
-	inline scriptStructEntry* ShipStaticScriptTable = (scriptStructEntry*)0x008B2428;
-	
+	inline sdword* aiSupportUnitsPending = (sdword*)0x00A2D9B4;
 }

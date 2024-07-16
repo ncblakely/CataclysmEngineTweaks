@@ -111,7 +111,9 @@ typedef struct Player
 {
     Ship *PlayerMothership;
     sdword resourceUnits;
-    udword unk1[3]; // @CATA: Unsure of the position of this
+    udword unk;
+    sdword supportUnitsMax;
+    sdword supportUnitsUsed;
     ShipRace race;
     PlayerState playerState;
     struct AIPlayer *aiPlayer;      // if non-null, then player has a computer AI Player
@@ -133,14 +135,17 @@ typedef struct Player
 // TODO: This is significantly larger in Cataclysm. Needs reversing.
 // static_assert(sizeof(Player) == 0x6530u);
 
-static_assert(offsetof(Player, resourceUnits) == 0x4);
-static_assert(offsetof(Player, race) == 0x14);
-static_assert(offsetof(Player, aiPlayer) == 0x1C);
-static_assert(offsetof(Player, playerIndex) == 0x24);
-static_assert(offsetof(Player, timeMoShipAttacked) == 0x28);
-static_assert(offsetof(Player, totalships) == 0x2C);
-static_assert(offsetof(Player, shiptotals) == 0x30);
-static_assert(offsetof(Player, classtotals) == 0x274);
+ASSERT_OFFSET(Player, PlayerMothership, 0x0);
+ASSERT_OFFSET(Player, resourceUnits, 0x4);
+ASSERT_OFFSET(Player, supportUnitsMax, 0xC);
+ASSERT_OFFSET(Player, supportUnitsUsed, 0x10);
+ASSERT_OFFSET(Player, race, 0x14);
+ASSERT_OFFSET(Player, aiPlayer, 0x1C);
+ASSERT_OFFSET(Player, playerIndex, 0x24);
+ASSERT_OFFSET(Player, timeMoShipAttacked, 0x28);
+ASSERT_OFFSET(Player, totalships, 0x2C);
+ASSERT_OFFSET(Player, shiptotals, 0x30);
+ASSERT_OFFSET(Player, classtotals, 0x274);
 
 typedef struct
 {

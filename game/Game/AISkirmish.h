@@ -8,9 +8,7 @@ constexpr int MAX_TEAM_SELECTIONS = 10;
 struct AISTeamSelection
 {
 	MaxSelection sel;
-	udword unk1;
-	udword unk2;
-	udword unk3;
+	vector center;
 };
 
 struct AISTeamEntry

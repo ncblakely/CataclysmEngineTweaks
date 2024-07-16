@@ -699,7 +699,7 @@ typedef struct ShipStaticInfo
     real32 leechHPsPerSecond;
 
     real32 beastAttackCascadeCost;
-    udword beastAttacksRequired;
+    sdword beastAttacksRequired;
     ShipType beastAttackConvertTo;
 
     real32 Overlay_Selection_Scalar;
@@ -1210,11 +1210,12 @@ typedef struct
     PosInfo posinfo;
 } SpaceObj;
 
-static_assert(offsetof(SpaceObj, currentLOD) == 0x34);
-static_assert(offsetof(SpaceObj, cameraDistanceSquared) == 0x40);
-static_assert(offsetof(SpaceObj, cameraDistanceVector.x) == 0x44);
-static_assert(offsetof(SpaceObj, cameraDistanceVector.y) == 0x48);
-static_assert(offsetof(SpaceObj, cameraDistanceVector.z) == 0x4C);
+ASSERT_OFFSET(SpaceObj, currentLOD, 0x34);
+ASSERT_OFFSET(SpaceObj, cameraDistanceSquared, 0x40);
+ASSERT_OFFSET(SpaceObj, cameraDistanceVector.x, 0x44);
+ASSERT_OFFSET(SpaceObj, cameraDistanceVector.y, 0x48);
+ASSERT_OFFSET(SpaceObj, cameraDistanceVector.z, 0x4C);
+ASSERT_OFFSET(SpaceObj, posinfo, 0x58);
 
 typedef SpaceObj *SpaceObjPtr;
 

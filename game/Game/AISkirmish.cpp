@@ -32,14 +32,20 @@
 using namespace Functions;
 using namespace Globals;
 
-std::string DumpSelection(const MaxSelection& sel, int selectionIndex)
+std::string DumpSelection(const AISTeamSelection& selection, int selectionIndex)
 {
 	std::string output = "\n";
 
+	const MaxSelection& sel = selection.sel;
+
 	output += fmt::format(
-		"\t Selection {} | Num ships: {}\n",
+		"\t Selection {} | Num ships: {}\n"
+		"\t Center position: {} {} {}\n",
 		selectionIndex,
-		sel.numShips);
+		sel.numShips,
+		selection.center.x,
+		selection.center.y,
+		selection.center.z);
 
 	output += "\n";
 	for (int shipIndex = 0; shipIndex < sel.numShips; shipIndex++)
@@ -47,10 +53,12 @@ std::string DumpSelection(const MaxSelection& sel, int selectionIndex)
 		Ship* ship = sel.ShipPtr[shipIndex];
 
 		output += fmt::format(
-			"\t\t Ship {}, type '{}', class {}\n\n",
+			"\t\t Ship {} ({}): Position {} {} {} \n\n",
 			shipIndex,
 			ShipTypeToStr(ship->shiptype),
-			ship->staticinfo->shipclass);
+			ship->posinfo.position.x,
+			ship->posinfo.position.y, 
+			ship->posinfo.position.z);
 	}
 
 	return output;
@@ -75,7 +83,7 @@ void DumpAITeams()
 			const AISTeamSelection& selection = teamEntry.selection[selectionIndex];
 
 			const MaxSelection& sel = selection.sel;
-			message += DumpSelection(sel, selectionIndex);
+			message += DumpSelection(selection, selectionIndex);
 
 		}
 
@@ -477,8 +485,11 @@ void aisFleetUpdate()
 		}
 	}
 
-	if (aisTeams[AISTeamType::InterceptorEnemy].totalteamsize > 15)
+	udword enemyInterceptorCount = aisTeams[AISTeamType::InterceptorEnemy].totalteamsize;
+	if (enemyInterceptorCount > 15)
 	{
+		aiplayerLog("Want to build more interceptors, enemy has {}", enemyInterceptorCount);
+
 		if (player->race == RACE_Beast)
 		{
 			RequestShip(player, bMultiBeamFrigate, 800);
@@ -489,7 +500,7 @@ void aisFleetUpdate()
 			RequestShip(player, sMultiBeamFrigate, 800);
 		}
 
-// LABEL_230:
+LABEL_230:
 
 		udword interceptorTargetCount;
 		switch (aiCurrentAIPlayer->aiplayerDifficultyLevel)
@@ -507,7 +518,10 @@ void aisFleetUpdate()
 
 		// Why does this return?
 		if (aisTeams[AISTeamType::Interceptor].totalteamsize >= interceptorTargetCount)
+		{
+			aiplayerLog("Already have enough interceptors, have {}", aisTeams[AISTeamType::Interceptor].totalteamsize);
 			return;
+		}
 
 		udword interceptorCount = aisTeams[AISTeamType::Interceptor].totalteamsize;
 		if (player->race == RACE_Beast)
@@ -555,11 +569,11 @@ void aisFleetUpdate()
 		return;
 	}
 
-	bool32 v82;
+	bool32 couldNotBuildMedium = false;
 	ShipType mediumShipToBuild = 0;
 	if (player->race == RACE_Beast)
 	{
-		if (!rmCanBuildShip(player, bHeavyCruiser, 1 || *aiHasExternalConstruction))
+		if (!rmCanBuildShip(player, bHeavyCruiser, 1) || *aiHasExternalConstruction)
 		{
 			switch (ranRandomFn(6) % 7)
 			{
@@ -586,13 +600,15 @@ void aisFleetUpdate()
 					return; // FIXME
 			}
 
+			aiplayerLog("Building a medium ship");
+
 			assert(mediumShipToBuild >= 0);
 			ShipStaticInfo* shipstatic = GetShipStaticInfo(mediumShipToBuild);
 			RequestShip(player, mediumShipToBuild, shipstatic->buildCost);
 		}
 		else
 		{
-			v82 = true;
+			couldNotBuildMedium = true;
 		}
 	}
 	else
@@ -615,15 +631,43 @@ void aisFleetUpdate()
 					return; // FIXME
 			}
 
+			aiplayerLog("Building a medium ship");
+
 			assert(mediumShipToBuild >= 0);
 			ShipStaticInfo* shipstatic = GetShipStaticInfo(mediumShipToBuild);
 			RequestShip(player, mediumShipToBuild, shipstatic->buildCost);
 		}
 		else
 		{
-			v82 = true;
+			couldNotBuildMedium = true;
 		}
 	}
 
-	// FIXME: Add scuttle/kamikaze logic
+	if ((player->supportUnitsUsed + *aiSupportUnitsPending + 50) <= player->supportUnitsMax
+		&& !couldNotBuildMedium)
+	{
+		aiplayerLog("Building more interceptors. I have {} support units used, {} pending, and {} max", 
+			player->supportUnitsUsed, 
+			*aiSupportUnitsPending, 
+			player->supportUnitsMax);
+
+		// TODO: Should be possible to eliminate this goto
+		goto LABEL_230;
+	}
+
+	if (aisTeams[AISTeamType::Interceptor].numselections > 0)
+	{
+		if (aiCurrentAIPlayer->aiplayerDifficultyLevel >= AI_ADV)
+		{
+			aiplayerLog("Setting interceptor group 0 to kamikaze");
+
+			clWrapSetKamikaze(&universe->mainCommandLayer, (SelectCommand*)&aisTeams[AISTeamType::Interceptor].selection->sel);
+		}
+		else
+		{
+			aiplayerLog("Scuttling interceptor groups 0, 1");
+			clWrapScuttle(&universe->mainCommandLayer, (SelectCommand*)&aisTeams[AISTeamType::Interceptor].selection->sel);
+			clWrapScuttle(&universe->mainCommandLayer, (SelectCommand*)&aisTeams[AISTeamType::Interceptor].selection->sel);
+		}
+	}
 }
