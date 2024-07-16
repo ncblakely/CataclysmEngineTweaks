@@ -248,8 +248,8 @@ namespace Globals
 	inline udword* dword_8DFD18 = (udword*)0x008DFD18;
 	inline udword* dword_8DFC64 = (udword*)0x008DFC64;
 	inline udword* dword_8DFCE8 = (udword*)0x008DFCE8;
-	inline udword* dword_8DFD28 = (udword*)0x008DFD28;
-	inline udword* dword_8DFC9C = (udword*)0x008DFC9C;
+	inline udword* bWorkerQueueCount = (udword*)0x008DFD28;
+	inline udword* sWorkerQueueCount = (udword*)0x008DFC9C;
 	inline GamePointer<Ship> aiCarrier1Ship(0x008DFC38);
 	inline GamePointer<Ship> aiCarrier2Ship(0x008DFC3C);
 	inline GamePointer<AIPlayer> aiCurrentAIPlayer(0x008DF604);
