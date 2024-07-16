@@ -83,11 +83,12 @@ void DumpAITeams()
 	}
 }
 
-static inline udword GetUnassignedShipCount(ShipType shipType, udword* queuedCount)
+static inline udword GetUnassignedShipCount(ShipType shipType)
 {
-	using namespace Globals;
+	assert(shipType >= STD_FIRST_SHIP && shipType <= STD_LAST_SHIP);
 
-	udword shipCount = *queuedCount;
+	// Get the number of ships under construction
+	udword shipCount = aiBuildingShip[shipType];
 
 	for (udword i = 0; i < aisTeams[AISTeamType::Main].numselections; i++)
 	{
@@ -102,7 +103,7 @@ static inline udword GetUnassignedShipCount(ShipType shipType, udword* queuedCou
 		}
 	}
 
-	aiplayerLog("Unassigned ship count for {}: {}, queued was {}", ShipTypeToStr(shipType), shipCount, *queuedCount);
+	aiplayerLog("Unassigned ship count for {}: {}, queued was {}", ShipTypeToStr(shipType), shipCount, aiBuildingShip[shipType]);
 
 	return shipCount;
 }
@@ -310,8 +311,8 @@ void aisFleetUpdate()
 	udword workerCount = aisTeams[AISTeamType::Worker].totalteamsize;
 
 	workerCount += player->race == RACE_Beast 
-		? GetUnassignedShipCount(bWorker, bWorkerQueueCount)
-		: GetUnassignedShipCount(sWorker, sWorkerQueueCount);
+		? GetUnassignedShipCount(bWorker)
+		: GetUnassignedShipCount(sWorker);
 
 	udword workerTargetCount;
 	sdword resourceUnits = aiCurrentAIPlayer->player->resourceUnits;
@@ -360,8 +361,8 @@ void aisFleetUpdate()
 			aisTeams[AISTeamType::Recon].totalteamsize;
 
 		reconCount += player->race == RACE_Beast
-			? GetUnassignedShipCount(bRecon, dword_8DFCE8)
-			: GetUnassignedShipCount(sRecon, dword_8DFC64);
+			? GetUnassignedShipCount(bRecon)
+			: GetUnassignedShipCount(sRecon);
 
 		ShipType reconType = player->race == RACE_Sect ? sRecon : bRecon;
 		if (reconTargetCount > reconCount)
@@ -388,7 +389,7 @@ void aisFleetUpdate()
 
 		udword dfgFrigateCount = 
 			aisTeams[AISTeamType::DFGFrigate].totalteamsize +
-			GetUnassignedShipCount(bDFGFrigate, dword_8DFD18);
+			GetUnassignedShipCount(bDFGFrigate);
 
 		if (dfgFrigateCount < dfgFrigateTargetCount)
 		{
@@ -414,7 +415,7 @@ void aisFleetUpdate()
 
 		udword leechCount = 
 			aisTeams[AISTeamType::Leech].totalteamsize +
-			GetUnassignedShipCount(sLeech, dword_8DFC70);
+			GetUnassignedShipCount(sLeech);
 
 		if (leechCount < leechTargetCount)
 		{
@@ -441,7 +442,7 @@ void aisFleetUpdate()
 		// MCV count is not checked here. Original game bug?
 		udword mimicCount = 
 			aisTeams[AISTeamType::Mimic].totalteamsize +
-			GetUnassignedShipCount(sMimic, dword_8DFC6C);
+			GetUnassignedShipCount(sMimic);
 
 		if (mimicCount < mimicTargetCount)
 		{
@@ -468,7 +469,7 @@ void aisFleetUpdate()
 
 		udword cruiseMissileCount = 
 			aisTeams[AISTeamType::CruiseMissile].totalteamsize +
-			GetUnassignedShipCount(bCruiseMissile, dword_8DFD4C);
+			GetUnassignedShipCount(bCruiseMissile);
 
 		if (cruiseMissileCount < cruiseMissileTargetCount)
 		{
@@ -511,16 +512,16 @@ void aisFleetUpdate()
 		udword interceptorCount = aisTeams[AISTeamType::Interceptor].totalteamsize;
 		if (player->race == RACE_Beast)
 		{
-			interceptorCount += GetUnassignedShipCount(bAcolyte, dword_8DFCEC);
-			interceptorCount += GetUnassignedShipCount(bInterceptor, dword_8DFCF0);
-			interceptorCount += GetUnassignedShipCount(bCloakedFighter, dword_8DFCF4);
-			interceptorCount += GetUnassignedShipCount(bAttackBomber, dword_8DFCF8);
-			interceptorCount += GetUnassignedShipCount(bACV, dword_8DFCFC);
+			interceptorCount += GetUnassignedShipCount(bAcolyte);
+			interceptorCount += GetUnassignedShipCount(bInterceptor);
+			interceptorCount += GetUnassignedShipCount(bCloakedFighter);
+			interceptorCount += GetUnassignedShipCount(bAttackBomber);
+			interceptorCount += GetUnassignedShipCount(bACV);
 		}
 		else
 		{
-			interceptorCount += GetUnassignedShipCount(sAcolyte, dword_8DFC68);
-			interceptorCount += GetUnassignedShipCount(sACV, dword_8DFC74);
+			interceptorCount += GetUnassignedShipCount(sAcolyte);
+			interceptorCount += GetUnassignedShipCount(sACV);
 		}
 
 		if (interceptorCount < interceptorTargetCount)
