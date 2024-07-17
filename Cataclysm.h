@@ -168,6 +168,7 @@ namespace Functions
 	DEFINE_FUNCTION(GetShipStaticInfo, ShipStaticInfo*, (ShipType shiptype), 0x0053EA50);
 	DEFINE_FUNCTION(clWrapSetKamikaze, void, (CommandLayer* comlayer, SelectCommand* selectcom), 0x00453820);
 	DEFINE_FUNCTION(clWrapScuttle, void, (CommandLayer* comlayer, SelectCommand* selectcom), 0x00453390);
+	DEFINE_FUNCTION(clWrapBuildShip, void, (CommandLayer* comlayer, ShipType shipType, ShipRace shipRace, uword playerIndex, ShipPtr creator), 0x00452FA0);
 }
 
 // Global/static variables in the game executable.
