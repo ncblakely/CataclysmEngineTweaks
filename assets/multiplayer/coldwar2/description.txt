@@ -1,0 +1,71 @@
+Description         Soban-Re, you will sit there and you will listen. If you have not yet learned to listen to the advice of those who have fought longer than you and lived, then you are as good as dead and the Soban have no room in our ranks for the dead.
+Description
+Description         Mass battles have a unique advantage to them - you can use the chaos to pick your targets, rebuild your fleet, repair your damaged ships, and bind your wounded. But one-on-one fleet combat is very different. There is no breathing room because your opponent will never have any target other than you. So listen closely Soban-Re - here is my advice on successful single combat.
+Description
+Description         Two go in. One come out. Watch your back.
+
+DescriptionFrench   Soban-Re, vous vous assiérez là et vous écouterez. Si vous n'avez pas encore appris à écouter le conseil de ceux qui ont combattu plus longtemps que vous et ont vécu, alors vous êtes aussi bon que mort et le Soban n'ayez aucune pièce dans nos rangs pour les morts.   
+DescriptionFrench
+DescriptionFrench   Les batailles de masse ont un seul avantage à eux - vous pouvez employer le chaos pour sélectionner vos cibles, reconstruire votre flotte, réparer le votre damaged des bateaux, et lient votre blessé. Mais un-sur-un la flotte le combat est très différent. Il n'y a aucune pièce de respiration parce que votre adversaire n'aura jamais n'importe quelle autre cible autre que vous. Écoutent ainsi étroitement Soban-Re - voici mon conseil sur réussi choisissent le combat. 
+DescriptionFrench
+DescriptionFrench   Deux entrent. On sortent. Observez votre dos.  
+
+DescriptionGerman   Soban-Re, sitzen Sie dort und Sie hören. Wenn Sie nicht noch erlernt haben, zum Rat von denen zu hören, die länger als Sie gekämpft haben und gelebt, dann sind Sie so gut, wie tot und das Soban keinen Raum in unseren Rank für die Toten haben Sie.  
+DescriptionGerman
+DescriptionGerman   Massenschlachten haben einen eindeutigen Vorteil zu ihnen - Sie können das Chaos verwenden, um Ihre Ziele auszuwählen, Ihre Flotte umzubauen, Ihr damaged zu reparieren Schiffe und bindet Ihr verletztes. Aber ein-auf-ein Flotte ist Kampf sehr unterschiedlich. Es gibt keinen atmenraum, weil Ihr Konkurrent nie jedes mögliches andere Ziel anders als Sie hat. So nah hören Soban-Re - ist hier mein Rat auf erfolgreichem single Kampf.
+DescriptionGerman
+DescriptionGerman   Zwei gehen innen. Ein kommen heraus. Überwachen Sie Ihre Rückseite. 
+
+Font            Arial_b12.hff
+Color           255, 200, 0
+DropShadow      Yes
+
+; DEFAULT SETTINGS:
+;type.flag                      BIT1     ; destroy mothership
+;type.flagNeeded                BIT1     ; FLAG: destroy mothership
+
+;type.flag                      BIT2     ; capture capital ship
+;type.flagNeeded                BIT2     ; FLAG: capture capital ship
+
+;type.flag                      BIT3     ; research
+;type.flagNeeded                BIT3     ; FLAG: research
+
+;BIT4 = bounties - Obselete!
+
+;type.flag                      BIT5     ; enable harvesting
+;type.flagNeeded                BIT5     ; FLAG: enable harvesting
+
+;type.flag                      BIT6     ; resouce injections
+;type.flagNeeded                BIT6     ; FLAG: resource injections
+
+;type.flag                      BIT7     ; resouce lump sum
+;type.flagNeeded                BIT7     ; FLAG: resource lump sum
+
+;BIT8 = password protected - only let the user change this
+
+;type.flag                      BIT9     ; unit caps
+;type.flagNeeded                BIT9     ; FLAG: unit caps
+
+;type.flag                      BIT10    ; fuel burn
+;type.flagNeeded                BIT10    ; FLAG: fuel burn
+
+;type.flag                      BIT11    ; allied victory
+;type.flagNeeded                BIT11    ; FLAG: allied victory
+
+;type.flag                      BIT12    ; crates
+;type.flagNeeded                BIT12    ; FLAG: crates
+
+;type.flag                      BIT13    ; carrier only
+;type.flagNeeded                BIT13    ; FLAG: carrier only
+
+;type.flag                      BIT14    ; hyperspace
+;type.flagNeeded                BIT14    ; FLAG: hyperspace
+
+;type.numComputers              0
+;type.startingFleet             1
+;type.bountySize                3        ; turn off bounties (3 = off)
+;type.startingResources         1
+;type.resourceInjectionInterval 10000
+;type.resourceInjectionsAmount  2000
+;type.resourceLumpSumTime       19200
+;type.resourceLumpSumAmount     2000

@@ -21,6 +21,7 @@
 #include "meshanim.h"
 #include "clouds.h"
 #include "nebulae.h"
+#include "timer.h"
 
 /*=============================================================================
     Switches:
@@ -418,6 +419,20 @@ typedef struct
     StaticCollInfo staticCollInfo;
 } StaticHeader;
 
+ASSERT_OFFSET(StaticHeader, LOD, 0x0);
+ASSERT_OFFSET(StaticHeader, pMexData, 0x4);
+ASSERT_OFFSET(StaticHeader, mass, 0x8);
+ASSERT_OFFSET(StaticHeader, momentOfInertiaX, 0xC);
+ASSERT_OFFSET(StaticHeader, momentOfInertiaY, 0x10);
+ASSERT_OFFSET(StaticHeader, momentOfInertiaZ, 0x14);
+ASSERT_OFFSET(StaticHeader, maxvelocity, 0x28);
+ASSERT_OFFSET(StaticHeader, maxrot, 0x2C);
+ASSERT_OFFSET(StaticHeader, immobile, 0x31);
+ASSERT_OFFSET(StaticHeader, rightOfWay, 0x32);
+ASSERT_OFFSET(StaticHeader, staticCollInfo.approxcollmodifier, 0x40);
+ASSERT_OFFSET(StaticHeader, staticCollInfo.avoidcollmodifier, 0x44);
+ASSERT_OFFSET(StaticHeader, staticCollInfo.collspheresize, 0x4C);
+
 typedef struct
 {
     StaticHeader staticheader;
@@ -542,6 +557,7 @@ typedef struct
 typedef struct ShipStaticInfo
 {
     StaticHeader staticheader;
+    BYTE unk[12];
     real32 maxhealth;
     real32 oneOverMaxHealth;
     real32 minCollDamage;
@@ -565,6 +581,7 @@ typedef struct ShipStaticInfo
 /*ship specific stuff below */
     CustShipHeader custshipheader;
     void *custstatinfo;
+    BYTE unk2[64];
     real32 bulletRangeSquared[NUM_TACTICS_TYPES];
     real32 bulletRange[NUM_TACTICS_TYPES];
     real32 minBulletRange[NUM_TACTICS_TYPES];
@@ -573,11 +590,14 @@ typedef struct ShipStaticInfo
     real32 passiveRetaliateZone;
     real32 collSideModifiers[NUM_TRANS_DEGOFFREEDOM];
 
-    BYTE unk[76];
+
     ShipType shiptype;
     ShipRace shiprace;
     ShipClass shipclass;
-
+    udword unk3;
+    bool32 externalBuild;
+    real32 forceFieldProtectionDistanceScale;
+    real32 upgradeTimeModifier;
     bool8 canBuildShips;
     bool8 canReceiveShips;
     bool8 canReceiveResources;
@@ -589,10 +609,12 @@ typedef struct ShipStaticInfo
     bool8 rotateToRetaliate;
     bool8 canReceiveTheseShips[4];
 
-    bool passiveAttackPenaltyExempt;
+    bool32 passiveAttackPenaltyExempt;
 
     bool8 specialActivateIsContinuous;
     bool8 canSpecialBandBoxFriendlies;
+    bool8 unk4;
+    bool8 unk5;
     bool8 canSingleClickSpecialActivate;
 
     sword maxDockableFighters;  // maximum fighters that can dock at this ship
@@ -609,9 +631,12 @@ typedef struct ShipStaticInfo
 
     sdword buildCost;
     sdword buildTime;
+    real32 fowRadius;
     sdword svManeuverability;
     sdword svCoverage;
     sdword svFirePower;
+
+    real32 RKOEatMeTime;
 
     sdword resourcesAtOneTime;
     sdword maxresources;
@@ -639,22 +664,16 @@ typedef struct ShipStaticInfo
     real32 dockShipRange;       // distance to ship to get for docking, squared
 
     real32 formationPaddingModifier;
-    bool cannotForceAttackIfOwnShip;    //variable..if set to TRUE player cannot force attack this ship IF it is their own ship
-    bool shipIsCapital;                 //Set to TRUE is ship is a TRUE capital ship (class defs are unreliable)
-    bool cantMoveAndAttack;             //if set, SHIP explicitly cannot move and attack...will be given a special move order.
-    vector engineNozzleOffset[MAX_NUM_TRAILS];      //offset of engine in object co-ordinates
-    trailstatic* trailStatic[MAX_NUM_TRAILS];
-    udword multipleEngines;
-
-    real32 scaleCap;            //minimum sizing cap, which prevents a ship from getting too small
-
-    sdword hierarchySize;       //size of the ship hierarchy
-    madstatic *madStatic;       //mesh animation binding and animation data
+    bool32 cannotForceAttackIfOwnShip;    //variable..if set to TRUE player cannot force attack this ship IF it is their own ship
+    bool32 shipIsCapital;                 //Set to TRUE is ship is a TRUE capital ship (class defs are unreliable)
+    bool32 cantMoveAndAttack;             //if set, SHIP explicitly cannot move and attack...will be given a special move order.
+    BYTE unk6[0x5C];
+    real32 nlips;
+    BYTE unk7[0x8];
     real32 madGunOpenDamagedHealthThreshold;
     real32 madWingOpenDamagedHealthThreshold;
+    udword nRepairDroids;
 
-    // Alex's repair droid stuff...
-//    udword nRepairDroids;
 
     // Keith's engine trail stuff...
     udword trailStyle[MAX_NUM_TRAILS];
@@ -668,13 +687,50 @@ typedef struct ShipStaticInfo
     real32 trailSpriteOffset[MAX_NUM_TRAILS];
 
     real32 minimumZoomDistance;
-    real32 renderlistFade, renderlistLimitSqr;
+    real32 renderlistFade;
+    real32 renderlistLimitSqr;
 
     real32 dockLightNear, dockLightFar;
     color  dockLightColor;
 
     color  hyperspaceColor;
+    real32 hyperspaceBoxScale;
 
+    real32 leechRUsPerSecond;
+    real32 leechHPsPerSecond;
+
+    real32 beastAttackCascadeCost;
+    sdword beastAttacksRequired;
+    ShipType beastAttackConvertTo;
+
+    real32 Overlay_Selection_Scalar;
+
+    BYTE unk8[0x1C];
+
+    bool32 bUseRayTriangleIntersectionForHitLocation;
+
+    // Specials
+    real32 linkDistance;
+    udword supportUnits;
+    udword providesSU;
+    real32 RamDamage;
+    real32 cuttingBeamDamagePerSecond;
+    real32 cuttingBeamUpgradedDamagePerSecond;
+    real32 RamPushTime;
+    real32 RamWaitAfterPushTime;
+    udword unk9;
+    real32 TimeShockedByEMP;
+    real32 EMP_Range;
+    real32 EMP_Max_Combine_Distance;
+    bool32 UpgradeByDocking;
+    real32 pilotViewOffsetX;
+    real32 pilotViewOffsetY;
+    real32 pilotViewOffsetZ;
+    udword unk10;
+    udword unk11;
+    udword RKOGetsMissiles;
+
+    // @CATA: Locations for fields below are unknown. Do not use.
     real32 tacticalSelectionScale;
 
 #if SO_CLOOGE_SCALE
@@ -686,12 +742,178 @@ typedef struct ShipStaticInfo
     ResNozzleStatic *resNozzleStatic;
     RepairNozzleStatic *repairNozzleStatic;
     TractorBeamStatic *tractorEmitterStatic;
+
+    
+    vector engineNozzleOffset[MAX_NUM_TRAILS];      //offset of engine in object co-ordinates
+    trailstatic* trailStatic[MAX_NUM_TRAILS];
+    udword multipleEngines;
+
+    real32 scaleCap;            //minimum sizing cap, which prevents a ship from getting too small
+
+    sdword hierarchySize;       //size of the ship hierarchy
+    madstatic* madStatic;       //mesh animation binding and animation data
+
     bool (*ShipXDocksAtShipY) (struct CommandToDo *docktodo,struct Ship *ship,struct Ship *dockwith);
     bool (*LaunchShipXFromShipY) (struct Ship *ship,struct Ship *dockwith);
 } ShipStaticInfo;
 
-static_assert(offsetof(ShipStaticInfo, shipclass) == 0x1E8);
-static_assert(offsetof(ShipStaticInfo, canReceiveShipsForRetire) == 0x1F0);
+ASSERT_OFFSET(ShipStaticInfo, maxhealth, 0xA4);
+ASSERT_OFFSET(ShipStaticInfo, minCollDamage, 0xAC);
+ASSERT_OFFSET(ShipStaticInfo, maxCollDamage, 0xB0);
+ASSERT_OFFSET(ShipStaticInfo, thruststrengthstat[TRANS_UP], 0xB4);
+ASSERT_OFFSET(ShipStaticInfo, thruststrengthstat[TRANS_DOWN], 0xB8);
+ASSERT_OFFSET(ShipStaticInfo, thruststrengthstat[TRANS_RIGHT], 0xBC);
+ASSERT_OFFSET(ShipStaticInfo, thruststrengthstat[TRANS_LEFT], 0xC0);
+ASSERT_OFFSET(ShipStaticInfo, thruststrengthstat[TRANS_FORWARD], 0xC4);
+ASSERT_OFFSET(ShipStaticInfo, thruststrengthstat[TRANS_BACK], 0xC8);
+ASSERT_OFFSET(ShipStaticInfo, rotstrengthstat[ROT_YAWLEFT], 0xCC);
+ASSERT_OFFSET(ShipStaticInfo, rotstrengthstat[ROT_YAWRIGHT], 0xD0);
+ASSERT_OFFSET(ShipStaticInfo, rotstrengthstat[ROT_PITCHUP], 0xD4);
+ASSERT_OFFSET(ShipStaticInfo, rotstrengthstat[ROT_PITCHDOWN], 0xD8);
+ASSERT_OFFSET(ShipStaticInfo, rotstrengthstat[ROT_ROLLRIGHT], 0xDC);
+ASSERT_OFFSET(ShipStaticInfo, rotstrengthstat[ROT_ROLLLEFT], 0xE0);
+ASSERT_OFFSET(ShipStaticInfo, turnspeedstat[TURN_YAW], 0xE4);
+ASSERT_OFFSET(ShipStaticInfo, turnspeedstat[TURN_PITCH], 0xE8);
+ASSERT_OFFSET(ShipStaticInfo, turnspeedstat[TURN_ROLL], 0xEC);
+ASSERT_OFFSET(ShipStaticInfo, bulletRange[0], 0x1A4);
+ASSERT_OFFSET(ShipStaticInfo, bulletRange[1], 0x1A8);
+ASSERT_OFFSET(ShipStaticInfo, bulletRange[2], 0x1AC);
+ASSERT_OFFSET(ShipStaticInfo, minBulletRange[0], 0x1B0);
+ASSERT_OFFSET(ShipStaticInfo, minBulletRange[1], 0x1B4);
+ASSERT_OFFSET(ShipStaticInfo, minBulletRange[2], 0x1B8);
+ASSERT_OFFSET(ShipStaticInfo, blastRadiusShockWave, 0x1BC);
+ASSERT_OFFSET(ShipStaticInfo, blastRadiusDamage, 0x1C0);
+ASSERT_OFFSET(ShipStaticInfo, passiveRetaliateZone, 0x1C4);
+ASSERT_OFFSET(ShipStaticInfo, collSideModifiers[TRANS_UP], 0x1C8);
+ASSERT_OFFSET(ShipStaticInfo, collSideModifiers[TRANS_DOWN], 0x1CC);
+ASSERT_OFFSET(ShipStaticInfo, collSideModifiers[TRANS_RIGHT], 0x1D0);
+ASSERT_OFFSET(ShipStaticInfo, collSideModifiers[TRANS_LEFT], 0x1D4);
+ASSERT_OFFSET(ShipStaticInfo, collSideModifiers[TRANS_FORWARD], 0x1D8);
+ASSERT_OFFSET(ShipStaticInfo, collSideModifiers[TRANS_BACK], 0x1DC);
+ASSERT_OFFSET(ShipStaticInfo, shipclass, 0x1E8);
+ASSERT_OFFSET(ShipStaticInfo, externalBuild, 0x1F0);
+ASSERT_OFFSET(ShipStaticInfo, forceFieldProtectionDistanceScale, 0x1F4);
+ASSERT_OFFSET(ShipStaticInfo, upgradeTimeModifier, 0x1F8);
+ASSERT_OFFSET(ShipStaticInfo, canReceiveShips, 0x1FD);
+ASSERT_OFFSET(ShipStaticInfo, canReceiveResources, 0x1FE);
+ASSERT_OFFSET(ShipStaticInfo, canReceiveShipsPermanently, 0x1FF);
+ASSERT_OFFSET(ShipStaticInfo, canReceiveShipsForRetire, 0x200);
+ASSERT_OFFSET(ShipStaticInfo, canBuildBigShips, 0x202);
+ASSERT_OFFSET(ShipStaticInfo, canTargetMultipleTargets, 0x203);
+ASSERT_OFFSET(ShipStaticInfo, rotateToRetaliate, 0x204);
+ASSERT_OFFSET(ShipStaticInfo, canReceiveTheseShips[THISSHIPIS_FIGHTER], 0x205);
+ASSERT_OFFSET(ShipStaticInfo, canReceiveTheseShips[THISSHIPIS_CORVETTE], 0x206);
+ASSERT_OFFSET(ShipStaticInfo, canReceiveTheseShips[THISSHIPIS_RESOURCER], 0x207);
+ASSERT_OFFSET(ShipStaticInfo, canReceiveTheseShips[THISSHIPIS_OTHERNONCAPITALSHIP], 0x208);
+ASSERT_OFFSET(ShipStaticInfo, passiveAttackPenaltyExempt, 0x20C);
+ASSERT_OFFSET(ShipStaticInfo, specialActivateIsContinuous, 0x210);
+ASSERT_OFFSET(ShipStaticInfo, canSpecialBandBoxFriendlies, 0x211);
+ASSERT_OFFSET(ShipStaticInfo, canSingleClickSpecialActivate, 0x214);
+ASSERT_OFFSET(ShipStaticInfo, maxDockableFighters, 0x216);
+ASSERT_OFFSET(ShipStaticInfo, maxDockableCorvettes, 0x218);
+ASSERT_OFFSET(ShipStaticInfo, canHandleNumShipsDocking, 0x21C);
+ASSERT_OFFSET(ShipStaticInfo, canHandleNumShipsDepositingRU, 0x220);
+ASSERT_OFFSET(ShipStaticInfo, repairBeamCapable, 0x224);
+ASSERT_OFFSET(ShipStaticInfo, healthPerSecond, 0x228);
+ASSERT_OFFSET(ShipStaticInfo, CapitalDistanceRepairStart2, 0x22C);
+ASSERT_OFFSET(ShipStaticInfo, CapitalDistanceRepairStart, 0x230);
+ASSERT_OFFSET(ShipStaticInfo, AngleDotProdThreshold, 0x234);
+ASSERT_OFFSET(ShipStaticInfo, buildCost, 0x238);
+ASSERT_OFFSET(ShipStaticInfo, buildTime, 0x23C);
+ASSERT_OFFSET(ShipStaticInfo, fowRadius, 0x240);
+ASSERT_OFFSET(ShipStaticInfo, svManeuverability, 0x244);
+ASSERT_OFFSET(ShipStaticInfo, svCoverage, 0x248);
+ASSERT_OFFSET(ShipStaticInfo, svFirePower, 0x24C);
+ASSERT_OFFSET(ShipStaticInfo, RKOEatMeTime, 0x250);
+ASSERT_OFFSET(ShipStaticInfo, resourcesAtOneTime, 0x254);
+ASSERT_OFFSET(ShipStaticInfo, maxresources, 0x258);
+ASSERT_OFFSET(ShipStaticInfo, harvestRate, 0x25C);
+ASSERT_OFFSET(ShipStaticInfo, harvestAmount, 0x260);
+ASSERT_OFFSET(ShipStaticInfo, groupSize, 0x264);
+ASSERT_OFFSET(ShipStaticInfo, repairTime, 0x278);
+ASSERT_OFFSET(ShipStaticInfo, repairDamage, 0x27C);
+ASSERT_OFFSET(ShipStaticInfo, repairCombatTime, 0x280);
+ASSERT_OFFSET(ShipStaticInfo, repairCombatDamage, 0x284);
+ASSERT_OFFSET(ShipStaticInfo, repairOtherShipRate, 0x28C);
+ASSERT_OFFSET(ShipStaticInfo, repairResourceCollectorRate, 0x290);
+ASSERT_OFFSET(ShipStaticInfo, clearanceDistance, 0x294);
+ASSERT_OFFSET(ShipStaticInfo, clearanceDirection, 0x298);
+ASSERT_OFFSET(ShipStaticInfo, dockShipRange, 0x29C);
+ASSERT_OFFSET(ShipStaticInfo, formationPaddingModifier, 0x2A0);
+ASSERT_OFFSET(ShipStaticInfo, cannotForceAttackIfOwnShip, 0x2A4);
+ASSERT_OFFSET(ShipStaticInfo, shipIsCapital, 0x2A8);
+ASSERT_OFFSET(ShipStaticInfo, cantMoveAndAttack, 0x2AC);
+ASSERT_OFFSET(ShipStaticInfo, nlips, 0x30C);
+ASSERT_OFFSET(ShipStaticInfo, madGunOpenDamagedHealthThreshold, 0x318);
+ASSERT_OFFSET(ShipStaticInfo, madWingOpenDamagedHealthThreshold, 0x31C);
+ASSERT_OFFSET(ShipStaticInfo, nRepairDroids, 0x320);
+ASSERT_OFFSET(ShipStaticInfo, trailStyle[0], 0x324);
+ASSERT_OFFSET(ShipStaticInfo, trailStyle[1], 0x328);
+ASSERT_OFFSET(ShipStaticInfo, trailStyle[2], 0x32C);
+ASSERT_OFFSET(ShipStaticInfo, trailStyle[3], 0x330);
+ASSERT_OFFSET(ShipStaticInfo, trailWidth[0], 0x334);
+ASSERT_OFFSET(ShipStaticInfo, trailWidth[1], 0x338);
+ASSERT_OFFSET(ShipStaticInfo, trailWidth[2], 0x33C);
+ASSERT_OFFSET(ShipStaticInfo, trailWidth[3], 0x340);
+ASSERT_OFFSET(ShipStaticInfo, trailHeight[0], 0x344);
+ASSERT_OFFSET(ShipStaticInfo, trailHeight[1], 0x348);
+ASSERT_OFFSET(ShipStaticInfo, trailHeight[2], 0x34C);
+ASSERT_OFFSET(ShipStaticInfo, trailHeight[3], 0x350);
+ASSERT_OFFSET(ShipStaticInfo, trailAngle[0], 0x354);
+ASSERT_OFFSET(ShipStaticInfo, trailAngle[1], 0x358);
+ASSERT_OFFSET(ShipStaticInfo, trailAngle[2], 0x35C);
+ASSERT_OFFSET(ShipStaticInfo, trailAngle[3], 0x360);
+ASSERT_OFFSET(ShipStaticInfo, trailRibbonAdjust[0], 0x364);
+ASSERT_OFFSET(ShipStaticInfo, trailRibbonAdjust[1], 0x368);
+ASSERT_OFFSET(ShipStaticInfo, trailRibbonAdjust[2], 0x36C);
+ASSERT_OFFSET(ShipStaticInfo, trailRibbonAdjust[3], 0x370);
+ASSERT_OFFSET(ShipStaticInfo, trailLength[0], 0x374);
+ASSERT_OFFSET(ShipStaticInfo, trailLength[1], 0x378);
+ASSERT_OFFSET(ShipStaticInfo, trailLength[2], 0x37C);
+ASSERT_OFFSET(ShipStaticInfo, trailLength[3], 0x380);
+ASSERT_OFFSET(ShipStaticInfo, trailScaleCap[0], 0x384);
+ASSERT_OFFSET(ShipStaticInfo, trailScaleCap[1], 0x388);
+ASSERT_OFFSET(ShipStaticInfo, trailScaleCap[2], 0x38C);
+ASSERT_OFFSET(ShipStaticInfo, trailScaleCap[3], 0x390);
+ASSERT_OFFSET(ShipStaticInfo, trailSpriteRadius[0], 0x394);
+ASSERT_OFFSET(ShipStaticInfo, trailSpriteRadius[1], 0x398);
+ASSERT_OFFSET(ShipStaticInfo, trailSpriteRadius[2], 0x39C);
+ASSERT_OFFSET(ShipStaticInfo, trailSpriteRadius[3], 0x3A0);
+ASSERT_OFFSET(ShipStaticInfo, trailSpriteOffset[0], 0x3A4);
+ASSERT_OFFSET(ShipStaticInfo, trailSpriteOffset[1], 0x3A8);
+ASSERT_OFFSET(ShipStaticInfo, trailSpriteOffset[2], 0x3AC);
+ASSERT_OFFSET(ShipStaticInfo, trailSpriteOffset[3], 0x3B0);
+ASSERT_OFFSET(ShipStaticInfo, minimumZoomDistance, 0x3B4);
+ASSERT_OFFSET(ShipStaticInfo, renderlistFade, 0x3B8);
+ASSERT_OFFSET(ShipStaticInfo, renderlistLimitSqr, 0x3BC);
+ASSERT_OFFSET(ShipStaticInfo, dockLightNear, 0x3C0);
+ASSERT_OFFSET(ShipStaticInfo, dockLightFar, 0x3C4);
+ASSERT_OFFSET(ShipStaticInfo, dockLightColor, 0x3C8);
+ASSERT_OFFSET(ShipStaticInfo, hyperspaceColor, 0x3CC);
+ASSERT_OFFSET(ShipStaticInfo, hyperspaceBoxScale, 0x3D0);
+ASSERT_OFFSET(ShipStaticInfo, leechRUsPerSecond, 0x3D4);
+ASSERT_OFFSET(ShipStaticInfo, leechHPsPerSecond, 0x3D8);
+ASSERT_OFFSET(ShipStaticInfo, beastAttackCascadeCost, 0x3DC);
+ASSERT_OFFSET(ShipStaticInfo, beastAttacksRequired, 0x3E0);
+ASSERT_OFFSET(ShipStaticInfo, beastAttackConvertTo, 0x3E4);
+ASSERT_OFFSET(ShipStaticInfo, Overlay_Selection_Scalar, 0x3E8);
+ASSERT_OFFSET(ShipStaticInfo, bUseRayTriangleIntersectionForHitLocation, 0x408);
+ASSERT_OFFSET(ShipStaticInfo, linkDistance, 0x40C);
+ASSERT_OFFSET(ShipStaticInfo, supportUnits, 0x410);
+ASSERT_OFFSET(ShipStaticInfo, providesSU, 0x414);
+ASSERT_OFFSET(ShipStaticInfo, RamDamage, 0x418);
+ASSERT_OFFSET(ShipStaticInfo, cuttingBeamDamagePerSecond, 0x41C);
+ASSERT_OFFSET(ShipStaticInfo, cuttingBeamUpgradedDamagePerSecond, 0x420);
+ASSERT_OFFSET(ShipStaticInfo, RamPushTime, 0x424);
+ASSERT_OFFSET(ShipStaticInfo, RamWaitAfterPushTime, 0x428);
+ASSERT_OFFSET(ShipStaticInfo, TimeShockedByEMP, 0x430);
+ASSERT_OFFSET(ShipStaticInfo, EMP_Range, 0x434);
+ASSERT_OFFSET(ShipStaticInfo, EMP_Max_Combine_Distance, 0x438);
+ASSERT_OFFSET(ShipStaticInfo, UpgradeByDocking, 0x43C);
+ASSERT_OFFSET(ShipStaticInfo, pilotViewOffsetX, 0x440);
+ASSERT_OFFSET(ShipStaticInfo, pilotViewOffsetY, 0x444);
+ASSERT_OFFSET(ShipStaticInfo, pilotViewOffsetZ, 0x448);
+ASSERT_OFFSET(ShipStaticInfo, RKOGetsMissiles, 0x454);
 
 typedef struct
 {
@@ -989,11 +1211,12 @@ typedef struct
     PosInfo posinfo;
 } SpaceObj;
 
-static_assert(offsetof(SpaceObj, currentLOD) == 0x34);
-static_assert(offsetof(SpaceObj, cameraDistanceSquared) == 0x40);
-static_assert(offsetof(SpaceObj, cameraDistanceVector.x) == 0x44);
-static_assert(offsetof(SpaceObj, cameraDistanceVector.y) == 0x48);
-static_assert(offsetof(SpaceObj, cameraDistanceVector.z) == 0x4C);
+ASSERT_OFFSET(SpaceObj, currentLOD, 0x34);
+ASSERT_OFFSET(SpaceObj, cameraDistanceSquared, 0x40);
+ASSERT_OFFSET(SpaceObj, cameraDistanceVector.x, 0x44);
+ASSERT_OFFSET(SpaceObj, cameraDistanceVector.y, 0x48);
+ASSERT_OFFSET(SpaceObj, cameraDistanceVector.z, 0x4C);
+ASSERT_OFFSET(SpaceObj, posinfo, 0x58);
 
 typedef SpaceObj *SpaceObjPtr;
 
@@ -1215,7 +1438,7 @@ typedef struct
     sbyte reserveddocking;
     DockStaticPoint *dockstaticpoint;
     void *customdockinfo;
-    sdword **launchpoints;
+    // sdword **launchpoints;
 } SpecificDockVars;
 
 typedef struct ShipID
@@ -1296,7 +1519,8 @@ typedef struct Ship         // Ship object
     Node objlink;
     ObjType objtype;                // object type (ship or bullet, etc)
     udword flags;                   // flags whether the object is rotatable, etc.
-    ubyte unk1[0x8];
+    udword unk_18;
+    udword unk_1C;
     ShipStaticInfo *staticinfo;         // pointer to static info
     Node renderlink;        // link for rendering list
     ubyte currentLOD;               // current level of detail
@@ -1316,6 +1540,10 @@ typedef struct Ship         // Ship object
     real32 health;                  // hitpoints
     real32 flashtimer;              // determines if object flashes on screen
     real32 lasttimecollided;
+    udword unk_164;
+    udword unk_168;
+    udword unk_16C;
+    real32 buildProgress;
     NonStats nonstatvars;
     ClampInfo *clampInfo;
 
@@ -1332,7 +1560,7 @@ typedef struct Ship         // Ship object
     NAVLightInfo *navLightInfo;
     // HERE UP SAME for Derelicts and Ships
 
-    ubyte unk2[0x60]; // @CATA: Unsure of the location of this
+    ubyte unk2[0x50]; // @CATA: Unsure of the location of this
     Node shiplink;
     vector moveTo;                  // move destination of the ship
     vector moveFrom;                // where the ship is moving from
@@ -1380,10 +1608,10 @@ typedef struct Ship         // Ship object
     //
     struct Player *playerowner;
     sdword resources;
-    real32 fuel;
     real32 lastTimeRepaired;
+    sdword unk_338;
     real32 magnitudeSquared;        // most recent scaling factor
-    struct Ship *gettingrocked;     // ship which is rocking you (shooting you)
+    struct Ship* gettingrocked;     // ship which is rocking you (shooting you)
     struct Ship *recentAttacker;    // ship which has attacked you recently (ie, not just this AI tick) -- see recentlyAttacked
     struct Ship *firingAtUs;        // ship which has recently fired upon us (but needn't have hit) see recentlyFiredUpon
     bool8 shipidle;                 // flag to indicate if ship has no command to execute
@@ -1410,18 +1638,155 @@ typedef struct Ship         // Ship object
     struct CommandToDo *formationcommand;   // pointer to formationcommand, if ship in formation
     struct CommandToDo *command;    // pointer to ship's current command, if any
     SpecificAttackVars attackvars;  // attack information
-    SpecificDockVars dockvars;      // dock information
-    struct Effect *rceffect;        // effect variable for resource collecting
-    void (*ShipXHarvestsResourceY)(struct Ship *ship,struct Resource *resource);    // function pointer for resource collecting
-    sdword visibleToWho;              //bitmask flag indicating to which players this ship is visible to...relevant only if ship is cloaked
-    sdword visibleToWhoPreviousFrame; //same as above, but relevant for the previous univupdate frame
+    sdword unk_38c;
+    udword unk_390;
+    udword unk_394;
+    udword unk_398;
     sdword howDidIDie;              //defined above: Set when a ship is set to die, that way, at somepoint (hopefully) we can tell how the bitch died.
     sdword whoKilledMe;             //playerIndex of the player that killed this ship
     udword nDamageLights;
     DamageLightStatic* damageLights;
     struct Effect* showingDamage[3][3];
-    vector holdingPatternPos;
+    udword unk_3D0;
+    udword unk_3D4;
+    udword unk_3D8;
     real32 damageModifier;
+    udword unk_3E0;
+    udword unk_3E4;
+    real32 buildTimerElapsed; // 0..1, progress of buildTimer
+    udword unk_3EC;
+    udword unk_3F0;
+    udword unk_3F4;
+    udword unk_3F8;
+    udword unk_3FC;
+    sdword tractorPosinfo[4];        //more tractor info!
+    udword unk_410;
+    udword unk_414;
+    udword unk_418;
+    sdword needNewLeader;
+    struct Ship* newDockWithTransfer;
+    sdword newDockIndexTransfer;
+    real32 shipDeCloakTime;         //time is set when a ship decloaks...this time is used to give decloaking ships an advantage
+    shiptrail* trail[MAX_NUM_TRAILS];   //ship's engine trail(s)
+    ShipID shipID;
+    uword hotKeyGroup;              // what hot-key group this ship belongs to
+    sdword retaliateSpeechVar;
+    real32 retaliateSpeechTime;
+    SOUNDEVENT soundevent;
+    GunInfo* gunInfo;
+    SpecificDockVars dockvars;      // dock information
+    ShipsInsideMe* shipsInsideMe;
+    shipbindings* bindings;         //ship hierarchy bindings
+    madanim* madBindings;
+    struct RepairDroid *pRepairDroids;     // Alex's repair droid stuff...
+    struct ShipSinglePlayerGameInfo* shipSinglePlayerGameInfo;     // stuff for the single player game
+    udword unk_4C8;
+    udword unk_4CC;
+    udword unk_4D0;
+    udword unk_4D4;
+    udword unk_4D8;
+    udword unk_4DC;
+    udword unk_4E0;
+    udword unk_4E4;
+    udword unk_4E8;
+    udword unk_4EC;
+    udword unk_4F0;
+    udword unk_4F4;
+    udword unk_4F8;
+    udword unk_4FC;
+    udword unk_500;
+    udword unk_504;
+    udword unk_508;
+    udword unk_50C;
+    udword unk_510;
+    udword unk_514;
+    udword unk_518;
+    udword unk_51C;
+    udword unk_520;
+    udword unk_524;
+    udword unk_528;
+    udword unk_52C;
+    udword unk_530;
+    udword unk_534;
+    udword unk_538;
+    udword unk_53C;
+    udword unk_540;
+    udword unk_544;
+    udword unk_548;
+    udword unk_54C;
+    udword unk_550;
+    udword unk_554;
+    udword unk_558;
+    udword unk_55C;
+    udword unk_560;
+    udword unk_564;
+    udword unk_568;
+    udword unk_56C;
+    udword unk_570;
+    udword unk_574;
+    udword unk_578;
+    udword unk_57C;
+    udword unk_580;
+    udword unk_584;
+    udword unk_588;
+    udword unk_58C;
+    udword unk_590;
+    udword unk_594;
+    udword unk_598;
+    udword unk_59C;
+    udword unk_5A0;
+    udword unk_5A4;
+    udword unk_5A8;
+    udword unk_5AC;
+    udword unk_5B0;
+    Timer buildTimer; // external build timer
+    udword unk_5C4;
+    udword unk_5C8;
+    udword unk_5CC;
+    udword unk_5D0;
+    udword unk_5D4;
+    udword unk_5D8;
+    udword unk_5DC;
+    udword unk_5E0;
+    udword unk_5E4;
+    udword unk_5E8;
+    udword unk_5EC;
+    udword unk_5F0;
+    udword unk_5F4;
+    udword unk_5F8;
+    udword unk_5FC;
+    udword unk_600;
+    udword unk_604;
+    udword unk_608;
+    udword unk_60C;
+    udword unk_610;
+    udword unk_614;
+    udword unk_618;
+    udword unk_61C;
+    udword unk_620;
+    udword unk_624;
+    udword unk_628;
+    udword unk_62C;
+    udword unk_630;
+    udword unk_634;
+    udword unk_638;
+    udword unk_63C;
+    udword unk_640;
+    udword unk_644;
+    udword unk_648;
+    udword unk_64C;
+    BeastSystemType beastSystemType;
+    udword beastUnk; // Unknown, beast EPA related
+    udword sizeofShipSpecifics;
+    udword ShipSpecifics[1];        //this member must go last
+} Ship;
+
+/*
+    struct Effect *rceffect;        // effect variable for resource collecting
+    void (*ShipXHarvestsResourceY)(struct Ship *ship,struct Resource *resource);    // function pointer for resource collecting
+    sdword visibleToWho;              //bitmask flag indicating to which players this ship is visible to...relevant only if ship is cloaked
+    sdword visibleToWhoPreviousFrame; //same as above, but relevant for the previous univupdate frame
+    vector holdingPatternPos;
     real32 passiveAttackCancelTimer;
 
     //later will make most of these into a single flag
@@ -1431,62 +1796,84 @@ typedef struct Ship         // Ship object
     sdword tractorstate;            //info variable for tractorbeaming state
     sdword tractorPosinfo[4];        //more tractor info!
     sdword hyperspacePing;          //true or false flag indicating if the ship has had a hyperspace ping created for it...NON-deterministic!
-
-    sdword needNewLeader;
-    struct Ship *newDockWithTransfer;
-    sdword newDockIndexTransfer;
-
-    real32 shipDeCloakTime;         //time is set when a ship decloaks...this time is used to give decloaking ships an advantage
-    shiptrail* trail[MAX_NUM_TRAILS];   //ship's engine trail(s)
-    ShipID shipID;
-    uword hotKeyGroup;              // what hot-key group this ship belongs to
-    sdword retaliateSpeechVar;
-    real32 retaliateSpeechTime;
-
-    SOUNDEVENT soundevent;
+    
     Node slavelink;                 //Nodal link for slavery info
     SlaveInfo *slaveinfo;           //pointer to struct of info regarding ships slavery status
-    GunInfo *gunInfo;
     DockInfo *dockInfo;
-    ShipsInsideMe *shipsInsideMe;
-    shipbindings *bindings;         //ship hierarchy bindings
-    madanim *madBindings;
-//    RepairDroid *pRepairDroids;     // Alex's repair droid stuff...
-    struct ShipSinglePlayerGameInfo *shipSinglePlayerGameInfo;     // stuff for the single player game
     void* lightning[2];             //lightning effect stuff
-    udword sizeofShipSpecifics;
-    udword ShipSpecifics[1];        //this member must go last
-} Ship;
+*/
 
 typedef Ship *ShipPtr;
 
-static_assert(offsetof(Ship, objtype) == 0x10);
-static_assert(offsetof(Ship, flags) == 0x14);
-static_assert(offsetof(Ship, staticinfo) == 0x20);
-static_assert(offsetof(Ship, renderlink) == 0x24);
-static_assert(offsetof(Ship, currentLOD) == 0x34);
-static_assert(offsetof(Ship, renderedLODs) == 0x35);
-static_assert(offsetof(Ship, cameraDistanceSquared) == 0x40);
-static_assert(offsetof(Ship, cameraDistanceVector.x) == 0x44);
-static_assert(offsetof(Ship, cameraDistanceVector.y) == 0x48);
-static_assert(offsetof(Ship, cameraDistanceVector.z) == 0x4C);
-static_assert(offsetof(Ship, collMyBlob) == 0x54);
-// static_assert(offsetof(Ship, putOnDoor) == 0x1C3);
-// static_assert(offsetof(Ship, dockingship) == 0x1C4);
-static_assert(offsetof(Ship, shiplink) == 0x23C);
-static_assert(offsetof(Ship, shiptype) == 0x2B0);
-static_assert(offsetof(Ship, shiprace) == 0x2B4);
-static_assert(offsetof(Ship, tacticstype) == 0x2B8);
-static_assert(offsetof(Ship, isDodging) == 0x2BC);
-static_assert(offsetof(Ship, DodgeTime) == 0x2C0);
-static_assert(offsetof(Ship, tacticsFormationVar1) == 0x2C8);
-static_assert(offsetof(Ship, tactics_ordertype) == 0x2D0);
-static_assert(offsetof(Ship, tacticsTalk) == 0x2D4);
-static_assert(offsetof(Ship, tacticsNeedToFlightMan) == 0x2D8);
-static_assert(offsetof(Ship, dockwaitforNorm) == 0x2DC);
-static_assert(offsetof(Ship, timeCreated) == 0x2E0);
-static_assert(offsetof(Ship, playerowner) == 0x32C);
-// static_assert(offsetof(Ship, damageModifier) == 0x3DC);
+ASSERT_OFFSET(Ship, objtype, 0x10);
+ASSERT_OFFSET(Ship, flags, 0x14);
+ASSERT_OFFSET(Ship, staticinfo, 0x20);
+ASSERT_OFFSET(Ship, renderlink, 0x24);
+ASSERT_OFFSET(Ship, currentLOD, 0x34);
+ASSERT_OFFSET(Ship, renderedLODs, 0x35);
+ASSERT_OFFSET(Ship, cameraDistanceSquared, 0x40);
+ASSERT_OFFSET(Ship, cameraDistanceVector.x,  0x44);
+ASSERT_OFFSET(Ship, cameraDistanceVector.y, 0x48);
+ASSERT_OFFSET(Ship, cameraDistanceVector.z, 0x4C);
+ASSERT_OFFSET(Ship, collMyBlob, 0x54);
+ASSERT_OFFSET(Ship, buildProgress, 0x170);
+// ASSERT_OFFSET(Ship, putOnDoor, 0x1C3);
+// ASSERT_OFFSET(Ship, dockingship, 0x1C4);
+// ASSERT_OFFSET(Ship, specialFlags, 0x1C8);
+ASSERT_OFFSET(Ship, shiplink, 0x23C);
+ASSERT_OFFSET(Ship, enginePosition, 0x288);
+ASSERT_OFFSET(Ship, shiptype, 0x2B0);
+ASSERT_OFFSET(Ship, shiprace, 0x2B4);
+ASSERT_OFFSET(Ship, tacticstype, 0x2B8);
+ASSERT_OFFSET(Ship, isDodging, 0x2BC);
+ASSERT_OFFSET(Ship, DodgeTime, 0x2C0);
+ASSERT_OFFSET(Ship, tacticsFormationVar1, 0x2C8);
+ASSERT_OFFSET(Ship, tactics_ordertype, 0x2D0);
+ASSERT_OFFSET(Ship, tacticsTalk,  0x2D4);
+ASSERT_OFFSET(Ship, tacticsNeedToFlightMan, 0x2D8);
+ASSERT_OFFSET(Ship, dockwaitforNorm, 0x2DC);
+ASSERT_OFFSET(Ship, timeCreated, 0x2E0);
+ASSERT_OFFSET(Ship, madAnimationFlags, 0x300);
+ASSERT_OFFSET(Ship, madGunStatus, 0x304);
+ASSERT_OFFSET(Ship, madWingStatus, 0x308);
+ASSERT_OFFSET(Ship, madDoorStatus, 0x30C);
+ASSERT_OFFSET(Ship, madSpecialStatus, 0x310);
+ASSERT_OFFSET(Ship, cuedAnimationIndex, 0x314);
+ASSERT_OFFSET(Ship, cuedAnimationType, 0x318);
+ASSERT_OFFSET(Ship, playerowner, 0x32C);
+ASSERT_OFFSET(Ship, gettingrocked, 0x340);
+ASSERT_OFFSET(Ship, shipidle, 0x34C);
+ASSERT_OFFSET(Ship, autostabilizeship, 0x34D);
+ASSERT_OFFSET(Ship, command, 0x370);
+ASSERT_OFFSET(Ship, attackvars.multipleAttackTargets, 0x374);
+ASSERT_OFFSET(Ship, attackvars.attacktarget, 0x378);
+ASSERT_OFFSET(Ship, attackvars.myLeaderIs, 0x37C);
+ASSERT_OFFSET(Ship, attackvars.myWingmanIs, 0x380);
+ASSERT_OFFSET(Ship, attackvars.flightmansLeft, 0x384);
+ASSERT_OFFSET(Ship, attackvars.attacksituation, 0x386);
+ASSERT_OFFSET(Ship, attackvars.attackevents, 0x388);
+ASSERT_OFFSET(Ship, attackvars.pad, 0x38A);
+ASSERT_OFFSET(Ship, howDidIDie, 0x39C);
+ASSERT_OFFSET(Ship, nDamageLights, 0x3A4);
+ASSERT_OFFSET(Ship, damageLights, 0x3A8);
+ASSERT_OFFSET(Ship, showingDamage, 0x3AC);
+ASSERT_OFFSET(Ship, damageModifier, 0x3DC);
+ASSERT_OFFSET(Ship, buildTimerElapsed, 0x3E8);
+ASSERT_OFFSET(Ship, tractorPosinfo, 0x400);
+ASSERT_OFFSET(Ship, needNewLeader, 0x41C);
+ASSERT_OFFSET(Ship, shipDeCloakTime, 0x428);
+ASSERT_OFFSET(Ship, trail, 0x42C);
+ASSERT_OFFSET(Ship, soundevent.hyperspaceHandle, 0x45C);
+ASSERT_OFFSET(Ship, dockvars.dockship, 0x494);
+ASSERT_OFFSET(Ship, shipsInsideMe, 0x4B4);
+ASSERT_OFFSET(Ship, bindings, 0x4B8);
+ASSERT_OFFSET(Ship, madBindings, 0x4BC);
+ASSERT_OFFSET(Ship, pRepairDroids, 0x4C0);
+ASSERT_OFFSET(Ship, shipSinglePlayerGameInfo, 0x4C4);
+ASSERT_OFFSET(Ship, hotKeyGroup, 0x43E);
+ASSERT_OFFSET(Ship, buildTimer, 0x5B4);
+ASSERT_OFFSET(Ship, beastSystemType, 0x650);
+ASSERT_OFFSET(Ship, beastUnk, 0x654);
 
 /*-----------------------------------------------------------------------------
     Missile Object

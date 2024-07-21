@@ -1,14 +1,9 @@
 #define RACE_Sect 0
 #define RACE_Beast 1
+#define RACE_Kushan 2
+#define RACE_Taiidan 3
+#define RACE_P1 4
+#define RACE_Traders 5
+#define RACE_Derelict 6
 
-/*
-#define R1		0
-#define R2		1
-#define P1		2
-#define P2		3
-#define P3		4
-#define Traders	5
-#define NUM_RACES		(Traders + 1)
-
-*/
-
+#define NUM_RACES (RACE_Derelict + 1)

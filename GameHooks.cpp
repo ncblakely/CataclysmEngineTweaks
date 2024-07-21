@@ -9,6 +9,8 @@
 constexpr const char* NetworkVersion = "v1.02";
 constexpr const char* MinorBuildVersion = "0";
 
+static const char* UpdateBigFileNameNew = "Update102.big";
+
 extern scriptEntry AISkirmishTweaks[];
 
 static Functions::fn_univUpdate orig_univUpdate;
@@ -99,8 +101,18 @@ void scriptSetTweakableGlobals()
 
 	if (g_Config.EnableNewAI)
 	{
-		scriptSet(nullptr, "AISkirmish.script", AISkirmishTweaks);
+		scriptSet(nullptr, "aiskirmish.script", AISkirmishTweaks);
 	}
+}
+
+void RedirectUpdateBigFile(Assembler& assembler)
+{
+	using namespace Instructions;
+	std::string updateBigFileNameNewAddress = fmt::format("0x{:x}", (udword)UpdateBigFileNameNew);
+
+	assembler.Write(fmt::format("push {}", updateBigFileNameNewAddress), utyGameSystemsPreInit_UpdateBigFileName1);
+	assembler.Write(fmt::format("push {}", updateBigFileNameNewAddress), utyGameSystemsPreInit_UpdateBigFileName2);
+	assembler.Write(fmt::format("push {}", updateBigFileNameNewAddress), utyGameSystemsPreInit_UpdateBigFileName3);
 }
 
 void InstallGameHooks(Assembler& assembler, Config& config)
@@ -112,6 +124,9 @@ void InstallGameHooks(Assembler& assembler, Config& config)
 	CreateAndEnableHook(Functions::scriptSetTweakableGlobals, scriptSetTweakableGlobals, &orig_scriptSetTweakableGlobals);
 	CreateAndEnableHook(Instructions::CheckPlayerWin_GameTypeCheck, CheckPlayerWin_GameTypeCheck, &orig_CheckPlayerWin_GameTypeCheck);
 	CreateAndEnableHook(Instructions::LoadMission_AdjustTextureMemoryLimit, LoadMission_AdjustTextureMemoryLimit, &_discard);
+
+	// Load separate Update.big for CET
+	RedirectUpdateBigFile(assembler);
 
 	//////////////////////////////////////////////
 	// Version number

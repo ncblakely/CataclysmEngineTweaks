@@ -1,0 +1,7 @@
+#pragma once
+
+#define MODULE_HANGAR 0
+#define MODULE_ARMOUR 1
+#define MODULE_ENGINEERING 2
+#define MODULE_ADVANCED_ENGINEERING 3
+#define MODULE_WEAPON 4

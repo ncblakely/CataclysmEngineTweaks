@@ -1,0 +1,220 @@
+[bHiveFrigate]
+
+;Source Files
+;=----------=
+LODFile								bHiveFrigate.lod
+pMexData							bHiveFrigate\Rl0\LOD0\bHiveFrigate.mex
+
+;Ship Physics
+;=----------=
+mass								400					; ship mass [fighter = 1]
+momentOfInertiaX					400					; resistance to rotation
+momentOfInertiaY					400					; [fighter = 1]
+momentOfInertiaZ					400
+maxvelocity							345					; [fighter = 1000]
+maxrot								1					; maximum rotation speed [don't make faster than ~10]
+thruststrength[TRANS_UP]            75.0                         ; acceleration (m/s^2) [1-1000 approx. range]
+thruststrength[TRANS_DOWN]          75.0
+thruststrength[TRANS_RIGHT]         75.0
+thruststrength[TRANS_LEFT]          75.0
+thruststrength[TRANS_FORWARD]       75.0
+thruststrength[TRANS_BACK]          75.0
+rotstrength[ROT_YAWLEFT]            0.35                          ; rotational acceleration (deg/s^2) [0.01 - 10]
+rotstrength[ROT_YAWRIGHT]           0.35
+rotstrength[ROT_PITCHUP]            0.08
+rotstrength[ROT_PITCHDOWN]          0.08
+rotstrength[ROT_ROLLRIGHT]          0.08
+rotstrength[ROT_ROLLLEFT]           0.08
+turnspeed[TURN_YAW]                 0.5                          ; speed at which ship tries to turn (1=standard)
+turnspeed[TURN_PITCH]               0.5
+turnspeed[TURN_ROLL]                0.5
+
+;Basic Ship Stats
+;=--------------=
+shipclass							CLASS_Frigate
+isCapitalShip                       TRUE
+buildCost							625					; resource units to build
+buildTime							70					; time in seconds to build
+supportUnits			    		20					; Support Units required
+providesSU			    			0					; The carrier ship provides 20 support units	
+TimeShockedByEMP					2.0 				; time in seconds the ship will be paralized when hit by one EMP charge
+maxhealth							11000               ; hit points
+groupSize							2                   ; size of group ships of this type tend to form
+repairTime							5					; every this many seconds
+repairDamage						50					; this much damage is repaired
+repairCombatTime                    5					; every this many seconds
+repairCombatDamage                  10					; this much damage is repaired
+repairDroids						0
+externalBuild						FALSE				; if TRUE, ship is built externally
+fowRadius							12000
+forceFieldProtectionDistanceScale	3.0
+approxcollmodifier					1.0					; use only % of collspheresize for rough approximations
+avoidcollmodifier					0.75				; use only % of collspheresize for collision avoidance
+blastRadiusShockWave                1.75
+blastRadiusDamage                   275
+minimumZoomDistance                 350
+UpgradeByDocking					FALSE
+
+;Special
+;=-----=
+dockShipRange						1000.0				; how close ships should get before considering docking (to ship surface)
+
+; PG - This is so that the Beast ship can take over other Beast ships in multiplayer
+beastAttackCascadeCost				10					; number of points required for attack to cascade to this ship
+beastAttacksRequired				1					; number of times you must hit this ship before it converts.
+beastAttackConvertTo				bHiveFrigate        ; convert to this kind of ship
+
+upgradeTimeModifier                 1.0
+
+dockLightNear						100
+dockLightFar						250
+dockLightColor						255,0,0
+
+; Pilot View
+;=---------=
+pilotViewOffsetX	15.0
+pilotViewOffsetY	0.0
+pilotViewOffsetZ	150.0
+
+;Weapons
+;=-----=
+rotateToRetaliate			TRUE
+passiveRetaliateZone		5600
+canTargetMultipleTargets	FALSE
+
+NUMBER_OF_GUNS				2
+
+GUN		0
+{
+Type						GUN_VisibleGimble
+GunSize						GUNSIZE_MEDIUM
+StartUpgradeLevel			WEAPON_PROJECTILE
+EndUpgradeLevel				WEAPON_ENERGY
+DamageMult					2.5
+BulletLength                18.0                        ; visual only.  Length of bullet on screen
+BulletRange                 5600						; distance bullets travel before disappearing
+BulletSpeed                 4300						; measured in m/s.
+BulletMass                  0.1							; mass of bullet
+FireTime                    1.8                         ; fire repeat rate (reciprocal = shots/second)
+TriggerHappy				5.0
+minturnangle			   -5.0							; degrees
+maxturnangle                5.0
+mindeclination             -5.0
+maxdeclination              5.0
+maxanglespeed             360.0							; degrees/s
+maxdeclinationspeed       360.0
+angletracking               2.5
+declinationtracking         2.5
+BarrelLength			   -5.0
+RecoilLength               12.5
+
+FireTime2				    3.0
+BulletSpeed2                1300			; measured in m/s.
+}
+
+GUN		1
+{
+Type						GUN_VisibleGimble
+GunSize						GUNSIZE_MEDIUM
+StartUpgradeLevel			WEAPON_PROJECTILE
+EndUpgradeLevel				WEAPON_ENERGY
+DamageMult					2.5
+BulletLength                18.0                        ; visual only.  Length of bullet on screen
+BulletRange                 5600						; distance bullets travel before disappearing
+BulletSpeed                 4300						; measured in m/s.
+BulletMass                  0.1							; mass of bullet
+FireTime                    1.8                         ; fire repeat rate (reciprocal = shots/second)
+TriggerHappy				5.0
+minturnangle               -5.0							; degrees
+maxturnangle                5.0
+mindeclination             -5.0
+maxdeclination              5.0
+maxanglespeed             360.0							; degrees/s
+maxdeclinationspeed       360.0
+angletracking               2.5
+declinationtracking         2.5
+BarrelLength               -5.0
+RecoilLength               12.5
+
+FireTime2					3.0
+BulletSpeed2                1300			; measured in m/s.
+}
+
+;Gun Bindings:
+;=----------=
+BindGun						HiveFrigateGuns(2) Gun0,Recoil,Frequency 1
+BindGun						HiveFrigateGuns(1) Gun1,Recoil,Frequency 1
+
+;Dock Points
+;=---------=
+NUMBER_OF_DOCK_POINTS		31
+
+; format is DockPoint		name,type,flyawaydist,mindist,maxdist,[headingdirection,updirection]  (0=up,1=right,2=forward,4=down,5=left,6=back) for direction
+DockPoint					Swarmers2,DPT_Swarmer_In,300,450,500,4,5
+DockPoint					Swarmers3,DPT_Swarmer_In,320,400,450,4,6
+DockPoint					Swarmers4,DPT_Swarmer_In,340,450,500,4,1
+DockPoint					Swarmers5,DPT_Swarmer_In,360,400,450,4,2
+DockPoint					Swarmers6,DPT_Swarmer_In,300,450,500,4,5
+DockPoint					Swarmers12,DPT_Swarmer_In,320,400,450,4,1
+DockPoint					Swarmers13,DPT_Swarmer_In,340,450,500,4,2
+DockPoint					Swarmers14,DPT_Swarmer_In,360,400,450,4,5
+DockPoint					Swarmers15,DPT_Swarmer_In,300,450,500,4,6
+DockPoint					Swarmers16,DPT_Swarmer_In,320,400,450,4,1
+DockPoint					Swarmers2,DPT_Swarmer_Out,300,350,350,0,5
+DockPoint					Swarmers3,DPT_Swarmer_Out,320,300,300,0,6
+DockPoint					Swarmers4,DPT_Swarmer_Out,340,350,350,0,1
+DockPoint					Swarmers5,DPT_Swarmer_Out,360,300,300,0,2
+DockPoint					Swarmers6,DPT_Swarmer_Out,300,350,350,0,5
+DockPoint					Swarmers12,DPT_Swarmer_Out,320,300,300,0,1
+DockPoint					Swarmers13,DPT_Swarmer_Out,340,350,350,0,2
+DockPoint					Swarmers14,DPT_Swarmer_Out,360,300,300,0,5
+DockPoint					Swarmers15,DPT_Swarmer_Out,300,350,350,0,6
+DockPoint					Swarmers16,DPT_Swarmer_Out,320,300,300,0,1
+DockPoint					Leech0,DPT_Leech,185,185,200,0,2
+DockPoint					Leech1,DPT_Leech,185,185,200,0,2
+DockPoint					Leech2,DPT_Leech,185,185,200,0,2
+DockPoint					Leech3,DPT_Leech,185,185,200,0,2
+DockPoint					Leech4,DPT_Leech,185,185,200,0,2
+DockPoint					Leech5,DPT_Leech,185,185,200,0,2
+DockPoint					Leech6,DPT_Leech,185,185,200,0,2
+DockPoint					Leech7,DPT_Leech,185,185,200,0,2
+DockPoint					RepairBots,DPT_Repairbot,500,500,600,2,0
+DockPoint					Point1,DPT_Salvage,500,500,600,0,2
+DockPoint					Point2,DPT_Salvage,500,500,600,0,2
+
+;Explosions
+;=--------=
+explosionType				ET_FrigateExplosion
+
+;Engine
+;=-----=
+trailWidth					50
+trailHeight					50
+trailLength					200
+trailStyle					0
+trailScaleCap				0.00005		; N-LIPS for engine glow -- should be same as N-Lips value
+
+;Scaling effects
+;=--------=
+N-LIPS						0.00005		; Max value for Interceptors 0.0005
+scaleFactor                 1.0         ; Used for debugging
+
+;Navlights
+;=---------=
+NUMBER_OF_NAV_LIGHTS           5
+
+; format is NavLight            name, type, blinkrate (in seconds), size (in meters), min LOD, texture name
+NavLight                        port,       NAVLIGHT_FadeOnOff, 2,   1, 0.5,  7,   2, etg\textures\star32
+NavLight                        star,       NAVLIGHT_FadeOnOff, 2,   1, 0.5,  7,   2, etg\textures\star32
+NavLight                        sensortop,       NAVLIGHT_FadeOnOff, 0.5, 1, 0,    8,   2, etg\textures\star32
+NavLight                        sensormid,       NAVLIGHT_FadeOnOff, 0.5, 1, 0,    8,   2, etg\textures\star32
+NavLight                        sensorbtm,       NAVLIGHT_FadeOnOff, 0.5, 1, 0,    8,   2, etg\textures\star32
+
+;Animation
+;=--------=
+NUMBER_OF_ANIMS 2
+
+ANIM 0   WingsOpen
+ANIM 1   WingsClose
+
+Overlay_Selection_Scalar            1.25         ; scale the tactical overlay by this amount

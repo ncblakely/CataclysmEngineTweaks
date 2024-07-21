@@ -281,6 +281,12 @@
     <ClInclude Include="PatchAI.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="game\Game\ModuleDefs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Win32\timer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -348,5 +354,7 @@
     <None Include="CataclysmEngineTweaks.ini" />
     <None Include="LICENSE" />
     <None Include="README.md" />
+    <None Include="assets\aiskirmish.script" />
+    <None Include="assets\soundfx\shipcmnevents.lut" />
   </ItemGroup>
 </Project>

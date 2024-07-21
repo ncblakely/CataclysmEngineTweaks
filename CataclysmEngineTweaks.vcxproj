@@ -142,6 +142,7 @@
     <ClInclude Include="game\Game\MaxMultiPlayer.h" />
     <ClInclude Include="game\Game\mesh.h" />
     <ClInclude Include="game\Game\meshanim.h" />
+    <ClInclude Include="game\Game\ModuleDefs.h" />
     <ClInclude Include="game\Game\nebulae.h" />
     <ClInclude Include="game\Game\objtypes.h" />
     <ClInclude Include="game\Game\particle.h" />
@@ -176,6 +177,7 @@
     <ClInclude Include="game\Win32\rinit.h" />
     <ClInclude Include="game\Win32\soundlow.h" />
     <ClInclude Include="game\Win32\texreg.h" />
+    <ClInclude Include="game\Win32\timer.h" />
     <ClInclude Include="game\Win32\TitanInterfaceC.h" />
     <ClInclude Include="game\Win32\trails.h" />
     <ClInclude Include="PatchAI.h" />
@@ -213,6 +215,8 @@
     <ClCompile Include="PatchUniverse.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="assets\aiskirmish.script" />
+    <None Include="assets\soundfx\shipcmnevents.lut" />
     <None Include="CataclysmEngineTweaks.ini" />
     <None Include="LICENSE" />
     <None Include="README.md" />

@@ -1,0 +1,194 @@
+[sMCV]
+
+;Source Files
+;=----------=
+LODFile								sMCV.lod
+pMexData							sMCV\Rl0\LOD0\sMCV.mex
+
+;Ship Physics
+;=----------=
+mass								20					; ship mass [fighter = 1]
+momentOfInertiaX					20					; resistance to rotation
+momentOfInertiaY					20					; [fighter = 1]
+momentOfInertiaZ					20
+maxvelocity							550					; [fighter = 1000]
+maxrot								10					; maximum rotation speed [don't make faster than ~10]
+thruststrength[TRANS_UP]			750					; acceleration (m/s^2) [1-1000 approx. range]
+thruststrength[TRANS_DOWN]			750	
+thruststrength[TRANS_RIGHT]			500	
+thruststrength[TRANS_LEFT]			500
+thruststrength[TRANS_FORWARD]		800
+thruststrength[TRANS_BACK]			350
+rotstrength[ROT_YAWLEFT]			100					; rotational acceleration (deg/s^2) [0.01 - 1.0]
+rotstrength[ROT_YAWRIGHT]			100
+rotstrength[ROT_PITCHUP]        	75
+rotstrength[ROT_PITCHDOWN]      	75
+rotstrength[ROT_ROLLRIGHT]      	75
+rotstrength[ROT_ROLLLEFT]       	75
+turnspeed[TURN_YAW]					2.0					; speed at which ship tries to turn (1=standard)
+turnspeed[TURN_PITCH]				2.0
+turnspeed[TURN_ROLL]				2.0
+
+;Basic Ship Stats
+;=--------------=
+shipclass							CLASS_Corvette
+isCapitalShip                       FALSE
+buildCost							140					; resource units to build
+buildTime							26					; time in seconds to build
+supportUnits			    		6					; Support Units required
+providesSU			    			0	
+TimeShockedByEMP					2.0					; time in seconds the ship will be paralized when hit by one EMP charge
+maxhealth							80					; hit points
+groupSize							5					; size of group ships of this type tend to form
+repairTime							0					; every this many seconds
+repairDamage						0					; this much damage is repaired
+repairCombatTime                    0					; every this many seconds
+repairCombatDamage                  0					; this much damage is repaired
+repairDroids						0
+externalBuild						FALSE				; if TRUE, ship is built externally
+fowRadius							12000
+forceFieldProtectionDistanceScale	8.0
+approxcollmodifier					1.0					; use only % of collspheresize for rough approximations
+avoidcollmodifier					1.0					; use only % of collspheresize for collision avoidance
+blastRadiusShockWave				0.5	//MG so it doesn't kill other mimics/MCVs
+blastRadiusDamage					500
+minimumZoomDistance					110
+UpgradeByDocking					TRUE
+upgradeTimeModifier 				3.0
+
+;Special
+;=-----=
+repositionTime                      0.6                        ; time in seconds which corvette will spend to reposition
+                                                               ; itself to a new location for it to fire.
+circleRange                         1000.0
+fullMovementFreedom					TRUE
+
+upgradeTimeModifier                 0.5
+
+; Pilot View
+;=---------=
+pilotViewOffsetX	10.0
+pilotViewOffsetY	0.0
+pilotViewOffsetZ	20.0
+
+;Weapons
+;=-----=
+rotateToRetaliate			TRUE
+passiveRetaliateZone		4000
+canTargetMultipleTargets	FALSE
+
+NUMBER_OF_GUNS				0
+
+; PG - mimics no longer have guns
+;GUN		0
+;{
+;Type						GUN_HiddenGimble
+;GunSize						GUNSIZE_SMALL
+;StartUpgradeLevel			WEAPON_PROJECTILE
+;EndUpgradeLevel				WEAPON_ENERGY
+;DamageMult					1.0
+;BulletLength                15								; visual only.  Length of bullet on screen
+;BulletRange                 4000							; distance bullets travel before disappearing
+;BulletSpeed                 4000							; measured in m/s.
+;BulletMass                  0.0								; mass of bullet
+;FireTime                    0.3								; fire repeat rate (reciprocal = shots/second)
+;BurstFireTime               1.3
+;BurstWaitTime               1.0
+;MinAngle                    0
+;MaxAngle                    11
+;FireTime2					2.0
+;BulletSpeed2                1600
+;}
+
+;GUN		1
+;{
+;Type						GUN_HiddenGimble
+;GunSize						GUNSIZE_SMALL
+;StartUpgradeLevel			WEAPON_PROJECTILE
+;EndUpgradeLevel				WEAPON_ENERGY
+;DamageMult					1.0
+;BulletLength				15								; visual only.  Length of bullet on screen
+;BulletRange					4000							; distance bullets travel before disappearing
+;BulletSpeed					4000							; measured in m/s.
+;BulletMass					0.0								; mass of bullet
+;FireTime					0.3								; fire repeat rate (reciprocal = shots/second)
+;BurstFireTime				1.3
+;BurstWaitTime				1.0
+;MinAngle					0
+;MaxAngle					11
+;FireTime2					2.0
+;BulletSpeed2                1600
+;}
+
+;Gun Bindings:
+;=----------=
+;NONE
+
+;Dock Points
+;=---------=
+;NONE
+
+;Explosions
+;=--------=
+explosionType					ET_CorvetteExplosion
+
+;Engine
+;=------=
+trailSegments					10
+trailGranularity				2
+trailColor						0, 0, 0, 0, 0           ;grey team
+trailColor						0, 1, 238, 238, 238
+trailColor						0, 4, 141, 106, 87
+trailColor						0, 9, 0, 0, 0
+trailColor						1, 0, 0, 0, 0           ;red team
+trailColor						1, 1, 225, 124, 33
+trailColor						1, 4, 146, 0, 0
+trailColor						1, 9, 0, 0, 0
+trailColor						2, 0, 0, 0, 0           ;blue team
+trailColor						2, 1, 11, 255, 255
+trailColor						2, 4, 51, 0, 243
+trailColor						2, 9, 0, 0, 0
+trailColor						3, 0, 0, 0, 0           ;green team
+trailColor						3, 1, 201, 254, 39
+trailColor						3, 4, 0, 84, 4
+trailColor						3, 9, 0, 0, 0
+trailColor						4, 0, 0, 0, 0           ;yellow team
+trailColor						4, 1, 255, 240, 97
+trailColor						4, 4, 160, 124, 0
+trailColor						4, 9, 0, 0, 0
+trailColor						5, 0, 0, 0, 0           ;orange team
+trailColor						5, 1, 225, 255, 11
+trailColor						5, 4, 160, 124, 0
+trailColor						5, 9, 0, 0, 0
+trailColor						6, 0, 0, 0, 0           ;purple team
+trailColor						6, 1, 255, 135, 157
+trailColor						6, 4, 121, 0, 135
+trailColor						6, 9, 0, 0, 0
+trailColor						7, 0, 0, 0, 0           ;pale blue-green team
+trailColor						7, 1, 45, 255, 149
+trailColor						7, 4, 0, 105, 137
+trailColor						7, 9, 0, 0, 0
+
+trailWidth						12
+trailHeight						6
+trailAngle						0
+
+trailWidth2						12
+trailHeight2					6
+trailAngle2						0
+
+;Scaling effects
+;=--------=
+N-LIPS							0.000200				; Max value for Interceptors 0.0005
+
+;Navlights
+;=---------=
+;NONE
+
+;Animation
+;=--------=
+;NONE
+
+
+
+

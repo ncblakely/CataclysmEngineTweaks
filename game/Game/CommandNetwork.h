@@ -162,6 +162,7 @@ where Commands is a bunch of commands, one after the other, as defined above.
 #define MISCCOMMAND_PARADE              4
 #define MISCCOMMAND_LEECH               7
 #define MISCCOMMAND_UNLEECH             8
+#define MISCCOMMAND_BEASTSYSTEM 	    10
 #define PACKETTYPE_COMMAND              0xcccc
 #define PACKETTYPE_SYNC                 0x5555
 #define PACKETTYPE_REQUESTEDSYNC        0xe555
@@ -492,6 +493,8 @@ typedef struct
     Externs:
 =============================================================================*/
 
+#if 0
+
 //  For printing of the currently dropped out players;
 extern udword numPlayerDropped;
 extern udword playersDropped[MAX_MULTIPLAYER_PLAYERS];
@@ -576,6 +579,8 @@ void KeepAliveDontDropPlayerCB(sdword playerindex);
 
 extern udword sentPacketNumber;
 extern udword receivedPacketNumber;
+
+#endif
 
 #endif
 

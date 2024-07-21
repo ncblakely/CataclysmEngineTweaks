@@ -1,0 +1,171 @@
+[bMissileCorvette]
+
+;Source Files
+;=----------=
+LODFile                             bMissileCorvette.lod
+pMexData                            bMissileCorvette\Rl0\LOD0\bMissileCorvette.mex
+
+;Ship Physics
+;=----------=
+mass								125					; ship mass [fighter = 1]
+momentOfInertiaX					25					; resistance to rotation
+momentOfInertiaY					25					; [fighter = 1]
+momentOfInertiaZ					25
+maxvelocity							490					; [fighter = 1000]
+maxrot								10					; maximum rotation speed [don't make faster than ~10]
+thruststrength[TRANS_UP]			150					; acceleration (m/s^2) [1-1000 approx. range]
+thruststrength[TRANS_DOWN]			150	
+thruststrength[TRANS_RIGHT]			150	
+thruststrength[TRANS_LEFT]			150
+thruststrength[TRANS_FORWARD]		150
+thruststrength[TRANS_BACK]			150
+rotstrength[ROT_YAWLEFT]			0.5				; rotational acceleration (deg/s^2) [0.01 - 1.0]
+rotstrength[ROT_YAWRIGHT]			0.5
+rotstrength[ROT_PITCHUP]        	0.4
+rotstrength[ROT_PITCHDOWN]      	0.4
+rotstrength[ROT_ROLLRIGHT]      	0.4
+rotstrength[ROT_ROLLLEFT]       	0.4
+turnspeed[TURN_YAW]					1.25			; speed at which ship tries to turn (1=standard)
+turnspeed[TURN_PITCH]				1.25
+turnspeed[TURN_ROLL]				1.25
+
+;Basic Ship Stats
+;=--------------=
+shipclass							CLASS_Corvette
+isCapitalShip                       FALSE
+buildCost							320					; resource units to build
+buildTime							25					; time in seconds to build
+supportUnits			    		4					; Support Units required
+providesSU			    			0	
+TimeShockedByEMP					1.5					; time in seconds the ship will be paralized when hit by one EMP charge
+maxhealth							1500				; hit points
+groupSize							5					; size of group ships of this type tend to form
+repairTime							5					; every this many seconds
+repairDamage						50				; this much damage is repaired
+repairCombatTime                    5					; every this many seconds
+repairCombatDamage                  10					; this much damage is repaired
+repairDroids						0
+externalBuild						FALSE				; if TRUE, ship is built externally
+fowRadius							12000
+forceFieldProtectionDistanceScale	8.0
+approxcollmodifier					1.0					; use only % of collspheresize for rough approximations
+avoidcollmodifier					1.0					; use only % of collspheresize for collision avoidance
+blastRadiusShockWave                1.5
+blastRadiusDamage                   230
+minimumZoomDistance					125
+UpgradeByDocking					FALSE
+
+;Special
+;=-----=
+MissileRegenerateTime				0.375           ; (1.5/4) every this many seconds one missile is regenerated
+MissileVolleyTime					0.2             ; fire rate of missiles when opening massive volley attack
+MissileLagVolleyTime				12.0
+
+repositionTime                      0.6                        ; time in seconds which corvette will spend to reposition
+                                                               ; itself to a new location for it to fire.
+circleRange                         800.0
+
+; PG - This is so that the Beast ship can take over other Beast ships in multiplayer
+beastAttackCascadeCost				4					; number of points required for attack to cascade to this ship
+beastAttacksRequired				1					; number of times you must hit this ship before it converts.
+beastAttackConvertTo				bMissileCorvette    ; convert to this kind of ship
+
+upgradeTimeModifier                 0.5
+
+; Pilot View
+;=---------=
+pilotViewOffsetX	11.0
+pilotViewOffsetY	0.0
+pilotViewOffsetZ	36.0
+
+;Weapons
+;=------=
+rotateToRetaliate			TRUE
+passiveRetaliateZone		6000
+canTargetMultipleTargets	TRUE
+
+NUMBER_OF_GUNS				2
+
+GUN         0
+{
+Type						GUN_MissileLauncher
+GunSize						GUNSIZE_SMALL
+StartUpgradeLevel			WEAPON_MISSILE
+EndUpgradeLevel				WEAPON_MISSILE
+DamageMult					1.0
+MaxMissiles					40                      ; maximum # of missiles this missile launcher can carry
+BulletRange					6000.0
+BulletSpeed					200.0                     ; initial speed for missile
+FireTime					4.0                    ; fire repeat rate (reciprocal = shots/second)
+}
+
+GUN         1
+{
+Type						GUN_MissileLauncher
+GunSize						GUNSIZE_SMALL
+StartUpgradeLevel			WEAPON_MISSILE
+EndUpgradeLevel				WEAPON_MISSILE
+DamageMult					1.0
+MaxMissiles					20
+BulletRange					6000.0
+BulletSpeed					200.0                     ; initial speed for missile
+FireTime					4.0                    ; fire repeat rate (reciprocal = shots/second)
+}
+
+;Explosions
+;=--------=
+explosionType                       ET_CorvetteExplosion
+
+;Engine
+;=---------=
+trailSegments                       20
+trailGranularity                    3
+trailColor                          0, 0, 0, 0, 0           ;grey team
+trailColor                          0, 1, 238, 238, 238
+trailColor                          0, 8, 141, 106, 87
+trailColor                          0, 19, 0, 0, 0
+trailColor                          1, 0, 0, 0, 0           ;red team
+trailColor                          1, 1, 225, 124, 33
+trailColor                          1, 8, 146, 0, 0
+trailColor                          1, 19, 0, 0, 0
+trailColor                          2, 0, 0, 0, 0           ;blue team
+trailColor                          2, 1, 11, 255, 255
+trailColor                          2, 8, 51, 0, 243
+trailColor                          2, 19, 0, 0, 0
+trailColor                          3, 0, 0, 0, 0           ;green team
+trailColor                          3, 1, 201, 254, 39
+trailColor                          3, 8, 0, 84, 4
+trailColor                          3, 19, 0, 0, 0
+trailColor                          4, 0, 0, 0, 0           ;yellow team
+trailColor                          4, 1, 255, 240, 97
+trailColor                          4, 8, 160, 124, 0
+trailColor                          4, 19, 0, 0, 0
+trailColor                          5, 0, 0, 0, 0           ;orange team
+trailColor                          5, 1, 225, 255, 11
+trailColor                          5, 8, 160, 124, 0
+trailColor                          5, 19, 0, 0, 0
+trailColor                          6, 0, 0, 0, 0           ;purple team
+trailColor                          6, 1, 255, 135, 157
+trailColor                          6, 8, 121, 0, 135
+trailColor                          6, 19, 0, 0, 0
+trailColor                          7, 0, 0, 0, 0           ;pale blue-green team
+trailColor                          7, 1, 45, 255, 149
+trailColor                          7, 8, 0, 105, 137
+trailColor                          7, 19, 0, 0, 0
+
+trailWidth                          42.0
+trailHeight                         18.0
+trailAngle                          90.0
+trailRibbonAdjust                    0.75
+trailSpriteRadius                   60.0
+
+trailWidth2                         42.0
+trailHeight2                        18.0
+trailAngle2                         90.0
+trailRibbonAdjust2                   0.75
+trailSpriteRadius2                  60.0
+
+;Scaling effects
+;=--------=
+N-LIPS                              0.000200                ; Max value for Interceptors 0.0005
+

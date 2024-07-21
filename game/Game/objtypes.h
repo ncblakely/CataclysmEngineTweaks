@@ -270,6 +270,16 @@ typedef enum
 }
 ShipStatsType;
 
+typedef enum
+{
+    BS_None = 0,
+    BS_Thrust,
+    BS_Infection,
+    BS_Defensive,
+    BS_Research,
+    BS_Build,
+} BeastSystemType;
+
 typedef struct
 {
     uword number;

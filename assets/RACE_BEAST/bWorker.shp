@@ -1,0 +1,187 @@
+[bWorker]	//MG copied from sWorker Aug. 16, 1999
+
+;Source Files
+;=----------=
+LODFile								bWorker.lod
+pMexData							bWorker\Rl0\LOD0\bWorker.mex
+
+;Ship Physics
+;=----------=
+mass								300					; ship mass [fighter = 1]
+momentOfInertiaX					300					; resistance to rotation
+momentOfInertiaY					300					; [fighter = 1]
+momentOfInertiaZ					300
+maxvelocity							365					; [fighter = 1000]
+maxrot								10					; maximum rotation speed [don't make faster than ~10]
+thruststrength[TRANS_UP]			200 				; acceleration (m/s^2) [1-1000 approx. range]
+thruststrength[TRANS_DOWN]			200	
+thruststrength[TRANS_RIGHT]			200	
+thruststrength[TRANS_LEFT]			200
+thruststrength[TRANS_FORWARD]		200
+thruststrength[TRANS_BACK]			200
+rotstrength[ROT_YAWLEFT]			60					; rotational acceleration (deg/s^2) [0.01 - 1.0]
+rotstrength[ROT_YAWRIGHT]			60
+rotstrength[ROT_PITCHUP]        	60
+rotstrength[ROT_PITCHDOWN]      	60
+rotstrength[ROT_ROLLRIGHT]      	60
+rotstrength[ROT_ROLLLEFT]       	60
+turnspeed[TURN_YAW]					2					; speed at which ship tries to turn (1=standard)
+turnspeed[TURN_PITCH]				2
+turnspeed[TURN_ROLL]				2
+
+;Basic Ship Stats
+;=--------------=
+shipclass							CLASS_Resource
+isCapitalShip                       FALSE
+buildCost							650					; resource units to build
+buildTime							55					; time in seconds to build
+supportUnits			    		4					; Support Units required
+providesSU			    			0	
+TimeShockedByEMP					2.0					; time in seconds the ship will be paralized when hit by one EMP charge
+maxhealth							3800				; hit points
+groupSize							1					; size of group ships of this type tend to form
+repairTime							5					; every this many seconds
+repairDamage						40					; this much damage is repaired
+repairCombatTime					5					; every this many seconds
+repairCombatDamage                  8					; this much damage is repaired
+repairDroids						0
+externalBuild						FALSE				; if TRUE, ship is built externally
+fowRadius							12000
+forceFieldProtectionDistanceScale	4.0
+approxcollmodifier					1.0					; use only % of collspheresize for rough approximations
+avoidcollmodifier					1.0					; use only % of collspheresize for collision avoidance
+blastRadiusShockWave                1.75
+blastRadiusDamage                   275
+minimumZoomDistance                 200
+UpgradeByDocking					FALSE
+
+;Special
+;=-----=
+resourcesAtOneTime					470					; number of resources it will try to get before returning home
+maxresources						470
+harvestRate                         7                   ; eat asteroid every n+1 frames.  This value must be 1,3,7,15, or 31
+harvestAmount						2					; harvest asteroid for this many RU's every frame
+canSpecialBandBoxFriendlies			TRUE
+repairDistance						1500				; distance from ship before repair beam is activated.
+repairCone							120					; angle of cone (in degrees) within which a target can be repaired.
+repairBeamWidth						100					; maximum width with of the repair beam effect.
+salvageFlyToDistance				2000				; distance from target where salvager begins clamping maneuvers.
+jackRetractTime						3					; seconds jack will remain open before closing automatically.
+
+; PG - This is so that the Beast ship can take over other Beast ships in multiplayer
+beastAttackCascadeCost				7					; number of points required for attack to cascade to this ship
+beastAttacksRequired				1					; number of times you must hit this ship before it converts.
+beastAttackConvertTo				bWorker             ; convert to this kind of ship
+
+upgradeTimeModifier                 1.2
+
+; Pilot View
+;=---------=
+pilotViewOffsetX	40.0
+pilotViewOffsetY	0.0
+pilotViewOffsetZ	17.0
+
+;Weapons
+;=-------=
+;NONE
+
+;Gun Bindings:
+;=----------=
+;NONE
+
+;Dock Points
+;=---------=
+NUMBER_OF_DOCK_POINTS		9
+
+; format is DockPoint		name,type,flyawaydist,mindist,maxdist,[headingdirection,updirection]  (0=up,1=right,2=forward,4=down,5=left,6=back) for direction
+DockPoint					repairbots,DPT_Repairbot,30,10,20,0,2
+DockPoint					Grinder,DPT_Drill,400,400,800,0,2	
+DockPoint					center,DPT_Link,185,185,200,0,2
+DockPoint					gun0,DPT_Drill,185,185,200,0,2
+DockPoint					Leech0,DPT_Leech,185,185,200,0,2
+DockPoint					Leech1,DPT_Leech,185,185,200,0,2
+DockPoint					Leech2,DPT_Leech,185,185,200,0,2
+DockPoint                   Point1,DPT_Salvage,500,500,600,0,2
+DockPoint                   Point2,DPT_Salvage,500,500,600,0,2
+
+;Explosions
+;=----------=
+explosionType				ET_ResourcerExplosion
+
+;Engine
+;=------=
+trailSegments				10
+trailGranularity			2
+trailColor					0, 0, 0, 0, 0           ;grey team
+trailColor					0, 1, 238, 238, 238
+trailColor					0, 4, 141, 106, 87
+trailColor					0, 9, 0, 0, 0
+trailColor					1, 0, 0, 0, 0           ;red team
+trailColor					1, 1, 225, 124, 33
+trailColor					1, 4, 146, 0, 0
+trailColor					1, 9, 0, 0, 0
+trailColor					2, 0, 0, 0, 0           ;blue team
+trailColor					2, 1, 11, 255, 255
+trailColor					2, 4, 51, 0, 243
+trailColor					2, 9, 0, 0, 0
+trailColor					3, 0, 0, 0, 0           ;green team
+trailColor					3, 1, 201, 254, 39
+trailColor					3, 4, 0, 84, 4
+trailColor					3, 9, 0, 0, 0
+trailColor					4, 0, 0, 0, 0           ;yellow team
+trailColor					4, 1, 255, 240, 97
+trailColor					4, 4, 160, 124, 0
+trailColor					4, 9, 0, 0, 0
+trailColor					5, 0, 0, 0, 0           ;orange team
+trailColor					5, 1, 225, 255, 11
+trailColor					5, 4, 160, 124, 0
+trailColor					5, 9, 0, 0, 0
+trailColor					6, 0, 0, 0, 0           ;purple team
+trailColor					6, 1, 255, 135, 157
+trailColor					6, 4, 121, 0, 135
+trailColor					6, 9, 0, 0, 0
+trailColor					7, 0, 0, 0, 0           ;pale blue-green team
+trailColor					7, 1, 45, 255, 149
+trailColor					7, 4, 0, 105, 137
+trailColor					7, 9, 0, 0, 0
+
+trailWidth					10
+trailHeight					4
+trailAngle					0
+;trailRibbonAdjust			0.5
+trailSpriteRadius			50.0
+;trailSpriteOffset			-1.5
+
+trailWidth2					10
+trailHeight2				4
+trailAngle2					0
+;trailRibbonAdjust2			0.5
+trailSpriteRadius2			50.0
+;trailSpriteOffset2			-1.5
+
+;Scaling effects
+;=--------------=
+N-LIPS						0.000100				; Max value for Interceptors for 0.0005
+
+;Navlights
+;=---------=
+NUMBER_OF_NAV_LIGHTS			4
+
+; format is NavLight			name,	type,				blinkperiod/on, blinkperiod/off,	startdelay, size,	min LOD,	texture name
+NavLight						SWO1,	NAVLIGHT_FadeOnOff,	1,				0.5,				0,			7,		2,			etg\textures\star32
+NavLight						SWO2,	NAVLIGHT_FadeOnOff,	1,				0.5,				0,			7,		2,			etg\textures\star32
+NavLight						SWO3,	NAVLIGHT_FadeOnOff,	1,				0.5,				0.5,		7,		2,			etg\textures\star32
+NavLight						SWO4,	NAVLIGHT_FadeOnOff,	1,				0.5,				0.5,		7,		2,			etg\textures\star32
+
+
+;Animation
+;=--------=
+NUMBER_OF_ANIMS		6
+
+ANIM	0	JackOut
+ANIM	1	JackClose
+ANIM	2	DockClose
+ANIM	3	DockOpen
+ANIM	4	BladesSpin
+ANIM	5	JackSpin
+

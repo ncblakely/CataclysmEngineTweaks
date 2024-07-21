@@ -1,0 +1,185 @@
+[bIonArrayFrigate]
+
+;Source Files
+;=----------=
+LODFile                             bIonArrayFrigate.lod
+pMexData                            bIonArrayFrigate\Rl0\LOD0\bIonArrayFrigate.mex
+
+;Ship Physics
+;=----------=
+mass								400					; ship mass [fighter = 1]
+momentOfInertiaX					400					; resistance to rotation
+momentOfInertiaY					400					; [fighter = 1]
+momentOfInertiaZ					450
+maxvelocity							380					; [fighter = 1000]
+maxrot								5					; maximum rotation speed [don't make faster than ~10]
+thruststrength[TRANS_UP]			60					; acceleration (m/s^2) [1-1000 approx. range]
+thruststrength[TRANS_DOWN]			60	
+thruststrength[TRANS_RIGHT]			60	
+thruststrength[TRANS_LEFT]			60
+thruststrength[TRANS_FORWARD]		90
+thruststrength[TRANS_BACK]			60
+rotstrength[ROT_YAWLEFT]			0.25				; rotational acceleration (deg/s^2) [0.01 - 1.0]
+rotstrength[ROT_YAWRIGHT]			0.25
+rotstrength[ROT_PITCHUP]        	0.08
+rotstrength[ROT_PITCHDOWN]      	0.08
+rotstrength[ROT_ROLLRIGHT]      	0.08
+rotstrength[ROT_ROLLLEFT]       	0.08
+turnspeed[TURN_YAW]					0.3					; speed at which ship tries to turn (1=standard)
+turnspeed[TURN_PITCH]				0.3
+turnspeed[TURN_ROLL]				0.3
+
+;Basic Ship Stats
+;=--------------=
+shipclass							CLASS_Frigate
+isCapitalShip                       TRUE
+buildCost							700					; resource units to build
+buildTime							60					; time in seconds to build
+supportUnits			    		15					; Support Units required
+providesSU			    			0	
+TimeShockedByEMP					2.0					; time in seconds the ship will be paralized when hit by one EMP charge
+maxhealth							11000					; hit points
+groupSize							2					; size of group ships of this type tend to form
+repairTime							5					; every this many seconds
+repairDamage						110					; this much damage is repaired
+repairCombatTime                    5					; every this many seconds
+repairCombatDamage                  22					; this much damage is repaired
+repairDroids						0
+externalBuild						FALSE				; if TRUE, ship is built externally
+fowRadius							12000
+forceFieldProtectionDistanceScale	2.0
+approxcollmodifier					1.0					; use only % of collspheresize for rough approximations
+avoidcollmodifier					1.0					; use only % of collspheresize for collision avoidance
+blastRadiusShockWave                2.75
+blastRadiusDamage                   300
+minimumZoomDistance					400
+UpgradeByDocking					FALSE
+
+;Special
+;=-----=
+upgradeTimeModifier                 1.0
+
+; PG - This is so that the Beast ship can take over other Beast ships in multiplayer
+beastAttackCascadeCost				10					; number of points required for attack to cascade to this ship
+beastAttacksRequired				1					; number of times you must hit this ship before it converts.
+beastAttackConvertTo				bIonArrayFrigate    ; convert to this kind of ship
+
+
+;Weapons
+;=-----=
+rotateToRetaliate			TRUE
+passiveRetaliateZone		7000
+canTargetMultipleTargets	FALSE
+
+NUMBER_OF_GUNS				1
+
+GUN         0
+//Desired Range =  6500
+//ADD this amount: 280 to compensate for centrepoint
+//ADD this amount: 702 to compensate for stopping distance
+{
+Type						GUN_HiddenGimble
+GunSize						GUNSIZE_LARGE
+StartUpgradeLevel			WEAPON_ION
+EndUpgradeLevel				WEAPON_ION
+DamageMult					2.2
+BulletLength				7482.0                        ; visual only.  Length of bullet on screen
+BulletRange					6500.0                        ; distance bullets travel before disappearing
+BulletSpeed					0.0                           ; measured in m/s.
+BulletLifeTime				1.0
+BulletMass					0.0                           ; mass of bullet
+FireTime					2.5                           ; fire repeat rate (reciprocal = shots/second)
+MinAngle                    0
+MaxAngle                    4
+}
+
+;Gun Bindings
+;=-----------=
+;NONE
+
+;Dock Points
+;=---------=
+NUMBER_OF_DOCK_POINTS		12
+
+; format is DockPoint		name,type,flyawaydist,mindist,maxdist,[headingdirection,updirection]  (0=up,1=right,2=forward,4=down,5=left,6=back) for direction
+DockPoint					Leech0,DPT_Leech,185,185,200,0,2
+DockPoint					Leech1,DPT_Leech,185,185,200,0,2
+DockPoint					Leech2,DPT_Leech,185,185,200,0,2
+DockPoint					Leech3,DPT_Leech,185,185,200,0,2
+DockPoint					Leech4,DPT_Leech,185,185,200,0,2
+DockPoint					Leech5,DPT_Leech,185,185,200,0,2
+DockPoint					Leech6,DPT_Leech,185,185,200,0,2
+DockPoint					Leech7,DPT_Leech,185,185,200,0,2
+DockPoint					Leech8,DPT_Leech,185,185,200,0,2
+DockPoint					Leech9,DPT_Leech,185,185,200,0,2
+DockPoint                   Point1,DPT_Salvage,500,500,600,0,2
+DockPoint                   Point2,DPT_Salvage,500,500,600,0,2
+
+
+;Explosions
+;=--------=
+explosionType                       ET_FrigateExplosion
+
+;Engine
+;=---------=
+trailWidth          60.0
+trailHeight         55.0
+trailLength         100.0
+trailStyle          3
+trailScaleCap       0.00025
+trailAngle          118
+
+trailWidth2         60.0
+trailHeight2        55.0
+trailLength2        100.0
+trailStyle2         3
+trailScaleCap2      0.00025
+trailAngle2         72
+
+;Scaling effects
+;=--------=
+N-LIPS                              0.0001                   ; Max value for Interceptors 0.0005
+
+;Navlights
+;=---------=
+NUMBER_OF_NAV_LIGHTS           5
+
+; format is NavLight            name, type, blinkrate (in seconds), size (in meters), min LOD, texture name
+NavLight                        antenna1,       NAVLIGHT_FadeOnOff, 2,   1,   0,  8,  2, etg\textures\star32
+NavLight                        antenna2,       NAVLIGHT_FadeOnOff, 2,   1,  0.5, 8,  2, etg\textures\star32
+NavLight                        antenna3,       NAVLIGHT_FadeOnOff, 2,   1,   1,  8,  2, etg\textures\star32
+NavLight                        caution1,       NAVLIGHT_FadeOnOff, 1,   0.5, 0,  7,  2, etg\textures\star32
+NavLight                        caution2,       NAVLIGHT_FadeOnOff, 1,   0.5, 0,  7,  2, etg\textures\star32
+
+;Animation
+;=-----------=
+;CRAPPY HOMEWORLD ANIMATION SYSTEM
+
+;Mad Animation Sillyness
+;upon creation animation state:
+;animation specified is started then paused
+;i.e:   HeaveyDefender needs to start a gun opening animation,
+;       and then pause it.
+
+;MadStartInfo        needs a starting     /Animation Text Name(no spaces allowed!)
+                     animation(1-yes,0-no)/
+MadStartInfo                   1 , Array_Open , 1 , Array_Open
+
+;MadGunAnims          definitions in explination below
+;                       n = number, g = gun, o = open, c = close, d = damaged, a = animations
+
+;                            ;ngoa,names,...,ngca,names,...,ngoda,names,... ,ngcda,names,...
+;if this doesn't
+;makes sence, ask Bryce
+MadGunAnims                     1, Array_Open, 1, Array_Close, 1,Array_Open_DMG, 1, Array_Close_DMG
+
+;Ships health must be below this percentage to use the damaged animations.
+madGunOpenDamagedHealthThreshold                0.70    ;<= 1.0f
+
+BindAnimations                      1
+
+; Pilot View
+;=---------=
+pilotViewOffsetX	90.0
+pilotViewOffsetY	0.0
+pilotViewOffsetZ	-85.0

@@ -1,0 +1,589 @@
+[bHeavyCruiser]
+
+;Source Files
+;=----------=
+LODFile								bHeavyCruiser.lod
+pMexData							bHeavyCruiser\Rl0\LOD0\bHeavyCruiser.mex
+
+;Ship Physics
+;=----------=
+mass                                10000				; ship mass [fighter = 1]
+momentOfInertiaX                    10000				; resistance to rotation
+momentOfInertiaY                    10000				; [fighter = 1]
+momentOfInertiaZ                    10000
+maxvelocity                         235					; [fighter = 1000]
+maxrot                              10.0				; maximum rotation speed [don't make faster than ~10]
+thruststrength[TRANS_UP]			39.0				; acceleration (m/s^2) [1-1000 approx. range]
+thruststrength[TRANS_DOWN]			39.0
+thruststrength[TRANS_RIGHT]			39.0
+thruststrength[TRANS_LEFT]			39.0
+thruststrength[TRANS_FORWARD]		39.0
+thruststrength[TRANS_BACK]			39.0
+rotstrength[ROT_YAWLEFT]			0.36				; rotational acceleration (deg/s^2) [0.01 - 1.0]
+rotstrength[ROT_YAWRIGHT]			0.36
+rotstrength[ROT_PITCHUP]			0.06
+rotstrength[ROT_PITCHDOWN]			0.06
+rotstrength[ROT_ROLLRIGHT]			0.06
+rotstrength[ROT_ROLLLEFT]			0.06
+turnspeed[TURN_YAW]					0.2					; speed at which ship tries to turn (1=standard)
+turnspeed[TURN_PITCH]				0.2
+turnspeed[TURN_ROLL]				0.2
+
+;Basic Ship Stats
+;=--------------=
+shipclass							CLASS_HeavyCruiser
+isCapitalShip                       TRUE
+buildCost							6500				; resource units to build
+buildTime							290					; time in seconds to build
+supportUnits			    		70					; Support Units required
+providesSU			    			0					; The carrier ship provides 20 support units	
+TimeShockedByEMP					1.5					; time in seconds the ship will be paralized when hit by one EMP charge
+maxhealth							85000               ; hit points
+groupSize							1                   ; size of group ships of this type tend to form
+repairTime							5					; every this many seconds
+repairDamage						360					; this much damage is repaired
+repairCombatTime                    5					; every this many seconds
+repairCombatDamage                  72					; this much damage is repaired
+repairDroids						0
+externalBuild						TRUE				; if TRUE, ship is built externally
+fowRadius							12000
+forceFieldProtectionDistanceScale	2.0
+approxcollmodifier					1.0					; use only % of collspheresize for rough approximations
+avoidcollmodifier					0.8					; use only % of collspheresize for collision avoidance
+blastRadiusShockWave                2.75
+blastRadiusDamage                   300
+minimumZoomDistance                 900
+UpgradeByDocking					FALSE
+
+;Special
+;=-----=
+Overlay_Selection_Scalar            1.2         ; scale the tactical overlay by this amount
+
+upgradeTimeModifier                 1.0
+
+
+; Pilot View
+;=---------=
+pilotViewOffsetX	150.0
+pilotViewOffsetY	0.0
+pilotViewOffsetZ	695.0
+
+;Weapons
+;=-----=
+rotateToRetaliate			TRUE
+passiveRetaliateZone		7100
+canTargetMultipleTargets	TRUE
+
+NUMBER_OF_GUNS				16
+
+;Very Large Energy Cannon, front turret, bottom, right side
+GUN		0
+//Desired Range = 4000
+//ADD this amount: 507 to compensate for centrepoint
+//ADD this amount:1058 to compensate for stopping distance
+{
+Type						GUN_VisibleGimble
+GunSize						GUNSIZE_LARGE
+StartUpgradeLevel			WEAPON_PROJECTILE
+EndUpgradeLevel				WEAPON_ENERGY
+DamageMult					1.5
+BulletLength				18						; visual only.  Length of bullet on screen
+BulletRange					5565					; distance bullets travel before disappearing
+BulletSpeed					2800					; measured in m/s.
+BulletMass					1.2						; mass of bullet
+FireTime					3.7						; fire repeat rate (reciprocal = shots/second)
+TriggerHappy				5.0
+minturnangle				-10						; degrees
+maxturnangle				125
+mindeclination				-10
+maxdeclination				60
+maxanglespeed				360						; degrees/s
+maxdeclinationspeed			360
+angletracking				1.5
+declinationtracking			1.5
+BarrelLength				50
+RecoilLength				37.5
+
+FireTime2					4.0
+BulletSpeed2                1600.0			; measured in m/s.
+}
+
+;Very Large Energy Cannon, front turret, top, right side
+GUN		1
+//Desired Range = 4000
+//ADD this amount: 507 to compensate for centrepoint
+//ADD this amount:1058 to compensate for stopping distance
+{
+Type						GUN_VisibleGimble
+GunSize						GUNSIZE_LARGE
+StartUpgradeLevel			WEAPON_PROJECTILE
+EndUpgradeLevel				WEAPON_ENERGY
+DamageMult					1.5
+BulletLength				18
+BulletRange					5565
+BulletSpeed					2800
+BulletMass					1.2
+FireTime					3.7
+TriggerHappy				5.0
+minturnangle				-125					; degrees
+maxturnangle				10
+mindeclination				-10
+maxdeclination				60
+maxanglespeed				360						; degrees/s
+maxdeclinationspeed			360
+angletracking				1.5
+declinationtracking			1.5
+BarrelLength				50
+RecoilLength				37.5
+
+FireTime2					4.0
+BulletSpeed2                1600.0			; measured in m/s.
+}
+
+;Very Large Energy Cannon, front turret, top, left side
+GUN		2
+//Desired Range = 4000
+//ADD this amount: 507 to compensate for centrepoint
+//ADD this amount:1058 to compensate for stopping distance
+
+{
+Type						GUN_VisibleGimble
+GunSize						GUNSIZE_LARGE
+StartUpgradeLevel			WEAPON_PROJECTILE
+EndUpgradeLevel				WEAPON_ENERGY
+DamageMult					1.5
+BulletLength				18
+BulletRange					5565
+BulletSpeed					2800
+BulletMass					1.2
+FireTime					3.7
+TriggerHappy				5.0
+minturnangle				-10.0					; degrees
+maxturnangle				125.0
+mindeclination				-10.0
+maxdeclination				60.0
+maxanglespeed				360.0					; degrees/s
+maxdeclinationspeed			360.0
+angletracking				1.5
+declinationtracking			1.5
+BarrelLength				50
+RecoilLength				37.5
+
+FireTime2					4.0
+BulletSpeed2                1600.0			; measured in m/s.
+}
+
+;Very Large Energy Cannon, front turret, bottom, left side
+GUN		3
+//Desired Range = 4000
+//ADD this amount: 507 to compensate for centrepoint
+//ADD this amount:1058 to compensate for stopping distance
+
+{
+Type						GUN_VisibleGimble
+GunSize						GUNSIZE_LARGE
+StartUpgradeLevel			WEAPON_PROJECTILE
+EndUpgradeLevel				WEAPON_ENERGY
+DamageMult					1.5
+BulletLength				18
+BulletRange					5565
+BulletSpeed					2800
+BulletMass					1.2
+FireTime					3.7
+TriggerHappy				5.0
+minturnangle				-125.0					; degrees
+maxturnangle				10.0
+mindeclination				-10.0
+maxdeclination				60.0
+maxanglespeed				360.0					; degrees/s
+maxdeclinationspeed			360.0
+angletracking				1.5
+declinationtracking			1.5
+BarrelLength				50
+RecoilLength				37.5
+
+FireTime2					4.0
+BulletSpeed2                1600.0			; measured in m/s.
+}
+
+;Very Large Energy Cannon, Left wing, outside gun
+GUN		4
+//Desired Range = 4000
+//ADD this amount: 610 to compensate for centrepoint
+//ADD this amount:1058 to compensate for stopping distance
+{
+Type						GUN_VisibleGimble
+GunSize						GUNSIZE_LARGE
+StartUpgradeLevel			WEAPON_PROJECTILE
+EndUpgradeLevel				WEAPON_ENERGY
+DamageMult					1.5
+BulletLength				18
+BulletRange					5668
+BulletSpeed					2800
+BulletMass					1.2
+FireTime					3.7
+TriggerHappy				5.0
+minturnangle				-135.0					; degrees
+maxturnangle				135.0
+mindeclination				-1.0
+maxdeclination				60.0
+maxanglespeed				360.0					; degrees/s
+maxdeclinationspeed			360.0
+angletracking				1.5
+declinationtracking			1.5
+BarrelLength				50
+RecoilLength				37.5
+
+FireTime2					4.0
+BulletSpeed2                1600.0			; measured in m/s.
+}
+
+;Very Large Energy Cannon, Right wing, outside gun
+GUN		5
+//Desired Range = 4000
+//ADD this amount: 610 to compensate for centrepoint
+//ADD this amount:1058 to compensate for stopping distance
+{
+Type						GUN_VisibleGimble
+GunSize						GUNSIZE_LARGE
+StartUpgradeLevel			WEAPON_PROJECTILE
+EndUpgradeLevel				WEAPON_ENERGY
+DamageMult					1.5
+BulletLength				18
+BulletRange					5668
+BulletSpeed					2800
+BulletMass					1.2
+FireTime					3.7
+TriggerHappy				5.0
+minturnangle				-135					; degrees
+maxturnangle				135
+mindeclination				-1
+maxdeclination				60
+maxanglespeed				360						; degrees/s
+maxdeclinationspeed			360
+angletracking				1.5
+declinationtracking			1.5
+BarrelLength				50
+RecoilLength				37.5
+
+FireTime2					4.0
+BulletSpeed2                1600.0			; measured in m/s.
+}
+
+;Ion Cannon
+
+;This is the large Ion Cannon turret on TOP - the first gun is slaved to the second
+GUN		6
+//Desired Range = 6000
+//ADD this amount:  42 to compensate for centrepoint
+//ADD this amount:1058 to compensate for stopping distance
+{
+Type						GUN_VisibleGimble
+GunSize						GUNSIZE_LARGE
+StartUpgradeLevel			WEAPON_ION
+EndUpgradeLevel				WEAPON_ION
+DamageMult					1.5
+BulletLength				7100
+BulletRange					7100
+BulletSpeed					0.0
+BulletLifeTime				2.0
+BulletMass					0.0
+FireTime					7.0
+TriggerHappy				5.0
+minturnangle				-65						; degrees
+maxturnangle				65
+mindeclination				-1
+maxdeclination				13
+maxanglespeed				360						; degrees/s
+maxdeclinationspeed			360
+angletracking				1.5
+declinationtracking			1.5
+BarrelLength				125.0
+OffsetX						0
+OffsetY						0
+SlaveDriver					7
+}
+
+GUN		7
+//Desired Range = 6000
+//ADD this amount:  42 to compensate for centrepoint
+//ADD this amount:1058 to compensate for stoing distance
+{
+Type						GUN_VisibleGimble
+GunSize						GUNSIZE_LARGE
+StartUpgradeLevel			WEAPON_ION
+EndUpgradeLevel				WEAPON_ION
+DamageMult					1.5
+BulletLength				7100
+BulletRange					7100
+BulletSpeed					0.0
+BulletLifeTime				2.0
+BulletMass					0.0
+FireTime					7.0
+TriggerHappy				5.0
+minturnangle				-65						; degrees
+maxturnangle				65
+mindeclination				-1
+maxdeclination				13
+maxanglespeed				360						; degrees/s
+maxdeclinationspeed			360
+angletracking				1.5
+declinationtracking			1.5
+BarrelLength				125
+OffsetX						0
+OffsetY						0
+}
+
+;This is the large Ion Cannon turret on BOTTOM - the first gun is slaved to the second
+GUN		8
+//Desired Range = 6000
+//ADD this amount:  42 to compensate for centrepoint
+//ADD this amount:1058 to compensate for stopping distance
+{
+Type						GUN_VisibleGimble
+GunSize						GUNSIZE_LARGE
+StartUpgradeLevel			WEAPON_ION
+EndUpgradeLevel				WEAPON_ION
+DamageMult					1.5
+BulletLength				7100
+BulletRange					7100
+BulletSpeed					0.0
+BulletLifeTime				2.0
+BulletMass					0.0
+FireTime					7.0
+TriggerHappy				5.0
+minturnangle				-65						; degrees
+maxturnangle				65
+mindeclination				-1
+maxdeclination				13
+maxanglespeed				360						; degrees/s
+maxdeclinationspeed			360
+angletracking				1.5
+declinationtracking			1.5
+BarrelLength				125
+OffsetX						0
+OffsetY						0
+SlaveDriver					9
+}
+
+GUN		9
+//Desired Range = 6000
+//ADD this amount:  42 to compensate for centrepoint
+//ADD this amount:1058 to compensate for stopping distance
+{
+Type						GUN_VisibleGimble
+GunSize						GUNSIZE_LARGE
+StartUpgradeLevel			WEAPON_ION
+EndUpgradeLevel				WEAPON_ION
+DamageMult					1.5
+BulletLength				7100
+BulletRange					7100
+BulletSpeed					0.0
+BulletLifeTime				2.0
+BulletMass					0.0
+FireTime					7.0
+TriggerHappy				5.0
+minturnangle				-65						; degrees
+maxturnangle				65
+mindeclination				-1
+maxdeclination				13
+maxanglespeed				360						; degrees/s
+maxdeclinationspeed			360
+angletracking				1.5
+declinationtracking			1.5
+BarrelLength				125
+OffsetX						0
+OffsetY						0
+}
+
+GUN		10
+{
+Type						GUN_HiddenGimble
+GunSize						GUNSIZE_MEDIUM
+StartUpgradeLevel			WEAPON_BEASTINFECT
+EndUpgradeLevel				WEAPON_BEASTINFECT
+DamageMult					1.5
+BulletLength				8000.0		; visual only.  Length of bullet on screen
+BulletRange					8000.0		; distance bullets travel before disappearing
+BulletSpeed					8000.0		; measured in m/s.
+BulletMass					0.0				; mass of bullet
+FireTime					160.0			; fire repeat rate (reciprocal = shots/second)
+BurstFireTime				0
+BurstWaitTime				0
+MinAngle					0
+MaxAngle					90
+}
+
+GUN		11
+{
+Type						GUN_HiddenGimble
+GunSize						GUNSIZE_MEDIUM
+StartUpgradeLevel			WEAPON_BEASTINFECT
+EndUpgradeLevel				WEAPON_BEASTINFECT
+DamageMult					1.0
+BulletLength				8000.0		; visual only.  Length of bullet on screen
+BulletRange					8000.0		; distance bullets travel before disappearing
+BulletSpeed					8000.0		; measured in m/s.
+BulletMass					0.0				; mass of bullet
+FireTime					160.0			; fire repeat rate (reciprocal = shots/second)
+BurstFireTime				0
+BurstWaitTime				0
+MinAngle					0
+MaxAngle					90
+}
+
+GUN		12
+{
+Type						GUN_HiddenGimble
+GunSize						GUNSIZE_MEDIUM
+StartUpgradeLevel			WEAPON_BEASTINFECT
+EndUpgradeLevel				WEAPON_BEASTINFECT
+DamageMult					1.0
+BulletLength				8000.0		; visual only.  Length of bullet on screen
+BulletRange					8000.0		; distance bullets travel before disappearing
+BulletSpeed					8000.0		; measured in m/s.
+BulletMass					0.0				; mass of bullet
+FireTime					160.0			; fire repeat rate (reciprocal = shots/second)
+BurstFireTime				0
+BurstWaitTime				0
+MinAngle					0
+MaxAngle					90
+}
+
+GUN		13
+{
+Type						GUN_HiddenGimble
+GunSize						GUNSIZE_MEDIUM
+StartUpgradeLevel			WEAPON_BEASTINFECT
+EndUpgradeLevel				WEAPON_BEASTINFECT
+DamageMult					1.0
+BulletLength				8000.0		; visual only.  Length of bullet on screen
+BulletRange					8000.0		; distance bullets travel before disappearing
+BulletSpeed					8000.0		; measured in m/s.
+BulletMass					0.0				; mass of bullet
+FireTime					160.0			; fire repeat rate (reciprocal = shots/second)
+BurstFireTime				0
+BurstWaitTime				0
+MinAngle					0
+MaxAngle					90
+}
+
+GUN		14
+{
+Type						GUN_HiddenGimble
+GunSize						GUNSIZE_MEDIUM
+StartUpgradeLevel			WEAPON_BEASTINFECT
+EndUpgradeLevel				WEAPON_BEASTINFECT
+DamageMult					1.0
+BulletLength				8000.0		; visual only.  Length of bullet on screen
+BulletRange					8000.0		; distance bullets travel before disappearing
+BulletSpeed					8000.0		; measured in m/s.
+BulletMass					0.0				; mass of bullet
+FireTime					160.0			; fire repeat rate (reciprocal = shots/second)
+BurstFireTime				0
+BurstWaitTime				0
+MinAngle					0
+MaxAngle					90
+}
+
+GUN		15
+{
+Type						GUN_HiddenGimble
+GunSize						GUNSIZE_MEDIUM
+StartUpgradeLevel			WEAPON_BEASTINFECT
+EndUpgradeLevel				WEAPON_BEASTINFECT
+DamageMult					1.0
+BulletLength				8000.0		; visual only.  Length of bullet on screen
+BulletRange					8000.0		; distance bullets travel before disappearing
+BulletSpeed					8000.0		; measured in m/s.
+BulletMass					0.0				; mass of bullet
+FireTime					160.0			; fire repeat rate (reciprocal = shots/second)
+BurstFireTime				0
+BurstWaitTime				0
+MinAngle					0
+MaxAngle					90
+}
+
+
+;Gun Bindings:
+;=----------=
+//Very Large Energy Cannon, Top turret, left side
+BindGun						HeavyCruiserGun(1) Gun0,Azimuth,Recoil,Frequency 1
+
+//Very Large Energy Cannon, Top turret, left side
+BindGun						HeavyCruiserGun(2) Gun1,Azimuth,Recoil,Frequency 1
+
+//Very Large Energy Cannon, Left wing, inside gun
+BindGun						HeavyCruiserGun(3) Gun2,Azimuth,Recoil,Frequency 1
+
+//Very Large Energy Cannon, Right wing, inside gun
+BindGun						HeavyCruiserGun(4) Gun3,Azimuth,Recoil,Frequency 1
+
+//Very Large Energy Cannon, Left wing, outside gun
+BindGun						HeavyCruiserGun(5) Gun4,Azimuth,Recoil,Frequency 1
+
+//Very Large Energy Cannon, Right wing, outside gun
+BindGun						HeavyCruiserGun(6) Gun5,Azimuth,Recoil,Frequency 1
+
+//bottom ion cannon turret
+BindGun						HeavyCruiserIon(1)     Gun7,Azimuth,Frequency 1
+//BindGun					HeavyCruiserIon(1)     Gun6,Azimuth,Frequency 1
+
+//top ion cannon turret
+BindGun						HeavyCruiserIon(2)     Gun9,Azimuth,Frequency 1
+//BindGun					HeavyCruiserIon(2)     Gun8,Azimuth,Frequency 1
+
+;Dock Points
+;=---------=
+; format is DockPoint       name,type,flyawaydist,mindist,maxdist,[headingdirection,updirection]  (0=up,1=right,2=forward,4=down,5=left,6=back) for direction
+NUMBER_OF_DOCK_POINTS		17
+
+DockPoint					Leech0,DPT_Leech,500,500,500,0,2
+DockPoint					Leech1,DPT_Leech,500,500,500,0,2
+DockPoint					Leech2,DPT_Leech,500,500,500,0,2
+DockPoint					Leech3,DPT_Leech,500,500,500,0,2
+DockPoint					Leech4,DPT_Leech,500,500,500,0,2
+DockPoint					Leech5,DPT_Leech,500,500,500,0,2
+DockPoint					Leech6,DPT_Leech,500,500,500,0,2
+DockPoint					Leech7,DPT_Leech,500,500,500,0,2
+DockPoint					Leech8,DPT_Leech,500,500,500,0,2
+DockPoint					Leech9,DPT_Leech,500,500,500,0,2
+DockPoint					Leech10,DPT_Leech,500,500,500,0,2
+DockPoint					Leech11,DPT_Leech,500,500,500,0,2
+DockPoint                   Point1,DPT_Salvage,500,500,600,0,2
+DockPoint                   Point2,DPT_Salvage,500,500,600,0,2
+DockPoint                   Point3,DPT_Salvage,500,500,600,0,2
+DockPoint                   Point4,DPT_Salvage,500,500,600,0,2
+DockPoint                   Point5,DPT_Salvage,500,500,600,0,2
+
+;Explosions
+;=--------=
+explosionType				ET_DestroyerExplosion
+
+;Engine
+;=-------=
+trailWidth			275.0
+trailHeight			350.0
+trailLength			415.0
+trailScaleCap		0.000094
+
+;Scaling effects
+;=--------=
+N-LIPS				0.00002		; Max value for Interceptors 0.0005
+
+;Navlights
+;=---------=
+NUMBER_OF_NAV_LIGHTS		7
+
+; format is NavLight		name,type,blinkrate (in seconds), startdelay (in seconds) size (in meters), min LOD, texture name
+NavLight					antenna1,       NAVLIGHT_FadeOnOff, 2,   1,	0.2,	7,	2,	etg\textures\star32
+NavLight					antenna2,       NAVLIGHT_FadeOnOff, 2,   1,	0.2,	7,	2,	etg\textures\star32
+NavLight					antenna3,       NAVLIGHT_FadeOnOff, 2,   1,	0,		7,	2,	etg\textures\star32
+NavLight					antenna4,       NAVLIGHT_FadeOnOff, 2,   1,	0,		7,	2,	etg\textures\star32
+NavLight					chin,           NAVLIGHT_FadeOnOff, 0.7, 0.8, 0,		10,	2,	etg\textures\star32
+NavLight					caution1,       NAVLIGHT_FadeOnOff, 0.5, 1,	0,		10,	2,	etg\textures\star32
+NavLight					caution2,       NAVLIGHT_FadeOnOff, 0.5, 1,	0,		10,	2,	etg\textures\star32
+
+;Animation
+;=--------=
+;NONE

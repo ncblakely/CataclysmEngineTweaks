@@ -1,0 +1,422 @@
+[sDreadnought]
+
+;Source Files
+;=----------=
+LODFile								sDreadnought.lod
+pMexData							sDreadnought\Rl0\LOD0\sDreadnought.mex
+
+;Ship Physics
+;=----------=
+mass								12000				; ship mass [fighter = 1]
+momentOfInertiaX					12000				; resistance to rotation
+momentOfInertiaY					12000				; [fighter = 1]
+momentOfInertiaZ					12000
+maxvelocity							240					; [fighter = 1000]
+maxrot								10					; maximum rotation speed [don't make faster than ~10]
+thruststrength[TRANS_UP]            35.0                         ; acceleration (m/s^2) [1-1000 approx. range]
+thruststrength[TRANS_DOWN]          35.0
+thruststrength[TRANS_RIGHT]         35.0
+thruststrength[TRANS_LEFT]          35.0
+thruststrength[TRANS_FORWARD]       35.0
+thruststrength[TRANS_BACK]          35.0
+rotstrength[ROT_YAWLEFT]            0.30                          ; rotational acceleration (deg/s^2) [0.01 - 10]
+rotstrength[ROT_YAWRIGHT]           0.30
+rotstrength[ROT_PITCHUP]            0.05
+rotstrength[ROT_PITCHDOWN]          0.05
+rotstrength[ROT_ROLLRIGHT]          0.05
+rotstrength[ROT_ROLLLEFT]           0.05
+turnspeed[TURN_YAW]                 0.1                          ; speed at which ship tries to turn (1=standard)
+turnspeed[TURN_PITCH]               0.1
+turnspeed[TURN_ROLL]                0.1
+
+
+;Basic Ship Stats
+;=--------------=
+shipclass							CLASS_HeavyCruiser
+isCapitalShip                       TRUE
+buildCost							6800				; resource units to build
+buildTime							300					; time in seconds to build
+supportUnits			    		80					; Support Units required
+providesSU			    			0					; The carrier ship provides 20 support units	
+TimeShockedByEMP					1.5 				; time in seconds the ship will be paralized when hit by one EMP charge
+maxhealth							90000              ; hit points
+groupSize							1                   ; size of group ships of this type tend to form
+repairTime							5					; every this many seconds
+repairDamage						350					; this much damage is repaired
+repairCombatTime                    0					; every this many seconds
+repairCombatDamage                  0					; this much damage is repaired
+repairDroids						8
+externalBuild						TRUE				; if TRUE, ship is built externally
+fowRadius							12000
+forceFieldProtectionDistanceScale	1.5
+approxcollmodifier					1.0					; use only % of collspheresize for rough approximations
+avoidcollmodifier					1.0					; use only % of collspheresize for collision avoidance
+blastRadiusShockWave				3.0
+blastRadiusDamage					600
+minimumZoomDistance					800
+UpgradeByDocking					FALSE
+
+;Special
+;=-----=
+MissileRegenerateTime				1.0					; (1.5/4) every this many seconds one missile is regenerated
+MissileVolleyTime					0.2					; fire rate of missiles when opening massive volley attack
+MissileLagVolleyTime				12.0
+leechHPsPerSecond					100
+leechRUsPerSecond					1
+upgradeTimeModifier                 2.0
+RKOEatMeTime					90				;Time Rko will take to eat this ship
+RKOGetsMissiles					5				;Number missiles Rko gets for eating this ship
+
+; Pilot View
+;=---------=
+pilotViewOffsetX	95.0
+pilotViewOffsetY	0.0
+pilotViewOffsetZ	320.0
+
+;Weapons
+;=-----=
+rotateToRetaliate			TRUE
+passiveRetaliateZone		6000
+canTargetMultipleTargets	TRUE
+
+NUMBER_OF_GUNS				12
+
+GUN		0
+{
+Type						GUN_MissileLauncher
+GunSize						GUNSIZE_LARGE
+StartUpgradeLevel			WEAPON_MISSILE
+EndUpgradeLevel				WEAPON_MISSILE
+DamageMult					2.0
+MaxMissiles					8						; maximum # of missiles this missile launcher can carry
+BulletRange					8000
+BulletSpeed					140					; initial speed for missile
+FireTime					3.5						; fire repeat rate (reciprocal = shots/second)
+TriggerHappy				60						; how triggerHapppy the ship is when firing the fixed.
+MinAngle					0
+MaxAngle					60
+}
+
+GUN		1
+{
+Type						GUN_MissileLauncher
+GunSize						GUNSIZE_LARGE
+StartUpgradeLevel			WEAPON_MISSILE
+EndUpgradeLevel				WEAPON_MISSILE
+DamageMult					2.0
+MaxMissiles					8						; maximum # of missiles this missile launcher can carry
+BulletRange					8000
+BulletSpeed					140					; initial speed for missile
+FireTime					3.5						; fire repeat rate (reciprocal = shots/second)
+TriggerHappy				60						; how triggerHapppy the ship is when firing the fixed.
+MinAngle					0
+MaxAngle					60
+}
+
+GUN		2
+{
+Type						GUN_MissileLauncher
+GunSize						GUNSIZE_LARGE
+StartUpgradeLevel			WEAPON_MISSILE
+EndUpgradeLevel				WEAPON_MISSILE
+DamageMult					2.0
+MaxMissiles					8						; maximum # of missiles this missile launcher can carry
+BulletRange					8000
+BulletSpeed					140					; initial speed for missile
+FireTime					3.5						; fire repeat rate (reciprocal = shots/second)
+TriggerHappy				60						; how triggerHapppy the ship is when firing the fixed.
+MinAngle					0
+MaxAngle					60
+}
+
+GUN		3
+{
+Type						GUN_MissileLauncher
+GunSize						GUNSIZE_LARGE
+StartUpgradeLevel			WEAPON_MISSILE
+EndUpgradeLevel				WEAPON_MISSILE
+DamageMult					2.0
+MaxMissiles					8						; maximum # of missiles this missile launcher can carry
+BulletRange					8000
+BulletSpeed					140					; initial speed for missile
+FireTime					3.5						; fire repeat rate (reciprocal = shots/second)
+TriggerHappy				60						; how triggerHapppy the ship is when firing the fixed.
+MinAngle					0
+MaxAngle					60
+}
+
+GUN		4
+{
+Type						GUN_MissileLauncher
+GunSize						GUNSIZE_LARGE
+StartUpgradeLevel			WEAPON_MISSILE
+EndUpgradeLevel				WEAPON_MISSILE
+DamageMult					2.0
+MaxMissiles					8						; maximum # of missiles this missile launcher can carry
+BulletRange					8000
+BulletSpeed					140					; initial speed for missile
+FireTime					3.5						; fire repeat rate (reciprocal = shots/second)
+TriggerHappy				60						; how triggerHapppy the ship is when firing the fixed.
+MinAngle					0
+MaxAngle					60
+}
+
+GUN		5
+{
+Type						GUN_MissileLauncher
+GunSize						GUNSIZE_LARGE
+StartUpgradeLevel			WEAPON_MISSILE
+EndUpgradeLevel				WEAPON_MISSILE
+DamageMult					2.0
+MaxMissiles					8						; maximum # of missiles this missile launcher can carry
+BulletRange					8000
+BulletSpeed					140					; initial speed for missile
+FireTime					3.5						; fire repeat rate (reciprocal = shots/second)
+TriggerHappy				60						; how triggerHapppy the ship is when firing the fixed.
+MinAngle					0
+MaxAngle					60
+}
+
+GUN		6
+{
+Type						GUN_VisibleGimble
+GunSize						GUNSIZE_LARGE
+StartUpgradeLevel			WEAPON_PROJECTILE
+EndUpgradeLevel				WEAPON_ENERGY
+DamageMult					1.5
+BulletLength				25
+BulletRange					6000
+BulletSpeed					5000
+BulletMass					1.0
+FireTime					2.0
+TriggerHappy				5.0
+minturnangle				-179
+maxturnangle				179
+mindeclination				0
+maxdeclination				90
+maxanglespeed				360
+maxdeclinationspeed			360
+angletracking				1.5
+declinationtracking			1.5
+BarrelLength				50
+RecoilLength				37.5
+
+FireTime2					4.0
+BulletSpeed2                1600
+}
+
+GUN		7
+{
+Type						GUN_VisibleGimble
+GunSize						GUNSIZE_LARGE
+StartUpgradeLevel			WEAPON_PROJECTILE
+EndUpgradeLevel				WEAPON_ENERGY
+DamageMult					1.5
+BulletLength				25
+BulletRange					6000
+BulletSpeed					5000
+BulletMass					1.0
+FireTime					2.0
+TriggerHappy				5.0
+minturnangle				-179
+maxturnangle				179
+mindeclination				0
+maxdeclination				90
+maxanglespeed				360
+maxdeclinationspeed			360
+angletracking				1.5
+declinationtracking			1.5
+BarrelLength				50
+RecoilLength				37.5
+
+FireTime2					4.0
+BulletSpeed2                1600
+}
+
+GUN		8
+{
+Type						GUN_VisibleGimble
+GunSize						GUNSIZE_LARGE
+StartUpgradeLevel			WEAPON_PROJECTILE
+EndUpgradeLevel				WEAPON_ENERGY
+DamageMult					1.5
+BulletLength				25
+BulletRange					6000
+BulletSpeed					5000
+BulletMass					1.0
+FireTime					2.0
+TriggerHappy				5.0
+minturnangle				-179
+maxturnangle				179
+mindeclination				0
+maxdeclination				90
+maxanglespeed				360
+maxdeclinationspeed			360
+angletracking				1.5
+declinationtracking			1.5
+BarrelLength				50
+RecoilLength				37.5
+
+FireTime2					4.0
+BulletSpeed2                1600
+}
+
+GUN		9
+{
+Type						GUN_VisibleGimble
+GunSize						GUNSIZE_LARGE
+StartUpgradeLevel			WEAPON_PROJECTILE
+EndUpgradeLevel				WEAPON_ENERGY
+DamageMult					1.5
+BulletLength				25
+BulletRange					6000
+BulletSpeed					5000
+BulletMass					1.0
+FireTime					2.0
+TriggerHappy				5.0
+minturnangle				-179
+maxturnangle				179
+mindeclination				0
+maxdeclination				90
+maxanglespeed				360
+maxdeclinationspeed			360
+angletracking				1.5
+declinationtracking			1.5
+BarrelLength				50
+RecoilLength				37.5
+
+FireTime2					4.0
+BulletSpeed2                1600
+}
+
+;back/bottom ion cannon
+GUN		10
+{
+Type						GUN_VisibleGimble
+GunSize						GUNSIZE_LARGE
+StartUpgradeLevel			WEAPON_ION
+EndUpgradeLevel				WEAPON_ION
+DamageMult					1.0
+BulletLength				7100
+BulletRange					7100
+BulletSpeed					0.0
+BulletLifeTime				2.0
+BulletMass					0.0
+FireTime					5.0
+TriggerHappy				3.0
+minturnangle				-179						; degrees
+maxturnangle				179
+mindeclination				-5
+maxdeclination				89
+maxanglespeed				360						; degrees/s
+maxdeclinationspeed			360
+angletracking				1.5
+declinationtracking			1.5
+BarrelLength				40.0
+}
+
+;top/forward ion cannon
+GUN		11
+{
+Type						GUN_VisibleGimble
+GunSize						GUNSIZE_LARGE
+StartUpgradeLevel			WEAPON_ION
+EndUpgradeLevel				WEAPON_ION
+DamageMult					1.0
+BulletLength				7100
+BulletRange					7100
+BulletSpeed					0.0
+BulletLifeTime				2.0
+BulletMass					0.0
+FireTime					5.0
+TriggerHappy				3.0
+minturnangle				-179						; degrees
+maxturnangle				179
+mindeclination				-3
+maxdeclination				89
+maxanglespeed				360						; degrees/s
+maxdeclinationspeed			360
+angletracking				1.5
+declinationtracking			1.5
+BarrelLength				40.0
+}
+
+;Gun Bindings:
+;=----------=
+BindGun						DreadTurret(1) Gun9,Azimuth,Recoil,Frequency 1
+BindGun						DreadTurret(2) Gun6,Azimuth,Recoil,Frequency 1
+BindGun						DreadTurret(3) Gun7,Azimuth,Recoil,Frequency 1
+BindGun						DreadTurret(4) Gun8,Azimuth,Recoil,Frequency 1
+BindGun						DreadIonTurret(2) Gun10,Azimuth,Frequency 1
+BindGun						DreadIonTurret(1) Gun11,Azimuth,Frequency 1
+
+;Dock Points
+;=---------=
+NUMBER_OF_DOCK_POINTS		15
+
+; format is DockPoint		name,type,flyawaydist,mindist,maxdist,[headingdirection,updirection]  (0=up,1=right,2=forward,4=down,5=left,6=back) for direction
+DockPoint					Leech0,DPT_Leech,185,185,200,0,2
+DockPoint					Leech1,DPT_Leech,185,185,200,0,2
+DockPoint					Leech2,DPT_Leech,185,185,200,0,2
+DockPoint					Leech3,DPT_Leech,185,185,200,0,2
+DockPoint					Leech4,DPT_Leech,185,185,200,0,2
+DockPoint					Leech5,DPT_Leech,185,185,200,0,2
+DockPoint					Leech6,DPT_Leech,185,185,200,0,2
+DockPoint					Leech7,DPT_Leech,185,185,200,0,2
+DockPoint					Leech8,DPT_Leech,185,185,200,0,2
+DockPoint					Leech9,DPT_Leech,185,185,200,0,2
+DockPoint					Leech10,DPT_Leech,185,185,200,0,2
+DockPoint					Leech11,DPT_Leech,185,185,200,0,2
+DockPoint					Repairbots0,DPT_Repairbot,300,300,300,2,0
+DockPoint					Repairbots1,DPT_Repairbot,300,300,300,2,0
+DockPoint					Repairbots2,DPT_Repairbot,300,300,300,2,0
+;DockPoint					tow0,DPT_SalvageLatch,500,500,600,0,2
+;DockPoint					tow1,DPT_SalvageLatch,500,500,600,0,2
+;DockPoint					tow2,DPT_SalvageLatch,500,500,600,0,2
+;DockPoint					tow3,DPT_SalvageLatch,500,500,600,0,2
+;DockPoint					tow4,DPT_SalvageLatch,500,500,600,4,2
+;DockPoint					tow5,DPT_SalvageLatch,500,500,600,4,2
+
+;Explosions
+;=--------=
+explosionType				ET_DestroyerExplosion
+
+;Engine
+;=----=
+trailWidth					250
+trailHeight					150
+trailLength					450
+trailStyle					0
+trailScaleCap				0.00002		; N-LIPS for engine glow -- should be same as N-Lips value
+
+;Scaling effects
+;=--------=
+N-LIPS						0.00002		; Max value for Interceptors 0.0005
+
+;Navlights
+;=---------=
+NUMBER_OF_NAV_LIGHTS		16
+
+; format is NavLight name,type,blink(on),blink(off),delay,size(in meters),min LOD,texture name
+NavLight	fntport1,			NAVLIGHT_FadeOnOff,	.5,	.5,	0,	25,	2,	etg\textures\star32
+NavLight	fntport2,			NAVLIGHT_FadeOnOff,	.5,	.5,	0,	25,	2,	etg\textures\star32
+NavLight	fntport3,			NAVLIGHT_FadeOnOff,	.5,	.5,	0,	25,	2,	etg\textures\star32
+NavLight	fntstar1,			NAVLIGHT_FadeOnOff,	.5,	.5,	0,	25,	2,	etg\textures\star32
+NavLight	fntstar2,			NAVLIGHT_FadeOnOff,	.5,	.5,	0,	25,	2,	etg\textures\star32
+NavLight	fntstar3,			NAVLIGHT_FadeOnOff,	.5,	.5,	0,	25,	2,	etg\textures\star32
+NavLight	rearstar1,			NAVLIGHT_FadeOnOff,	.5,	.5,	0,	25,	2,	etg\textures\star32
+NavLight	rearstar2,			NAVLIGHT_FadeOnOff,	.5,	.5,	0,	25,	2,	etg\textures\star32
+NavLight	rearport1,			NAVLIGHT_FadeOnOff,	.5,	.5,	0,	25,	2,	etg\textures\star32
+NavLight	rearport2,			NAVLIGHT_FadeOnOff,	.5,	.5,	0,	25,	2,	etg\textures\star32
+NavLight	sidestar1,		NAVLIGHT_FadeOnOff,	.5,	.5,	0,	25,	2,	etg\textures\star32
+NavLight	sidestar2,		NAVLIGHT_FadeOnOff,	.5,	.5,	0,	25,	2,	etg\textures\star32
+NavLight	sideport1,		NAVLIGHT_FadeOnOff,	.5,	.5,	0,	25,	2,	etg\textures\star32
+NavLight	sideport2,		NAVLIGHT_FadeOnOff,	.5,	.5,	0,	25,	2,	etg\textures\star32
+NavLight	top1,			NAVLIGHT_FadeOnOff,	.5,	.5,	0,	25,	2,	etg\textures\star32
+NavLight	top2,			NAVLIGHT_FadeOnOff,	.5,	.5,	0,	25,	2,	etg\textures\star32
+
+;Animation
+;=--------=
+;NONE
+
+	

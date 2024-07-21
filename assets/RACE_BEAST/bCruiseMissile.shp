@@ -1,0 +1,146 @@
+[bCruiseMissile]
+
+;Source Files
+;=----------=
+LODFile								bCruiseMissile.lod
+pMexData							bCruiseMissile\Rl0\LOD0\bCruiseMissile.mex
+
+;Ship Physics
+;=----------=
+mass								10					; ship mass [fighter = 1]
+momentOfInertiaX					10					; resistance to rotation
+momentOfInertiaY					10					; [fighter = 1]
+momentOfInertiaZ					10
+maxvelocity							630					; [fighter = 1000]
+maxrot								10					; maximum rotation speed [don't make faster than ~10]
+thruststrength[TRANS_UP]			600					; acceleration (m/s^2) [1-1000 approx. range]
+thruststrength[TRANS_DOWN]			600	
+thruststrength[TRANS_RIGHT]			600	
+thruststrength[TRANS_LEFT]			600
+thruststrength[TRANS_FORWARD]		700
+thruststrength[TRANS_BACK]			400
+rotstrength[ROT_YAWLEFT]			80					; rotational acceleration (deg/s^2) [0.01 - 1.0]
+rotstrength[ROT_YAWRIGHT]			80
+rotstrength[ROT_PITCHUP]        	80
+rotstrength[ROT_PITCHDOWN]      	80
+rotstrength[ROT_ROLLRIGHT]      	80
+rotstrength[ROT_ROLLLEFT]       	80
+turnspeed[TURN_YAW]					2.1					; speed at which ship tries to turn (1=standard)
+turnspeed[TURN_PITCH]				2.1
+turnspeed[TURN_ROLL]				2.1
+
+;Basic Ship Stats
+;=--------------=
+shipclass							CLASS_Corvette
+isCapitalShip                       FALSE
+buildCost							250					; resource units to build
+buildTime							18					; time in seconds to build
+supportUnits			    		4					; Support Units required
+providesSU			    			0	
+TimeShockedByEMP					2.0					; time in seconds the ship will be paralized when hit by one EMP charge
+maxhealth							200					; hit points
+groupSize							1					; size of group ships of this type tend to form
+repairTime							5					; every this many seconds
+repairDamage						30					; this much damage is repaired
+repairCombatTime                    0					; every this many seconds
+repairCombatDamage                  0					; this much damage is repaired
+repairDroids						0
+externalBuild						FALSE				; if TRUE, ship is built externally
+fowRadius							12000
+forceFieldProtectionDistanceScale	3.0
+approxcollmodifier					1.0					; use only % of collspheresize for rough approximations
+avoidcollmodifier					1.0					; use only % of collspheresize for collision avoidance
+blastRadiusShockWave				1.0
+blastRadiusDamage					100
+minimumZoomDistance                 175
+UpgradeByDocking					FALSE
+
+;Special 
+;=--------=
+; PG - This is so that the Beast ship can take over other Beast ships in multiplayer
+beastAttackCascadeCost				4					; number of points required for attack to cascade to this ship
+beastAttacksRequired				1					; number of times you must hit this ship before it converts.
+beastAttackConvertTo				bCruiseMissile      ; convert to this kind of ship
+
+upgradeTimeModifier                 0.5
+
+
+;Weapons
+;=-----=
+;NONE
+
+;Gun Bindings:
+;=----------=
+;NONE
+
+;Dock Points
+;=---------=
+NUMBER_OF_DOCK_POINTS		2
+; format is DockPoint		name,type,flyawaydist,mindist,maxdist,[headingdirection,updirection]  (0=up,1=right,2=forward,4=down,5=left,6=back) for direction
+DockPoint                   Point1,DPT_Salvage,500,500,600,0,2
+DockPoint                   Point2,DPT_Salvage,500,500,600,0,2
+
+;Explosions
+;=--------=
+explosionType			ET_InterceptorExplosion
+
+;Engine
+;=------=
+trailSegments			10
+trailGranularity		1
+trailColor				0, 0, 0, 0, 0           ;grey team
+trailColor				0, 1, 238, 238, 238
+trailColor				0, 4, 141, 106, 87
+trailColor				0, 9, 0, 0, 0
+trailColor				1, 0, 0, 0, 0           ;red team
+trailColor				1, 1, 225, 124, 33
+trailColor				1, 4, 146, 0, 0
+trailColor				1, 9, 0, 0, 0
+trailColor				2, 0, 0, 0, 0           ;blue team
+trailColor				2, 1, 11, 255, 255
+trailColor				2, 4, 51, 0, 243
+trailColor				2, 9, 0, 0, 0
+trailColor				3, 0, 0, 0, 0           ;green team
+trailColor				3, 1, 201, 254, 39
+trailColor				3, 4, 0, 84, 4
+trailColor				3, 9, 0, 0, 0
+trailColor				4, 0, 0, 0, 0           ;yellow team
+trailColor				4, 1, 255, 240, 97
+trailColor				4, 4, 160, 124, 0
+trailColor				4, 9, 0, 0, 0
+trailColor				5, 0, 0, 0, 0           ;orange team
+trailColor				5, 1, 225, 255, 11
+trailColor				5, 4, 160, 124, 0
+trailColor				5, 9, 0, 0, 0
+trailColor				6, 0, 0, 0, 0           ;purple team
+trailColor				6, 1, 255, 135, 157
+trailColor				6, 4, 121, 0, 135
+trailColor				6, 9, 0, 0, 0
+trailColor				7, 0, 0, 0, 0           ;pale blue-green team
+trailColor				7, 1, 45, 255, 149
+trailColor				7, 4, 0, 105, 137
+trailColor				7, 9, 0, 0, 0
+
+trailWidth				25
+trailHeight				20
+trailAngle				0
+trailSpriteRadius			85
+
+;Scaling effects
+;=--------=
+N-LIPS                              0.0001                   ; Max value for Interceptors 0.0005
+
+;Navlights
+;=---------=
+;NONE
+
+; Pilot View
+;=---------=
+pilotViewOffsetX	35.0
+pilotViewOffsetY	0.0
+pilotViewOffsetZ	-25.0
+
+;Animation
+;=--------=
+;NONE
+

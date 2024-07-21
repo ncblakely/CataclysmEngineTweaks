@@ -1,0 +1,340 @@
+[MultiGunCorvette]
+
+;Source Files
+;=----------=
+LODFile								bMultiGunCorvette.lod
+pMexData							bMultiGunCorvette\Rl0\LOD0\bMultiGunCorvette.mex
+
+;Ship Physics
+;=----------=
+mass                                150.0                        ; ship mass [fighter = 1]
+momentOfInertiaX                    25.0                        ; resistance to rotation
+momentOfInertiaY                    25.0                        ; [fighter = 1]
+momentOfInertiaZ                    25.0
+maxvelocity                         570.0                      ; [fighter = 1000]
+maxrot                              10.0                       ; maximum rotation speed [don't make faster than ~10]
+thruststrength[TRANS_UP]            200.0                      ; acceleration (m/s^2) [1-1000 approx. range]
+thruststrength[TRANS_DOWN]          200.0
+thruststrength[TRANS_RIGHT]         200.0
+thruststrength[TRANS_LEFT]          200.0
+thruststrength[TRANS_FORWARD]       200.0
+thruststrength[TRANS_BACK]          200.0
+rotstrength[ROT_YAWLEFT]            1.3                          ; rotational acceleration (deg/s^2) [0.01 - 10]
+rotstrength[ROT_YAWRIGHT]           1.3
+rotstrength[ROT_PITCHUP]            1.3
+rotstrength[ROT_PITCHDOWN]          1.3
+rotstrength[ROT_ROLLRIGHT]          1.3
+rotstrength[ROT_ROLLLEFT]           1.3
+turnspeed[TURN_YAW]                 1.9                          ; speed at which ship tries to turn (1=standard)
+turnspeed[TURN_PITCH]               1.9
+turnspeed[TURN_ROLL]                1.9
+
+;Basic Ship Stats
+;=--------------=
+shipclass							CLASS_Corvette
+isCapitalShip                       FALSE
+buildCost							275					; resource units to build
+buildTime							35					; time in seconds to build
+supportUnits			    		5					; Support Units required
+providesSU			    			0	
+TimeShockedByEMP					2.0				; time in seconds the ship will be paralized when hit by one EMP charge
+maxhealth							1500					; hit points
+groupSize							5					; size of group ships of this type tend to form
+repairTime							5					; every this many seconds
+repairDamage						55					; this much damage is repaired
+repairCombatTime                    5					; every this many seconds
+repairCombatDamage                  11					; this much damage is repaired
+repairDroids						0
+externalBuild						FALSE				; if TRUE, ship is built externally
+fowRadius							12000
+forceFieldProtectionDistanceScale	5.0
+approxcollmodifier					1.0					; use only % of collspheresize for rough approximations
+avoidcollmodifier					1.0					; use only % of collspheresize for collision avoidance
+blastRadiusShockWave                1.5
+blastRadiusDamage                   230
+minimumZoomDistance                 130
+UpgradeByDocking					FALSE
+
+;Special
+;=-----=
+repositionTime				0.6					; time in seconds which corvette will spend to reposition itself to a new location for it to fire.
+circleRange					800
+
+; PG - This is so that the Beast ship can take over other Beast ships in multiplayer
+beastAttackCascadeCost				4					; number of points required for attack to cascade to this ship
+beastAttacksRequired				1					; number of times you must hit this ship before it converts.
+beastAttackConvertTo				bMultiGunCorvette   ; convert to this kind of ship
+
+upgradeTimeModifier                 0.5
+
+; Pilot View
+;=---------=
+pilotViewOffsetX	23.0
+pilotViewOffsetY	0.0
+pilotViewOffsetZ	10.0
+
+;Weapons
+;=-----=
+rotateToRetaliate			TRUE
+passiveRetaliateZone		6000
+canTargetMultipleTargets	TRUE
+
+NUMBER_OF_GUNS				6
+
+;Front gun, bottom
+GUN		0
+{
+Type						GUN_VisibleGimble
+GunSize						GUNSIZE_Medium
+StartUpgradeLevel			WEAPON_PROJECTILE
+EndUpgradeLevel				WEAPON_ENERGY
+DamageMult					0.7
+BulletLength                18.0                         ; visual only.  Length of bullet on screen
+BulletRange                 6000.0                       ; distance bullets travel before disappearing
+BulletSpeed                 11000.0                      ; measured in m/s.
+BulletMass                  0.01                        ; mass of bullet
+FireTime                    2.5                          ; fire repeat rate (reciprocal = shots/second)
+TriggerHappy				5.0
+minturnangle              -45.0                         ; degrees
+maxturnangle               45.0
+mindeclination            -30.0
+maxdeclination              0.0
+maxanglespeed             360.0                         ; degrees/s
+maxdeclinationspeed       360.0
+angletracking               4.0
+declinationtracking         4.0
+BarrelLength               22.5
+RecoilLength                7.25
+
+FireTime2					4.0
+BulletSpeed2                1600.0			; measured in m/s.
+}
+
+;Front gun, top
+GUN		1
+{
+Type						GUN_VisibleGimble
+GunSize						GUNSIZE_Medium
+StartUpgradeLevel			WEAPON_PROJECTILE
+EndUpgradeLevel				WEAPON_ENERGY
+DamageMult					0.7
+BulletLength                18.0
+BulletRange                 6000.0
+BulletSpeed                 11000.0
+BulletMass                  0.01                        ; mass of bullet
+FireTime                    2.5
+TriggerHappy				5.0
+minturnangle              -45.0                         ; degrees
+maxturnangle               45.0
+mindeclination             -0.0
+maxdeclination             30.0
+maxanglespeed             360.0                         ; degrees/s
+maxdeclinationspeed       360.0
+angletracking               4.0
+declinationtracking         4.0
+BarrelLength               22.5
+RecoilLength                7.25
+
+FireTime2					4.0
+BulletSpeed2                1600.0			; measured in m/s.
+}
+
+;Right side, top
+GUN		2
+{
+Type						GUN_VisibleGimble
+GunSize						GUNSIZE_Medium
+StartUpgradeLevel			WEAPON_PROJECTILE
+EndUpgradeLevel				WEAPON_ENERGY
+DamageMult					0.7
+BulletLength                18.0                           ; visual only.  Length of bullet on screen
+BulletRange                 6000.0                        ; distance bullets travel before disappearing
+BulletSpeed                 11000.0                        ; measured in m/s.
+BulletMass                  0.01                        ; mass of bullet
+FireTime                    2.5                           ; fire repeat rate (reciprocal = shots/second)
+TriggerHappy				5.0
+minturnangle              -40.0                         ; degrees
+maxturnangle                7.0
+mindeclination            -30.0
+maxdeclination              0.0
+maxanglespeed             360.0                         ; degrees/s
+maxdeclinationspeed       360.0
+angletracking               4.0
+declinationtracking         4.0
+BarrelLength               26.0
+RecoilLength                7.25
+
+FireTime2					4.0
+BulletSpeed2                1600.0			; measured in m/s.
+}
+
+;Right side, bottom
+GUN		3
+{
+Type						GUN_VisibleGimble
+GunSize						GUNSIZE_Medium
+StartUpgradeLevel			WEAPON_PROJECTILE
+EndUpgradeLevel				WEAPON_ENERGY
+DamageMult					0.7
+BulletLength                18.0
+BulletRange                 6000.0
+BulletSpeed                 11000.0
+BulletMass                  0.01                        ; mass of bullet
+FireTime                    2.5
+TriggerHappy				5.0
+minturnangle              -40.0                         ; degrees
+maxturnangle                7.0
+mindeclination             -0.0
+maxdeclination             30.0
+maxanglespeed             360.0                         ; degrees/s
+maxdeclinationspeed       360.0
+angletracking               4.0
+declinationtracking         4.0
+BarrelLength               26.0
+RecoilLength                7.25
+
+FireTime2					4.0
+BulletSpeed2                1600.0			; measured in m/s.
+}
+
+;Left side, bottom
+GUN		4
+{
+Type						GUN_VisibleGimble
+GunSize						GUNSIZE_Medium
+StartUpgradeLevel			WEAPON_PROJECTILE
+EndUpgradeLevel				WEAPON_ENERGY
+DamageMult					0.7
+BulletLength                18.0                           ; visual only.  Length of bullet on screen
+BulletRange                 6000.0                        ; distance bullets travel before disappearing
+BulletSpeed                 11000.0                        ; measured in m/s.
+BulletMass                  0.01                        ; mass of bullet
+FireTime                    2.5                           ; fire repeat rate (reciprocal = shots/second)
+TriggerHappy				5.0
+minturnangle              -40.0                         ; degrees
+maxturnangle                7.0
+mindeclination            -30.0
+maxdeclination              0.0
+maxanglespeed             360.0                         ; degrees/s
+maxdeclinationspeed       360.0
+angletracking               4.0
+declinationtracking         4.0
+BarrelLength               26.0
+RecoilLength                7.25
+
+FireTime2					4.0
+BulletSpeed2                1600.0			; measured in m/s.
+}
+
+;Left side, top
+GUN		5
+{
+Type						GUN_VisibleGimble
+GunSize						GUNSIZE_Medium
+StartUpgradeLevel			WEAPON_PROJECTILE
+EndUpgradeLevel				WEAPON_ENERGY
+DamageMult					0.7
+BulletLength                18.0
+BulletRange                 6000.0
+BulletSpeed                 11000.0
+BulletMass                  0.01                        ; mass of bullet
+FireTime                    2.5                          ; fire repeat rate (reciprocal = shots/second)
+TriggerHappy				5.0
+minturnangle              -40.0                         ; degrees
+maxturnangle                7.0
+mindeclination             -0.0
+maxdeclination             30.0
+maxanglespeed             360.0                         ; degrees/s
+maxdeclinationspeed       360.0
+angletracking               4.0
+declinationtracking         4.0
+BarrelLength               26.0
+RecoilLength                7.25
+
+FireTime2					4.0
+BulletSpeed2                1600.0			; measured in m/s.
+}
+
+;Gun Bindings
+;=----------=
+//front gun, bottom
+BindGun						MultiGunCorvetteFrontGun(1) Gun0,Azimuth,Declination,Frequency 1
+//left side, top
+BindGun						MultiGunCorvetteSideGun(1)  Gun5,Azimuth,Declination,Recoil,Frequency 1
+//front gun, top
+BindGun						MultiGunCorvetteFrontGun(2) Gun1,Azimuth,Declination,Frequency 1
+//left side, bottom
+BindGun						MultiGunCorvetteSideGun(2)  Gun4,Azimuth,Declination,Recoil,Frequency 1
+//right side, top
+BindGun						MultiGunCorvetteSideGun(3)  Gun2,Azimuth,Declination,Recoil,Frequency 1
+//right side, bottom
+BindGun						MultiGunCorvetteSideGun(4)  Gun3,Azimuth,Declination,Recoil,Frequency 1
+
+;Dock Points
+;=---------=
+;NONE
+
+;Explosions
+;=--------=
+explosionType				ET_CorvetteExplosion
+
+;Engine
+;=----=
+trailSegments				10
+trailGranularity			2
+trailColor					0, 0, 0, 0, 0           ;grey team
+trailColor					0, 1, 238, 238, 238
+trailColor					0, 4, 141, 106, 87
+trailColor					0, 9, 0, 0, 0
+trailColor					1, 0, 0, 0, 0           ;red team
+trailColor					1, 1, 225, 124, 33
+trailColor					1, 4, 146, 0, 0
+trailColor					1, 9, 0, 0, 0
+trailColor					2, 0, 0, 0, 0           ;blue team
+trailColor					2, 1, 11, 255, 255
+trailColor					2, 4, 51, 0, 243
+trailColor					2, 9, 0, 0, 0
+trailColor					3, 0, 0, 0, 0           ;green team
+trailColor					3, 1, 201, 254, 39
+trailColor					3, 4, 0, 84, 4
+trailColor					3, 9, 0, 0, 0
+trailColor					4, 0, 0, 0, 0           ;yellow team
+trailColor					4, 1, 255, 240, 97
+trailColor					4, 4, 160, 124, 0
+trailColor					4, 9, 0, 0, 0
+trailColor					5, 0, 0, 0, 0           ;orange team
+trailColor					5, 1, 225, 255, 11
+trailColor					5, 4, 160, 124, 0
+trailColor					5, 9, 0, 0, 0
+trailColor					6, 0, 0, 0, 0           ;purple team
+trailColor					6, 1, 255, 135, 157
+trailColor					6, 4, 121, 0, 135
+trailColor					6, 9, 0, 0, 0
+trailColor					7, 0, 0, 0, 0           ;pale blue-green team
+trailColor					7, 1, 45, 255, 149
+trailColor					7, 4, 0, 105, 137
+trailColor					7, 9, 0, 0, 0
+
+;Engine trails
+;=-----------=
+trailRibbonAdjust                   0.5             ; also the default
+trailWidth                          24.5
+trailHeight                         25.0
+trailSpriteRadius                   50.0
+
+;Scaling effects
+;=--------=
+N-LIPS                              0.00014875              ; Max value for Interceptors 0.0005
+scaleFactor                         1.0                     ; Used for debugging
+
+;Navlights
+;=---------=
+;NONE
+
+;Animation
+;=--------=
+;NONE
+
+
+Overlay_Selection_Scalar            1.25         ; scale the tactical overlay by this amount
+

@@ -1,0 +1,328 @@
+[sCarrier]
+
+;Source Files
+;=----------=
+LODFile								sCarrier.lod
+pMexData							sCarrier\Rl0\LOD0\sCarrier.mex
+
+;Ship Physics
+;=----------=
+mass								10000				; ship mass [fighter = 1]
+momentOfInertiaX					10000				; resistance to rotation
+momentOfInertiaY					10000				; [fighter = 1]
+momentOfInertiaZ					10000
+maxvelocity							265					; [fighter = 1000]
+maxrot								10					; maximum rotation speed [don't make faster than ~10]
+thruststrength[TRANS_UP]			40					; acceleration (m/s^2) [1-1000 approx. range]
+thruststrength[TRANS_DOWN]			40	
+thruststrength[TRANS_RIGHT]			40	
+thruststrength[TRANS_LEFT]			40
+thruststrength[TRANS_FORWARD]		40
+thruststrength[TRANS_BACK]			40
+rotstrength[ROT_YAWLEFT]			0.25				; rotational acceleration (deg/s^2) [0.01 - 1.0]
+rotstrength[ROT_YAWRIGHT]			0.25
+rotstrength[ROT_PITCHUP]        	0.25
+rotstrength[ROT_PITCHDOWN]      	0.25
+rotstrength[ROT_ROLLRIGHT]      	0.2
+rotstrength[ROT_ROLLLEFT]       	0.2
+turnspeed[TURN_YAW]					0.2					; speed at which ship tries to turn (1=standard)
+turnspeed[TURN_PITCH]				0.2
+turnspeed[TURN_ROLL]				0.2
+
+;Basic Ship Stats
+;=--------------=
+shipclass							CLASS_Carrier
+isCapitalShip                       TRUE
+buildCost							3400				; resource units to build
+buildTime							280					; time in seconds to build
+supportUnits			    		0					; Support Units required
+providesSU			    			40					; The carrier ship provides 20 support units	
+TimeShockedByEMP					1.5 				; time in seconds the ship will be paralized when hit by one EMP charge
+maxhealth							42000               ; hit points
+groupSize							1                   ; size of group ships of this type tend to form
+repairTime							5					; every this many seconds
+repairDamage						200					; this much damage is repaired
+repairCombatTime                    0					; every this many seconds
+repairCombatDamage                  0					; this much damage is repaired
+repairDroids						8
+externalBuild						TRUE				; if TRUE, ship is built externally
+fowRadius							12000
+forceFieldProtectionDistanceScale	1.3
+approxcollmodifier					1.0					; use only % of collspheresize for rough approximations
+avoidcollmodifier					1.0					; use only % of collspheresize for collision avoidance
+blastRadiusShockWave				3.0
+blastRadiusDamage					500
+minimumZoomDistance					1000
+UpgradeByDocking					FALSE
+
+;Special
+;=-----=
+canBuildShips                       TRUE                ; ship can build ships
+canReceiveShips                     TRUE                ; other ships can dock in this ship
+canReceiveResources                 TRUE                ; Resource Collectors,etc can deposit resources in this ship
+canReceiveShipsPermanently          TRUE                ; ships can dock permanently here
+canReceiveShipsForRetire            TRUE				; ships can dock here and be converted to RU's!
+
+canReceiveFighters                  TRUE
+canReceiveCorvettes                 TRUE
+canReceiveResourceCollectors        TRUE
+canReceiveOtherNonCapitalShips      TRUE
+
+maxDockableFighters                 50
+maxDockableCorvettes                25
+
+dockShipRange                       1000.0              ; how close ships should get before considering docking (to ship surface)
+
+dockLightNear						300
+dockLightFar						800
+dockLightColor						0,255,0
+
+upgradeTimeModifier					1.0
+
+RKOEatMeTime					90				;Time Rko will take to eat this ship
+RKOGetsMissiles					7				;Number missiles Rko gets for eating this ship
+
+; Pilot View
+;=---------=
+pilotViewOffsetX	200.0
+pilotViewOffsetY	0.0
+pilotViewOffsetZ	380.0
+
+;Weapons
+;=-----=
+rotateToRetaliate			FALSE
+passiveRetaliateZone		5000
+canTargetMultipleTargets	TRUE
+
+NUMBER_OF_GUNS				4
+
+GUN		0
+{
+Type						GUN_VisibleGimble
+GunSize						GUNSIZE_MEDIUM
+StartUpgradeLevel			WEAPON_PROJECTILE
+EndUpgradeLevel				WEAPON_ENERGY
+DamageMult					1.5							; modifies standard damage
+BulletLength				20							; visual only.  Length of bullet on screen
+BulletRange					5000						; distance bullets travel before disappearing
+BulletSpeed					5000						; measured in m/s.
+BulletMass					0.05							; mass of bullet
+FireTime					0.4							; fire repeat rate (reciprocal = shots/second)
+TriggerHappy				5.0
+minturnangle				-177						; degrees
+maxturnangle				131
+mindeclination				5.0
+maxdeclination				90
+maxanglespeed				360							; degrees/s
+maxdeclinationspeed			360
+angletracking				1.5
+declinationtracking			1.5
+BarrelLength				20
+RecoilLength				10
+
+FireTime2					1.0							; fire repeat rate (reciprocal = shots/second)
+BulletSpeed2				1600						; measured in m/s.
+}
+
+GUN		1
+{
+Type						GUN_VisibleGimble
+GunSize						GUNSIZE_MEDIUM
+StartUpgradeLevel			WEAPON_PROJECTILE
+EndUpgradeLevel				WEAPON_ENERGY
+DamageMult					1.5							; modifies standard damage
+BulletLength				20							; visual only.  Length of bullet on screen
+BulletRange					5000						; distance bullets travel before disappearing
+BulletSpeed					5000						; measured in m/s.
+BulletMass					0.05						; mass of bullet
+FireTime					0.4							; fire repeat rate (reciprocal = shots/second)
+TriggerHappy				5.0
+minturnangle				-131.0						; degrees
+maxturnangle				177.0
+mindeclination				5.0
+maxdeclination				90.0
+maxanglespeed				360.0						; degrees/s
+maxdeclinationspeed			360.0
+angletracking				1.5
+declinationtracking			1.5
+BarrelLength				20
+RecoilLength				10
+
+FireTime2					1.0							; fire repeat rate (reciprocal = shots/second)
+BulletSpeed2				1600						; measured in m/s.
+}
+
+GUN		2
+{
+Type						GUN_VisibleGimble
+GunSize						GUNSIZE_MEDIUM
+StartUpgradeLevel			WEAPON_PROJECTILE
+EndUpgradeLevel				WEAPON_ENERGY
+DamageMult					1.5							; modifies standard damage
+BulletLength				20							; visual only.  Length of bullet on screen
+BulletRange					5000						; distance bullets travel before disappearing
+BulletSpeed					5000						; measured in m/s.
+BulletMass					0.05						; mass of bullet
+FireTime					0.4							; fire repeat rate (reciprocal = shots/second)
+TriggerHappy				5.0
+minturnangle				-135.0						; degrees
+maxturnangle				135.0
+mindeclination				5.0
+maxdeclination				90.0
+maxanglespeed				360.0						; degrees/s
+maxdeclinationspeed			360.0
+angletracking				1.5
+declinationtracking			1.5
+BarrelLength				20
+RecoilLength				10
+
+FireTime2					1.0							; fire repeat rate (reciprocal = shots/second)
+BulletSpeed2				1600						; measured in m/s.
+}
+
+GUN		3
+{
+Type						GUN_VisibleGimble
+GunSize						GUNSIZE_MEDIUM
+StartUpgradeLevel			WEAPON_PROJECTILE
+EndUpgradeLevel				WEAPON_ENERGY
+DamageMult					1.5							; modifies standard damage
+BulletLength				20							; visual only.  Length of bullet on screen
+BulletRange					5000						; distance bullets travel before disappearing
+BulletSpeed					5000						; measured in m/s.
+BulletMass					0.05						; mass of bullet
+FireTime					0.4							; fire repeat rate (reciprocal = shots/second)
+TriggerHappy				5.0
+minturnangle				-135.0						; degrees
+maxturnangle				135.0
+mindeclination				5.0
+maxdeclination				90.0
+maxanglespeed				360.0						; degrees/s
+maxdeclinationspeed			360.0
+angletracking				1.5
+declinationtracking			1.5
+BarrelLength				20
+RecoilLength				10
+
+FireTime2					1.0							; fire repeat rate (reciprocal = shots/second)
+BulletSpeed2				1600						; measured in m/s.
+}
+
+;Gun Bindings:
+;=----------=
+BindGun						GimbalMedium(1) Gun3,Azimuth,Recoil,Frequency 1
+BindGun						GimbalMedium(2) Gun0,Azimuth,Recoil,Frequency 1
+BindGun						GimbalMedium(3) Gun1,Azimuth,Recoil,Frequency 1
+BindGun						GimbalMedium(4) Gun2,Azimuth,Recoil,Frequency 1
+
+;Dock Points
+;=---------=
+NUMBER_OF_DOCK_POINTS		44
+
+; format is DockPoint		name,type,flyawaydist,mindist,maxdist,[headingdirection,updirection]  (0=up,1=right,2=forward,4=down,5=left,6=back) for direction
+DockPoint					Repairbots,DPT_Repairbot,300,300,300,0,2			
+DockPoint					Res0,DPT_Worker_RU_Transfer,500,500,600,0,2
+DockPoint					Res1,DPT_Worker_RU_Transfer,500,500,600,0,2
+DockPoint					ResLeech0,DPT_Leech_RU_Transfer,500,500,600,0,2
+DockPoint					ResLeech1,DPT_Leech_RU_Transfer,500,500,600,0,2
+DockPoint					ResLeech2,DPT_Leech_RU_Transfer,500,500,600,0,2
+DockPoint					ResLeech3,DPT_Leech_RU_Transfer,500,500,600,0,2
+DockPoint					FtrIN,DPT_Small_In,1000,1200,1200,6,0
+DockPoint					FtrIN2,DPT_Small_In,1000,1200,1200,6,0
+DockPoint					FtrIN3,DPT_Small_In,1000,1200,1200,6,0
+DockPoint					FtrIN4,DPT_Small_In,1000,1200,1200,6,0
+DockPoint					FtrIN5,DPT_Small_In,1000,1200,1200,6,0
+DockPoint					FtrIN6,DPT_Small_In,1000,1200,1200,6,0
+DockPoint					FtrIN7,DPT_Small_In,1000,1200,1200,6,0
+DockPoint					FtrIN8,DPT_Small_In,1000,1200,1200,6,0
+DockPoint					FtrOUT,DPT_Small_Out,1000,1200,1200,2,0
+DockPoint					FtrOUT2,DPT_Small_Out,1000,1200,1200,2,0
+DockPoint					FtrOUT3,DPT_Small_Out,1000,1200,1200,2,0
+DockPoint					FtrOUT4,DPT_Small_Out,1000,1200,1200,2,0
+DockPoint					Frigate,DPT_Med_In,1000,900,1000,6,0
+DockPoint					Frigate2,DPT_Med_In,1000,1200,1300,6,0
+DockPoint					Frigate,DPT_Med_Out,1000,1200,1200,2,0
+DockPoint					Frigate2,DPT_Med_Out,1000,1200,1200,2,0
+DockPoint					Leech0,DPT_Leech,500,500,600,0,2
+DockPoint					Leech1,DPT_Leech,500,500,600,0,2
+DockPoint					Leech2,DPT_Leech,500,500,600,0,2
+DockPoint					Leech3,DPT_Leech,500,500,600,0,2
+DockPoint					Leech4,DPT_Leech,500,500,600,0,2
+DockPoint					Leech5,DPT_Leech,500,500,600,0,2
+DockPoint					Leech6,DPT_Leech,500,500,600,0,2
+DockPoint					Leech7,DPT_Leech,500,500,600,0,2
+DockPoint					Leech8,DPT_Leech,500,500,600,0,2
+DockPoint					Leech9,DPT_Leech,500,500,600,0,2
+DockPoint					Leech10,DPT_Leech,500,500,600,0,2
+DockPoint					Leech11,DPT_Leech,500,500,600,0,2
+DockPoint					Leech12,DPT_Leech,500,500,600,0,2
+DockPoint					Support1,DPT_Support_EB,0,0,0,2,0
+DockPoint					Support2,DPT_Support_EB,0,0,0,2,0
+DockPoint					Support3,DPT_Support_EB,0,0,0,2,0
+DockPoint					Support4,DPT_Support_EB,0,0,0,2,0
+DockPoint					Support5,DPT_Support_EB,0,0,0,2,0
+DockPoint					Support6,DPT_Support_EB,0,0,0,2,0
+;DockPoint					tow0,DPT_SalvageLatch,500,500,600,0,2
+;DockPoint					tow1,DPT_SalvageLatch,500,500,600,0,2
+;DockPoint					tow2,DPT_SalvageLatch,500,500,600,0,2
+;DockPoint					tow3,DPT_SalvageLatch,500,500,600,0,2
+;DockPoint					tow4,DPT_SalvageLatch,500,500,600,0,2
+DockPoint                   Crystal,DPT_Crystal_Process,500,0,10,0,2
+DockPoint                   CrysEffect,DPT_Crystal_Effect,500,500,600,0,2
+
+;Explosions
+;=--------=
+explosionType				ET_CarrierExplosion
+
+;Engine
+;=----=
+trailWidth					425
+trailHeight					325
+trailLength					400
+trailStyle					0
+trailScaleCap				0.000005		; N-LIPS for engine glow -- should be same as N-Lips value
+
+;Engine2
+;=----=
+trail2Width					200
+trail2Height					200
+trail2Length					300
+trail2Style					0
+trail2ScaleCap				0.000005		; N-LIPS for engine glow -- should be same as N-Lips value
+
+
+;Scaling effects
+;=--------=
+N-LIPS						0.000005		; Max value for Interceptors 0.0005
+
+;Navlights
+;=---------=
+NUMBER_OF_NAV_LIGHTS 18
+
+; format is NavLight name,type,blink(on),blink(off),delay,size(in meters),min LOD,texture name
+NavLight	port1,			NAVLIGHT_FadeOnOff,	.5,	.5,	0,	25,	2,	etg\textures\star32
+NavLight	star1,			NAVLIGHT_FadeOnOff,	.5,	.5,	0,	25,	2,	etg\textures\star32
+NavLight	int1,			NAVLIGHT_FadeOnOff,	.5,	.5,	0,	25,	2,	etg\textures\star32
+NavLight	int2,			NAVLIGHT_FadeOnOff,	.5,	.5,	0,	25,	2,	etg\textures\star32
+NavLight	int3,			NAVLIGHT_FadeOnOff,	.5,	.5,	0,	25,	2,	etg\textures\star32
+NavLight	int4,			NAVLIGHT_FadeOnOff,	.5,	.5,	0,	25,	2,	etg\textures\star32
+NavLight	engtop1,			NAVLIGHT_FadeOnOff,	.5,	.5,	0,	25,	2,	etg\textures\star32
+NavLight	engbtm1,			NAVLIGHT_FadeOnOff,	.5,	.5,	0,	25,	2,	etg\textures\star32
+NavLight	engtop2,			NAVLIGHT_FadeOnOff,	.5,	.5,	0,	25,	2,	etg\textures\star32
+NavLight	engbtm2,			NAVLIGHT_FadeOnOff,	.5,	.5,	0,	25,	2,	etg\textures\star32
+NavLight	starside1,		NAVLIGHT_FadeOnOff,	.5,	.5,	0,	25,	2,	etg\textures\star32
+NavLight	portside1,		NAVLIGHT_FadeOnOff,	.5,	.5,	0,	25,	2,	etg\textures\star32
+NavLight	starfnt,			NAVLIGHT_FadeOnOff,	.5,	.5,	0,	25,	2,	etg\textures\star32
+NavLight	portfnt,			NAVLIGHT_FadeOnOff,	.5,	.5,	0,	25,	2,	etg\textures\star32
+NavLight	portfntb1,			NAVLIGHT_FadeOnOff,	.5,	.5,	0,	25,	2,	etg\textures\star32
+NavLight	portfntb2,			NAVLIGHT_FadeOnOff,	.5,	.5,	0,	25,	2,	etg\textures\star32
+NavLight	starfntb1,			NAVLIGHT_FadeOnOff,	.5,	.5,	0,	25,	2,	etg\textures\star32
+NavLight	starfntb2,			NAVLIGHT_FadeOnOff,	.5,	.5,	0,	25,	2,	etg\textures\star32
+
+
+;Animation
+;=--------=
+NUMBER_OF_ANIMS	2
+
+ANIM 0 DoorsPortOpen
+ANIM 1 DoorsPortClose

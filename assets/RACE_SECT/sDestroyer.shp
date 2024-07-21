@@ -1,0 +1,334 @@
+[sDestroyer]
+
+;Source Files
+;=----------=
+pMexData							sDestroyer\Rl0\LOD0\sDestroyer.mex
+LODFile								sDestroyer.lod
+
+;Ship Physics
+;=----------=
+mass								2000				; ship mass [fighter = 1]
+momentOfInertiaX					2000				; resistance to rotation
+momentOfInertiaY					2000				; [fighter = 1]
+momentOfInertiaZ					2000
+maxvelocity							325					; [fighter = 1000]
+maxrot								10					; maximum rotation speed [don't make faster than ~10]
+thruststrength[TRANS_UP]			75					; acceleration (m/s^2) [1-1000 approx. range]
+thruststrength[TRANS_DOWN]			75	
+thruststrength[TRANS_RIGHT]			75	
+thruststrength[TRANS_LEFT]			75
+thruststrength[TRANS_FORWARD]		75
+thruststrength[TRANS_BACK]			75
+rotstrength[ROT_YAWLEFT]			0.40				; rotational acceleration (deg/s^2) [0.01 - 1.0]
+rotstrength[ROT_YAWRIGHT]			0.40
+rotstrength[ROT_PITCHUP]        	0.08
+rotstrength[ROT_PITCHDOWN]      	0.08
+rotstrength[ROT_ROLLRIGHT]      	0.08
+rotstrength[ROT_ROLLLEFT]       	0.08
+turnspeed[TURN_YAW]					0.3					; speed at which ship tries to turn (1=standard)
+turnspeed[TURN_PITCH]				0.3
+turnspeed[TURN_ROLL]				0.3
+
+;Basic Ship Stats
+;=--------------=
+shipclass							CLASS_Destroyer
+isCapitalShip                       TRUE
+buildCost							3000				; resource units to build
+buildTime							170					; time in seconds to build
+supportUnits			    		38					; Support Units required
+providesSU			    			0	
+TimeShockedByEMP					1.5					; time in seconds the ship will be paralized when hit by one EMP charge
+maxhealth							40000				; hit points
+groupSize							1					; size of group ships of this type tend to form
+repairTime							5					; every this many seconds
+repairDamage						200					; this much damage is repaired
+repairCombatTime                    0					; every this many seconds
+repairCombatDamage                  0					; this much damage is repaired
+repairDroids						5
+externalBuild						TRUE				; if TRUE, ship is built externally
+fowRadius							9000
+forceFieldProtectionDistanceScale	1.6
+approxcollmodifier					1.0					; use only % of collspheresize for rough approximations
+avoidcollmodifier					1.0					; use only % of collspheresize for collision avoidance
+blastRadiusShockWave				2.75
+blastRadiusDamage					500
+UpgradeByDocking					FALSE
+upgradeTimeModifier					1.0
+minimumZoomDistance                 550
+
+;Special
+;=--------=
+MissileRegenerateTime				3.0					; (1.5/4) every this many seconds one missile is regenerated
+MissileVolleyTime					0.2					; fire rate of missiles when opening massive volley attack
+MissileLagVolleyTime				12.0
+Overlay_Selection_Scalar            0.8         ; scale the tactical overlay by this amount
+RKOEatMeTime					90				;Time Rko will take to eat this ship
+RKOGetsMissiles					5				;Number missiles Rko gets for eating this ship
+
+; Pilot View
+;=---------=
+pilotViewOffsetX	0.0
+pilotViewOffsetY	0.0
+pilotViewOffsetZ	180.0
+
+;Weapons
+;=------=
+rotateToRetaliate                   TRUE
+passiveRetaliateZone                7500
+canTargetMultipleTargets            TRUE
+
+NUMBER_OF_GUNS                      8
+
+;Right side Ion cannon
+GUN         0
+{
+Type						GUN_HiddenGimble
+GunSize						GUNSIZE_LARGE
+StartUpgradeLevel			WEAPON_ION
+EndUpgradeLevel				WEAPON_ION
+DamageMult					0.6
+BulletLength				7500.0                        ; visual only.  Length of bullet on screen
+BulletRange					7500.0                        ; distance bullets travel before disappearing
+BulletSpeed					0.0                           ; measured in m/s.
+BulletLifeTime				2.2
+BulletMass					0.0                           ; mass of bullet
+FireTime					5.0                           ; fire repeat rate (reciprocal = shots/second)
+MinAngle					0
+MaxAngle					8
+}
+
+;Left side Ion cannon
+GUN         1
+{
+Type						GUN_HiddenGimble
+GunSize						GUNSIZE_LARGE
+StartUpgradeLevel			WEAPON_ION
+EndUpgradeLevel				WEAPON_ION
+DamageMult					0.6
+BulletLength				7500.0                        ; visual only.  Length of bullet on screen
+BulletRange					7500.0                        ; distance bullets travel before disappearing
+BulletSpeed					0.0                           ; measured in m/s.
+BulletLifeTime				2.2
+BulletMass					0.0                           ; mass of bullet
+FireTime					5.0                           ; fire repeat rate (reciprocal = shots/second)
+MinAngle					0
+MaxAngle					8
+}
+
+GUN			2
+{
+Type						GUN_VisibleGimble
+GunSize						GUNSIZE_LARGE
+StartUpgradeLevel			WEAPON_PROJECTILE
+EndUpgradeLevel				WEAPON_ENERGY
+DamageMult					1.0
+BulletLength				25
+BulletRange					6000
+BulletSpeed					5000
+BulletMass					0.7
+FireTime					2.0
+TriggerHappy				5.0
+minturnangle				-30
+maxturnangle				30
+mindeclination				-7
+maxdeclination				90
+maxanglespeed				360
+maxdeclinationspeed			360
+angletracking				1.5
+declinationtracking			1.5
+BarrelLength				20
+RecoilLength				20
+
+FireTime2					3.0
+BulletSpeed2                1600
+}
+
+GUN			3
+{
+Type						GUN_VisibleGimble
+GunSize						GUNSIZE_LARGE
+StartUpgradeLevel			WEAPON_PROJECTILE
+EndUpgradeLevel				WEAPON_ENERGY
+DamageMult					1.0
+BulletLength				25
+BulletRange					6000
+BulletSpeed					5000
+BulletMass					0.7
+FireTime					2.0
+TriggerHappy				5.0
+minturnangle				-30
+maxturnangle				30
+mindeclination				-7
+maxdeclination				90
+maxanglespeed				360
+maxdeclinationspeed			360
+angletracking				1.5
+declinationtracking			1.5
+BarrelLength				20
+RecoilLength				20
+
+FireTime2					3.0
+BulletSpeed2                1600
+}
+
+GUN			4
+{
+Type						GUN_VisibleGimble
+GunSize						GUNSIZE_LARGE
+StartUpgradeLevel			WEAPON_PROJECTILE
+EndUpgradeLevel				WEAPON_ENERGY
+DamageMult					1.0
+BulletLength				25
+BulletRange					6000
+BulletSpeed					5000
+BulletMass					0.7
+FireTime					2.0
+TriggerHappy				7.0
+minturnangle				-35
+maxturnangle				65
+mindeclination				-6
+maxdeclination				90
+maxanglespeed				360
+maxdeclinationspeed			360
+angletracking				1.5
+declinationtracking			1.5
+BarrelLength				20
+RecoilLength				20
+
+FireTime2					3.0
+BulletSpeed2                1600
+}
+
+GUN			5
+{
+Type						GUN_VisibleGimble
+GunSize						GUNSIZE_LARGE
+StartUpgradeLevel			WEAPON_PROJECTILE
+EndUpgradeLevel				WEAPON_ENERGY
+DamageMult					1.0
+BulletLength				25
+BulletRange					6000
+BulletSpeed					5000
+BulletMass					0.7
+FireTime					2.0
+TriggerHappy				7.0
+minturnangle				-65
+maxturnangle				35
+mindeclination				-6
+maxdeclination				90
+maxanglespeed				360
+maxdeclinationspeed			360
+angletracking				1.5
+declinationtracking			1.5
+BarrelLength				20
+RecoilLength				20
+
+FireTime2					3.0
+BulletSpeed2                1600
+}
+
+GUN			6
+{
+Type						GUN_MissileLauncher
+GunSize						GUNSIZE_LARGE
+StartUpgradeLevel			WEAPON_MISSILE
+EndUpgradeLevel				WEAPON_MISSILE
+DamageMult					2.0
+MaxMissiles					8						; maximum # of missiles this missile launcher can carry
+BulletRange					6000
+BulletSpeed					1250					; initial speed for missile
+FireTime					3.0						; fire repeat rate (reciprocal = shots/second)
+TriggerHappy				60						; how triggerHapppy the ship is when firing the fixed.
+MinAngle					0
+MaxAngle					60
+}
+
+GUN			7
+{
+Type						GUN_MissileLauncher
+GunSize						GUNSIZE_LARGE
+StartUpgradeLevel			WEAPON_MISSILE
+EndUpgradeLevel				WEAPON_MISSILE
+DamageMult					2.0
+MaxMissiles					8						; maximum # of missiles this missile launcher can carry
+BulletRange					6000
+BulletSpeed					1250					; initial speed for missile
+FireTime					3.0						; fire repeat rate (reciprocal = shots/second)
+TriggerHappy				60						; how triggerHapppy the ship is when firing the fixed.
+MinAngle					0
+MaxAngle					60
+}
+
+;Gun Bindings
+;=-----------=
+BindGun						GimbalMedium(1) Gun5,Azimuth,Recoil,Frequency 1
+BindGun						GimbalMedium(2) Gun2,Azimuth,Recoil,Frequency 1
+BindGun						GimbalMedium(3) Gun3,Azimuth,Recoil,Frequency 1
+BindGun						GimbalMedium(4) Gun4,Azimuth,Recoil,Frequency 1
+;BindGun						dMissileTurret Gun6,Azimuth,Recoil,Frequency 1
+;BindGun						dMissileTurret Gun7,Azimuth,Recoil,Frequency 1
+
+
+;Explosions
+;=--------=
+explosionType                       ET_CarrierExplosion
+
+
+
+;Scaling effects
+;=--------=
+N-LIPS                              0.00005                   ; Max value for Interceptors 0.0005
+scaleFactor                         1.0                      ; Used for debugging
+
+;Engine Glow
+;=---------=
+trailWidth    165.0
+trailHeight   92.0
+trailLength   180.0
+trailScaleCap 0.000196
+
+;NavLights
+;=---------=
+NUMBER_OF_NAV_LIGHTS           15
+
+; format is NavLight            name, type, blinkrate (in seconds), size (in meters), min LOD, texture name
+NavLight	port,			NAVLIGHT_FadeOnOff,	.5,	.5,	0,	10,	2,	etg\textures\star32
+NavLight	star,			NAVLIGHT_FadeOnOff,	.5,	.5,	0,	10,	2,	etg\textures\star32
+NavLight	btm1,			NAVLIGHT_FadeOnOff,	.5,	.5,	0,	10,	2,	etg\textures\star32
+NavLight	btm2,			NAVLIGHT_FadeOnOff,	.5,	.5,	0,	10,	2,	etg\textures\star32
+NavLight	thruststar,		NAVLIGHT_FadeOnOff,	.5,	.5,	0,	10,	2,	etg\textures\star32
+NavLight	thrustport,		NAVLIGHT_FadeOnOff,	.5,	.5,	0,	10,	2,	etg\textures\star32
+NavLight	sbridge1,			NAVLIGHT_FadeOnOff,	.5,	.5,	0,	10,	2,	etg\textures\star32
+NavLight	sbridge2,			NAVLIGHT_FadeOnOff,	.5,	.5,	0,	10,	2,	etg\textures\star32
+NavLight	pbridge1,			NAVLIGHT_FadeOnOff,	.5,	.5,	0,	10,	2,	etg\textures\star32
+NavLight	pbridge2,			NAVLIGHT_FadeOnOff,	.5,	.5,	0,	10,	2,	etg\textures\star32
+NavLight	pdeck,			NAVLIGHT_FadeOnOff,	.5,	.5,	0,	10,	2,	etg\textures\star32
+NavLight	sdeck,			NAVLIGHT_FadeOnOff,	.5,	.5,	0,	10,	2,	etg\textures\star32
+NavLight	pmid1,			NAVLIGHT_FadeOnOff,	.5,	.5,	0,	10,	2,	etg\textures\star32
+NavLight	smid1,			NAVLIGHT_FadeOnOff,	.5,	.5,	0,	10,	2,	etg\textures\star32
+NavLight	bridge1,			NAVLIGHT_FadeOnOff,	.5,	.5,	0,	10,	2,	etg\textures\star32
+
+;Animation
+;=---------=
+;NONE
+
+;Dock Points
+;=-----------=
+; format is DockPoint           name,type,flyawaydist,mindist,maxdist,[headingdirection,updirection]  (0=up,1=right,2=forward,4=down,5=left,6=back) for direction
+NUMBER_OF_DOCK_POINTS           16
+DockPoint                       Point1,DPT_Salvage,500,500,600,0,2
+DockPoint                       Point2,DPT_Salvage,500,500,600,0,2
+DockPoint                       Point3,DPT_Salvage,500,500,600,0,2
+DockPoint						Point1,DPT_Repairbot,100,100,100,2,0	;permanent hack MG
+DockPoint					Leech0,DPT_Leech,250,250,250,0,2
+DockPoint					Leech1,DPT_Leech,255,250,250,0,2
+DockPoint					Leech2,DPT_Leech,250,250,250,0,2
+DockPoint					Leech3,DPT_Leech,250,250,250,0,2
+DockPoint					Leech4,DPT_Leech,250,250,250,0,2
+DockPoint					Leech5,DPT_Leech,250,250,250,0,2
+DockPoint					Leech6,DPT_Leech,250,250,250,0,2
+DockPoint					Leech7,DPT_Leech,250,250,250,0,2
+DockPoint					Leech8,DPT_Leech,250,250,250,0,2
+DockPoint					Leech9,DPT_Leech,250,250,250,0,2
+DockPoint					Leech10,DPT_Leech,250,250,250,0,2
+DockPoint					Leech11,DPT_Leech,250,250,250,0,2

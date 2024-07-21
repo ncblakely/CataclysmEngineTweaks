@@ -25,7 +25,8 @@ static float s_AdjustedHyperspaceSliceRate = 0.025f;
 static int s_AdjustedRegenerateRURate = 255;
 
 // Local copies of config variables so they can be referenced in naked functions
-static float s_UniverseUpdateRate;
+static float s_UniverseUpdateRateFloat;
+static udword s_UniverseUpdateRate;
 static float s_UniverseUpdatePeriod;
 static udword s_UniverseUpdateRateFactor;
 static udword s_UniverseUpdateRateShift;
@@ -48,7 +49,7 @@ static void univUpdateReset()
 		*Globals::HYPERSPACE_SLICE_RATE = s_AdjustedHyperspaceSliceRate;
 		*Globals::RegenerateRURate = s_AdjustedRegenerateRURate;
 
-		*Globals::etgEffectorCI_UniverseUpdateRate = -s_UniverseUpdateRate;
+		*Globals::etgEffectorCI_UniverseUpdateRate = -s_UniverseUpdateRateFloat;
 		*Globals::ETG_UpdateRoundOff = s_UniverseUpdatePeriod / 2.0f;
 	}
 
@@ -160,6 +161,20 @@ static void __declspec(naked) startRmUpdateResearch()
 	}
 }
 
+static void __declspec(naked) aiUpdateExternalShipBuild_CalculateTimerDuration()
+{
+	__asm 
+	{
+		// EAX = ShipStaticInfo->buildTime
+		push edx
+		xor edx, edx
+		mov ecx, dword ptr ds: [s_UniverseUpdateRate] // Divide by the new update rate
+		div ecx
+		pop edx
+		jmp Instructions::aiUpdateExternalShipBuild_SetTimerDuration
+	}
+}
+
 bool IsMothershipOrModule(ShipType shiptype)
 {
 	switch (shiptype)
@@ -239,14 +254,15 @@ static void singlePlayerGameUpdate()
 static void CalculateTimestepConstants(Config& config)
 {
 	// Copy configs to local statics
-	s_UniverseUpdateRate = g_Config.GetUniverseUpdateRate();
+	s_UniverseUpdateRateFloat = g_Config.GetUniverseUpdateRate();
 	s_UniverseUpdatePeriod = g_Config.GetUniverseUpdatePeriod();
 	s_UniverseUpdateRateFactor = g_Config.GetUniverseUpdateRateFactor();
 	s_UniverseUpdateRateShift = g_Config.GetUniverseUpdateRateShift();
+	s_UniverseUpdateRate = (udword)g_Config.GetUniverseUpdateRate();
 
 	// Update game constants
-	s_AdjustedHyperspaceSliceRate = 1.0f / (s_UniverseUpdateRate * HyperspaceUpdateSpeedFactor); // Hyperspace slice rate should be inverse of 2.5x update rate
-	s_AdjustedRegenerateRURate = (16 * (int)s_UniverseUpdateRate) - 1; // RUs should regenerate once every 16s
+	s_AdjustedHyperspaceSliceRate = 1.0f / (s_UniverseUpdateRateFloat * HyperspaceUpdateSpeedFactor); // Hyperspace slice rate should be inverse of 2.5x update rate
+	s_AdjustedRegenerateRURate = (16 * (int)s_UniverseUpdateRateFloat) - 1; // RUs should regenerate once every 16s
 	s_TimerResolutionMax = g_Config.GetTimerResolutionMax();
 }
 
@@ -305,6 +321,7 @@ static void CreateAndEnableHooks(Assembler& assembler)
 	CreateAndEnableHook(Instructions::CollectResources_HarvestRateCheck, CollectResourcesHarvestRateCheck, &_discard);
 	CreateAndEnableHook(Instructions::startUnivCheckRegrowResources, startUnivCheckRegrowResources, &_discard);
 	CreateAndEnableHook(Instructions::startRmUpdateResearch, startRmUpdateResearch, &_discard);
+	CreateAndEnableHook(Instructions::aiUpdateExternalShipBuild_CalculateTimerDuration, aiUpdateExternalShipBuild_CalculateTimerDuration, &_discard);
 
 	// External library hooks
 	CreateAndEnableHook(&QueryPerformanceCounter, &QueryPerformanceCounterHook, &orig_QueryPerformanceCounter);

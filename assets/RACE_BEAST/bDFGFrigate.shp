@@ -1,0 +1,141 @@
+[bDFGFrigate]
+
+;Source Files
+;=----------=
+LODFile								bDFGFrigate.lod
+pMexData							bDFGFrigate\Rl0\LOD0\bDFGFrigate.mex
+
+;Ship Physics
+;=----------=
+mass                                400.0                          ; ship mass [fighter = 1]
+momentOfInertiaX                    400.0                          ; resistance to rotation
+momentOfInertiaY                    400.0                          ; [fighter = 1]
+momentOfInertiaZ                    400.0
+maxvelocity                         380.0                        ; [fighter = 1000]
+maxrot                              10.0                          ; maximum rotation speed [don't make faster than ~10]
+thruststrength[TRANS_UP]            175.0                         ; acceleration (m/s^2) [1-1000 approx. range]
+thruststrength[TRANS_DOWN]          175.0
+thruststrength[TRANS_RIGHT]         175.0
+thruststrength[TRANS_LEFT]          175.0
+thruststrength[TRANS_FORWARD]       175.0
+thruststrength[TRANS_BACK]          175.0
+rotstrength[ROT_YAWLEFT]            0.25                          ; rotational acceleration (deg/s^2) [0.01 - 10]
+rotstrength[ROT_YAWRIGHT]           0.25
+rotstrength[ROT_PITCHUP]            0.15
+rotstrength[ROT_PITCHDOWN]          0.15
+rotstrength[ROT_ROLLRIGHT]          0.15
+rotstrength[ROT_ROLLLEFT]           0.15
+turnspeed[TURN_YAW]                 0.4                          ; speed at which ship tries to turn (1=standard)
+turnspeed[TURN_PITCH]               0.4
+turnspeed[TURN_ROLL]                0.4
+
+;Basic Ship Stats
+;=--------------=
+shipclass							CLASS_Frigate
+isCapitalShip                       TRUE
+buildCost							900					; resource units to build
+buildTime							90					; time in seconds to build
+supportUnits			    		10					; Support Units required
+providesSU			    			0	
+TimeShockedByEMP					2.0 				; time in seconds the ship will be paralized when hit by one EMP charge
+maxhealth							5000				; hit points
+groupSize							1					; size of group ships of this type tend to form
+repairTime							5					; every this many seconds
+repairDamage						50					; this much damage is repaired
+repairCombatTime                    5					; every this many seconds
+repairCombatDamage                  10					; this much damage is repaired
+repairDroids						0
+externalBuild						FALSE				; if TRUE, ship is built externally
+fowRadius							12000
+forceFieldProtectionDistanceScale	3.0
+approxcollmodifier					1.0					; use only % of collspheresize for rough approximations
+avoidcollmodifier					1.0					; use only % of collspheresize for collision avoidance
+blastRadiusShockWave                1.75
+blastRadiusDamage                   275
+minimumZoomDistance                 265
+UpgradeByDocking					FALSE
+
+;Special
+;=-----=
+fieldRadius                         6000				;Radius at which point the bullets are captured by the DFG
+BulletDamageMultiplier              1.0				;Bullets damage is multiplied by this factor
+BulletLifeExtension                 1.0				;Bullets Life is Extended by this ammount (Set high to ensure collision)
+percentageThatGetThrough            7					;percetage of bullets that are uneffected by the field
+															;integer number between 0 and 100 (0 = perfect shield, 100 = chicken wire fence)
+angleVariance                       30					;variance in bullet reflections
+
+; PG - This is so that the Beast ship can take over other Beast ships in multiplayer
+beastAttackCascadeCost				10					; number of points required for attack to cascade to this ship
+beastAttacksRequired				1					; number of times you must hit this ship before it converts.
+beastAttackConvertTo				bDFGFrigate         ; convert to this kind of ship
+
+upgradeTimeModifier                 1.0
+
+
+; Pilot View
+;=---------=
+pilotViewOffsetX	70.0
+pilotViewOffsetY	0.0
+pilotViewOffsetZ	60.0
+
+;Weapons
+;=------=
+;NONE
+
+;Weapons
+;=-----=
+;NONE
+
+;Gun Bindings:
+;=----------=
+;NONE
+
+;Dock Points
+;=---------=
+; format is DockPoint           name,type,flyawaydist,mindist,maxdist,[headingdirection,updirection]  (0=up,1=right,2=forward,4=down,5=left,6=back) for direction
+NUMBER_OF_DOCK_POINTS           12
+DockPoint                       Point1,DPT_Salvage,500,500,600,0,2
+DockPoint                       Point2,DPT_Salvage,500,500,600,0,2
+DockPoint					Leech0,DPT_Leech,185,185,200,0,2
+DockPoint					Leech1,DPT_Leech,185,185,200,0,2
+DockPoint					Leech2,DPT_Leech,185,185,200,0,2
+DockPoint					Leech3,DPT_Leech,185,185,200,0,2
+DockPoint					Leech4,DPT_Leech,185,185,200,0,2
+DockPoint					Leech5,DPT_Leech,185,185,200,0,2
+DockPoint					Leech6,DPT_Leech,185,185,200,0,2
+DockPoint					Leech7,DPT_Leech,185,185,200,0,2
+DockPoint					Leech8,DPT_Leech,185,185,200,0,2
+DockPoint					Leech9,DPT_Leech,185,185,200,0,2
+
+;Explosions
+;=--------=
+explosionType					ET_FrigateExplosion
+
+;Engine
+;=---------=
+trailWidth				75.0
+trailHeight				105.0
+trailLength				100.0
+trailScaleCap			0.000196
+
+;Scaling effects
+;=--------=
+N-LIPS					0.0001                   ; Max value for Interceptors 0.0005
+
+;Navlights
+;=---------=
+NUMBER_OF_NAV_LIGHTS           6
+
+; format is NavLight            name, type, blinkrate (in seconds), size (in meters), min LOD, texture name
+NavLight                        antenna1,       NAVLIGHT_FadeOnOff, 2,   1, 0.5,  7,   2, etg\textures\star32
+NavLight                        antenna2,       NAVLIGHT_FadeOnOff, 2,   1, 0.5,  7,   2, etg\textures\star32
+NavLight                        caution1,       NAVLIGHT_FadeOnOff, 0.5, 1, 0,    8,   2, etg\textures\star32
+NavLight                        caution2,       NAVLIGHT_FadeOnOff, 0.5, 1, 0,    8,   2, etg\textures\star32
+NavLight                        caution3,       NAVLIGHT_FadeOnOff, 0.5, 1, 0,    8,   2, etg\textures\star32
+NavLight                        caution4,       NAVLIGHT_FadeOnOff, 0.5, 1, 0,    8,   2, etg\textures\star32
+
+;Animation
+;=--------=
+;NONE
+
+

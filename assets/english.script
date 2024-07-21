@@ -1,0 +1,2008 @@
+; English language script file
+
+; *** NOTE *****************************
+; when putting in comments, do not
+; exceed column 40 to make cutting and
+; pasting of localized text easier
+; **************************************
+; Nice names for Ships in the game
+
+;===============================================================
+; PG - Cataclysm ships
+strsRecon 					   		RECON
+strsAcolyte  				   		ACOLYTE
+strsMimic  					   	MIMIC
+strsLeech  					   	LEECH
+strsACV  					   		ACV
+strsMCV  					   		MCV
+strsRammingFrigate  		   		RAMMING FRIGATE
+strsMultiBeamFrigate  		   	MULTIBEAM FRIGATE
+strsHiveFrigate  			   		HIVE FRIGATE
+strsSwarmer 				   		SWARMER
+strsDreadnought  			   		DREADNOUGHT
+strsDreadnoughtCannon          	CANNON
+strsCarrier  				   		CARRIER
+strsCarrierSupport             	SUPPORT MODULE
+strsWorker  				   		WORKER
+strsRepairDroid  			   		REPAIR DROID
+strsProcessor  				   	PROCESSOR
+strsSentinel  				   	SENTINEL
+strsMothership  			   		COMMAND SHIP
+strsMothershipSpecial 		   	ADV ENGINEERING MODULE   
+strsMothershipEngineering 	   	RESOURCE PROCESSING
+strsMothershipArmour 		   	ARMOR MODULE      
+strsMothershipMicro 		   		ENGINEERING MODULE       
+strsMothershipWeapons 		   	WEAPONS MODULE     
+strsMothershipDockingBay 	   	HANGAR MODULE
+strsDestroyer       		  		DESTROYER 
+strsMothershipSupport 		   	SUPPORT MODULE     
+strsMothershipCommand 		  	COMMAND CENTER     
+strsMothershipEnginesLower 	  	LOWER ENGINES
+strsMothershipEnginesUpper 	   	UPPER ENGINES     
+strsMothershipLowerSpine 	   	LOWER SPINE     
+strsMothershipBigGun 		   	SIEGE CANNON
+strsMothershipOreCanArmour 	   	ORE CANISTER
+
+strbRecon  					   	RECON
+strbAcolyte   	    		   	ACOLYTE
+strbInterceptor  			   		INTERCEPTOR
+strbCloakedFighter  		   		CLOAKED FIGHTER
+strbAttackBomber  			   	ATTACK BOMBER
+strbACV  					   		ACV
+strbMultiGunCorvette 		   	MULTIGUN CORVETTE
+strbHeavyCorvette  			   	HEAVY CORVETTE
+strbMultiBeamFrigate  		   	MULTIBEAM FRIGATE
+strbHiveFrigate  			   		HIVE FRIGATE
+strbSwarmer  				   		SWARMER
+strbIonArrayFrigate  		   	ION ARRAY FRIGATE
+strbDFGFrigate  			   		DEFENCE FIELD FRIGATE
+strbHeavyCruiser 	 		   		HEAVY CRUISER
+strbCarrier  				   		CARRIER
+strbRammingFrigate  		   		RAMMING FRIGATE
+strbWorker  				   		WORKER
+strbRepairDroid  			   		REPAIR DROID
+strbProcessor  				   	PROCESSOR
+strbSentinel  				   	SENTINEL
+strbMothership  			   		COMMAND SHIP
+strbMothershipDockingBay 	   	HANGAR MODULE
+strbMothershipEnginesLower 	   	LOWER ENGINES
+strbSectMoship       		   	GENETICS LAB MODULE 
+strbMothershipSupport          	SUPPORT MODULE 
+strbCruiseMissile              	CRUISE MISSILE
+strbMissileCorvette            	MISSILE CORVETTE
+
+strkAdvanceSupportFrigate      SUPPORT FRIGATE
+strkAttackBomber               ATTACK BOMBER 
+strkCarrier                    CARRIER
+strkCloakGenerator             CLOAK GENERATOR  
+strkGravWellGenerator          GRAVWELL GENERATOR  
+strkHeavyCorvette              HEAVY CORVETTE
+strkHeavyCruiser               HEAVY CRUISER
+strkHeavyDefender              DEFENDER
+strkHeavyInterceptor           INTERCEPTOR
+strkIonCannonFrigate           ION CANNON FRIGATE
+strkMultiGunCorvette           MULTI-GUN CORVETTE
+strkProximitySensor            PROXIMITY SENSOR
+strkSalCapCorvette             SALVAGE CORVETTE
+strkStandardDestroyer          DESTROYER
+
+strtAdvanceSupportFrigate      SUPPORT FRIGATE
+strtAttackBomber               ATTACK BOMBER
+strtCarrier                    CARRIER
+strtCloakGenerator             CLOAK GENERATOR  
+strtDFGFrigate                 DEFENCE FIELD FRIGATE
+strtGravWellGenerator          GRAVWELL GENERATOR 
+strtHeavyCruiser               HEAVY CRUISER
+strtHeavyDefender              DEFENDER
+strtHeavyInterceptor           INTERCEPTOR
+strtIonCannonFrigate           ION CANNON FRIGATE
+strtMinelayerCorvette          MINELAYER CORVETTE
+strtMissileDestroyer           MISSILE DESTROYER
+strtMultiGunCorvette           MULTI-GUN CORVETTE
+strtProximitySensor            PROXIMITY SENSOR
+strtResourceCollector          RESOURCE COLLECTOR
+strtSalCapCorvette             SALVAGE CORVETTE
+strtStandardDestroyer          DESTROYER
+strtStandardFrigate            ASSAULT FRIGATE
+
+strp1Outpost                   OUTPOST
+strp1Fighter                   FIGHTER
+strp1IonArrayFrigate           ION ARRAY FRIGATE
+strp1MissileCorvette           MISSILE CORVETTE
+strp1Mothership                BATTLE CARRIER
+strp1StandardCorvette          STANDARD CORVETTE
+
+strtrFloatingCity              BENTUSI EXCHANGE
+strtrCargoBarge                CARGO BARGE
+strtrMiningBase                FIELD GENERATOR
+strtrResearchStation           RESEARCH STATION
+strtrJunkYardDawg              JUNKYARD DOG
+strtrJunkYardHQ                JUNKYARD OFFICE
+strtrGhostship                 FAAL-CORUM
+strtrJunk_LGun                 AUTO GUN
+strtrJunk_SGun                 AUTO GUN
+strtrResearchStationBridge     RES STATION BRIDGE
+strtrResearchStationTower      RES STATION TOWER
+
+strdRKO                        NAGGAROK
+strdBigGun                     DERELICT
+strdBigGunUnit 			   	   SIEGE CANNON DERELICT
+strdSlipgateSmall 		   	   SLIPGATE SMALL
+strdSlipgateMedium 		   	   SLIPGATE MEDIUM
+strdSlipgateLarge 		   	   SLIPGATE LARGE
+strdCrate 				   	   		CRATE
+strdJunk1PartA 			   	   DEBRIS
+strdJunk1Shell 			   	   	DEBRIS
+strdJunk1Strut 			   	   	DEBRIS
+strdJunk2Shipwreck 		   	   	DEBRIS
+strdJunk3Boiler 		   	   		DEBRIS
+strdJunk3BoilerCasing 	   	   	DEBRIS
+strdMessagePod 			   	   DERELICT
+strdBuoy 				   	   		TARGET DRONE
+strdFirstPlanet 		   	   		PLANET
+strdDeadPlanet 			   	   PLANET
+strdCrystal0                   CRYSTAL SMALL
+strdCrystal1                   CRYSTAL LARGE
+strdBeastDockingBay            BEAST DOCKING BAY
+strdNISBuoy                    MINE            
+strdBeastMothership            INFECTED MODULE      	 	   	 
+strdNomadMoon                  NOMAD MOON            
+strdNomadFieldEmitter          NOMAD MOON EMITTER    
+strdAcolyte                    SUPER ACOLYTE              
+strdPrisonShip                 COLONY SHIP         
+strdPrisonShipInfected         COLONY SHIP   	 	   	 
+strdSlipgateNode               SLIPGATE NODE
+strdKushanCarrier              CAAL-SHTO        
+strdIonArrayFrigate            ION CANNON FRIGATE 
+strdIonCannonFrigate           ION CANNON FRIGATE
+strdEcclesiam                  CLEE-SAN          
+strdEcclesiamInfected          CLEE_SAN  
+
+; Nice names for classes of ships
+strCLASS_Mothership                                             COMMAND SHIP
+strCLASS_HeavyCruiser                                           CRUISER
+strCLASS_Carrier                                                CARRIER
+strCLASS_Destroyer                                              DESTROYER
+strCLASS_Frigate                                                FRIGATE
+strCLASS_Corvette                                               CORVETTE
+strCLASS_Fighter                                                FIGHTER
+strCLASS_Resource                                               RESOURCE
+strCLASS_NonCombat                                              NON-COMBAT
+strCLASS_Class                                                  CLASS
+strCLASS_SuperCapital                                           SUPER-CAPITAL
+
+; PG - Cataclysm classes
+strCLASS_Composite	                                            COMPOSITE
+strCLASS_Component                                              COMPONENT
+strCLASS_Micro                                                  MICROSHIP 
+
+; Strings from sensors Manager
+strPlayerUnits                                                  PLAYER UNITS
+strEnemyUnits                                                   ENEMY UNITS
+strAlliedUnits                                                  ALLIED UNITS
+strResources                                                    RESOURCES
+strDerelictShip                                                 DERELICT SHIP
+strUnexplored                                                   UNEXPLORED
+strAsteroids                                                    ASTEROIDS
+strNebula                                                       NEBULA
+strGasClouds                                                    GAS CLOUDS
+strDustClouds                                                   DUST CLOUDS
+
+; Strings from loading data screen
+strLoadingShips                                                 loading ships
+strTexturePreload                                               texture preload
+strLoadingTextures                                              loading textures
+
+; Strings from Mouse over function
+strEnemyShip                                                    Enemy Ship
+strAlliedShip                                                   Allied Ship
+strEnemy                                                        Enemy:
+strAllied                                                       Ally:
+
+; End of game strings
+strHaveBeenDefeated                                             You have been defeated
+strQuestIsLost                                                  Game Over
+strAllPlayersDead                                               All players have been killed
+strPlayerHasWon                                                 has won
+strPlayerHasDied                                                has died
+strPlayersHaveWon                                               have won
+strHaveBeenDroppedOut                                           You have been dropped out
+strAllOtherPlayersDroppedOut                                    All other players have dropped out
+strSyncPktQOverrun                                              Could not keep up with network traffic
+
+; Strings for names of technologies
+strTECH_CLOAKING                                                CLOAKING ABILITY
+strTECH_TARGETING_SYSTEMS                                       FAST-TRACKING TURRETS
+strTECH_PLASMA_WEAPONS                                          PLASMA BOMB LAUNCHER
+strTECH_MEDIUM_GUNS                                             HEAVY CORVETTE UPGRADE
+strTECH_DEFENSE_FIELD                                           DEFENSE FIELD 
+strTECH_HEAVY_GUNS                                              HEAVY GUNS
+strTECH_REPAIR                                                  REPAIR SYSTEMS
+strTECH_SALVAGE                                                 SALVAGING ABILITY
+
+;=========================================================================================
+; PeterG. New Cataclysm technologies
+strTECH_DRIVE_FIGHTER                                           FIGHTER DRIVE
+strTECH_ADRIVE_FIGHTER                                          ADVANCED FIGHTER DRIVE
+strTECH_DRIVE_FRIGATE                                           FRIGATE DRIVE
+strTECH_ADRIVE_FRIGATE	                                        ADVANCED FRIGATE DRIVE
+strTECH_DRIVE_DESTROYER                                         DESTROYER DRIVE
+strTECH_ADRIVE_DESTROYER                                        ADVANCED DESTROYER DRIVE
+strTECH_ARMOUR2       	                                        ARMOR LEVEL 2
+strTECH_ARMOUR3			                                        ARMOR LEVEL 3
+strTECH_SUPPORT_SYSTEMS                                         SUPPORT SYSTEMS
+strTECH_MICRO_SHIP     	                                        MICROSHIP CONSTRUCTION
+strTECH_ENERGY                                                  ENERGY CANNON
+strTECH_ION                                                     ADVANCED ION CANNON
+strTECH_MISSILE			                                        MISSILE LAUNCHER
+strTECH_REPULSE                                                 REPULSOR WEAPON
+strTECH_EMP        		                                        E.M.P. WEAPON
+strTECH_EXPLOSIVE_CHARGE                                        QUANTUM EXPLOSIVE CHARGE
+strTECH_LINK       		                                        LINKING TECHNOLOGY
+strTECH_MIMIC			                                        HOLOGRAPHIC EMITTER
+strTECH_AFTERBURNER                                             AFTERBURNER
+strTECH_BIG_GUN                                                 SIEGE CANNON WEAPON
+strTECH_ADVANCED_SENSORS                                        ADVANCED SENSORS
+strTECH_FORCE_FIELD1	                                        FORCE FIELD LEVEL 1
+strTECH_FORCE_FIELD2	                                        FORCE FIELD LEVEL 2
+strTECH_FORCE_FIELD3	                                        FORCE FIELD LEVEL 3
+strTECH_INFECT			                                        BEAST INFECT WEAPON
+strTECH_REPAIRBOTS		                                        REPAIR BOTS
+strTECH_CRYSTAL_HARVEST                                         CRYSTAL PROCESSING
+strTECH_RESEARCH_CLEESAN_ATTACK                                 INFECTION ORGANISM
+strTECH_BEAST_VACCINE                                           INFECTION VACCINE
+strTECH_PHASED_TELEMETRY                                        PHASED TELEMETRY
+strTECH_INERTIALESS_DRIVE										INERTIALESS DRIVE
+strTECH_BIOWARHEAD												BIO-WARHEAD
+strTECH_DRIVE_CORVETTE											CORVETTE DRIVE
+;=========================================================================================
+
+strTechUpgrade                                                  
+
+; Strings for the technology headings
+strWeaponHeading                                                FIGHTER SYSTEMS
+strConstuctionHeading                                           CORVETTE SYSTEMS
+strInterdictionHeading                                          CAPITAL SHIP SYSTEMS
+strSupportHeading                                               SPECIALIZED SHIP SYSTEMS
+
+; PG Sect modules headings for Cataclysm
+strHANGAR_HEADING                                               HANGAR MODULE
+strARMOUR_HEADING                                               ARMOR MODULE
+strENGINEERING_HEADING                                          ENGINEERING MODULE
+strADV_ENGINEERING_HEADING                                      ADV ENGINEERING MODULE
+strWEAPON_HEADING                                               WEAPON MODULE
+
+; PG Beast captured ship headings for Cataclysm
+strGENETICS_HEADING                                             SELF MIND
+strRECON_HEADING                                                RECON
+strWORKER_HEADING                                               WORKER
+strACOLYTE_HEADING                                              ACOLYTE
+strACV_HEADING                                                  ACV
+strMULTIBEAMFRIGATE_HEADING                                     MULTIBEAM FRIGATE
+strRAMMINGFRIGATE_HEADING                                       RAMMING FRIGATE
+strHIVEFRIGATE_HEADING                                          HIVE FRIGATE
+strSENTINEL_HEADING                                             SENTINEL
+strINTERCEPTOR_HEADING                                          INTERCEPTOR 
+strCLOAKEDFIGHTER_HEADING                                       CLOAKED FIGHTER
+strATTACKBOMBER_HEADING                                         ATTACK BOMBER
+strCRUISEMISSILE_HEADING                                        CRUISE MISSILE
+strMISSILECORVETTE_HEADING                                      MISSILE CORVETTE
+strMULTIGUNCORVETTE_HEADING                                     MUTLIGUN CORVETTE
+strHEAVYCORVETTE_HEADING                                        HEAVY CORVETTE
+strDFGFRIGATE_HEADING                                           DEFENCE FIELD FRIGATE
+strIONARRAYFRIGATE_HEADING                                      ION ARRAY FRIGATE
+strHEAVYCRUISER_HEADING                                         HEAVY CRUISER
+strPROCESSOR_HEADING                                            PROCESSOR
+strCARRIER_HEADING                                              CARRIER
+	
+; Strings for the technology information
+strR1TECH_CLOAKINGinfo                                          1 HI! THIS IS BEAST SPECIFIC. IF YOU'RE PLAYING SOMTAAW AND YOU SEE THIS, THERE'S BEEN AN ERROR SOMEWHERE. TELL A DESIGNER NOW.  
+strR1TECH_TARGETING_SYSTEMSinfo                                 2 HI! THIS IS BEAST SPECIFIC. IF YOU'RE PLAYING SOMTAAW AND YOU SEE THIS, THERE'S BEEN AN ERROR SOMEWHERE. TELL A DESIGNER NOW.  
+strR1TECH_PLASMA_WEAPONSinfo                                    3 HI! THIS IS BEAST SPECIFIC. IF YOU'RE PLAYING SOMTAAW AND YOU SEE THIS, THERE'S BEEN AN ERROR SOMEWHERE. TELL A DESIGNER NOW.  
+strR1TECH_MEDIUM_GUNSinfo                                       4 HI! THIS IS BEAST SPECIFIC. IF YOU'RE PLAYING SOMTAAW AND YOU SEE THIS, THERE'S BEEN AN ERROR SOMEWHERE. TELL A DESIGNER NOW.  
+strR1TECH_DEFENSE_FIELDinfo                                     5 HI! THIS IS BEAST SPECIFIC. IF YOU'RE PLAYING SOMTAAW AND YOU SEE THIS, THERE'S BEEN AN ERROR SOMEWHERE. TELL A DESIGNER NOW.  
+strR1TECH_HEAVY_GUNSinfo                                        6 HI! THIS IS BEAST SPECIFIC. IF YOU'RE PLAYING SOMTAAW AND YOU SEE THIS, THERE'S BEEN AN ERROR SOMEWHERE. TELL A DESIGNER NOW.  
+strR1TECH_REPAIRinfo                                            UPGRADE FOR WORKERS (SU4) AND PROCESSORS (SU13).\n\nALLOWS SHIP TO REPAIR OTHER SHIPS.\n\nEACH WORKER'S PHASED DISASSEMBLER ARRAY, WHICH REDUCES MATERIALS TO THEIR COMPONENT ELEMENTS, CAN BE MADE TO PROJECT STORED MATERIALS. USED PROPERLY AND WITH A LITTLE SKILL, WORKERS AND PROCESSORS CAN PROJECT MATTER TO REPAIR CRITICAL FAULTS AND STRESSES IN A SHIP HULL.
+strR1TECH_SALVAGEinfo                                           UPGRADE FOR WORKERS (SU4).\n\nLEADS TO CRYSTAL PROCESSING TECHNOLOGY\n\nALLOWS SHIP TO SALVAGE ENEMY SHIPS.\n\nCOMMANDEERING ENEMY SHIPS IS OFTEN PREFERABLE TO DESTROYING THEM. HOWEVER, THE SHIP-TO-SHIP TRANSFER OF A STRIKE TEAM IS OFTEN HAZARDOUS UNDER THE BEST OF CIRCUMSTANCES. STANDARD PROCEDURE IS TO EXTERNALLY SEIZE CONTROL OF A TARGET SHIP AND HAUL IT BACK TO A COMMAND SHIP. 
+
+;=========================================================================================
+; PeterG. New Cataclysm technologies
+; ChrisS. Max Length of info boxes. 
+; It's a bit excessive, about half the info box					========================================================================================================================================================================================================================================================================================================================================================================================================================
+strR1TECH_DRIVE_FIGHTERinfo                                     REQUIRED FOR THE CONSTRUCTION OF ACOLYTES (SU2), MIMICS (SU2), ACVs (SU4), AND MCVs (SU4).\n\nLEADS TO ADVANCED FIGHTER DRIVE TECHNOLOGY\n\nSTANDARD DRIVE FOR FIGHTER CLASS SHIPS.\n\nTHE DRIVE ENGINEERING IS DERIVED FROM THIRD GENERATION KUSHAN FIGHTER DRIVES. ALTERATIONS HAVE BEEN MADE TO THE DESIGN TO SUIT SOMTAAW SHIP CHASSIS AND POWER PLANTS.
+strR1TECH_ADRIVE_FIGHTERinfo                                    UPGRADE FOR ACOLYTES (SU2), MIMICS (SU2), ACVs (SU4), AND MCVs (SU4).\n\nINCREASES FIGHTER SPEED.\n\nONCE UPGRADED, THESE SHIPS WILL BENEFIT FROM AN INCREASE IN OVERALL ENGINE EFFICIENCY AND SPEED.
+strR1TECH_DRIVE_FRIGATEinfo                                     REQUIRED FOR THE CONSTRUCTION OF MULTI-BEAM FRIGATES (SU12) AND HIVE FRIGATES (SU20).\n\nLEADS TO ADVANCED FRIGATE DRIVE TECHNOLOGY\n\nSTANDARD DRIVE FOR FRIGATE CLASS SHIPS.\n\nTHE DRIVE ENGINEERING IS ESSENTIALLY SURPLUS, FIRST GENERATION KUSHAN FRIGATE DRIVES WITH THE REQUIRED MODIFICATIONS TO MAKE THEM WORK WITH SOMTAAW POWER PLANTS.
+strR1TECH_ADRIVE_FRIGATEinfo                                    UPGRADE FOR MULTI-BEAM FRIGATES (SU12) AND HIVE FRIGATES (SU20).\n\nINCREASES FRIGATE SPEED.\n\nONCE UPGRADED, THESE SHIPS WILL BENEFIT FROM AN INCREASE IN OVERALL ENGINE EFFICIENCY AND SPEED.
+strR1TECH_DRIVE_DESTROYERinfo                                   REQUIRED FOR THE CONSTRUCTION OF CARRIERS (SU-) AND DESTROYERS (SU38).\n\nLEADS TO ADVANCED DESTROYER DRIVE TECHNOLOGY\n\nSTANDARD DRIVE FOR SUPER CAPITAL SHIPS.\n\nBASED ON DESTROYER DRIVES SALVAGED FROM RUINED IMPERIAL TAIIDAN VESSELS.
+strR1TECH_ADRIVE_DESTROYERinfo                                  UPGRADE FOR CARRIERS (SU-) AND DESTROYERS (SU38).\n\nREQUIRED FOR DREADNOUGHTS (SU80).\n\nINCREASES CAPITAL SHIP SPEED.\n\nONCE UPGRADED THESE, SHIPS WILL BENEFIT FROM AN INCREASE IN OVERALL ENGINE EFFICIENCY AND SPEED.
+strR1TECH_ARMOUR2info                                           UPGRADE FOR ALL FLEET SHIPS.\n\nLEADS TO TYPE 3 ARMOR TECHNOLOGY\n\nINCREASES DAMAGE RESISTANCE TO EXPLOSIVES.\n\nTYPE 2 ARMOR IS A LAYER OF THICK CRYSTAL POLYMER COMPOSITE INTERWOVEN WITH DEPLETED URANIUM AND IS CAPABLE OF FLEXING UNDER RADICAL IMPACTS. THE EFFECTIVE DAMAGE CAUSED BY MISSILES, KAMIKAZE ATTACKS, OR THE CRITICAL FAILURE OF NEARBY SHIPS IS GREATLY REDUCED. 
+strR1TECH_ARMOUR3info                                           UPGRADE FOR SENTINELS (SU3), WORKERS (SU4), ALL CAPITAL SHIPS, AND THE COMMAND SHIP.\n\nINCREASES DAMAGE RESISTANCE TO ENERGY WEAPONS.\n\nTYPE 3 ARMOR PROVIDES TWO-FOLD PROTECTION AGAINST ENERGY WEAPONS, SUCH AS PLASMA BOMBS, ENERGY CANNONS, AND ION CANNONS. TYPE 3 ARMOR USES AN ABLATIVE LAYER AND A REFLECTIVE, SUPERCONDUCTIVE LAYER TO DEFLECT OR DISSIPATE AN ENERGY WEAPON.
+strR1TECH_SUPPORT_SYSTEMSinfo                                   REQUIRED FOR THE CONSTRUCTION OF CARRIERS (SU-).\n\nINCREASES MAXIMUM FLEET SIZE.\n\nAN EFFECTIVE FLEET IS LIMITED BY THE AMOUNT OF LOGISTICAL SUPPORT IT HAS. WITHOUT ENOUGH GROUND CREW OR COMMAND SUPPORT, A FLEET CANNOT GROW. BUILDING MORE SUPPORT MODULES ON YOUR COMMAND SHIP OR CARRIERS WILL ALLOW FOR A LARGER ARMADA.
+strR1TECH_MICRO_SHIPinfo                                        REQUIRED FOR THE CONSTRUCTION OF HIVE FRIGATES (SU20), SENTINELS (SU3), AND LEECHES (SU2)\n\nSTANDARD DRIVE FOR MICRO CLASS SHIPS.\n\nONCE RESEARCH IS COMPLETED, NEW HIVE FRIGATES CAN BE CONSTRUCTED WITH A SWARMER CONTROL SYSTEM, 6 SWARMERS, AND A SMALL MAINTAINENCE CREW TO REPAIR DAMAGED SWARMERS OR BUILD NEW ONES IN THE FIELD.
+strR1TECH_ENERGYinfo                                            REQUIRED FOR THE CONSTRUCTION OF DREADNOUGHTS (SU80).\n\nUPGRADE FOR ALL FLEET SHIPS ARMED WITH MASS DRIVER CANNONS.\n\nREPLACES PROJECTILE WEAPONS WITH ENERGY CANNONS.\n\nDERIVED FROM RESEARCH TO IMPROVE THE FIRING SPEED OF A PLASMA BOMB LAUNCHER. ENERGY CANNONS DRAW HIGH-ENERGY PLASMA FROM A SHIP DRIVE INTO A SMALL CONTAINMENT SPHERE. THESE CONTAINMENT SPHERES ARE REINFORCED TO WITHSTAND THE FAST-CYCLING FIRING SYSTEM.
+strR1TECH_IONinfo                                               REQUIRED FOR THE CONSTRUCTION OF MULTI-BEAM FRIGATES (SU12), DESTROYERS (SU38), AND DREADNOUGHTS (SU80).\n\nUNLIKE MASS-DRIVERS OR ENERGY CANNONS, ION CANNONS FIRE A STRONGER, CONSTANT BEAM OF ENERGY. ALTHOUGH DURATION OF FIRE TIME IS LIMITED DUE TO HEAT ISSUES, ION CANNONS MAKE UP FOR IT WITH THE HIGH DAMAGE INFLICTED DURING FIRE TIME.
+strR1TECH_MISSILEinfo                                           REQUIRED FOR THE CONSTRUCTION OF DREADNOUGHTS (SU80) AND DESTROYERS (SU38).\n\nMISSILES ARE A LONG RANGE WEAPON.\n\nDESPITE BEING AN OLD WEAPON DESIGN, MISSILES HAVE ENOUGH SPEED AND MANEUVERABILITY TO BE A SERIOUS THREAT. MISSILE SYSTEMS HAVE PROVEN TO BE A FLEXIBLE WEAPONS PLATFORM WITH VARYING USES. MISSILES ARE EFFECTIVE AT BOTH SOFTENING UP ARMORED CAPITAL SHIPS AND TEARING UP SMALLER STRIKE CRAFT ATTACK WINGS.
+strR1TECH_REPULSEinfo                                           UPGRADE FOR DREADNOUGHT.\n\nREPULSE WEAPON REPELS ENEMY SHIPS AWAY FROM DREADNOUGHT.\n\nGIVEN THE VASTNESS OF SPACE, SPACE COMBAT IS OFTEN PLAYED OUT AT CLOSE RANGE. FOR A MISSILE SHIP SUCH AS THE DREADNOUGHT, THIS IS NOT THE BEST PLACE FROM WHICH TO WORK. BY GENERATING A PULSE SIMILAR TO TWO MAGNETS REPELLING ONE ANOTHER (A GROSS SIMPLIFICATION OF THE SCIENCE INVOLVED), A DREADNOUGHT CAN PUT SPACE BETWEEN IT AND TARGET SHIPS.
+strR1TECH_EMPinfo                                               UPGRADE FOR ACOLYTE COMPOSITE VEHICLES (SU4).\n\nEMP TEMPORARILY DISABLES ENEMY SHIPS.\n\nUSING THE COMBINED POWER PLANTS OF TWO ACOLYTES IN ACV MODE, AN ELECTROMAGNETIC PULSE CAN BE BUILT AND DISCHARGED, DISABLING UNPROTECTED SHIPS. BY TRIGGERING IN TANDEM, A GROUP OF ACVs CAN AFFECT EVEN LARGE CAPITAL SHIPS (THOUGH NOT FOR VERY LONG). AS AN OFFENSIVE WEAPON, EMP IS BEST USED BY EXPERIENCED PILOTS FLYING ENERGY CANNON-UPGRADED ACVs.
+strR1TECH_EXPLOSIVE_CHARGEinfo                                  UPGRADE FOR MIMIC COMPOSITE VEHICLES (SU2).\n\nINCREASES DAMAGE CAUSED BY KAMIKAZE ATTACKS.\n\nWHILE SEEMINGLY A COLD DECISION, MIMICS CAN BE OUTFITTED WITH A QUANTUM EXPLOSIVE PAYLOAD TO ENSURE MAXIMUM DAMAGE FROM A SUICIDE ATTACK. WHILE WE REGRET THE LOSS OF OUR KIITH BROTHERS, ENSURING THAT THEIR DEATHS AREN'T IN VAIN IS OF THE UTMOST IMPORTANCE TO FLEET COMMAND AND THE SOMTAAW-SA.
+strR1TECH_LINKinfo                                              REQUIRED TO CONSTRUCT ACVs (SU4), AND MCVs (SU4).\n\nALLOWS TWO ACOLYTES OR TWO MIMICS TO FORM A COMPOSITE VEHICLE.\n\nWHILE SIMPLE IN THEORY - LINK TWO SHIPS TOGETHER - DESIGNING A LINKING SYSTEM THAT DOESN'T REQUIRE AN EXTERNAL CREW AND CAN BE CARRIED OUT BY PILOTS IN THE FIELD IS QUITE COMPLEX.
+strR1TECH_MIMICinfo                                             REQUIRED TO CONSTRUCT MIMICS (SU3), AND MCVs (SU6).\n\nALLOWS MIMICS TO APPEAR AS OTHER SHIPS.\n\nA SINGLE MIMIC CAN PROJECT A FALSE IMAGE OF MOST SMALL SIZED SHIPS AND OBJECTS (FIGHTERS, MICRO-CLASS SHIPS, AND SMALL ASTEROIDS), BUT THE LINKED ARRAYS OF TWO MIMICS ARE REQUIRED TO PROJECT A FALSE IMAGE OF LARGER SHIPS.
+strR1TECH_AFTERBURNERinfo                                       REQUIRED TO CONSTRUCT HEAVY TUGS (RAMMING FRIGATES) (SU10) - MULTIPLAYER ONLY.\n\nALLOWS A HEAVY TUG TO PUSH OTHER SHIPS.\n\nWITH THE ADDITION OF AN AFTERBURN SYSTEM, A HEAVY TUG IS CAPABLE OF MOVING EVEN LARGE CAPITAL SHIPS AROUND. A "RAMMING FRIGATE" IS ESPECIALLY EFFECTIVE AGAINST MISSILE SHIPS BY MOVING THEM TOO FAR FROM THE MAIN BATTLE TO PROPERLY USE THEIR MISSILE OR REPULSE SYSTEMS.
+strR1TECH_BIG_GUNinfo                                           UPGRADE FOR COMMAND SHIP.\n\nREQUIRED TO FIRE SIEGE CANNON.\n\nALLOWS COMMAND SHIP TO USE SIEGE CANNON.\n\nIF SUCCESSFULLY RESEARCHED THIS CLASS TWO (OFF-PLANET) SIEGE CANNON CAN BE AFFIXED TO THE SHIP AND FED POWER DIRECTLY FROM THE ENGINES (THROUGH A CUSTOM VENTING SYSTEM THROUGH THE UPPER, BACK SPINE). WHILE AN EXCELLENT LONG-RANGE WEAPON, A SIEGE CANNON IS A FRIENDLY-FIRE RISK TO ALL FLEET SHIPS WITHIN THE BLAST RADIUS.
+strR1TECH_ADVANCED_SENSORSinfo                                  UPGRADE FOR RECONS AND SENTINELS (SU3).\n\nALLOWS SHIPS TO DETECT MIMICS, CLOAKED SHIPS, AND LEECHES (SU2).\n\nBY APPLYING THIS TECHNOLOGY TO RECONS AND SENTINELS, EACH SHIP WILL ENJOY AN INCREASE IN THEIR SENSOR RANGE, AS WELL AS ENABLE THEM TO DETECT SUPPRESSED SYSTEM SHIPS (MIMICKING, CLOAKING, AND LEECHES).
+strR1TECH_FORCE_FIELD1info                                      UPGRADE FOR SENTINELS (SU3).\n\nLEADS TO LEVEL 2 ENERGY SHIELD TECHNOLOGY\n\nA LEVEL ONE FORCE FIELD IS POWERFUL ENOUGH TO STOP MASS DRIVER WEAPONS.
+strR1TECH_FORCE_FIELD2info                                      UPGRADE FOR SENTINELS (SU3).\n\nLEADS TO LEVEL 3 ENERGY SHIELD TECHNOLOGY\n\nA LEVEL TWO FORCE FIELD IS POWERFUL ENOUGH TO STOP MISSILES.
+strR1TECH_FORCE_FIELD3info                                      UPGRADE FOR SENTINELS (SU3).\n\nA LEVEL THREE FORCE FIELD IS POWERFUL ENOUGH TO STOP ENERGY BASED WEAPONS, SUCH AS ENERGY CANNONS AND ION CANNONS.
+strR1TECH_INFECTinfo                                            REQUIRED TO UNDERSTAND "INFECTION" PROCESS.\n\nSHIP SENSORS AND SECURITY CAMERAS, COMBINED WITH SOME OF THE FINAL DATA TRANSMISSIONS FROM THE CLEE-SAN WILL HOPEFULLY YIELD ANSWERS ABOUT WHAT HAS HAPPENED TO OUR SHIPS.
+strR1TECH_REPAIRBOTSinfo                                        UPGRADE FOR FRIGATES, DESTROYER CLASS SHIPS, AND THE COMMAND SHIP.\n\nALLOWS SHIPS TO REPAIR THEMSELVES.\n\nWHEN UPGRADED, VESSELS CARRY AN ON-BOARD COMPLEMENT OF AUTONOMOUS REPAIR UNITS. THESE UNITS USE AN EXPERT SYSTEM SIMILAR TO A LEECH. THESE REPAIR UNITS ARE ESSENTIAL IF A UNIT IS GOING TO OPERATE A SIGNIFICANT DISTANCE FROM A COMMAND SHIP OR A REPAIR-CAPABLE WORKER.
+strR1TECH_CRYSTAL_HARVESTinfo                                   UPGRADE FOR WORKERS (SU4).\n\nALLOWS WORKERS TO HAUL DELICATE CRYSTAL FORMATIONS FOR PROCESSING.\n\nASTEROIDS WITH A DELICATE CRYSTAL LATTICE STRUCTURE ARE HIGHLY UNSTABLE, BUT INCREDIBLY RICH IN RESOURCES. A STANDARD WORKER PDA IS INCAPABLE OF HARVESTING A CRYSTAL. HOWEVER, WITH PROPER UPGRADING A WORKER CAN HAUL THE FRAGILE STRUCTURES TO A COMMAND SHIP FOR PROCESSING.
+strR1TECH_RESEARCH_CLEESAN_ATTACKinfo                           REQUIRED TO UNDERSTAND WHAT HAS HAPPENED TO THE CLEE-SAN AND ITS ESCORT WING.\n\nWE HAVE LOST ALL CONTACT WITH THESE SHIPS AND MUST ASSUME THAT THEY'VE BEEN DESTROYED.\n\nFURTHER ANALYSIS OF ALL DATA IS NEEDED TO CONFIRM.
+strR1TECH_BEAST_VACCINEinfo                                     UPGRADE FOR WORKERS (SU4).\n\nALLOWS SOMTAAW FLEETS TO SALVAGE BEAST SHIPS.\n\nIMPERIAL TAIIDAN RESEARCH HAS SURFACED THAT PROVIDES INFORMATION REGARDING THE HANDLING AND STERILIZATION OF BEAST INFECTED SHIPS. THIS INFORMATION ALLOWS FOR THE SALVAGING OF BEAST INFECTED SOMTAAW SHIPS. GIVEN THE LACK OF INFORMATION REQUIRED TO PROPERLY REPLACE AND REPAIR BEAST ALTERED SYSTEMS IN NON-SOMTAAW SHIPS, SALVAGING THEM IS POINTLESS.
+strR1TECH_PHASED_TELEMETRYinfo                                  REQUIRED TO CONSTRUCT LEECHES (SU2).\n\nALLOWS FOR ENCRYPTED CONTROL OF LEECHES.\n\nLEECHES ARE NOT ONLY ABLE TO AVOID DETECTION WITH THEIR SUPPRESSED AND SHIELDED ELECTRONICS (LEECHES ARE UNMANNED), BUT ALSO THROUGH A UNIQUE, REMOTE CONTROL SYSTEM THAT ALLOWS FLEET COMMAND TO SEND INSTRUCTIONS VIA BURST TACHYON TRANSMISSIONS. WITHOUT THESE A LEECH WOULD BE AT THE MERCY OF EVEN SIMPLE PROXIMITY NETWORKS.
+strR1TECH_INERTIALESS_DRIVEinfo					    REQUIRED TO UNDERSTAND THE NAGGAROK'S DRIVE TECHNOLOGY.\n\nTHE NAGGAROK IS MOVING FAR FASTER THAN A SHIP EVEN A TENTH OF ITS SIZE SHOULD BE ABLE TO.\n\nWE NEED TO FIGURE OUT SOME WAY OF SHUTTING THIS DRIVE SYSTEM DOWN.\n\nONLY THEN WILL WE HAVE A CHANCE AGAINST IT IN COMBAT.
+;=========================================================================================
+
+strR2TECH_CLOAKINGinfo                                          REQ.** CLOAKED FIGHTER (SU2) / ION ARRAY FRIGATE (SU15).\n\nALLOWS CLOAKED FIGHTER TO HIDE FROM VISUAL AND ELECTRONIC SENSORS\n\nCLOAKING N ABLE SHIPS HIDE. VISUAL / ELECTRONIC DETECTION.
+strR2TECH_TARGETING_SYSTEMSinfo                                 REQ.** MULTIGUN CORVETTE (SU5).\n\nALLOW CORVETTE WEAPONS TO TARGET FAST MOVING SHIPS\n\nTURRETS D SIGNED TRACK QUICKLY DESTROY FAST TARGETS. 
+strR2TECH_PLASMA_WEAPONSinfo                                    REQ.** ATTACK BOMBER (SU3).\n\nHEAVY PLASMA BOMBS FOR ATTACK BOMBER\n\nDIS CHARGES SUPERHEATED PLASMA. DEVASTATING. CAPITAL SHIPS.
+strR2TECH_MEDIUM_GUNSinfo                                       REQ.** HEAVY CORVETTE (SU4).\n\nGUNS FOR HEAVY CORVETTE\n\nINCREASES ARMOR STRENGTH / FIREPOWER.
+strR2TECH_DEFENSE_FIELDinfo                                     REQ.** DEFENSE FIELD FRIGATE (SU10).\n\nGENERATES DEFLECTIVE SHIELD TO LIMITED AREA\n\nDEFENSE FIELD TECHNOLOGY RE DIRECT ENEMY PROJECTILES.
+strR2TECH_HEAVY_GUNSinfo                                        REQ.** HEAVY CRUISER (SU70).\n\nHEAVY - HEAVIER GUNS FOR HEAVY CRUISER\n\nHEAVY GUNS ( CRITICAL COMPONENT ) MASSIVE WEAPON INVENTORY.
+strR2TECH_REPAIRinfo                                            UP GRADE WORKERS (SU4) / PROCESSOR (SU13)\n\nALLOWS SHIP TO REPAIR OTHER SHIPS.\n\nMAKE REPAIRS DAMAGED SHIPS. WORKER PHASED DISASSEMBLER ARRAY. MADE PROJECT STORED MATERIALS. USED WORKERS / PROCESSORS REPAIR CRITICAL FAULTS / STRESSES SHIP HULL.
+strR2TECH_SALVAGEinfo                                           UP GRADE WORKERS (SU4)\n\nALLOWS SHIP TO SALVAGE ENEMY SHIPS.\n\nALLOW MOVE TARGET SHIPS.  COMMANDEERING PREFERABLE TO DESTROYING. EXTERNALLY CONTROL SHIP. TAKE.                          
+
+;=========================================================================================
+; PeterG. New Cataclysm technologies
+strR2TECH_DRIVE_FIGHTERinfo                                     REQ.** ACOLYTES (SU2) / ACVs (SU4).\n\nSTANDARD DRIVE FOR FIGHTER CLASS SHIPS.\n\nDRIVE ENGINEERING THIRD GENERATION KUSHAN FIGHTER DRIVES. SUIT SOMTAAW SHIP CHASSIS / POWER PLANTS.
+strR2TECH_ADRIVE_FIGHTERinfo                                    UP GRADE ACOLYTES (SU2) / ACVs (SU4).\n\nINCREASES FIGHTER SPEED.\n\nSHIPS INCREASE OVERALL ENGINE EFFICIENCY / SPEED.
+strR2TECH_DRIVE_FRIGATEinfo                                     REQ.** MULTI-BEAM FRIGATES (SU12) / HIVE FRIGATES (SU20) / HEAVY FRIGATES (RAMMING TUGS) (SU10).\n\nSTANDARD DRIVE FOR FRIGATE CLASS SHIPS.\n\nDRIVE ENGINEERING KUSHAN FRIGATE DRIVES. WORK WITH SOMTAAW POWER PLANTS.
+strR2TECH_ADRIVE_FRIGATEinfo                                    UP GRADE MULTI-BEAM FRIGATES (SU12) / HIVE FRIGATES (SU20).\n\nINCREASES FRIGATE SPEED.\n\nSHIPS INCREASE OVERALL ENGINE EFFICIENCY / SPEED.
+strR2TECH_DRIVE_DESTROYERinfo                                   REQ.** CARRIERS (SU-) / HEAVY CRUISERS (SU70)\n\nDRIVE FOR SUPER CAPITAL SHIPS.\n\nDESTROYER DRIVES LIKE IMPERIAL TAIIDAN PARTS DRIVE.
+strR2TECH_ADRIVE_DESTROYERinfo                                  11####### HI! THIS IS SOMTAAW SPECIFIC. IF YOU'RE PLAYING BEAST AND YOU SEE THIS, THERE'S BEEN AN ERROR SOMEWHERE. TELL A DESIGNER NOW.
+strR2TECH_ARMOUR2info                                           UP GRADE FLEET SHIPS.\n\nINCREASES DAMAGE RESISTANCE TO EXPLOSIVES.\n\nTYPE 2 ARMOR CRYSTAL POLYMER COMPOSITE DEPLETED URANIUM. FLEXING. RADICAL IMPACTS. INCREASE HULL DURABILIY TO EXPLOSIVES. DAMAGE. MISSILES / KAMIKAZE / CRITICAL FAILURE SHIPS REDUCED. 
+strR2TECH_ARMOUR3info                                           UP GRADE SENTINELS (SU3) / WORKERS (SU4) / CAPITAL SHIPS / COMMAND SHIP.\n\nINCREASES DAMAGE RESISTANCE TO ENERGY WEAPONS.\n\nTYPE 3 ARMOR PROTECTION ENERGY WEAPONS. PLASMA BOMBS/ ENERGY CANNONS / ION CANNONS. ARMOR ABLATIVE LAYER / REFLECTIVE / SUPERCONDUCTIVE LAYER. DEFLECT / DISSIPATE ENERGY.
+strR2TECH_SUPPORT_SYSTEMSinfo                                   REQ.** CARRIERS (SU-).\n\nUP GRADE COMMAND SHIP / SELF.\n\nINCREASES MAXIMUM FLEET SIZE.\n\nFLEET LIMITED.LOGISTICAL SUPPORT. SUPPORT MODULES COMMAND SHIP LARGER ARMADA GROW.
+strR2TECH_MICRO_SHIPinfo                                        REQ.** SENTINELS (SU3) / HIVE FRIGATES (SU20).\n\nSTANDARD DRIVE FOR MICRO CLASS SHIPS.\n\nHIVE FRIGATES WITH SWARMER CONTROL SYSTEM / 6 SWARMERS.
+strR2TECH_ENERGYinfo                                            UP GRADE FLEET SHIPS / MASS DRIVER CANNONS.\n\nREPLACES PROJECTILE WEAPONS WITH ENERGY CANNONS.\n\nENERGY CANNONS HIGH-ENERGY PLASMA FAST-CYCLING FIRING SYSTEM.
+strR2TECH_IONinfo                                               REQ.** MULTI-BEAM FRIGATES (SU12).\n\nREPLACES ENERGY CANNONS WITH ION CANNONS.\n\nION CANNONS STRONGER / CONSTANT BEAM ENERGY. SHORTER RANGE / CLOSE RANGE COMBAT.
+strR2TECH_MISSILEinfo                                           REQ.** MISSILE CORVETTES (SU4).\n\nMISSILES ARE LONG RANGE WEAPON.\n\MISSILES SPEED / MANEUVERABILITY. SERIOUS THREAT. FLEXIBLE PLATFORM EFFECTIVE CAPITAL SHIPS / STRIKE CRAFT.
+strR2TECH_REPULSEinfo                                           12####### HI! THIS IS SOMTAAW SPECIFIC. IF YOU'RE PLAYING BEAST AND YOU SEE THIS, THERE'S BEEN AN ERROR SOMEWHERE. TELL A DESIGNER NOW.
+strR2TECH_EMPinfo                                               UP GRADE ACOLYTE COMPOSITES.\n\EMP TEMPORARILY DISABLES ENEMY SHIPS.\n\nCOMBINED POWER PLANTS TWO ACOLYTES ACV MODE. ELECTROMAGNETIC PULSE / DISCHARGED, DISABLING UNPROTECTED SHIPS. GROUP ACVS AFFECT LARGE CAPITAL SHIPS (NOT LONG). OFFENSIVE WEAPON.
+strR2TECH_EXPLOSIVE_CHARGEinfo                                  REQ.** BEAST BIO WARFARE.\n\nREQUIRED FOR TRANSMISSION OF BEAST INFECTION SELF FROM EXPLODING MISSILE SELF TO TARGET PARTS / SHIPS.\n\nWARHEAD CONTAINS SEMI-SOLID, POLYMER-LIKE MEDIUM PROTECTS INFECTION PARTICLES DURING EXPLOSION OF WARHEAD. MEDIUM STICKS TO HULLS, ENSURING INFECTION.
+strR2TECH_LINKinfo                                              REQ.** ACOLYTES COMPOSITES.\n\nALLOWS TWO ACOLYTES TO FORM AN ACV.\n\nLINK TWO SHIPS TOGETHER.
+strR2TECH_MIMICinfo                                             14####### HI! THIS IS SOMTAAW SPECIFIC. IF YOU'RE PLAYING BEAST AND YOU SEE THIS, THERE'S BEEN AN ERROR SOMEWHERE. TELL A DESIGNER NOW.
+strR2TECH_AFTERBURNERinfo                                       REQ.** HEAVY FRIGATES (RAMMING TUGS) (SU10).\n\nALLOWS A HEAVY TUG TO PUSH OTHER SHIPS.\n\nAFTERBURN SYSTEM HEAVY TUG CAPABLE MOVING SHIPS. (RAMMING FRIGATE TUG TUG) EFFECTIVE -AGAINST- MISSILE SHIPS MOVING FAR BATTLE.
+strR2TECH_BIG_GUNinfo                                           15####### HI! THIS IS SOMTAAW SPECIFIC. IF YOU'RE PLAYING BEAST AND YOU SEE THIS, THERE'S BEEN AN ERROR SOMEWHERE. TELL A DESIGNER NOW.
+strR2TECH_ADVANCED_SENSORSinfo                                  UP GRADE RECONS (SU2) / SENTINELS (SU3).\n\nINCREASES SENSOR POWER. SEE FURTHER AND SEE HIDDEN SHIPS.\n\nTECHNOLOGY RECONS / SENTINELS, INCREASE SENSOR RANGE, DETECT TRANSPARENT SHIPS (MIMICKING, CLOAKING, AND LEECHES).
+strR2TECH_FORCE_FIELD1info                                      UP GRADE SENTINELS (SU3).\n\nA LEVEL ONE FORCE FIELD IS POWERFUL ENOUGH TO STOP MASS DRIVER WEAPONS.
+strR2TECH_FORCE_FIELD2info                                      UP GRADE SENTINELS (SU3).\n\nA LEVEL TWO FORCE FIELD IS POWERFUL ENOUGH TO STOP MISSILES.
+strR2TECH_FORCE_FIELD3info                                      UP GRADE SENTINELS (SU3).\n\nA LEVEL THREE FORCE FIELD IS POWERFUL ENOUGH TO STOP ENERGY BASED WEAPONS, SUCH AS ENERGY CANNONS AND ION CANNONS.
+strR2TECH_INFECTinfo                                            UP GRADE COMMANDED SHIP / SELF, CARRIERS (SU-), HEAVY CRUISERS (SU70).\n\nPROJECTS NANO SELF ONTO TARGET PARTS\n\nSELF APPLICATION PART / PARTS HULL. TAKE. RETIRE NEW SELF HULLS - RESEARCH PARTS TECH. ADD TO SELF / SELVES.
+strR2TECH_REPAIRBOTSinfo                                        UP GRADE FRIGATES / DESTROYER CLASS / COMMAND SHIP / SELF.\n\nALLOWS SHIPS TO REPAIR THEMSELVES.\n\nCARRY COMPLEMENT AUTONOMOUS REPAIR UNITS. ESSENTIAL - UNIT OPERATE SIGNIFICANT DISTANCE- COMMAND SHIP / REPAIR-CAPABLE WORKER.
+strR2TECH_CRYSTAL_HARVESTinfo                                   UP GRADE FOR WORKERS (SU4).\n\nALLOWS WORKER SELVES TO MOVE CRYSTAL RESOURCES TO COMMAND SELVES.\n\nASTEROIDS DELICATE CRYSTAL LATTICE STRUCTURE HIGHLY UNSTABLE, RICH RESOURCES. WORKER PDA INCAPABLE HARVESTING CRYSTAL. WORKER CAN UPGRADE TO MOVE CRYSTAL TO PROCESSOR, CARRIER, OR COMMAND SHIP SELVES FOR PROCESSING (YES).
+strR2TECH_RESEARCH_CLEESAN_ATTACKinfo                           15 HI! THIS IS SOMTAAW SPECIFIC. IF YOU'RE PLAYING BEAST AND YOU SEE THIS, THERE'S BEEN AN ERROR SOMEWHERE. TELL A DESIGNER NOW.
+strR2TECH_BEAST_VACCINEinfo                                     16 HI! THIS IS SOMTAAW SPECIFIC. IF YOU'RE PLAYING BEAST AND YOU SEE THIS, THERE'S BEEN AN ERROR SOMEWHERE. TELL A DESIGNER NOW.
+strR2TECH_PHASED_TELEMETRYinfo                                  17 HI! THIS IS SOMTAAW SPECIFIC. IF YOU'RE PLAYING BEAST AND YOU SEE THIS, THERE'S BEEN AN ERROR SOMEWHERE. TELL A DESIGNER NOW.
+strR2TECH_INERTIALESS_DRIVEinfo					    18 HI! THIS IS SOMTAAW SPECIFIC FOR SINGLE PLAYER. IF YOU'RE PLAYING BEAST AND YOU SEE THIS, THERE'S BEEN AN ERROR SOMEWHERE. TELL A DESIGNER NOW.
+strR2TECH_BIOWARHEADinfo						    REQ.** BEAST BIO WARFARE.\n\nREQUIRED FOR TRANSMISSION OF BEAST INFECTION SELF FROM EXPLODING MISSILE SELF TO TARGET PARTS / SHIPS.\n\nWARHEAD CONTAINS SEMI-SOLID, POLYMER-LIKE MEDIUM PROTECTS INFECTION PARTICLES DURING EXPLOSION OF WARHEAD. MEDIUM STICKS TO HULLS, ENSURING INFECTION.
+strR2TECH_DRIVE_CORVETTEinfo					          REQ.** MISSILE CORVETTES (SU4) / MULTIGUN CORVETTE (SU5) / HEAVY CORVETTE (SU4).\n\nSTANDARD DRIVE FOR CORVETTE CLASS SHIPS.\n\nSELF TAKE FROM DRIVE ENGINEERING KUSHAN / TAIIDAN CORVETTE DRIVES.
+;=========================================================================================
+
+; ChrisS. Max Length of info boxes. 
+; It's a bit excessive, about half the info box					=========================================================================================================================================================================================================================================================================================================================================================================================================================
+strHangarModuleinfo                                             FIGHTER DRIVE\nADVANCED FIGHTER DRIVE\nLINKING TECHNOLOGY\nFRIGATE DRIVE\nADVANCED FRIGATE DRIVE\nDESTROYER DRIVE\nADVANCED DESTROYER DRIVE\n\nTHE HANGAR MODULE IS A MILITARY GRADE CONSTRUCTION FACILITY FOR THE INTERNAL PRODUCTION OF STRIKE CRAFT AND FRIGATE CLASS VESSELS.  AN EXTERNAL PDA SYSTEM IS INCORPORATED IN THE LOWER MODULE SURFACES IN ORDER TO EXTERNALLY CONSTRUCT SUPER-CAPITAL SHIP HULLS.  ADVANCED ENGINE AND DESIGN WORK IS DONE HERE AS WELL.
+strArmourModuleinfo                                             ARMOR LEVEL 2\nARMOR LEVEL 3\nFORCE FIELD LEVEL 1\nFORCE FIELD LEVEL 2\nFORCE FIELD LEVEL 3\n\nTHE ARMOR RESEARCH AND DESIGN MODULE IS FOR IMPROVING THE SURVIVABILITY OF ALL FLEET VESSELS.  TESTING OF NEW MATERIALS IS PERFORMED HERE AND THERE IS AN ADVANCED FIELD LAB ON DECK 12 FOR EXPERIMENTING WITH COHERENT E.M. FIELDS.
+strEngineeringModuleinfo                                        SALVAGING ABILITY\nHOLOGRAPHIC EMITTER\nSUPPORT SYSTEMS\nAFTERBURNER\nREPAIR SYSTEMS\nINFECTION ORGANISM\n\nTHIS MODULE IS DESIGNED FOR CONDUCTING MATERIALS AND PROCESSING EXPERIMENTS THAT WILL EVENTUALLY LEAD TO NEW TECHNOLOGIES TO IMPROVE OUR FLEET CAPABILITES,  IT HOUSES HUGE COMPUTER LABS AS WELL AS PROTOTYPE MANUFACTURING SYSTEMS.
+strAdvEngineeringModuleinfo                                     MICROSHIP CONSTRUCTION\nREPAIR BOTS\nPHASED TELEMETRY\nADVANCED SENSORS\nINFECTION VACCINE\nCRYSTAL HARVEST ABILITY\n\nTHE ADVANCED ENGINEERING MODULE IS FOR TECHNOLOGIES BEYOND THE SCOPE OF NORMAL ENGINEERING DOCTRINE.  HERE, ESOTERIC EXPERIMENTS IN DESIGN, CONTROL, AND MATERIALS SCIENCE ARE PERFORMED ON THE CUTTING EDGE OF CURRENT TECHNOLOGY. 
+strWeaponModuleinfo                                             ADVANCED ION CANNON\nMISSILE LAUNCHER\nSIEGE CANNON\nENERGY CANNON\nE.M.P. WEAPON\nQUANTUM EXPLOSIVE CHARGE\nREPULSE WEAPON\n\nTHE WEAPONS MODULE HAS BEEN DESIGNED FOR THE DEVELOPMENT OF ADVANCED WEAPONS SYSTEMS THAT WILL AID KIITH SOMTAAW IN ITS MILITARY AFFAIRS.  FACILITIES ARE ALSO AVAILABLE IN THIS MODULE FOR BACK ENGINEERING CAPTURED WEAPON SYSTEMS.
+
+; abbreviations for ships in the
+; information overlay
+;===============================================================
+; PG - Cataclysm ships
+strAbrevsRecon 					   RECON
+strAbrevsAcolyte  				   ACOLYTE
+strAbrevsMimic  				   MIMIC
+strAbrevsLeech  				   LEECH
+strAbrevsACV  					   ACV
+strAbrevsMCV  					   MCV
+strAbrevsRammingFrigate  		   RAMMING FRIGATE
+strAbrevsMultiBeamFrigate  		   MULTIBEAM FRIGATE
+strAbrevsHiveFrigate  			   HIVE FRIGATE
+strAbrevsSwarmer 				   SWARMER
+strAbrevsDreadnought  			   DREADNOUGHT
+strAbrevsDreadnoughtCannon         CANNON
+strAbrevsCarrier  				   CARRIER
+strAbrevsCarrierSupport            SUPPORT MODULE
+strAbrevsWorker  				   WORKER
+strAbrevsRepairDroid  			   REPAIR DROID
+strAbrevsProcessor  			   PROCESSOR
+strAbrevsSentinel  				   SENTINEL
+strAbrevsMothership  			   COMMAND SHIP
+strAbrevsMothershipSpecial 		   ADV ENGINEERING MODULE   
+strAbrevsMothershipEngineering 	   RESOURCE PROCESSING
+strAbrevsMothershipArmour 		   ARMOR MODULE      
+strAbrevsMothershipMicro 		   ENGINEERING MODULE       
+strAbrevsMothershipWeapons 		   WEAPONS MODULE     
+strAbrevsMothershipDockingBay 	   HANGAR MODULE
+strAbrevsDestroyer           	   DESTROYER 
+strAbrevsMothershipSupport 		   SUPPORT MODULE     
+strAbrevsMothershipCommand 		   COMMAND CENTER     
+strAbrevsMothershipEnginesLower    LOWER ENGINES
+strAbrevsMothershipEnginesUpper    UPPER ENGINES     
+strAbrevsMothershipLowerSpine 	   LOWER SPINE     
+strAbrevsMothershipBigGun 		   SIEGE CANNON
+strAbrevsMothershipOreCanArmour    ORE CANISTER
+
+strAbrevbRecon  				   RECON
+strAbrevbAcolyte   	    		   ACOLYTE
+strAbrevbInterceptor  			   INTERCEPTOR
+strAbrevbCloakedFighter  		   CLOAKED FIGHTER
+strAbrevbAttackBomber  			   ATTACK BOMBER
+strAbrevbACV  					   ACV
+strAbrevbMultiGunCorvette 		   MULTIGUN CORVETTE
+strAbrevbHeavyCorvette  		   HEAVY CORVETTE
+strAbrevbMultiBeamFrigate  		   MULTIBEAM FRIGATE
+strAbrevbHiveFrigate  			   HIVE FRIGATE
+strAbrevbSwarmer  				   SWARMER
+strAbrevbIonArrayFrigate  		   ION ARRAY FRIGATE
+strAbrevbDFGFrigate  			   DEFENCE FIELD FRIGATE
+strAbrevbHeavyCruiser 	 		   HEAVY CRUISER
+strAbrevbCarrier  				   CARRIER
+strAbrevbRammingFrigate  		   RAMMIN FRIGATE
+strAbrevbWorker  				   WORKER
+strAbrevbRepairDroid  			   REPAIR DROID
+strAbrevbProcessor  			   PROCESSOR
+strAbrevbSentinel  				   SENTINEL
+strAbrevbMothership  			   COMMAND SHIP
+strAbrevbMothershipDockingBay 	   HANGAR MODULE
+strAbrevbMothershipEnginesLower    LOWER ENGINES
+strAbrevbSectMoship          	   GENETICS LAB MODULE 
+strAbrevbMothershipSupport         SUPPORT MODULE     
+strAbrevbCruiseMissile             CRUISE MISSILE     
+strAbrevbMissileCorvette           MISSILE CORVETTE
+
+strAbrevkAdvanceSupportFrigate      SUPPORT FRIGATE
+strAbrevkAttackBomber               ATTACK BOMBER
+strAbrevkCarrier                    CARRIER
+strAbrevkCloakGenerator             CLOAK GENERATOR  
+strAbrevkGravWellGenerator          GRAVWELL GENERATOR  
+strAbrevkHeavyCorvette              HEAVY CORVETTE
+strAbrevkHeavyCruiser               HEAVY CRUISER
+strAbrevkHeavyDefender              DEFENDER
+strAbrevkHeavyInterceptor           INTERCEPTOR
+strAbrevkIonCannonFrigate           ION CANNON FRIGATE
+strAbrevkMultiGunCorvette           MULTI-GUN CORVETTE
+strAbrevkProximitySensor            PROXIMITY SENSOR
+strAbrevkSalCapCorvette             SALVAGE CORVETTE
+strAbrevkStandardDestroyer          DESTROYER
+
+strAbrevtAdvanceSupportFrigate      SUPPORT FRIGATE
+strAbrevtAttackBomber               ATTACK BOMBER
+strAbrevtCarrier                    CARRIER
+strAbrevtCloakGenerator             CLOAK GENERATOR  
+strAbrevtDFGFrigate                 DEFENCE FIELD FRIGATE
+strAbrevtGravWellGenerator          GRAVWELL GENERATOR
+strAbrevtHeavyCruiser               HEAVY CRUISER
+strAbrevtHeavyDefender              DEFENDER
+strAbrevtHeavyInterceptor           INTERCEPTOR
+strAbrevtIonCannonFrigate           ION CANNON FRIGATE
+strAbrevtMinelayerCorvette          MINELAYER CORVETTE
+strAbrevtMissileDestroyer           MISSILE DESTROYER
+strAbrevtMultiGunCorvette           MULTI-GUN CORVETTE
+strAbrevtProximitySensor            PROXIMITY SENSOR
+strAbrevtResourceCollector          RESOURCE COLLECTOR
+strAbrevtSalCapCorvette             SALVAGE CORVETTE
+strAbrevtStandardDestroyer          DESTROYER
+strAbrevtStandardFrigate            ASSAULT FRIGATE
+
+strAbrevp1Outpost                   OUTPOST 
+strAbrevp1Fighter                   FIGHTER
+strAbrevp1IonArrayFrigate           ION ARRAY FRIGATE
+strAbrevp1MissileCorvette           MISSILE CORVETTE
+strAbrevp1Mothership                BATTLE CARRIER
+strAbrevp1StandardCorvette          STANDARD CORVETTE
+
+strAbrevtrFloatingCity              BENTUSI EXCHANGE
+strAbrevtrCargoBarge                CARGO BARGE
+strAbrevtrMiningBase                FIELD GENERATOR
+strAbrevtrResearchStation           RESEARCH STATION
+strAbrevtrJunkYardDawg              JUNKYARD DOG
+strAbrevtrJunkYardHQ                JUNKYARD OFFICE
+strAbrevtrGhostship                 GHOST SHIP
+strAbrevtrJunk_LGun                 AUTO GUN
+strAbrevtrJunk_SGun                 AUTO GUN
+strAbrevtrResearchStationBridge     RES STATION BRIDGE
+strAbrevtrResearchStationTower      RES STATION TOWER
+
+strAbrevdRKO                        NAGGAROK
+strAbrevdBigGun                     DERELICT
+strAbrevdBigGunUnit 			    SIEGE CANNON DERELICT
+strAbrevdSlipgateSmall 		   	    SLIPGATE SMALL
+strAbrevdSlipgateMedium 		    SLIPGATE MEDIUM
+strAbrevdSlipgateLarge 		   	    SLIPGATE LARGE
+strAbrevdCrate 				   	    CRATE
+strAbrevdJunk1PartA 			   	DEBRIS
+strAbrevdJunk1Shell 			   	DEBRIS
+strAbrevdJunk1Strut 			   	DEBRIS
+strAbrevdJunk2Shipwreck 		   	DEBRIS
+strAbrevdJunk3Boiler 		   	    DEBRIS
+strAbrevdJunk3BoilerCasing 	   	    DEBRIS
+strAbrevdMessagePod 			   	DERELICT
+strAbrevdBuoy 				   	    TARGET DRONE
+strAbrevdFirstPlanet 		   	    PLANET
+strAbrevdDeadPlanet 			   	PLANET
+strAbrevdCrystal0                   CRYSTAL SMALL
+strAbrevdCrystal1                   CRYSTAL LARGE
+strAbrevdBeastDockingBay            BEAST DOCKING BAY
+strAbrevdNISBuoy					MINE           
+strAbrevdBeastMothership            INFECTED MODULE
+strAbrevdNomadMoon                  NOMAD MOON
+strAbrevdNomadFieldEmitter          NOMAD MOON EMITTER
+strAbrevdAcolyte                    SUPER ACOLYTE
+strAbrevdPrisonShip                 COLONY SHIP
+strAbrevdPrisonShipInfected         COLONY SHIP
+strAbrevdSlipgateNode               SLIPGATE
+strAbrevdKushanCarrier              CARRIER
+strAbrevdIonArrayFrigate            ION ARRAY FRIGATE
+strAbrevdIonCannonFrigate           ION CANNON FRIGATE
+strAbrevdEcclesiam                  CLEE-SAN          
+strAbrevdEcclesiamInfected          CLEE-SAN  
+
+; string that tells you what ships that
+; technology will give you in the
+; Research manager.
+strCanBuild                                                     CAN BUILD :
+
+; formation titles displayed to the user
+strDELTA_FORMATION                                              Delta Formation
+strBROAD_FORMATION                                              Broad Formation
+strDELTA3D_FORMATION                                            X Formation
+strCLAW_FORMATION                                               Claw Formation
+strWALL_FORMATION                                               Wall Formation
+strSPHERE_FORMATION                                             Sphere Formation
+strPICKET_FORMATION                                             Custom Formation
+
+strPARADE_FORMATION                                             Military Parade
+
+; strings for the connecting box in the
+; multiplayer game screens
+strCreatingRoom                                                 CREATING ROOM ...
+strRoomCreated                                                  ROOM CREATED ...
+strQueryingChat                                                 QUERYING CHAT SERVER ...
+strConnectingToChat                                             CONNECTING TO CHAT ...
+strConnectedToChat                                              CONNECTED TO CHAT ...
+strStartingChat                                                 STARTING CHAT SERVER ...
+strCreatedChat                                                  CREATED CHAT SERVER ...
+strSendingLogin                                                SENDING LOGIN INFO ...
+strChangingPassword                                             CHANGING PASSWORD ...
+strCreatingUser                                                 CREATING NEW USER ...
+strRequestingToJoin                                             REQUESTING TO JOIN ...
+strConnectedWon                                                 CONNECTED TO WON ...
+strLoginFailed                                                  LOGIN FAILED!!
+strHitCancelAgain                                               HIT CANCEL AND TRY AGAIN
+strPasswordChangeSuccess                                        PASSWORD CHANGE SUCCESFUL ...
+strPasswordChangeFailed                                         PASSWORD CHANGE FAILED!!
+strNewUserCreated                                               NEW USER CREATED ...
+strDuplicateUser                                                DUPLICATE USER NAME!!
+
+strUserNotFound                                                 UNKNOWN USER
+strInvalidName                                                  INVALID NAME
+strUnknownAuthReply                                             UNKNOWN AUTH REPLY %d
+
+strFailedToCreateUser                                           FAILED TO CREATE NEW USER!!
+strFailedToChat                                                 FAILED TO CONNECT TO CHAT SERVER!!
+strHitCancelContinue                                            HIT CANCEL TO CONTINUE 
+strJoinRequestGranted                                           JOIN REQUEST GRANTED ...
+strJoinRequestDenied                                            JOIN REQUEST DENIED, TOO MANY PLAYERS
+strWonOffline                                                   GOT OFFLINE MESSAGE FROM WON!!
+strServerDown                                                   SERVER DOWN TRY LATER!!
+strKeyAlreadyInUse                                              CD KEY ALREADY IN USE.
+strBadKey                                                       INVALID CD KEY.
+strLightweightBadKey                                            INVALID CD KEY.
+
+strBadKeyExpired                                                CD KEY EXPIRED.
+strBadKeyLockedOut                                              CD KEY LOCKED OUT!
+strBadKeyBetaKeyRequired                                        BETA CD KEY REQUIRED.
+strBadKeyBetaKeyNotAllowed                                      BETA CD KEY NOT ALLOWED.
+
+strNoCDKey                                                      NO CD KEY FOUND, PLEASE REINSTALL
+strFailedToCreateChat                                           FAILED TO CREATE CHAT SERVER!
+strFailedToConnectToDirServer                                   FAILED TO CONNECT TO DIR SERVER!!
+
+strCantJoinOwnGame                                              CAN'T JOIN A GAME CREATED BY YOURSELF
+strErrorCantFindGame                                            ERROR, COULDN'T FIND GAME SELECTED
+strIncorrectPassword                                            INCORRECT PASSWORD TRY AGAIN 
+strCaptainDisolvedGame                                          CAPTAIN DISSOLVED GAME !
+strNoInternetTCPIP                                              COULD NOT START INTERNET TCP/IP
+strNoLanIPXorTCPIP                                              COULD NOT START LAN TCP/IP
+strProtocalIPXLAN                                               IPX LAN
+strProtocalTCPIPLAN                                             TCP/IP LAN
+strAuthCRCFailed                                                YOUR VERSION OF CATACLYSM IS NOT AUTHENTIC
+strErrorStillWaitingVersionInfo                                 ERROR, STILL WAITING FOR VERSION INFO
+strMinNumPlayersRequired                                        YOU NEED AT LEAST %d PLAYERS TO PLAY
+strMustBeInRoomToCreateGame                                     YOU MUST BE IN A ROOM TO CREATE A GAME
+strMustBeInRoomToCreateGame2                                    EITHER JOIN A ROOM OR CREATE A ROOM
+
+strCreatingGame                                                 CREATING GAME
+strInvalidRoomPassword                                          INVALID PASSWORD TO JOIN ROOM
+strErrorUserAlreadyExists                                       ERROR, USER ALREADY EXISTS
+strErrorRoomFull                                                ERROR, ROOM FULL JOIN ANOTHER
+strNeedLatestVersion                                            YOU NEED THE LATEST EXE TO PLAY
+strDownloadingPatch                                             DO YOU WISH TO DOWNLOAD PATCH
+strErrorGameAlreadyExists                                       GAME ALREADY EXISTS
+strCreatedGame                                                  CREATED GAME
+strDroppedOut                                                   DROPPED OUT
+strQuit                                                         QUIT
+strErrorTypingPassword                                          ERROR TYPING IN PASSWORD.  PLEASE CHECK.
+strPasswordProtected                                            PSWD
+strInProgress                                                   IN PROGRESS
+strDiffVersion                                                  DIFF VERSION
+strErrorRoomAlreadyExists                                       ERROR, ROOM ALREADY EXISTS
+strNoRoom                                                       NO ROOM
+strDifferentVersions                                            Detected different versions of Cataclysm.
+strMustUpgradeToSameVersion                                     You must all upgrade to the same version.
+strChatDisconnected                                             Chat unexpectedly disconnected
+
+strYouMustTypeInGameName                                        YOU MUST TYPE IN A GAME NAME
+strAtLeast2Chars                                                AT LEAST 3 CHARACTERS LONG
+strMustBeAtLeast2Chars                                          MUST BE AT LEAST 3 CHARACTERS LONG 
+strPaswordAndConfirmationMustMatch								PASSWORD AND CONFIRMATION MUST MATCH
+strErrorInSaveGameName                                          PLEASE TYPE IN SAVE GAME NAME
+strErrorInvalidSaveGameFile                                     ERROR, INVALID SAVE GAME FILE
+strErrorInvalidSaveGameFileVersion                              ERROR, INVALID VERSION OF SAVE GAME FILE
+
+strStartingGame                                                 STARTING GAME.
+strDetectedUserBehindFirewall                                   DETECTED USER BEHIND FIREWALL.
+strStartingRoutingServer                                        STARTING ROUTING SERVER.
+strTellingPlayersToConnectToMe                                  TELLING PLAYERS TO CONNECT TO ME.
+strConnectingToRoutingServer                                    CONNECTING TO ROUTING SERVER.
+strPlayerJoined                                                 PLAYER JOINED.
+strConnectingToCaptain                                          CONNECTING TO CAPTAIN.
+strTellingPlayersConnectRoutServ                                TELLING OTHER PLAYERS TO CONNECT TO ROUTING SERVER.
+
+strPatchStartingDownload                                        CONNECTING...
+strPatchDownloading                                             %d / %d
+strPatchGeneralError                                            ERROR (%d) GETTING PATCH.
+strPatchUnableCreateFile                                        UNABLE TO CREATE FILE.  Check diskspace?
+strPatchUnableWriteFile                                         ERROR WRITING TO FILE.  Check diskspace?
+strPatchUserAbort                                               DOWNLOAD ABORTED
+
+strPATCHFAIL_UNABLE_TO_CONNECT                                  ERROR UNABLE TO CONNECT
+strPATCHFAIL_ERROR_SENDING_REQUEST                              ERROR SENDING REQUEST
+strPATCHFAIL_ERROR_RECEIVING_HTTP_HEADER                        ERROR RECEIVING HTTP HEADER
+strPATCHFAIL_INVALID_FILE_LENGTH                                ERROR BAD FILE LENGTH
+strPATCHFAIL_ERROR_RECEIVING_PATCH                              ERROR RECEIVING PATCH
+strPATCHFAIL_UNABLE_TO_START_DOWNLOAD_THREAD                    ERROR STARTING DOWNLOAD
+strPATCHFAIL_INVALID_STATUS_REPLY                               ERROR INVALID STATUS REPLY
+strTryLaterDownloadManually                                     Try later or download at:
+
+strWhisperedMessage                                             (whispered)
+strHasJoined                                                    has joined
+strHasLeft                                                      has left
+
+; headings from the Channel list title
+strChannelNameHeading                                           NAME
+strChannelDescHeading                                           DESCRIPTION
+strChannelNumberHeading                                         NUMBER
+
+; headings from the Game list title
+strGameNameHeading                                              NAME
+strGamePingHeading                                              PING
+strGameNumPlayerHeading                                         PLAYERS
+strGameMapHeading                                               MAP
+
+strCustomMapAutoupload                                          Detected Custom Map - Autoupload included in load time
+strCustomMapAutodownload                                        Detected Custom Map - Autodownload included in load time
+
+strVersion                                                      Version
+
+; strings for forming and breaking
+; alliances.
+strAsksToFormAlliance                                           Asks to form an Alliance
+strWants                                                        wants
+strToJoin                                                       to join alliance, form alliance to accept
+strAnd                                                          and
+strAllianceFormed                                               Alliance formed with
+strHasBrokenAlliance                                            has broken the alliance
+strAllianceBroken                                               Alliance broken with
+strAllianceRequest                                              Alliance request sent to
+strAllianceConfirm                                              Accepted the request to add
+strAskForPermision                                              Asking allies to ally with
+
+; the name of the computer player
+strComputerName                                                 Computer
+
+; Build Manager Ship View Stats
+; PG - Not used in Cataclysm
+;strFirepower                                                    FIREPOWER: %s
+;strCoverage                                                     COVERAGE: %s
+;strManeuver                                                     MANEUVERABILITY: %s
+;strArmor                                                        ARMOR: %s
+;strTopSpeed                                                     MAX VELOCITY: %s m/s
+;strMass                                                         MASS: %s t
+; PG - Not used in Cataclysm
+;strVeryLow                                                      Very Low
+;strLow                                                          Low
+;strMedium                                                       Medium
+;strHigh                                                         High
+;strVeryHigh                                                     Very High
+;strCoverageUnits                                                %
+
+; PG - New ship view information overlay for construction manager
+; It's a bit excessive, about half the info box					==============================================================================================================================================================================================================================================================================================================================================================================================================================================================
+strsReconInfo                                  					FIREPOWER: 40\nCOVERAGE: 4%\nMANEUVERABILITY: VERY HIGH\nARMOR: 25\nMAX VELOCITY: 1050 m/s\nMASS: 41 TONS\nSU COST: 2\n\nREQUIRED TECH - NONE\nUPGRADE TECH - ADVANCED SENSORS, ADVANCED FIGHTER DRIVE, ENERGY CANNON, ARMOR LEVEL 2\n\nTHE SEEKER CLASS RECON FIGHTER IS THE FASTEST SHIP IN THE FLEET AND HAS THE LARGEST SCANNING RANGE. IT SHOULD BE USED TO KEEP AN EYE ON ENEMY SHIPS FROM A DISTANCE OR INVESTIGATE ANOMALIES.					      
+strsAcolyteInfo  				                                	FIREPOWER: 85\nCOVERAGE: 6%\nMANEUVERABILITY: VERY HIGH\nARMOR: 70\nMAX VELOCITY: 825 m/s\nMASS: 90 TONS\nSU COST: 2\n\nREQUIRED TECH - FIGHTER DRIVE\nUPGRADE TECH - ENERGY CANNON, MISSILE TECH, LINKING TECH, ADVANCED FIGHTER DRIVE, ARMOR LEVEL 2\n\nTHE ACOLYTE CLASS FIGHTER SHOULD BE USED IN LARGE SQUADRONS TO HUNT DOWN ENEMY WORKERS OR FIGHTERS. IT PACKS ONLY 2 MISSILES AND IT MUST RETURN TO A CARRIER OR THE COMMAND SHIP TO RELOAD.
+strsMimicInfo  					                           		FIREPOWER: --\nCOVERAGE: --\nMANEUVERABILITY: VERY HIGH\nARMOR: 20\nMAX VELOCITY: 750 m/s\nMASS: 55\nSU COST: 3\n\nREQUIRED TECH - FIGHTER DRIVE, MIMIC TECH\nUPGRADE TECH - ENERGY CANNON, LINKING TECHNOLOGY, QUANTUM EXPLOSIVE CHARGE, ADVANCED FIGHTER DRIVE, ARMOR LEVEL 2\n\nTHE MIMIC IS AN INFILTRATION / KAMIKAZE UNIT. MIMIC OUTSIDE THE VISUAL RANGE OF ENEMY AND MOVE IN WHEN THEIR ATTENTION IS ELSEWHERE.
+strsLeechInfo  					                     			FIREPOWER: --\nCOVERAGE: --\nMANEUVERABILITY: VERY HIGH\nARMOR: 30\nMAX VELOCITY: 1250 m/s\nMASS: 26 TONS\nSU COST: 2\n\nREQUIRED TECH - MICROSHIP CONSTRUCTION, PHASED TELEMETRY\nUPGRADE TECH - ARMOR LEVEL 2\n\nTHE LEECH IS A MICROSHIP DESIGNED TO CLAMP ON TO ENEMY SHIPS AND DAMAGE THEM OR STEAL RESOURCES. UNLESS YOUR ENEMIES HAVE ADVANCED SENSORS, YOUR LEECHES WILL NOT SHOW UP ON THEIR SENSOR MANAGERS.
+strsACVInfo  					                                	FIREPOWER: 170\nCOVERAGE: 6%\nMANEUVERABILITY: HIGH\nARMOR: 140\nMAX VELOCITY: 600 m/s\nMASS: 180 TONS\nSU COST: 4\n\nREQUIRED TECH - FIGHTER DRIVE, LINKING TECHNOLOGY\nUPGRADE TECH - ENERGY CANNON, E.M.P. WEAPON, ADVANCED FIGHTER DRIVE, ARMOR LEVEL 2\n\nACVs FUNCTION MORE AS VERY HEAVY FIGHTERS THAN TRUE CORVETTES. MOVE INTO POSITION FAST AS ACOLYTES, COMBINE INTO ACVs, AND DISABLE THE ENEMY WITH EMP BLASTS.
+strsMCVInfo  					                                	FIREPOWER: --\nCOVERAGE: --\nMANEUVERABILITY: HIGH\nARMOR: 40\nMAX VELOCITY: 550 m/s\nMASS: 110 TONS\nSU COST: 6\n\nREQUIRED TECH - FIGHTER DRIVE, HOLOGRAPHIC EMITTER, LINKING TECHNOLOGY\nUPGRADE TECH - QUANTUM EXPLOSIVE CHARGE, ADVANCED FIGHTER DRIVE, ARMOR LEVEL 2\n\nMCVs KAMIKAZE FOR 2X THE DAMAGE OF MIMICS, AND CAN LOOK LIKE FRIENDLY FRIGATES, GIVING THE ENEMY FALSE INFORMATION.
+strsRammingFrigateInfo  		                                	FIREPOWER: 2500\nCOVERAGE: 6%\nMANEUVERABILITY: MEDIUM\nARMOR: 4700\nMAX VELOCITY: 398 m/s\nMASS: 12900 TONS\nSU COST: 10\n\nREQUIRED TECH - AFTERBURNER\nUPGRADE TECH - ADVANCED ION CANNON, REPAIR BOTS, INFECTION VACCINE, ARMOR LEVEL 2, ARMOR LEVEL 3\n\nTHE MINION CLASS HEAVY TUG CAN BE USED IN COMBAT AS A RAMMING FRIGATE. WHEN IT HITS AN ENEMY SHIP IT WILL GRAPPLE ON AND BEGIN PUSHING THE ENEMY AWAY. YOU CAN USE MINIONS TO PUSH CRYSTALS AS WELL.
+strsMultiBeamFrigateInfo  		                             	FIREPOWER: 3900\nCOVERAGE: 90%\nMANEUVERABILITY: MEDIUM\nARMOR: 4000\nMAX VELOCITY: 370 m/s\nMASS: 10200 TONS\nSU COST: 12\n\nREQUIRED TECH - FRIGATE DRIVE, ADVANCED ION CANNON\nUPGRADE TECH - REPAIR BOTS, ADVANCED FRIGATE DRIVE, ARMOR LEVEL 2, ARMOR LEVEL 3\n\nMULTI-BEAM FRIGATES ARE BEST USED AGAINST ENEMY STRIKE CRAFT. THEY CAN MOVE IN FORMATION BUT DURING COMBAT, WILL OFTEN MOVE INDEPENDENTLY IN ORDER TO BEST BRING ALL GUNS TO BEAR.
+strsHiveFrigateInfo  			                             	FIREPOWER: 1400\nCOVERAGE: 12%\nMANEUVERABILITY: MEDIUM\nARMOR: 3800\nMAX VELOCITY: 390 m/s\nMASS: 9900 TONS\nSU COST: 20\n\nREQUIRED TECH - FRIGATE DRIVE, MICROSHIP CONSTRUCTION\nUPGRADE TECH - ENERGY CANNON, REPAIR BOTS, ADVANCED FRIGATE DRIVE, ARMOR LEVEL 2, ARMOR LEVEL 3\n\nTHE HIVE CLASS DRONE FRIGATE IS BEST USED AGAINST CAPITAL SHIPS OR FIGHTER SWARMS. AVOID LAUNCHING DRONES AGAINST MBFs OR MULTI-GUN CORVETTES.
+strsSwarmerInfo  				                               		09######## HI! THIS NEVER APPEARS IN THE BUILD MANAGER AND DOESN'T NEED A DESCRIPTION. IF YOU'RE SEEING THIS, GET PETER GRANT OR A DESIGNER.
+strsDreadnoughtInfo  			                            	FIREPOWER: 24,000\nCOVERAGE: 80%\nMANEUVERABILITY: VERY LOW\nARMOR: 85,000\nMAX VELOCITY: 390 m/s\nMASS: 152,000 TONS\nSU COST: 80\n\nREQUIRED TECH - ADVANCED DESTROYER DRIVE, MISSILE LAUNCHER, ENERGY CANNONS, ADVANCED ION CANNON\nUPGRADE TECH - REPULSOR WEAPON, REPAIR BOTS, ARMOR LEVEL 2, ARMOR LEVEL 3\n\nTHE DREADNOUGHT IS THE MOST POWERFUL SHIP IN THE FLEET. BEST PAIRED WITH REPAIR WORKERS. ONLY DAMAGED, NOT CONVERTED, BY INFECTION ATTACKS.
+strsDreadnoughtCannonInfo                                 		11######## HI! THIS NEVER APPEARS IN THE BUILD MANAGER AND DOESN'T NEED A DESCRIPTION. IF YOU'RE SEEING THIS, GET PETER GRANT OR A DESIGNER.
+strsCarrierInfo  				                                	FIREPOWER: 4,200\nCOVERAGE: 80%\nMANEUVERABILITY: VERY LOW\nARMOR: 65,000\nMAX VELOCITY: 300 m/s\nMASS: 129,000 TONS\nSU COST: SELF SUFFICIENT\n\nREQUIRED TECH - DESTROYER DRIVE, SUPPORT SYSTEMS\nUPGRADE TECH - ENERGY CANNONS, CRYSTAL PROCESSING ABILITY, REPAIR BOTS, ADVANCED DESTROYER DRIVE, ARMOR LEVEL 2, ARMOR LEVEL 3\n\nMAKE EXCELLENT RESOURCING BASES WITH THEIR WORKER PADS AND ABILITY TO PROCESS CRYSTALS. ONLY DAMAGED, NOT CONVERTED, BY INFECTION ATTACKS.
+strsCarrierSupportInfo                                       	SU BONUS: 10\n\nTHE SUPPORT MODULES HOUSE THE CREW AND FLIGHT CONTROL EQUIPMENT THAT ALLOWS FLEET COMMAND TO MANAGE A LARGER FLEET.
+strsWorkerInfo  				                                	FIREPOWER: --\nCOVERAGE: --\nMANEUVERABILITY: MEDIUM\nARMOR: 1,500\nMAX VELOCITY: 425 m/s\nMASS: 5,200 TONS\nSU COST: 4\n\nREQUIRED TECH - NONE\nUPGRADE TECH - INFECTION VACCINE, REPAIR SYSTEMS, SALVAGING ABILITY, REPAIR BOTS, ARMOR LEVEL 2, ARMOR LEVEL 3\n\nTHE WORKER IS A MULTI-TASK VESSEL. AT LEAST THREE SHOULD BE MAINTAINED IN A FLEET AT ANY GIVEN TIME. ENEMY SHIPS CANNOT BE SALVAGED UNTIL THEY HAVE TAKEN MORE THAN HALF DAMAGE.
+strsRepairDroidInfo  			                              	15######## HI! THIS NEVER APPEARS IN THE BUILD MANAGER AND DOESN'T NEED A DESCRIPTION. IF YOU'RE SEEING THIS, GET PETER GRANT OR A DESIGNER.
+strsProcessorInfo  				                              	FIREPOWER: 2500\nCOVERAGE: 80%\nMANEUVERABILITY: LOW\nARMOR: 45,000\nMAX VELOCITY: 250 m/s\nMASS: 89,000 TONS\nSU COST: 13\n\nREQUIRED TECH - HANGAR MODULE\nUPGRADE TECH - CRYSTAL PROCESSING ABILITY, ENERGY CANNONS, REPAIR SYSTEMS, REPAIR BOTS, ARMOR LEVEL 2, ARMOR LEVEL 3\n\nPROCESSORS BEST USED TO SPEED UP RESOURCE GATHERING FAR FROM THE COMMAND SHIP. CARRIES FOUR AUTO-REPAIR PDAs THAT WILL REPAIR ANY FRIENDLY SHIPS THAT PULL ALONG SIDE.
+strsSentinelInfo  				                              	FIREPOWER: 290\nCOVERAGE: 15%\nMANEUVERABILITY: HIGH\nARMOR: 350\nMAX VELOCITY: 250 m/s\nMASS: 21 TONS\nSU COST: 3\n\nREQUIRED TECH - MICROSHIP CONSTRUCTION\nUPGRADE TECH - ENERGY CANNONS, FORCE FIELD LEVEL 1, FORCE FIELD LEVEL 2, FORCE FIELD LEVEL 3, ADVANCED SENSORS, ARMOR LEVEL 2, ARMOR LEVEL 3\n\nIT REQUIRES 12 SENTINELS TO COMPLETELY SHIELD ANOTHER SHIP. THE SHIELDING SECTIONS WILL OVERLOAD AND COLLAPSE IF THEY TAKE TOO MUCH DAMAGE.
+strsMothershipInfo  			                                	18######## HI! THIS NEVER APPEARS IN THE BUILD MANAGER AND DOESN'T NEED A DESCRIPTION. IF YOU'RE SEEING THIS, GET PETER GRANT OR A DESIGNER.
+strsMothershipSpecialInfo 		                              	MICROSHIP CONSTRUCTION\nREPAIR BOTS\nPHASED TELEMETRY\nADVANCED SENSORS\nINFECTION VACCINE\nCRYSTAL PROCESSING ABILITY\n\nTHE ADVANCED ENGINEERING MODULE IS FOR TECHNOLOGIES BEYOND THE SCOPE OF NORMAL ENGINEERING DOCTRINE. HERE, ESOTERIC EXPERIMENTS IN DESIGN, CONTROL, AND MATERIALS SCIENCE ARE PERFORMED ON THE CUTTING EDGE OF CURRENT TECHNOLOGY.
+strsMothershipEngineeringInfo 	                              	20######## HI! THIS NEVER APPEARS IN THE BUILD MANAGER AND DOESN'T NEED A DESCRIPTION. IF YOU'RE SEEING THIS, GET PETER GRANT OR A DESIGNER.
+strsMothershipArmourInfo 		                              	ARMOR LEVEL 2\nARMOR LEVEL 3\nFORCE FIELD LEVEL 1\nFORCE FIELD LEVEL 2\nFORCE FIELD LEVEL 3\n\nTHE ARMOR RESEARCH AND DESIGN MODULE IS FOR IMPROVING THE SURVIVABILITY OF ALL FLEET VESSELS. TESTING OF NEW MATERIALS IS PERFORMED HERE AND THERE IS AN ADVANCED FIELD LAB ON DECK 12 FOR EXPERIMENTING WITH COHERENT E.M. FIELDS.
+strsMothershipMicroInfo 		                                	SALVAGING ABILITY\nHOLOGRAPHIC EMITTER\nSUPPORT SYSTEMS\nAFTERBURNER\nREPAIR SYSTEMS\nINFECTION ORGANISM\n\nTHIS MODULE IS DESIGNED FOR CONDUCTING MATERIALS AND PROCESSING EXPERIMENTS THAT WILL EVENTUALLY LEAD TO NEW TECHNOLOGIES TO IMPROVE OUR FLEET CAPABILITES, IT HOUSES HUGE COMPUTER LABS AS WELL AS PROTOTYPE MANUFACTURING SYSTEMS.
+strsMothershipWeaponsInfo 		                              	ADVANCED ION CANNON\nMISSILE LAUNCHER\nSIEGE CANNON\nENERGY CANNON\nE.M.P. WEAPON\nQUANTUM EXPLOSIVE CHARGE\nREPULSE WEAPON\n\nTHE WEAPONS MODULE HAS BEEN DESIGNED FOR THE DEVELOPMENT OF ADVANCED WEAPONS SYSTEMS THAT WILL AID KIITH SOMTAAW IN ITS MILITARY AFFAIRS. FACILITIES ARE ALSO AVAILABLE IN THIS MODULE FOR BACK ENGINEERING CAPTURED WEAPON SYSTEMS.
+strsMothershipDockingBayInfo 	                              	FIGHTER DRIVE\nADVANCED FIGHTER DRIVE\nLINKING TECHNOLOGY\nFRIGATE DRIVE\nADVANCED FRIGATE DRIVE\nDESTROYER DRIVE\nADVANCED DESTROYER DRIVE\n\nTHE HANGAR MODULE IS A MILITARY GRADE CONSTRUCTION FACILITY FOR THE INTERNAL PRODUCTION OF STRIKE CRAFT AND FRIGATES CLASS VESSEL. AN EXTERNAL PDA SYSTEM IS INCORPORTED IN THE LOWER MODULE SURFACES IN ORDER TO EXTERNALLY CONSTRUCT SUPER-CAPITAL SHIP HULLS. ADVANCED ENGINE AND DESIGN WORK IS DONE HERE AS WELL.
+strsDestroyerInfo 		                                     	FIREPOWER: 8500\nCOVERAGE: 30%\nMANEUVERABILITY: LOW\nARMOR: 16,000\nMAX VELOCITY: 325 m/s\nMASS: 28,000 TONS\nSU COST: 38\n\nREQUIRED TECH - DESTROYER DRIVE, MISSILE LAUNCHER, ADVANCED ION CANNON\nUPGRADE TECH - ENERGY CANNONS, ADVANCED DESTROYER DRIVE, REPAIR BOTS, ARMOR LEVEL 2, ARMOR LEVEL 3\n\nTHE DEACON CLASS DESTROYER SHOULD LEAD ANY SOMTAAW ASSAULT ON THE BEAST. IT CANNOT BE TAKEN OVER BY INFECTION, ONLY DAMAGED.
+strsMothershipSupportInfo 		                              	SU BONUS: 10\n\nTHE SUPPORT MODULES HOUSE THE CREW AND FLIGHT CONTROL EQUIPMENT THAT ALLOWS FLEET COMMAND TO MANAGE A LARGER FLEET.
+strsMothershipCommandInfo 		                             	27######## HI! THIS NEVER APPEARS IN THE BUILD MANAGER AND DOESN'T NEED A DESCRIPTION. IF YOU'RE SEEING THIS, GET PETER GRANT OR A DESIGNER.
+strsMothershipEnginesLowerInfo 	                              	28######## HI! THIS NEVER APPEARS IN THE BUILD MANAGER AND DOESN'T NEED A DESCRIPTION. IF YOU'RE SEEING THIS, GET PETER GRANT OR A DESIGNER.
+strsMothershipEnginesUpperInfo 	                              	29######## HI! THIS NEVER APPEARS IN THE BUILD MANAGER AND DOESN'T NEED A DESCRIPTION. IF YOU'RE SEEING THIS, GET PETER GRANT OR A DESIGNER.
+strsMothershipLowerSpineInfo 	                              	30######## HI! THIS NEVER APPEARS IN THE BUILD MANAGER AND DOESN'T NEED A DESCRIPTION. IF YOU'RE SEEING THIS, GET PETER GRANT OR A DESIGNER.
+strsMothershipBigGunInfo 		                             	THE SIEGE CANNON WAS ORIGINALLY INTENDED TO BRING DOWN AND DESTROY THE ARMOR OF ASTEROID BASES THROUGH THE USE OF AN IMPLODING FUSION SPHERE. SOMTAAW ENGINEERS HAVE FOUND A WAY TO DETONATE THE SPHERE ON TARGET TO FORM A SHOCKWAVE OF INCREDIBLE POWER. THE PLASMA SPHERE IS STILL SOMEWHAT UNSTABLE AND IS SUBJECT TO A LOSS OF POWER AND ACCURACY AT LONG RANGES.
+strsMothershipOreCanArmourInfo 	                             	32######## HI! THIS NEVER APPEARS IN THE BUILD MANAGER AND DOESN'T NEED A DESCRIPTION. IF YOU'RE SEEING THIS, GET PETER GRANT OR A DESIGNER.
+
+; It's a bit excessive, about half the info box					==================================================================================================================================================================================================================================================================================================================================================================================================================================================================
+strbReconInfo  					                              	FIREPOWER: 40\nCOVERAGE: 4%\nMANEUVERABILITY: VERY HIGH\nARMOR: 30\nMAX VELOCITY: 1000 m/s\nMASS: 41 TONS\nSU COST: 2\n\nREQUIRED TECH - NONE\nUPGRADE TECH - ADVANCED SENSORS, ADVANCED FIGHTER DRIVE, ENERGY CANNON, ARMOR LEVEL 2\n\nFAST SELF SEES ALL. WILL WARN COMMAND-SELF OF MIMIC OR TRANSPARENT ENEMY PARTS. USE TO KILL ENEMY FAST PARTS.
+strbAcolyteInfo   	    		                              	FIREPOWER: 85\nCOVERAGE: 6%\nMANEUVERABILITY: VERY HIGH\nARMOR: 80\nMAX VELOCITY: 800 m/s\nMASS: 90 TONS\nSU COST: 2\n\nREQUIRED TECH - FIGHTER DRIVE\nUPGRADE TECH - ENERGY CANNON, MISSILE TECH, LINKING TECH, ADVANCED FIGHTER DRIVE, ARMOR LEVEL 2\n\nFIGHTER SELVES ATTACK IN LARGE GROUPS OR GUARD WORKER PARTS. ACOLYTE SELVES SHOULD JOIN TO BECOME ACV SELVES WHEN MEETING LARGE ENEMY PARTS.
+strbInterceptorInfo  			                             	FIREPOWER: 65\nCOVERAGE: 5%\nMANEUVERABILITY: VERY HIGH\nARMOR: 85\nMAX VELOCITY: 810 m/s\nMASS: 90 TONS\nSU COST: 2\n\nREQUIRED TECH - FIGHTER DRIVE\nUPGRADE TECH - LINKING TECHNOLOGY, ADVANCED FIGHTER DRIVE, ARMOR LEVEL 2\n\nRAIDER ABSORBED FIGHTER UNIT SLOWER THAN ENEMY FIGHTER PART BUT MORE ACCURATE. INTERCEPTOR SELVES SHOULD GO INTO BATTLE FIRST TO ABSORB PAIN OF ENEMY WHILE BOMBER SELVES ATTACK.
+strbCloakedFighterInfo 		                                 	FIREPOWER: 75\nCOVERAGE: 5%\nMANEUVERABILITY: VERY HIGH\nARMOR: 80\nMAX VELOCITY: 750 m/s\nMASS: 90 TONS\nSU COST: 2\n\nREQUIRED TECH - FIGHTER DRIVE, CLOAKING ABILITY\nUPGRADE TECH - ADVANCED FIGHTER DRIVE, ENERGY CANNONS, ARMOR LEVEL 2\n\nTRANSPARENT SELVES SHOULD BE USED TO HUNT ENEMY WORKER PARTS. BE SURE TO BLIND ENEMY BY DESTROYING RECON AND SENTINEL PARTS IN AREA.
+strbAttackBomberInfo  			                              	FIREPOWER: 86\nCOVERAGE: 5%\nMANEUVERABILITY: MEDIUM\nARMOR: 90\nMAX VELOCITY: 640 m/s\nMASS: 60 TONS\nSU COST: 3\n\nREQURED TECH - FIGHTER DRIVE, PLASMA BOMB LAUNCHER\nUPGRADE TECH -	ADVANCED FIGHTER DRIVE, ARMOR LEVEL 2\n\nDO NOT LET ENEMY PARTS GROW STRONG. HARRASS THEIR EATING UNITS WITH BOMBERS SELVES AS SOON AS VIABLE. AVOID MULTI-BEAM PARTS WITH BOMBING SELVES.
+strbACVInfo  					                               		FIREPOWER: 170\nCOVERAGE: 6%\nMANEUVERABILITY: HIGH\nARMOR: 160\nMAX VELOCITY: 580 m/s\nMASS: 180 TONS\nSU COST: 4\n\nREQUIRED TECH - FIGHTER DRIVE, LINKING TECHNOLOGY\nUPGRADE TECH - ENERGY CANNON, E.M.P. WEAPON, ADVANCED FIGHTER DRIVE, ARMOR LEVEL 2\n\nACV SELVES SHOULD ATTACK JUST BEFORE COMMAND-SELF LAUNCHES CRUISE MISSILES AND TARGET ENEMY FIGHTER PARTS. USE EMP ENERGY TO STUN SENTINEL PARTS.
+strbMultiGunCorvetteInfo 		                              	FIREPOWER: 380\nCOVERAGE: 78%\nMANEUVERABILITY: MEDIUM\nARMOR: 730\nMAX VELOCITY: 570 m/s\nMASS: 750 TONS\nSU COST: 5\n\nREQUIRED TECH - CORVETTE DRIVE, FAST TRACKING TURRETS\nUPGRADE TECH - ADVANCED FIGHTER DRIVE, ENERGY CANNONS, ARMOR LEVEL 2\n\nSELF OF MANY SMALL GUNS IS SOLUTION FOR ENEMY HIVE PARTS. ALSO OPTIMAL FOR INTERCEPTING AND DESTROYING DISGUISED ENEMY PARTS.
+strbHeavyCorvetteInfo  			                              	FIREPOWER: 200\nCOVERAGE: 50%\nMANEUVERABILITY: MEDIUM\nARMOR: 1700\nMAX VELOCITY: 500m/s\nMASS: 750 tons\nSU COST: 5\n\nREQUIRED TECH - CORVETTE DRIVE, HEAVY CORVETTE UPGRADE\n\nSTRONGEST STRIKE CRAFT SELF. HUNT ENEMY HIVE AND MBF PARTS WITH HEAVY CORVETTE SELVES IN 3 SELF UNIT GROUPS.  
+strbMultiBeamFrigateInfo  		                             	FIREPOWER: 3900\nCOVERAGE: 90%\nMANEUVERABILITY: MEDIUM\nARMOR: 4200\nMAX VELOCITY: 330 m/s\nMASS: 10200 TONS\nSU COST: 12\n\nREQUIRED TECH - FRIGATE DRIVE, ADVANCED ION CANNON\nUPGRADE TECH - REPAIR BOTS, ADVANCED FRIGATE DRIVE, ARMOR LEVEL 2, ARMOR LEVEL 3\n \n ION SELF OF MANY BEAMS SUPERIOR TO DAGGER BEAM SELF IN ZONES OF MANY ENEMY PARTS. VERY OPTIMAL FOR DEFEATING POWER WALLS OF ENEMY MICROSHIPS. VERY INDEPENDANT MIND.
+strbHiveFrigateInfo  			                             	FIREPOWER: 1400\nCOVERAGE: 12%\nMANEUVERABILITY: MEDIUM\nARMOR: 4000\nMAX VELOCITY: 345 m/s\nMASS: 9900 TONS\nSU COST: 20\n\nREQUIRED TECH - FRIGATE DRIVE, MICROSHIP CONSTRUCTION\nUPGRADE TECH - ENERGY CANNON, REPAIR BOTS, ADVANCED FRIGATE DRIVE, ARMOR LEVEL 2, ARMOR LEVEL 3\n\nHIVE SELF BEST PAIRED WITH RECON SELVES AND ALL SELVES COLORED BY AGGRESSION. HIVE/RECON PAIRS DESTROY TRANSPARENT / DISGUISED PARTS BEFORE THEY CAN HARM COMMAND-SELF.
+strbSwarmerInfo  				                                	43######## HI! THIS NEVER APPEARS IN THE BUILD MANAGER AND DOESN'T NEED A DESCRIPTION. IF YOU'RE SEEING THIS, GET PETER GRANT OR A DESIGNER.
+strbIonArrayFrigateInfo  		                             	FIREPOWER: 3,500\nCOVERAGE: 6%\nMANEUVERABILITY: LOW\nARMOR: 5,100\nMAX VELOCITY: 230 m/s\nMASS: 13,550 TONS\nSU COST: 15\n\nREQUIRED TECH- FRIGATE DRIVE, ADVANCED ION CANNON\nUPGRADE TECH - CLOAKING ABILITY, ADVANCED FRIGATE DRIVE, ARMOR LEVEL 2, ARMOR LEVEL 3\n\nION SELF CAN GO TRANSPARENT. OPTIMIZED FOR FINDING EMEMY COMMAND PART WHILE TRANSPARENT THEN ATTACK IN MASS. HARM ENEMY COMMAND PART. ATTACKING MAKES ION SELF VISIBLE.  
+strbDFGFrigateInfo  			                                	FIREPOWER: --\nCOVERAGE: 100%\nMANEUVERABILITY: LOW\nARMOR: 4650\nMAX VELOCITY: 310 m/s\nMASS: 13,000 TONS\nSU COST: 10\n\nREQUIRED TECH - FRIGATE DRIVE, DEFENSE FIELD\nUPGRADE TECH - ADVANCED FRIGATE DRIVE, ARMOR LEVEL 2, ARMOR LEVEL 3\n\nDEFENSE FIELD SELF IS ALWAYS ON AND CHANGES VECTORS OF ENEMY PARTS PARTICLE FIRE SO THERE IS NO PAIN FOR SELVES. BEWARE ENEMY ION BEAMS, MISSILES, RAMMING PARTS. SELF FIELD WILL CANCEL PARTS SENTINEL SHIELD.
+strbHeavyCruiserInfo 	 		                            	FIREPOWER: 20,000\nCOVERAGE: 30%\nMANEUVERABILITY: VERY LOW\nARMOR: 77,000\nMAX VELOCITY: 245 m/s\nMASS: 131,000 TONS\nSU COST: 70\n\nREQUIRED TECH - DESTROYER DRIVE, HEAVY GUNS, ADVANCED ION CANNON\nUPGRADE TECH - ENERGY CANNONS, BEAST INFECT WEAPON, ARMOR LEVEL 2, ARMOR LEVEL 3\n\nINFECT / TAKE ENEMY PARTS. TIME UNITS NEEDED TO BUILD UP INFECT SPORES. BEST FUNCTION WITH ANOTHER CRUISER SELF. TAKE TURNS INFECT PARTS.
+strbCarrierInfo  				                                	FIREPOWER: 4,000\nCOVERAGE: 75%\nMANEUVERABILITY: low\nARMOR: 65,000\nMAX VELOCITY: 290 m/s\nMASS: 121,000 TONS\nSU COST: SELF SUFFICIENT\nSU BONUS: 96\n\nREQUIRED TECH - DESTROYER DRIVE, SUPPORT SYSTEMS\nUPGRADE TECH - CRYSTAL PROCESSING ABILITY, ENERGY CANNONS, BEAST INFECT WEAPON, ARMOR LEVEL 2, ARMOR LEVEL 3\n\nMAKE SELF SU NUMBER GROW LARGER AND BUILD STRIKE, FRIGATE SELVES AND HAS WEAK/SLOW INFECTION BEAM.
+strbRammingFrigateInfo                                       	FIREPOWER: 2500\nCOVERAGE: 6%\nMANEUVERABILITY: MEDIUM\nARMOR: 5,100\nMAX VELOCITY: 378 m/s\nMASS: 12900 TONS\nSU COST: 10\n\nREQUIRED TECH - AFTERBURNER\nUPGRADE TECH - ADVANCED ION CANNON, ARMOR LEVEL 2, ARMOR LEVEL 3\n\nRAMMING SELF IS OPTIMAL FOR PUSHING AWAY DANGEROUS ENEMY PARTS OR TO PUSH ENEMY PARTS INTO TRAPS SET BY SELVES. RAMMING SELF HAD ENERGY TONGUE THAT CUTS ENEMIES WHILE PUSHING THEM.
+strbWorkerInfo  				                                	FIREPOWER: --\nCOVERAGE: --\nMANEUVERABILITY: MEDIUM\nARMOR: 1,800\nMAX VELOCITY: 365 m/s\nMASS: 5,200 TONS\nSU COST: 4\n\nREQUIRED TECH- NONE\nUPGRADE TECH - REPAIR SYSTEMS, SALVAGING ABILITY, ARMOR LEVEL 2, ARMOR LEVEL 3\n\nWORKER SELVES VITAL TO CONTINUITY OF BODY AND MUST ALWAYS BE GUARDED. IT TAKES 2 WORKER SELVES TO HARVEST A SMALL CRYSTAL FOOD AND 4 FOR A LARGE CRYSTAL FOOD.
+strbRepairDroidInfo  			                             	50######## HI! THIS NEVER APPEARS IN THE BUILD MANAGER AND DOESN'T NEED A DESCRIPTION. IF YOU'RE SEEING THIS, GET PETER GRANT OR A DESIGNER.
+strbProcessorInfo  				                             	FIREPOWER: 2500\nCOVERAGE: 80%\nMANEUVERABILITY: LOW\nARMOR: 45,100\nMAX VELOCITY: 235 m/s\nMASS: 89,000 TONS\nSU COST: 13\n\nUPGRADE TECH - CRYSTAL PROCESSING ABILITY, REPAIR SYSTEMS, ARMOR LEVEL 2, ARMOR LEVEL 3\n\nPRIMARY GATHERER COMMAND SELF. MUTATE FOR THE EATING OF POWER CRYSTAL OBJECTS AND USE AS FORWARD SELF FOR WORKER SELVES TO BRING CRYSTALS TO.
+strbSentinelInfo  				                             	FIREPOWER: 290\nCOVERAGE: 15%\nMANEUVERABILITY: HIGH\nARMOR: 400\nMAX VELOCITY: 225 m/s\nMASS: 21 TONS\nSU COST: 3\n\nREQUIRED TECH - MICROSHIP CONSTRUCTION\nUPGRADE TECH - ENERGY CANNONS, FORCE FIELD LEVEL 1, FORCE FIELD LEVEL 2, FORCE FIELD LEVEL 3, ADVANCED SENSORS, ARMOR LEVEL 2, ARMOR LEVEL 3\n\nSENTINEL SELVES OPTIMIZED FOR GUARDING VITAL SELVES. SENTINEL SELVES CHANGE FROM ATTACKING TO SHIELDING AND BACK AGAIN AT HIGH SPEED.
+strbMothershipInfo  			                                	53######## HI! THIS NEVER APPEARS IN THE BUILD MANAGER AND DOESN'T NEED A DESCRIPTION. IF YOU'RE SEEING THIS, GET PETER GRANT OR A DESIGNER.
+strbMothershipDockingBayInfo 	                              	54######## HI! THIS NEVER APPEARS IN THE BUILD MANAGER AND DOESN'T NEED A DESCRIPTION. IF YOU'RE SEEING THIS, GET PETER GRANT OR A DESIGNER.
+strbMothershipEnginesLowerInfo 	                              	55######## HI! THIS NEVER APPEARS IN THE BUILD MANAGER AND DOESN'T NEED A DESCRIPTION. IF YOU'RE SEEING THIS, GET PETER GRANT OR A DESIGNER.
+strbSectMoshipInfo       		                              	56######## HI! THIS NEVER APPEARS IN THE BUILD MANAGER AND DOESN'T NEED A DESCRIPTION. IF YOU'RE SEEING THIS, GET PETER GRANT OR A DESIGNER.
+strbMothershipSupportInfo 		                              	SU BONUS: 15\n\nSUPPORT MODULES HOUSE FLIGHT CONTROL EQUIPMENT. ALLOWS SELF TO COMMAND A LARGER SELF FLEET.
+strbCruiseMissileInfo                                         	FIREPOWER: --\nCOVERAGE: --\nMANEUVERABILITY: HIGH\nARMOR: 68\nMAX VELOCITY: 650 m/s\nMASS: 490 TONS\nSU COST: 4\n\nREQUIRED TECH - FIGHTER DRIVE, MISSILE LAUNCHER, BIO-WARHEAD, BEAST INFECT WEAPON\nUPGRADE TECH - ADVANCED FIGHTER DRIVE, ARMOR LEVEL 2, ARMOR LEVEL 3\n\n MISSILE SELVES CONSUME ENEMY PARTS MAKE THEM OUR SELVES. 2 TO TAKE FRIGATE AND 4 TO TAKE PROCESSOR ENEMY PARTS, BUT VULNERABLE TO INTERCEPTION. TARGET DISTRACTED ENEMY PARTS.
+strbMissileCorvetteInfo                                       	FIREPOWER: 320\nCOVERAGE: 60%\nMANEUVERABILITY: HIGH\nARMOR: 1400\nMAX VELOCITY: 490 m/s\nMASS: 775 TONS\nSU COST: 4\n\nREQUIRED TECH - CORVETTE DRIVE, MISSILE LAUNCHER\nUPGRADE TECH - ADVANCED FIGHTER DRIVE, ARMOR LEVEL 2\n\nBUILD MISSILE CORVETTE SELVES SOON. USE TO HARRASS ENEMY PARTS WHILE COMMAND SELF PREPARES CAPITAL SHIP SELVES. CREATE CHAOS AMONGST ENEMY PARTS TO MAKE WAY FOR CRUISE MISSILE FEEDING.
+
+strdAcolyteInfo                                              	FIREPOWER: UNKNOWN\nCOVERAGE: UNKNOWN \nMANEUVERABILITY: HIGH\nARMOR: UNKNOWN \nMAX VELOCITY: UNKNOWN \nMASS: UNKNOWN TONS\n\nREQUIRED TECH - NONE\n\nTHE BENTUSI ION FIGHTER USES CRYSTALLINE POWER CONDUITS TO CHANNEL POWER 4 TO 5 ORDERS OF MAGNITUDE GREATER THAN ANY CURRENT STRIKE CRAFT SYSTEMS. AT THIS POINT WE HAVE NO IDEA HOW THE ION FIGHTER WORKS. THE PROGRAMS GIVEN TO US BY THE BENTUSI HANDLE ALL CONSTRUCTION ISSUES. 
+
+strFightersCorvettesDocked                                      Docked: F:%d C:%d
+strMissilesLeft							M:%d
+strSwarmersInside						S:%d
+
+
+strSay                                                          Say:
+strToAllies                                                     To Allies:
+strRUAmount                                                     RU Amount:
+
+strTutorialTip                                                  TIP:
+
+strPlayersAllied                                                Ally
+strResourcesRes                                                 Res:
+strGas                                                          Gas
+strDust                                                         Dust
+strRock                                                         Rock
+strNonCombatShips                                               Non-combat ships
+strStrikeCraft                                                  Strike craft
+strCapitalShips                                                 Capital ships
+
+strPingTO0                                                      Proximity Alert
+strPingTO1                                                      New Ships Built
+strPingTO2                                                      Objective
+strPingTO3                                                      Battle
+strPingTO4                                                      Hyperspace
+strPingTORC                                                     Resource Collector
+
+strSaveSinglePlayerLevel1                                       01 - Kharak System
+
+strSavedGame                                                    Game Saved
+strRecordingGame                                                Recording Game
+strQuickSave                                                    Quick Save
+
+strCaptainTransfering                                           Captain Transfer Under Way ...
+
+strEndOfBuffer                                                  -----  End Of Buffer  -----
+strStartOfBuffer                                                ----- Start Of Buffer -----
+
+; These are the objectives strings
+strObjComplete                                                  COMPLETE
+strObjIncomplete                                                INCOMPLETE
+strobjSecondary                                                 SECONDARY OBJECTIVES
+
+; These are the key binding command strings
+strkbNEXT_FORMATION                                             NEXT FORMATION
+strkbBUILD_MANAGER                                              BUILD MANAGER
+strkbPREVIOUS_FOCUS                                             PREVIOUS FOCUS
+strkbNEXT_FOCUS                                                 NEXT FOCUS
+strkbDOCK                                                       DOCK
+strkbSELECT_ALL_VISIBLE                                         SELECT ALL VISIBLE
+strkbFOCUS                                                      FOCUS
+strkbRESEARCH_MANAGER                                           RESEARCH MANAGER
+strkbHARVEST                                                    HARVEST
+strkbMOVE                                                       MOVE
+strkbNEXT_TACTIC                                                NEXT TACTIC
+strkbPREVIOUS_TACTIC                                            PREVIOUS TACTIC
+strkbSCUTTLE                                                    SCUTTLE
+strkbSHIP_SPECIAL                                               SHIP SPECIAL
+strkbTACTICAL_OVERLAY                                           TACTICAL OVERLAY
+strkbSENSORS_MANAGER                                            SENSORS MANAGER
+strkbMOTHERSHIP                                                 COMMAND SHIP
+strkbKAMIKAZE                                                   KAMIKAZE
+strkbCANCEL_ORDERS                                              CANCEL ORDERS
+strkbLAUNCH_MANAGER                                             SYSTEMS MANAGER
+strkbTOTAL_COMMANDS                                             TOTAL COMMANDS
+
+strAKEY                                                         A
+strBKEY                                                         B
+strCKEY                                                         C
+strDKEY                                                         D
+strEKEY                                                         E
+strFKEY                                                         F
+strGKEY                                                         G
+strHKEY                                                         H
+strIKEY                                                         I
+strJKEY                                                         J
+strKKEY                                                         K
+strLKEY                                                         L
+strMKEY                                                         M
+strNKEY                                                         N
+strOKEY                                                         O
+strPKEY                                                         P
+strQKEY                                                         Q
+strRKEY                                                         R
+strSKEY                                                         S
+strTKEY                                                         T
+strUKEY                                                         U
+strVKEY                                                         V
+strWKEY                                                         W
+strXKEY                                                         X
+strYKEY                                                         Y
+strZKEY                                                         Z
+strBACKSPACEKEY                                                 BACKSPACE
+strTABKEY                                                       TAB
+strARRLEFT                                                      LEFT
+strARRRIGHT                                                     RIGHT
+strARRUP                                                        UP
+strARRDOWN                                                      DOWN
+strENDKEY                                                       END
+strLBRACK                                                       [
+strRBRACK                                                       ]
+strCAPSLOCKKEY                                                  CAPS
+strSPACEKEY                                                     SPACE
+strPERIODKEY                                                    PERIOD
+strSEMICOLONKEY                                                 SEMICOLON
+strENTERKEY                                                     ENTER
+strHOMEKEY                                                      HOME
+strPAGEDOWNKEY                                                  PGDN
+strPAGEUPKEY                                                    PGUP
+strBACKSLASHKEY                                                 \
+strPAUSEKEY                                                     PAUSE
+strSCROLLKEY                                                    SCROLL
+strPRINTKEY                                                     PRINT
+strINSERTKEY                                                    INSERT
+strDELETEKEY                                                    DELETE
+strLESSTHAN                                                     <
+strGREATERTHAN                                                  >
+strTILDEKEY                                                     TILDE
+strNUMPAD0                                                      NUM0
+strNUMPAD1                                                      NUM1
+strNUMPAD2                                                      NUM2
+strNUMPAD3                                                      NUM3
+strNUMPAD4                                                      NUM4
+strNUMPAD5                                                      NUM5
+strNUMPAD6                                                      NUM6
+strNUMPAD7                                                      NUM7
+strNUMPAD8                                                      NUM8
+strNUMPAD9                                                      NUM9
+strNUMMINUSKEY                                                  NUM-
+strNUMPLUSKEY                                                   NUM+
+strNUMSTARKEY                                                   NUM*
+strNUMSLASHKEY                                                  NUM/
+strNUMDOTKEY                                                    NUM.
+strMINUSKEY                                                     -
+strPLUSKEY                                                      +
+strF1KEY                                                        F1
+strF2KEY                                                        F2
+strF3KEY                                                        F3
+strF4KEY                                                        F4
+strF5KEY                                                        F5
+strF6KEY                                                        F6
+strF7KEY                                                        F7
+strF8KEY                                                        F8
+strF9KEY                                                        F9
+strF10KEY                                                       F10
+strF11KEY                                                       F11
+strF12KEY                                                       F12
+strSHIFTKEY														SHIFT
+strALTKEY														ALT
+strCTRLKEY														CTRL
+strESCKEY														ESC
+
+strCommandToBind                                                COMMAND
+strKeyBound                                                     BOUND KEY(S)
+strNoKeyBound                                                   NONE
+
+strZEROKEY														0
+strONEKEY														1
+strTWOKEY														2
+strTHREEKEY														3
+strFOURKEY														4
+strFIVEKEY														5
+strSIXKEY														6
+strSEVENKEY														7
+strEIGHTKEY														8
+strNINEKEY														9
+
+strApostKEY														'
+
+// JS - more crazy keys
+strCrazyNKEY		ñ
+strCrazySKEY		§
+strCrazyUKEY		ù
+strCrazyAKEY		ä
+strCrazyOKEY		ö
+strCrazyEKEY		È
+strHatKEY		^
+
+
+; CD detection/oversize CD strings
+strMissingCD                                                    Invalid or missing Cataclysm CD. Please insert valid CD.
+strInvalidCD                                                    Invalid Cataclysm CD.
+
+; warning for Microsoft Generic OpenGL renderer selection
+strGDIGeneric0                                                  You have selected an unaccelerated renderer.
+strGDIGeneric1                                                  We recommend running in software instead.
+strGDIGenericRenderer                                           GDI Generic
+
+; display mode switch strings
+strOPCountdown0                             Mode switch successful.
+strOPCountdown1                             Do you want to keep this setting?
+strOPCountdown2                             Original settings will restore in %ds.
+
+strOPFailed0                                Display mode setting failed.
+strOPFailed1                                Please select another mode.
+
+
+; JS - Popup Menu Strings
+strMenuUpgradeBeastShipsDesc		Mutate
+strMenuUpgradeSectShipsDesc			Upgrade
+
+strMenuSpecialActionDesc			Special Action...
+strMenuMoveDesc						Move
+strMenuHyperspaceDesc				Hyperspace				
+strMenuCancelMoveDesc				Cancel Move
+strMenuStartWaypointsDesc			Start Waypoints
+strMenuEndWaypointsDesc				End Waypoints
+strMenuCancelWaypointsDesc			Cancel Waypoints
+strMenuWaypointTypeDesc				Waypoint Mode
+strMenuRemoveLastWaypointDesc		Remove Last Waypoint
+strMenuDockDesc						Dock
+strMenuRetireDesc					Retire
+strMenuCancelDesc					Cancel
+
+strMenuTacticsDesc					Tactics
+strMenuFormationsDesc				Formations
+
+strMenuFocusDesc					Focus
+strMenuViewDesc						View
+
+strMenuSensorsViewDesc				Sensors
+
+strMenuNextLevelDesc				Next Level
+
+strMenuAllianceFormDesc				Form Alliance
+strMenuAllianceBreakDesc			Break Alliance
+strMenuTransferRusDesc				Reinforce Ally
+
+strMenuSpecialRepairDesc			Repair
+strMenuSpecialSalvageDesc			Salvage
+
+strMenuSpecialSelectLeechTypeDesc	Select Leech
+strMenuSpecialLeechDesc				Leech
+
+strMenuSpecialSelectMimicTypeDesc	Select Mimic
+strMenuSpecialSelectMimicItemDesc	Mimic
+strMenuSpecialUnmimickDesc			UnMimic
+
+strMenuSpecialForceFieldDesc		Force Field
+strMenuSpecialUnlinkForceFieldDesc	Unlink Force Field
+
+strMenuSpecialCloakDesc				Cloak
+strMenuSpecialCancelCloakDesc		UnCloak
+strMenuSpecialGravWellDesc			Gravity Well		
+
+strMenuSpecialLaunchSwarmersDesc	Swarm
+strMenuSpecialCancelSwarmersDesc	Cancel Swarm
+
+strMenuSpecialFireBigGunDesc		Siege Cannon
+strMenuSpecialCancelBigGunDesc		Cancel Siege Cannon
+
+strMenuSpecialBeastAttackDesc		Infect
+strMenuSpecialEMPDesc				EMP
+strMenuSpecialRamDesc				Ram
+strMenuSpecialRepulseDesc			Repulse
+strMenuSpecialFireMissilesDesc		Fire Missiles
+
+strMenuNoSpecialActionDesc			No Special Action Available...
+strMenuSpecialHarvestDesc			Harvest
+strMenuRepairDesc					Repair
+strMenuSalvageDesc					Salvage
+strMenuLaunchSwarmersDesc			Swarmer Attack
+strMenuSpecialUnleechDesc			Unleech
+strMenuSpecialBigGunDesc			Siege Cannon
+strMenuSpecialLinkDesc				Link
+strMenuSpecialUnlinkDesc			Unlink
+strMenuCancelBigGunDesc				Cancel Siege Cannon
+strMenuBeastWeaponDesc				Infect
+strMenuRamAttackDesc				Ram
+
+strMenuEvasiveDesc					Evasive
+strMenuNeutralDesc					Neutral
+strMenuAggressiveDesc				Aggressive
+
+strMenuDeltaDesc					Delta				
+strMenuBroadDesc					Broad
+strMenuDelta3DDesc					X
+strMenuClawDesc						Claw
+strMenuWallDesc						Wall
+strMenuSphereDesc					Sphere
+strMenuCustomDesc					Custom
+strMenuParadeDesc					Parade
+
+strMenuSV_Asteriods					Resources
+strMenuSV_ShipFOWRange				Sensors (Sphere)
+strMenuSV_AreasVisited				Area Explored
+strMenuSV_AreasOccupied				Sensors (Wireframe)
+strMenuSV_Icons						Large Ship Overlay
+strMenuSV_ShipMeshes				Ship Meshes
+strMenuSV_PieplateLines				Pieplate Lines
+strMenuSV_Background				Background
+strMenuSV_DecorativeAsteroids		Dust
+strMenuSV_Compass					Compass
+strMenuSV_UniverseExtents			Universe Extents
+strMenuSV_ObjectivesPointer			Objective Pointer
+strMenuSV_SlipgatePaths				Slipgate Paths
+
+strMenuSpyDesc						Spy
+strMenuLeechDesc					Leech
+strMenuVentDesc						Vent
+
+strMenuFocucSelectedDesc			On Selected
+strMenuFocusOnMothershipDesc		On Command Ship
+strMenuFocusOnLastShipToSpeakDesc	On Event
+strMenuFocusFleetViewDesc			On Ships in View
+
+strMenuFFSphereFrontDesc			Sphere - FRONT
+strMenuFFSphereBackDesc				Sphere - BACK
+strMenuFFSphereLeftDesc				Sphere - LEFT
+strMenuFFSphereRightDesc			Sphere - RIGHT
+strMenuFFSphereUpDesc				Sphere - UP
+strMenuFFSphereDownDesc				Sphere - DOWN
+strMenuFFWallDesc					Wall
+strMenuUnLinkSentinelsDesc			Unlink
+
+strMenuViewMainRgnDesc				Main Region...
+strMenuViewSensorsDesc				Sensors...
+strMenuViewBuildManagerDesc			Build Manager...
+strMenuViewResearchManagerDesc		Research Manager...
+strMenuViewLaunchManagerDesc		Systems Manager...
+strMenuViewShipOverlayDesc			Ship Overlay
+strMenuViewTacticalOverlayDesc		Tactical Overlay
+strMenuViewChaseModeDesc			Pilot View
+
+strMenuSetShipNameDesc				Ship Name
+
+
+strMenuWaypointTypeNormal			Linear
+strMenuWaypointTypeEndToEnd			End To End
+strMenuWaypointTypeCircular			Circular
+
+
+
+;***************************************************************
+; No spaces in the KeyBindingName's!!!
+;***************************************************************
+
+str_UI_NoKeyBinding						No Binding
+
+str_UI_MoveShips_KeyBindingName				Move
+str_UI_MoveShips_Description				Move Ships
+str_UI_DockShips_KeyBindingName				Dock
+str_UI_DockShips_Description				Dock Ships
+str_UI_RetireShips_KeyBindingName			Retire
+str_UI_RetireShips_Description				Retire Ships
+str_UI_CancelShipOrders_KeyBindingName		Cancel_Orders
+str_UI_CancelShipOrders_Description			Cancel Ship Orders
+str_UI_ShipSpecialFunction_KeyBindingName	Ship_Special
+str_UI_ShipSpecialFunction_Description		Ship Special Action
+str_UI_ScuttleShips_KeyBindingName			Scuttle_Ships
+str_UI_ScuttleShips_Description				Scuttle Ships
+str_UI_Kamikaze_KeyBindingName				Kamikaze
+str_UI_Kamikaze_Description					Kamikaze
+
+str_UI_SetShipsTacticLevelEvasive_KeyBindingName	Tactics_Evasive
+str_UI_SetShipsTacticLevelEvasive_Description		Tactics Level to Evasive
+str_UI_SetShipsTacticLevelNeutral_KeyBindingName	Tactics_Neutral
+str_UI_SetShipsTacticLevelNeutral_Description		Tactics Level to Neutral
+str_UI_SetShipsTacticLevelAggresive_KeyBindingName	Tactics_Aggresive
+str_UI_SetShipsTacticLevelAggresive_Description		Tactics Level to Aggressive
+
+str_UI_ChangeShipsTacticLevelForward_KeyBindingName		Next_Tactic_Level
+str_UI_ChangeShipsTacticLevelForward_Description		Next Tactics Level
+str_UI_ChangeShipsTacticLevelBackward_KeyBindingName	Prev_Tactic_Level
+str_UI_ChangeShipsTacticLevelBackward_Description		Previous Tactics Level
+
+str_UI_SetShipsFormationDelta_KeyBindingName		Formation_Delta
+str_UI_SetShipsFormationDelta_Description			Delta Formation
+str_UI_SetShipsFormationBroad_KeyBindingName		Formation_Broad
+str_UI_SetShipsFormationBroad_Description			Broad Formation
+str_UI_SetShipsFormationDelta3D_KeyBindingName		Formation_Delta3D
+str_UI_SetShipsFormationDelta3D_Description			X Formation
+str_UI_SetShipsFormationClaw_KeyBindingName			Formation_Claw
+str_UI_SetShipsFormationClaw_Description			Claw Formation
+str_UI_SetShipsFormationWall_KeyBindingName			Formation_Wall
+str_UI_SetShipsFormationWall_Description			Wall Formation
+str_UI_SetShipsFormationSphere_KeyBindingName		Formation_Sphere
+str_UI_SetShipsFormationSphere_Description			Sphere Formation
+str_UI_SetShipsFormationCustom_KeyBindingName		Formation_Custom
+str_UI_SetShipsFormationCustom_Description			Custom Formation
+str_UI_SetShipsFormationParade_KeyBindingName		Formation_Parade
+str_UI_SetShipsFormationParade_Description			Parade Formation
+
+str_UI_NextShipsFormation_KeyBindingName		Next_Formation
+str_UI_NextShipsFormation_Description			Next Ship Formation
+str_UI_PrevShipsFormation_KeyBindingName		Prev_Formation
+str_UI_PrevShipsFormation_Description			Previous Ship Formation
+
+str_UI_ToggleWaypointGeneration_KeyBindingName	Waypoints
+str_UI_ToggleWaypointGeneration_Description		Toggle Waypoint Generation
+str_UI_ToggleWaypointModes_KeyBindingName		Toggle_Waypoint_Modes
+str_UI_ToggleWaypointModes_Description			Toggle Waypoint Modes
+str_UI_SetWaypointTypeNormal_KeyBindingName		Waypoint_Mode_Normal
+str_UI_SetWaypointTypeNormal_Description		Waypoint Mode Linear
+str_UI_SetWaypointTypeEndToEnd_KeyBindingName	Waypoint_Mode_EndToEnd
+str_UI_SetWaypointTypeEndToEnd_Description		Waypoint Mode EndToEnd
+str_UI_SetWaypointTypeCircular_KeyBindingName	Waypoint_Mode_Circular
+str_UI_SetWaypointTypeCircular_Description		Waypoint Mode Circular
+str_UI_CancelLastWaypoint_KeyBindingName	Cancel_Last_Waypoint
+str_UI_CancelLastWaypoint_Description		Cancel Last Waypoint
+
+str_UI_Harvest_KeyBindingName					Harvest
+str_UI_Harvest_Description						Harvest
+str_UI_Repair_KeyBindingName					Repair
+str_UI_Repair_Description						Repair
+str_UI_Salvage_KeyBindingName					Salvage
+str_UI_Salvage_Description						Salvage
+
+str_UI_Link_KeyBindingName						Link
+str_UI_Link_Description							Link
+str_UI_Unlink_KeyBindingName					Unlink
+str_UI_Unlink_Description						Unlink
+str_UI_EMP_KeyBindingName						EMP	
+str_UI_EMP_Description							EMP
+str_UI_FireMissiles_KeyBindingName				Fire_Missiles
+str_UI_FireMissiles_Description					Fire Missiles
+str_UI_CancelMimic_KeyBindingName				Cancel_Mimic
+str_UI_CancelMimic_Description					Cancel Mimic
+str_UI_SelectMimicType_KeyBindingName			Select_Mimic_Type
+str_UI_SelectMimicType_Description				Open Mimic Types
+str_UI_SelectMimicItem_KeyBindingName			Select_Mimic_Item
+str_UI_SelectMimicItem_Description				Open Mimic Options
+
+str_UI_UpgradeShips_KeyBindingName				Upgrade_Ships
+str_UI_UpgradeShips_Description					Upgrade Ships
+
+str_UI_BigGunAttack_KeyBindingName				Big_Gun_Attack
+str_UI_BigGunAttack_Description					Siege Cannon Attack
+
+str_UI_Cloak_KeyBindingName						Cloak
+str_UI_Cloak_Description						Cloak
+str_UI_CancelCloak_KeyBindingName				Cancel_Cloak
+str_UI_CancelCloak_Description					Cancel Cloak
+
+str_UI_LaunchSwarmers_KeyBindingName			Launch_Swarmers
+str_UI_LaunchSwarmers_Description				Launch Swarmers
+str_UI_CancelSwarmers_KeyBindingName			Cancel_Swarmers
+str_UI_CancelSwarmers_Description				Cancel Swarmers
+
+str_UI_CancelBigGun_KeyBindingName				Cancel_BigGun
+str_UI_CancelBigGun_Description					Cancel Siege Cannon
+
+str_UI_BeastAttack_KeyBindingName				Beast_Attack
+str_UI_BeastAttack_Description					Infection Attack
+str_UI_Ram_KeyBindingName						Ram
+str_UI_Ram_Description							Ram
+str_UI_Repulse_KeyBindingName					Repulse
+str_UI_Repulse_Description						Repulse
+
+str_UI_SelectLeechType_KeyBindingName			Select_Leech_Type
+str_UI_SelectLeechType_Description				Open Leech Options
+str_UI_LeechSpy_KeyBindingName					Leech_Spy
+str_UI_LeechSpy_Description						Set Leech To Spy
+str_UI_LeechLeech_KeyBindingName				Leech_Leech
+str_UI_LeechLeech_Description					Set Leech To Leech
+str_UI_LeechVent_KeyBindingName					Leech_Vect
+str_UI_LeechVent_Description					Set Leech To Vent
+str_UI_Leech_KeyBindingName						Leech
+str_UI_Leech_Description						Leech
+str_UI_UnLeech_KeyBindingName					UnLeech
+str_UI_UnLeech_Description						Cancel Leeching
+str_UI_EnterSlipgate_KeyBindingName				Enter_Slipgate
+str_UI_EnterSlipgate_Description				Enter Slipgate
+
+str_UI_Focus_KeyBindingName						Focus	
+str_UI_Focus_Description						Focus
+str_UI_FocusOnMothership_KeyBindingName			Focus_On_Mothership
+str_UI_FocusOnMothership_Description			Focus On Command Ship
+str_UI_FocusOnLastShipToSpeak_KeyBindingName	Focus_On_LastShipToSpeak
+str_UI_FocusOnLastShipToSpeak_Description		Focus On Event
+str_UI_CancelFocus_KeyBindingName				Cancel_Focus
+str_UI_CancelFocus_Description					Cancel Focus
+str_UI_ForwardFocus_KeyBindingName				Forward_Focus
+str_UI_ForwardFocus_Description					Forward Focus
+str_UI_FleetView_KeyBindingName					Fleet_View
+str_UI_FleetView_Description					Fleet View
+
+str_UI_SelectAllVisibleShips_KeyBindingName		Select_All_Visible_Ships
+str_UI_SelectAllVisibleShips_Description		Select All Visible Ships
+str_UI_SelectNone_KeyBindingName				Select_None
+str_UI_SelectNone_Description					Select Nothing
+
+str_UI_OpenMenu_KeyBindingName					Open_Menu
+str_UI_OpenMenu_Description						Open Menu
+
+str_UI_EnableHeightMovement_KeyBindingName		Enable_Height_Move
+str_UI_EnableHeightMovement_Description			Enable Height Movement
+
+str_UI_PageDown_GameChat_KeyBindingName			PageDown_GameChat
+str_UI_PageDown_GameChat_Description			Page Down Game Messages
+
+str_UI_PageUp_GameChat_KeyBindingName			PageUp_GameChat
+str_UI_PageUp_GameChat_Description				Page Up Game Messages
+
+str_UI_ToggleSensorsManager_KeyBindingName		Toggle_SensorsManager		
+str_UI_ToggleSensorsManager_Description			Toggle the Sensors Manager	
+
+str_UI_OpenBuildManager_KeyBindingName			Open_BuildManager
+str_UI_OpenBuildManager_Description				Open the Build Manager
+str_UI_OpenResearchManager_KeyBindingName		Open_ResearchManager
+str_UI_OpenResearchManager_Description			Open the Research Manager
+str_UI_OpenTradeManager_KeyBindingName			Open_TradeManager
+str_UI_OpenTradeManager_Description				Open the TradeManager
+str_UI_OpenLaunchManager_KeyBindingName			Open_LaunchManager
+str_UI_OpenLaunchManager_Description			Open the Launch Manager
+
+str_UI_Escape_KeyBindingName					Escape
+str_UI_Escape_Description						Escape From Stuff
+
+str_UI_SkipSensors_KeyBindingName				Skip_Sensors
+str_UI_SkipSensors_Description					Skip Fleet Intel
+
+str_UI_StartAllieMessage_KeyBindingName			Start_Ally_Message
+str_UI_StartAllieMessage_Description			Start Ally Message
+str_UI_StartGlobalMessage_KeyBindingName		Start_Global_Message
+str_UI_StartGlobalMessage_Description			Start Global Message
+
+str_UI_ToggleTacticalDisplay_KeyBindingName		Toggle_Tactical_Display
+str_UI_ToggleTacticalDisplay_Description		Toggle Tactical Display
+str_UI_ToggleShipInfo_KeyBindingName			Toggle_Ship_Info
+str_UI_ToggleShipInfo_Description				Toggle Ship Info
+
+str_UI_AccelerateTime_KeyBindingName			Accelerate_Time
+str_UI_AccelerateTime_Description				Accelerate Time
+str_UI_DecelerateTime_KeyBindingName			Decelerate_Time
+str_UI_DecelerateTime_Description				Decelerate Time
+
+str_UI_ZoomIn_KeyBindingName					Zoom_In
+str_UI_ZoomIn_Description						Zoom In
+str_UI_ZoomOut_KeyBindingName					Zoom_Out
+str_UI_ZoomOut_Description						Zoom Out
+
+str_UI_ToggleChaseMode_KeyBindingName			Toggle_Chase_Mode
+str_UI_ToggleChaseMode_Description				Toggle Pilot View
+
+str_UI_NextMusicTrack_KeyBindingName			Next_Music_Track
+str_UI_NextMusicTrack_Description				Next Music Track
+str_UI_PrevMusicTrack_KeyBindingName			Prev_Music_Track
+str_UI_PrevMusicTrack_Description				Previous Music Track
+
+str_UI_BandboxGuard_KeyBindingName				Bandbox_Guard
+str_UI_BandboxGuard_Description					Guard BandBox
+str_UI_BandboxAttack_KeyBindingName				Bandbox_Attack
+str_UI_BandboxAttack_Description				Attack
+str_UI_BandboxForceAttack_KeyBindingName		Bandbox_ForceAttack	
+str_UI_BandboxForceAttack_Description			Force Attack
+str_UI_BandboxFocus_KeyBindingName				Bandbox_Focus
+str_UI_BandboxFocus_Description					Bandbox Focus
+
+str_UI_MultipleSelect_KeyBindingName			Multiple_Select
+str_UI_MultipleSelect_Description				Enable Multiple Selecting
+
+str_UI_ToggleOverlayOptions_KeyBindingName			Toggle_Overlay_Options
+str_UI_ToggleOverlayOptions_Description				Main Overlay Options (HOLD)
+str_UI_ChangeOverlayBackdropsToggle_KeyBindingName	Change_Overlay_Backdrops_Toggle
+str_UI_ChangeOverlayBackdropsToggle_Description		Overlay Options Toggle
+
+str_UI_ToggleShipOverlayOptions_KeyBindingName	Toggle_Ship_Overlay_Options
+str_UI_ToggleShipOverlayOptions_Description		Toggle Ship Overlay Options (HOLD)
+
+str_UI_NextOverlayView_KeyBindingName			Next_Overlay_View
+str_UI_NextOverlayView_Description				Next Overlay View
+str_UI_PrevOverlayView_KeyBindingName			Prev_Overlay_View
+str_UI_PrevOverlayView_Description				Previous Overlay View
+
+str_UI_ForceField_KeyBindingName				Force_Field_Options
+str_UI_ForceField_Description					Form Force Field
+str_UI_ForceFieldUnlink_KeyBindingName			Force_Field_Unlink
+str_UI_ForceFieldUnlink_Description				Unlink Force Field
+
+str_UI_ShowKeys1_KeyBindingName					Show_Keys_1
+str_UI_ShowKeys1_Description					Show Keys (First Page)
+str_UI_ShowKeys2_KeyBindingName					Show_Keys_2
+str_UI_ShowKeys2_Description					Show Keys (Second Page)
+str_UI_ShowKeys3_KeyBindingName					Show_Keys_3
+str_UI_ShowKeys3_Description					Show Keys (Third Page)
+
+str_UI_Hyperspace_KeyBindingName				Hyperspace
+str_UI_Hyperspace_Description					Hyperspace
+
+str_UI_GammaUp_KeyBindingName					GammaUp
+str_UI_GammaUp_Description						Gamma Up
+str_UI_GammaDown_KeyBindingName					GammaDown
+str_UI_GammaDown_Description					Gamma Down
+
+str_UI_Pause_KeyBindingName						Pause
+str_UI_Pause_Description						Pause
+str_UI_TakeScreenshot_KeyBindingName			Take_Screenshot
+str_UI_TakeScreenshot_Description				Take Screen-Shot
+
+str_UI_PanSensorsLeft_KeyBindingName			Pan_Sensors_Left
+str_UI_PanSensorsLeft_Description				Pan Sensors Left
+str_UI_PanSensorsRight_KeyBindingName			Pan_Sensors_Right
+str_UI_PanSensorsRight_Description				Pan Sensors Right
+str_UI_PanSensorsUp_KeyBindingName				Pan_Sensors_Up
+str_UI_PanSensorsUp_Description					Pan Sensors Up
+str_UI_PanSensorsDown_KeyBindingName			Pan_Sensors_Down
+str_UI_PanSensorsDown_Description				Pan Sensors Down
+
+str_UI_CreateShipGroup1_KeyBindingName			Create_ShipGroup_1
+str_UI_CreateShipGroup1_Description				Create Ship Group #1
+str_UI_CreateShipGroup2_KeyBindingName			Create_ShipGroup_2
+str_UI_CreateShipGroup2_Description				Create Ship Group #2
+str_UI_CreateShipGroup3_KeyBindingName			Create_ShipGroup_3				
+str_UI_CreateShipGroup3_Description				Create Ship Group #3
+str_UI_CreateShipGroup4_KeyBindingName			Create_ShipGroup_4
+str_UI_CreateShipGroup4_Description				Create Ship Group #4
+str_UI_CreateShipGroup5_KeyBindingName			Create_ShipGroup_5
+str_UI_CreateShipGroup5_Description				Create Ship Group #5
+str_UI_CreateShipGroup6_KeyBindingName			Create_ShipGroup_6
+str_UI_CreateShipGroup6_Description				Create Ship Group #6
+str_UI_CreateShipGroup7_KeyBindingName			Create_ShipGroup_7
+str_UI_CreateShipGroup7_Description				Create Ship Group #7
+str_UI_CreateShipGroup8_KeyBindingName			Create_ShipGroup_8
+str_UI_CreateShipGroup8_Description				Create Ship Group #8
+str_UI_CreateShipGroup9_KeyBindingName			Create_ShipGroup_9
+str_UI_CreateShipGroup9_Description				Create Ship Group #9
+str_UI_CreateShipGroup10_KeyBindingName			Create_ShipGroup_10
+str_UI_CreateShipGroup10_Description				Create Ship Group #10
+
+str_UI_SelectShipGroup1_KeyBindingName			Select_ShipGroup_1
+str_UI_SelectShipGroup1_Description				Select Ship Group #1
+str_UI_SelectShipGroup2_KeyBindingName			Select_ShipGroup_2
+str_UI_SelectShipGroup2_Description				Select Ship Group #2
+str_UI_SelectShipGroup3_KeyBindingName			Select_ShipGroup_3				
+str_UI_SelectShipGroup3_Description				Select Ship Group #3
+str_UI_SelectShipGroup4_KeyBindingName			Select_ShipGroup_4
+str_UI_SelectShipGroup4_Description				Select Ship Group #4
+str_UI_SelectShipGroup5_KeyBindingName			Select_ShipGroup_5
+str_UI_SelectShipGroup5_Description				Select Ship Group #5
+str_UI_SelectShipGroup6_KeyBindingName			Select_ShipGroup_6
+str_UI_SelectShipGroup6_Description				Select Ship Group #6
+str_UI_SelectShipGroup7_KeyBindingName			Select_ShipGroup_7
+str_UI_SelectShipGroup7_Description				Select Ship Group #7
+str_UI_SelectShipGroup8_KeyBindingName			Select_ShipGroup_8
+str_UI_SelectShipGroup8_Description				Select Ship Group #8
+str_UI_SelectShipGroup9_KeyBindingName			Select_ShipGroup_9
+str_UI_SelectShipGroup9_Description				Select Ship Group #9
+str_UI_SelectShipGroup10_KeyBindingName			Select_ShipGroup_10
+str_UI_SelectShipGroup10_Description				Select Ship Group #10
+
+str_UI_AddToShipGroup1_KeyBindingName			AddTo_ShipGroup_1
+str_UI_AddToShipGroup1_Description				Add To Ship Group #1
+str_UI_AddToShipGroup2_KeyBindingName			AddTo_ShipGroup_2
+str_UI_AddToShipGroup2_Description				Add To Ship Group #2
+str_UI_AddToShipGroup3_KeyBindingName			AddTo_ShipGroup_3				
+str_UI_AddToShipGroup3_Description				Add To Ship Group #3
+str_UI_AddToShipGroup4_KeyBindingName			AddTo_ShipGroup_4
+str_UI_AddToShipGroup4_Description				Add To Ship Group #4
+str_UI_AddToShipGroup5_KeyBindingName			AddTo_ShipGroup_5
+str_UI_AddToShipGroup5_Description				Add To Ship Group #5
+str_UI_AddToShipGroup6_KeyBindingName			AddTo_ShipGroup_6
+str_UI_AddToShipGroup6_Description				Add To Ship Group #6
+str_UI_AddToShipGroup7_KeyBindingName			AddTo_ShipGroup_7
+str_UI_AddToShipGroup7_Description				Add To Ship Group #7
+str_UI_AddToShipGroup8_KeyBindingName			AddTo_ShipGroup_8
+str_UI_AddToShipGroup8_Description				Add To Ship Group #8
+str_UI_AddToShipGroup9_KeyBindingName			AddTo_ShipGroup_9
+str_UI_AddToShipGroup9_Description				Add To Ship Group #9
+str_UI_AddToShipGroup10_KeyBindingName			AddTo_ShipGroup_10
+str_UI_AddToShipGroup10_Description				Add To Ship Group #10
+
+str_UI_RemoveSelectedShipGroup_KeyBindingName	Remove_Selected_Ship_Group
+str_UI_RemoveSelectedShipGroup_Description		Remove Selected Ship Group
+
+str_UI_ToggleSV_Asteroids_KeyBindingName		ToggleSV_Asteroids
+str_UI_ToggleSV_Asteroids_Description			Toggle SV Asteroids
+str_UI_ToggleSV_FOWRanges_KeyBindingName		ToggleSV_FOWRanges
+str_UI_ToggleSV_FOWRanges_Description			Toggle SV FOW Ranges
+str_UI_ToggleSV_AreasVisited_KeyBindingName		ToggleSV_AreasVisited
+str_UI_ToggleSV_AreasVisited_Description		Toggle SV Areas Visited
+str_UI_ToggleSV_AreasOccupied_KeyBindingName	ToggleSV_AreasOccupied
+str_UI_ToggleSV_AreasOccupied_Description		Toggle SV Areas Occupied
+str_UI_ToggleSV_Icons_KeyBindingName			ToggleSV_Icons
+str_UI_ToggleSV_Icons_Description				Toggle SV Icons
+str_UI_ToggleSV_ShipMeshes_KeyBindingName	ToggleSV_ShipMeshes
+str_UI_ToggleSV_ShipMeshes_Description		Toggle SV Ship Meshes
+str_UI_ToggleSV_PieplateLines_KeyBindingName		ToggleSV_PieplateLines
+str_UI_ToggleSV_PieplateLines_Description			Toggle SV Pieplate Lines
+str_UI_ToggleSV_Background_KeyBindingName		ToggleSV_Background
+str_UI_ToggleSV_Background_Description			Toggle SV Background
+str_UI_ToggleSV_DecorativeAsteroids_KeyBindingName	ToggleSV_DecorativeAsteroids
+str_UI_ToggleSV_DecorativeAsteroids_Description		Toggle SV Decorative Asteroids
+str_UI_ToggleSV_Compass_KeyBindingName			ToggleSV_Compass
+str_UI_ToggleSV_Compass_Description				Toggle SV Compass
+str_UI_ToggleSV_ObjectivesPointer_Description		Toggle SV ObjectivesPointer
+str_UI_ToggleSV_ObjectivesPointer_KeyBindingName	Toggle_SV_ObjPoint
+str_UI_ToggleSV_SlipgatePaths_KeyBindingName		Toggle_SV_SlipgatePaths
+str_UI_ToggleSV_SlipgatePaths_Description			Toggle SV Slipgate Paths
+
+str_UI_PlayNIS_KeyBindingName					Play_NIS
+str_UI_PlayNIS_Description						Play NIS 
+str_UI_PlayNISLET1_KeyBindingName				Play_NISLET_1					
+str_UI_PlayNISLET1_Description					Play NISLET 1
+str_UI_PlayNISLET2_KeyBindingName				Play_NISLET_2
+str_UI_PlayNISLET2_Description					Play NISLET 2				
+str_UI_PlayNISLET3_KeyBindingName				Play_NISLET_3
+str_UI_PlayNISLET3_Description					Play NISLET 3
+str_UI_PlayPrevNIS_KeyBindingName				Play_Prev_NIS
+str_UI_PlayPrevNIS_Description					Play Previous NIS
+str_UI_PlayNextNIS_KeyBindingName				Play_Next_NIS
+str_UI_PlayNextNIS_Description					Play Nextious NIS
+
+str_UI_ETGReload_KeyBindingName					ETG_Reset
+str_UI_ETGReload_Description					ETG Reset
+
+str_UI_SoundSetLow_KeyBindingName				Sound_SetLow
+str_UI_SoundSetLow_Description					Sound: Set Low
+str_UI_SoundSetNormal_KeyBindingName			Sound_SetNormal
+str_UI_SoundSetNormal_Description				Sound: Set Normal
+str_UI_SoundReloadVolumes_KeyBindingName		Sound_ReloadVolumes
+str_UI_SoundReloadVolumes_Description			Sound: Reload Volumes
+str_UI_SoundPause_KeyBindingName				Sound_Pause
+str_UI_SoundPause_Description					Sound: Pause
+str_UI_SoundUnPause_KeyBindingName				Sound_UnPause
+str_UI_SoundUnPause_Description					Sound: UnPause
+
+str_UI_LODUp_KeyBindingName						LOD_Up
+str_UI_LODUp_Description						LOD Up
+str_UI_LODDown_KeyBindingName					LOD_Down
+str_UI_LODDown_Description						LOD Down
+str_UI_ToggleShipDistanceDrawing_KeyBindingName	Toggle_Ship_Distance_Drawing
+str_UI_ToggleShipDistanceDrawing_Description	Ship Distance Drawing
+str_UI_ToggleLODDrawing_KeyBindingName			Toggle_LOD_Drawing
+str_UI_ToggleLODDrawing_Description				Toggle LOD Drawing
+str_UI_ToggleLODTuning_KeyBindingName			Toggle_LOD_Tuning
+str_UI_ToggleLODTuning_Description				Toggle LOD Tuning
+str_UI_TuneNextGun_KeyBindingName				Tune_Next_Gun
+str_UI_TuneNextGun_Description					Tune Next Gun
+
+str_UI_TestGuns_KeyBindingName					Fire_Ship_Guns
+str_UI_TestGuns_Description						Fire Ship Guns
+
+str_UI_SwitchPlayers_KeyBindingName				Switch_Players
+str_UI_SwitchPlayers_Description				Switch Players
+
+str_UI_OpenConsole_KeyBindingName				Open_Console
+str_UI_OpenConsole_Description					Open Console
+
+str_UI_OutputResourceInfo_KeyBindingName		Output_Resource_Info				
+str_UI_OutputResourceInfo_Description			Output Resource Info
+str_UI_NextLevel_KeyBindingName					Next_Level
+str_UI_NextLevel_Description					Goto Next Level
+str_UI_FailMission_KeyBindingName				Fail_Mission
+str_UI_FailMission_Description					Fail Mission
+str_UI_OutputFleetStrength_KeyBindingName		Output_Fleet_Strength
+str_UI_OutputFleetStrength_Description			Output Fleet Strength
+str_UI_KASDump_KeyBindingName					Kas_Dump
+str_UI_KASDump_Description						KAS Dump
+str_UI_ToggleDrawKASStates_KeyBindingName		Toggle_Draw_KAS_States
+str_UI_ToggleDrawKASStates_Description			KAS States
+str_UI_ToggleDrawKASTimers_KeyBindingName		Toggle_Draw_KAS_Timers
+str_UI_ToggleDrawKASTimers_Description			KAS Timers
+str_UI_ToggleDrawKASVars_KeyBindingName			Toggle_Draw_KAS_Vars
+str_UI_ToggleDrawKASVars_Description			KAS Vars
+str_UI_ToggleDrawKASVolumes_KeyBindingName		Toggle_Draw_KAS_Volumes
+str_UI_ToggleDrawKASVolumes_Description			KAS Volumes
+str_UI_ToggleDrawKASAll_KeyBindingName			Toggle_Draw_KAS_All
+str_UI_ToggleDrawKASAll_Description				KAS Everything
+str_UI_IncrementKASSkipFactor_KeyBindingName	Inc_KAS_Skip_Factor
+str_UI_IncrementKASSkipFactor_Description		Increment KAS Skip Factor
+str_UI_RealTimeTweak_KeyBindingName				Real_Time_Tweak					
+str_UI_RealTimeTweak_Description				Real Time Tweak
+str_UI_ToggleGunTuningMode_KeyBindingName		Toggle_Gun_Tuning_Mode
+str_UI_ToggleGunTuningMode_Description			Toggle Gun Tuning Mode
+str_UI_SaveLOD_KeyBindingName					Save_LOD
+str_UI_SaveLOD_Description						Save LOD
+str_UI_RememberLOD_KeyBindingName				Remember_LOD
+str_UI_RememberLOD_Description					Remember LOD
+str_UI_TestAnimation_KeyBindingName				Test_Animation
+str_UI_TestAnimation_Description				Test Animation
+str_UI_ProfilerNext_KeyBindingName				Profiler_Next
+str_UI_ProfilerNext_Description					Profiler Next
+str_UI_ToggleGameSpeed_KeyBindingName			Toggle_Game_Speed
+str_UI_ToggleGameSpeed_Description				Toggle Game Speed
+str_UI_DamageShips_KeyBindingName				Damage_Ships
+str_UI_DamageShips_Description					Damage Ships
+str_UI_StopAllTime_KeyBindingName				Stop_All_Time
+str_UI_StopAllTime_Description					Stop All Time
+str_UI_TunePilotView_KeyBindingName				Tune_Pilot_View
+str_UI_TunePilotView_Description				Tune Pilot View
+str_UI_PilotViewUp_KeyBindingName				Pilot_View_Up
+str_UI_PilotViewUp_Description					Pilot View Up
+str_UI_PilotViewDown_KeyBindingName				Pilot_View_Down
+str_UI_PilotViewDown_Description				Pilot View Down
+str_UI_PilotViewLeft_KeyBindingName				Pilot_View_Left
+str_UI_PilotViewLeft_Description				Pilot View Left
+str_UI_PilotViewRight_KeyBindingName			Pilot_View_Right
+str_UI_PilotViewRight_Description				Pilot View Right
+str_UI_PilotViewForward_KeyBindingName			Pilot_View_Forward
+str_UI_PilotViewForward_Description				Pilot View Forward
+str_UI_PilotViewBackward_KeyBindingName			Pilot_View_Backward
+str_UI_PilotViewBackward_Description			Pilot View Backward
+str_UI_ActivateSingleStep_KeyBindingName		Activate_SingleStep
+str_UI_ActivateSingleStep_Description			Activate Single Step
+str_UI_SingleStep_KeyBindingName				SingleStep
+str_UI_SingleStep_Description					Single Step
+
+
+
+strUIGroup_ShipActions				Actions ----
+strUIGroup_ShipSpecialActions		S. Actions -
+strUIGroup_ShipTactics				Tactics ----
+strUIGroup_ShipFormations			Formations -
+strUIGroup_Camera					Camera -----
+strUIGroup_Selection				Selecting --
+strUIGroup_Views					Views ------
+strUIGroup_ShipGroupings			Groupings --
+strUIGroup_Misc						Misc. ------
+strUIGroup_SensorsViewOptions		Sensors ----
+strUIGroup_Debug					DEBUG --------
+
+strMimicTypeCurrentPlayer			My Ships
+strMimicTypeComputerPlayer			Enemy Ships
+strMimicTypePlayer1					Player 1
+strMimicTypePlayer2					Player 2
+strMimicTypePlayer3					Player 3
+strMimicTypePlayer4					Player 4
+strMimicTypePlayer5					Player 5
+strMimicTypePlayer6					Player 6
+strMimicTypePlayer7					Player 7
+strMimicTypePlayer8					Player 8
+strMimicTypeObjects					Asteroids
+strMimicItemRandomAsteroid			Random Asteroid
+strMimicItemSmallAsteroid			Small Asteroid
+strMimicItemMediumAsteroid			Medium Asteroid
+strMimicItemLargeAsteroid			Large Asteroid
+
+strMO_FinishLevel GOTO NEXT LEVEL
+strMO_ViewTacticalOverlayDesc	Tactical Overlay
+strMO_ViewShipInfoOverlayDesc	Ship Info Overlay
+strMO_ViewBuildManagerDesc	Build Manager...
+strMO_ViewResearchManagerDesc	Research Manager...
+strMO_ViewMainRgnDesc		Main View
+strMO_ViewSensorsManagerDesc	Sensors Manager
+
+strMO_OptionDisabled			DISABLED
+strMO_OptionEnabled			ENABLED
+strMO_Option_ShowSelectedShips		SHOW SELECTED SHIPS
+strMO_Option_ShowShipsWithinBandbox	SHOW SHIPS WITHIN BANDBOX
+strMO_Option_ShowObjectives		SHOW OBJECTIVES
+strMO_Option_ShowTooltips		SHOW TOOLTIPS
+strMO_Option_ShowViews			SHOW VIEWS
+strMO_Option_ShowPlayerInfo  		SHOW PLAYER INFORMATION
+strMO_Option_ShowLastCommand		SHOW GAME MESSAGES 
+strMO_Option_ShowPlayerNames  		SHOW PLAYER NAMES
+strMO_Option_ShowConstruction		SHOW CURRENT CONSTRUCTION
+strMO_Option_ShowResearch		SHOW CURRENT RESEARCH
+strMO_Option_ShowTimeElapsed  		SHOW TIME ELAPSED
+
+strMO_Option_ShowSelectedShipsBackdrop		SHOW SELECTED SHIPS BACKDROP
+strMO_Option_ShowShipsWithinBandboxBackdrop	SHOW SHIPS WITHIN BANDBOX BACKDROP
+strMO_Option_ShowObjectivesBackdrop		SHOW OBJECTIVES BACKDROP
+strMO_Option_ShowTooltipsBackdrop		SHOW TOOLTIPS BACKDROP
+strMO_Option_ShowViewsBackdrop			SHOW VIEWS BACKDROP
+strMO_Option_ShowPlayerInfoBackdrop  		SHOW PLAYER INFORMATION BACKDROP
+strMO_Option_ShowLastCommandBackdrop		SHOW LAST COMMAND ISSUED BACKDROP
+strMO_Option_ShowPlayerNamesBackdrop  		SHOW PLAYER NAMES BACKDROP
+strMO_Option_ShowConstructionBackdrop		SHOW CURRENT CONSTRUCTION BACKDROP
+strMO_Option_ShowResearchBackdrop		SHOW CURRENT RESEARCH BACKDROP
+strMO_Option_ShowTimeElapsedBackdrop  		SHOW TIME ELAPSED BACKDROP	
+
+strMO_ObjectiveStatus_Complete		COMPLETE
+strMO_ObjectiveStatus_Incomplete	INCOMPLETE
+strMO_SecondaryObjectives  			Recommendations:
+strMO_PrimaryObjectives  			Objectives:
+strMO_Tooltip_Resource				RESOURCE
+strMO_Tooltip_Missile				MISSILE
+strMO_Tooltip_Mine					MINE
+strMO_Tooltip_DustCloud				DUST CLOUD
+strMO_Tooltip_GasCloud				GAS CLOUD
+strMO_Tooltip_Nebula				NEBULA
+
+strMO_ViewOption_On	ON
+strMO_ViewOption_Off	OFF
+
+strMO_SupportUnits	SU:
+strMO_ResourceUnits	RU:
+
+
+
+str_GM_TacticsEvasive			Evasive
+str_GM_TacticsNeutral			Neutral
+str_GM_TacticsAggressive		Aggressive
+
+str_GM_TacticsSetToEvasive		Evasive Tactics Set
+str_GM_TacticsSetToNeutral		Neutral Tactics Set
+str_GM_TacticsSetToAggressive	Aggressive Tactics Set
+
+str_GM_NeedMothershipOrCarrierForParadeFormation	Need a Command Ship or Carrier to form a Parade!
+str_GM_ChangeToMilitaryParade		Parade Formation Set
+
+str_GM_ChangeToDeltaFormation		Delta Formation Set
+str_GM_ChangeToBroadFormation		Broad Formation Set
+str_GM_ChangeToDelta3DFormation		X Formation Set
+str_GM_ChangeToClawFormation		Claw Formation Set
+str_GM_ChangeToWallFormation		Wall Formation Set
+str_GM_ChangeToSphereFormation		Sphere Formation Set
+str_GM_ChangeToPicketFormation		Custom Formation Set
+
+str_GM_DeltaFormation	Delta
+str_GM_BroadFormation	Broad
+str_GM_Delta3DFormation	X
+str_GM_ClawFormation	Claw
+str_GM_WallFormation	Wall
+str_GM_SphereFormation	Sphere
+str_GM_PicketFormation	Custom
+
+str_GM_ForceFieldSphereFront			Sphere Front
+str_GM_ForceFieldSphereBack				Sphere Back
+str_GM_ForceFieldSphereLeft				Sphere Left
+str_GM_ForceFieldSphereRight			Sphere Right
+str_GM_ForceFieldSphereUp				Sphere Up
+str_GM_ForceFieldSphereDown				Sphere Down
+
+str_GM_ChangeToForceFieldSphereFront	Force Field Sphere Set
+str_GM_ChangeToForceFieldSphereBack		Sphere Back Set
+str_GM_ChangeToForceFieldSphereLeft		Sphere Left Set
+str_GM_ChangeToForceFieldSphereRight	Sphere Right Set
+str_GM_ChangeToForceFieldSphereUp		Sphere Up Set
+str_GM_ChangeToForceFieldSphereDown		Sphere Down Set
+str_GM_ChangeToForceFieldWall			Force Field Wall Set
+
+
+strTimesTimeCompression							X Time Compression
+
+strNoMoreResourcesVisible				No More Resources Visible
+
+strWaypointModeNormal					Waypoint Mode = Patrol Linear
+strWaypointModePatrolEndToEnd			Waypoint Mode = Patrol End To End
+strWaypointModePatrolCircular			Waypoint Mode = Patrol Circular
+
+strLEECHCANTLEECH		Hull type nonviable Leech target
+
+strExperienceLevel0		Flight Sergeant
+strExperienceLevel1		Lieutenant
+strExperienceLevel2		Flight Leader
+strExperienceLevel3		Squadron Leader
+strExperienceLevel4		Wing Commander
+
+
+strDefaultPlayerName                                            Monty_Crabapple
+										    
+
+strStatsDiedStats                                               _DIED_STATS.txt
+strStatsGameEndStats                                            GAME_END_STATS.txt
+strStatsPlayerName                                              Player Name: %s
+strStatsPlayerRace                                              Player Race: %s
+strStatsTimeOfDeath                                             Time Of Death : %0.1f
+strStatsDeathByDropout                                          Death by dropout
+strStatsDeathByShipCapture                                      Death by ship being captured
+strStatsDeathByLossOfMission                                    Death by loss of mission
+strStatsDeathStillAlive                                         Time Of Death : Still Alive
+strStatsRUsStart                                                RU's Started With: %d
+strStatsRUsCollected                                            RU's Collected   : %d
+strStatsRUsSpent                                                RU's Spent       : %d
+strStatsRUsGiven                                                RU's Given       : %d
+strStatsRUsReceived                                             RU's Received    : %d
+strStatsRUsInjected                                             RU's Injected    : %d
+strStatsRUsByBounties                                           RU's via Bounties: %d
+strStatsRUsGenerated                                            RU's Generated: %d
+strStatsCurrentRUs                                              Current RU's: %d
+strStatsTotalDmgAgainstPlayer                                   Total Damage Against Player %d: %0.1f
+strStatsTotalAcquiredShips                                      Total Acquired Ships: %d
+strStatsTotalAcqShipsByType                                     Total Acquired Ships By Type:
+strStatsTotalAcqShipsByClass                                    Total Acquired Ships By Class:
+strStatsTotalKills                                              Total Kills: %d
+strStatsKilled                                                  killed:
+strStatsTotalLosses                                             Total Losses: %d
+strStatsLost                                                    lost:
+
+strSVCost                                                       COST:
+strSVRUs                                                        RUs
+
+strFailedToStartRoutingServer                                   Failed to start server
+strServerLoadHeading                                            Load
+strServerReliabilityHeading                                     Reliability
+
+strStatsBadResUnitsBounds                                       WARNING: Bad number of resource units detected!
+strStatsBadResUnitTotals                                        WARNING: Bad total number of resource units detected!
+strStatsBadShipBounds                                           WARNING: Bad number of ships detected!
+strStatsBadShipCostTotals                                       WARNING: Bad total ship cost detected!
+strStatsBadShipsAcquiredTotals                                  WARNING: Bad total number of ships acquired detected!
+strStatsBadShipsKilledTotals                                    WARNING: Bad total number of ships killed detected!
+strStatsBadShipsLostTotals                                      WARNING: Bad total number of ships lost detected!
+strStatsBadShipsAcquiredClassTotals                             WARNING: Bad total number of ships acquired per class detected!
+strStatsBadShipsKilledClassTotals                               WARNING: Bad total number of ships killed per class detected!
+strStatsBadShipsLostClassTotals                                 WARNING: Bad total number of ships lost per class detected!
+
+strCommandIgnoreOn                                              Ignore %s &O&N
+strCommandIgnoreOff                                             Ignore %s &O&F&F
+strCommandKickCaptain                                           You have kicked %s from the game!
+strCommandKickPlayer                                            You have been kicked from the game!
+strCommandBanOn                                                 Ban %s &O&N
+strCommandBanOff                                                Ban %s &O&F&F
+strCommandLimit                                                 Player limit set to %u players
+strCommandLimitOff                                              Player limit off
+
+strCheatDetect                                                  CHEAT DETECT
+
+strSinglePlayerNextLevel				End Mission
+strSinglePlayerHyperspace				Hyperspace
+
+strWorkerNeedsSalvageTech				Workers require salvaging ability.
+strWorkerNeedsRepairTech				Workers require repairing ability.
+strWorkerNoSalvageableShips				Not salvageable.
+strWorkerNeedsSupportUnits				Not enough support units.
+
+; DS - The name strWorkerNeedsCrystalTech 
+; is misleading.  The worker doesn't need
+; the tech, just some depot ship does.
+strWorkerNeedsCrystalTech				You have no ships which can process crystals.
+strDepotNeedsInfectionTech				You have no ships which can infect enemy ships.
+
+strResearchModuleActivated		New Research Options Available	[Open Research]
+strResearchComplete				Research Complete
+
+strUpgradingByDockingNotification	Docking Ships to Upgrade [Focus]
+strEnemySpottedNotification			Enemies Spotted [Focus]
+strShipLevelUpNotify				has gained a Level:
+strNoSalvagableTargetsNotify		No Salvagable Targets Visible
+strNoEnemyTargetsNotify				No Enemy Targets Visible [Focus]
+strNoSlipgateFoundNotify			No Slipgate Found
+strNoShipToRepairFound				No Damaged Ships Found [Focus]
+strNoShipToSalvageFound				No Salvagable Ships Found [Focus]
+strNoShipToLeechFound				No Leechable Ships Found [Focus]
+strNoShipToEMPFound					No Enemy Ships to EMP Found [Focus]
+strNoShipToSwarmFound				No Enemy Ships to Swarm Found [Focus]
+strNoShipToInfectFound				No Enemy Ships to Infect Found [Focus]
+strNoShipToRamFound					No Enemy Ships to Ram Found [Focus]
+strNoShipToFireMissileAtFound		No Enemy Ships to Fire Missiles At Found [Focus]
+strNotifyBigGunCharging				Siege Cannon still Charging [Focus]
+strSlipgateSpottedNotification		Slipgate Spotted [Focus]
+strShipsStillUnderConstruction		Complete or Cancel External Construction Before Continuing
+
+
+str_GSD_SurvivalTime				Survival Time
+str_GSD_PlayersKilled				Other Players Killed
+str_GSD_ResourcesHarvested			Resources Harvested
+str_GSD_CrystalsHarvested			Crystals Retrieved
+str_GSD_TechResearched				Technologies Researched
+
+str_GSD_FightersKilled				- Killed
+str_GSD_FrigatesKilled				- Killed
+str_GSD_DestroyersKilled			- Killed
+str_GSD_NonCombatKilled				- Killed
+
+str_GSD_FightersLost				-   Lost
+str_GSD_FrigatesLost				-   Lost
+str_GSD_DestroyersLost				-   Lost
+str_GSD_NonCombatLost				-   Lost
+
+str_GSD_FightersBuilt				Fighters    -  Built
+str_GSD_FrigatesBuilt				Frigates    -  Built
+str_GSD_DestroyersBuilt				Destroyers  -  Built
+str_GSD_NonCombatBuilt				Non-Combat  -  Built
+
+str_GSD_Exit						Exit
+
+str_GSD_ShipKillGroup				Ship Kill Group
+str_GSD_ShipBuiltGroup				Ship Built Group
+str_GSD_ShipLostGroup				Ship Lost Group
+
+strRenderingInSoftware				Using Software Renderer...
+
+strSkillVeryEasy					Skill Level VERY EASY
+strSkillEasy						Skill Level EASY
+strSkillNormal						Skill Level NORMAL
+strSkillHard						Skill Level HARD
+strSkillVeryHard					Skill Level VERY HARD
+
+str_MOSensorsButton					Sensors
+str_MOMainViewButton				Main
+str_MOBuildButton					Build...
+str_MOResearchButton				Research...
+str_MOSystemsButton					Systems...
+
+
+strSalvageTargetHasIncompatibleTech		Cannot Salvage Target due to Incompatable Technology
+strNotEnoughSupportUnitsToSalvage		Need More Support Units To Salvage Target(s)
+strTooStrongToSalvage					Target Must Be Damaged More To Salvage
+strNoHyperspacingShipsAvailable			No Hyperspacing Ships Available
+strMovingNowThatAttackIsDone			Finished Attacking, Restoring Move Command [Focus]
+strCancellingMoveToAttack			Cancelling Move Command To Attack Targets [Focus]
+
+str_NIS_01_01	Testing...
+
+
+str_SO_AdvancedFighterDrive		Advanced Fighter Drive     
+str_SO_AdvancedFrigateDrive		Advanced Frigate Drive     
+str_SO_AdvancedDestroyerDrive	Advanced Destroyer Drive   
+str_SO_LinkingAbility			Linking Ability            
+str_SO_MimicAbility				Mimic Ability              
+str_SO_LeechingAbility			Leeching Ability           
+str_SO_ExplosiveCharge			Explosive Charge           
+str_SO_Afterburners				Afterburners               
+str_SO_EMPWeapon				EMP Weapon                 
+str_SO_RepulseWeapon			Repulse Weapon             
+str_SO_SwarmingAbility			Swarming Ability           
+str_SO_ForceField1				Force Field Level 1        
+str_SO_ForceField2				Force Field Level 2        
+str_SO_ForceField3				Force Field Level 3        
+str_SO_SiegeCannon				Siege Cannon               
+str_SO_DeflectionAbility		Deflection Ability         
+str_SO_InfectingAbility			Infecting Ability          
+str_SO_CloakingAbility			Cloaking Ability           
+str_SO_RepairingAbility			Repairing Ability		
+str_SO_SalvagingAbility			Salvaging Ability          
+str_SO_CrystalHarvestAbility	Crystal Processing Ability
+str_SO_SelfRepairAbility		Self Repairing Ability    
+str_SO_BeastSalvagingAbility	Infection Vaccine   
+str_SO_AdvancedSensors			Advanced Sensors Ability   
+str_SO_AbilityOrdinance         Missile Ordnance Ability
+;str_SO_GravityWell				Gravity Well               
+str_SO_Technology				Technology
+str_SO_Class					Class
+str_SO_Health					Health
+str_SO_ArmourLevel1				Armor Level 1
+str_SO_ArmourLevel2				Armor Level 2
+str_SO_ArmourLevel3				Armor Level 3
+str_SO_Gun						Gun
+str_SO_Small					Small
+str_SO_Medium					Medium
+str_SO_Large					Large
+str_SO_VeryLarge				Very Large
+str_SO_Projectile				Projectile
+str_SO_Energy					Energy
+str_SO_Ion						Ion
+str_SO_PlasmaBomb				Plasma Bomb
+str_SO_Laser					Laser
+str_SO_Missile					Missile
+str_SO_Mine						Mine
+str_SO_BeastInfect				Beast Infect
+str_SO_Weapons					Weapons:
+str_SO_Size						Size
+str_SO_Type						Type
+str_SO_Damage					Damage
+str_SO_NoGuns					No Guns Available...
+str_SO_ShowGuns					SHOW GUNS
+str_SO_ShowArmour				SHOW ARMOR
+str_SO_ShowTechShipHas			SHOW TECHNOLOGY THE SHIP HAS
+str_SO_ShowAllTech				SHOW ALL TECHNOLOGY
+str_SO_ShowMaxTech				SHOW MAX TECHNOLOGY THE SHIP CAN HAVE
+str_SO_ShowTechShipNeeds		SHOW TECHNOLOGY THE SHIP NEEDS TO UPGRADE 
+str_SO_ShowClass				SHOW CLASS
+str_SO_ShowHealth				SHOW HEALTH
+
+strNewTechFoundRetire			New technology found, retire ship
+strNewTechFound					New technology found
+strNotEnoughSupportUnitsToConvert	Not enough support units for conversion...
+str_SO_RammingFrigateLaser			Ramming Laser
+str_SO_RammingFrigateLaserUpgraded	Ramming Ion Beam
+strOutOfBeastInfectRange			Infection Target To Far Away...
+strCantEMPTargets				Cannot EMP Target(s) while Recharging...
+strAbortingBigGunFiring			Aborting Big Gun Firing
+strBushanRay				BUSHAN-RE
+strCalShtow					CAAL-SHTO
+strNotAllShipsCanEnterSlipgate	Some ships are too large to enter this Slipgate...
+strNotAllShipsCanEnterSlipgateBecauseOfMission15	Ships can't enter this Slipgate...
+strNotAllShipsCanEnterSlipgateBusy Ships cannot currently enter Slipgate...
+strNotApplicable		N/A
+strNeedMoreSalvagers		Need more Salvagers... [Focus]
+strCantFireBigGun		Siege Cannon Malfunctioning...
+strWarnBigGunHasFired		Alert!  Siege Cannon fire detected...
+strReceivedResources		Recieved %d RUs from %s!
+
+strEndOfRecording				End of Recording. Press ESCAPE to Quit.
+
+
+strNIS01						Kiith Somtaawhttp Mining Vessel KUUN-LAN	
+strNIS01a						
+strNISLET1						Hiigara
+strNIS02						Tel Sector
+strNIS04						Kadiir Nebula (Zeta Gate)
+strNIS05						Kadiir Nebula (Epsilon Gate)
+strNIS06						Koreth's Rift Sector
+strNIS07						Kyori Sector
+strNIS08						Galactic Rim
+strNIS09						Gulf Sector
+strNIS10						Dark Matter FCluster Faal-Te
+strNIS11						Far Reaches Sector
+
+
+strMothershipHealthLow				Command Ship damage reporting critical levels...  [Focus]
+strPleaseSelectAnAge				Please select your age
+strUnrecognizedKey					?Keyv
+strSettingPrifileInfo				Setting profile info...
+strProfileTransferSuccess			Profile transfer success...
+strProfileTransferFailed			Profile transfer failed...
+strFailedToConnectToContestServer	Contest Request Failed!!
+strFailedToConnectToProfileServer   Profile Request Failed!!
+
+strPleaseEnterValidZipCode			Please enter a valid zip code
+strPleaseEnterValidEMail			Please enter a valid e-mail address
+strPleasePickAGender				Please pick a gender
+
+strPAUSED_TEXT	Paused
+
+; Replaces OP_TroubleShootPage
+strTroubleShootPage	http://homeworld.sierra.com/cataclysm/support/
+
+; Replaces MG_SierraComPage
+strSierraComPage	http://www.homeworld.net
+
+; Replaces MG_ContestServerPage
+strContestServerPage	http://www.won.net/re/hwcatcontest.html
+
+; European languages have to reverse this...
+strLaunchMgrFighterClass	Fighter Class
+strLaunchMgrCorvetteClass	Corvette Class

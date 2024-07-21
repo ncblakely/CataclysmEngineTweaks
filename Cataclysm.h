@@ -25,10 +25,10 @@ template <typename T>
 class GamePointer
 {
 public:
-	GamePointer(unsigned int offset) { m_offset = (T**)offset; }
+	__forceinline explicit GamePointer(unsigned int offset) { m_offset = (T**)offset; }
 
-	T* operator->() const { return *m_offset; }
-	operator T* () const { return *m_offset; }
+	__forceinline T* operator->() const { return *m_offset; }
+	__forceinline operator T* () const { return *m_offset; }
 
 protected:
 	T** m_offset;
@@ -111,16 +111,21 @@ namespace Instructions
 
 	DEFINE_ADDRESS(allianceFormWith_UniverseUpdatePeriod, 0x0042090D);
 
-	DEFINE_ADDRESS(caiProcessBuildShips_CheckBuildMimic, 0x00431F0C);
-	DEFINE_ADDRESS(caiProcessBuildShips_DoBuildMimic, 0x00431F14);
-	DEFINE_ADDRESS(caiProcessBuildShips_DontBuildMimic, 0x00431F7B);
+	// AI external ship building
+	DEFINE_ADDRESS(aiUpdateExternalShipBuild_CalculateTimerDuration, 0x00543F48);
+	DEFINE_ADDRESS(aiUpdateExternalShipBuild_SetTimerDuration, 0x00543F51);
+
+	// .big file
+	DEFINE_ADDRESS(utyGameSystemsPreInit_UpdateBigFileName1, 0x005ABB21);
+	DEFINE_ADDRESS(utyGameSystemsPreInit_UpdateBigFileName2, 0x005ABB3E);
+	DEFINE_ADDRESS(utyGameSystemsPreInit_UpdateBigFileName3, 0x005ABB5C);
 }
 
 // Addresses of game functions.
 namespace Functions
 {
 	DEFINE_FUNCTION(aisFleetUpdate, void, (), 0x00431750);
-	DEFINE_FUNCTION(aisRequestShip, void, (Player* player, ShipType shipType, int weight), 0x00431510);
+	DEFINE_FUNCTION(aisRequestShip, void, (Player* player, ShipType shipType, sdword buildCost), 0x00431510);
 	DEFINE_FUNCTION(allianceFormWith, void, (udword playerindex), 0x00420880);
 	DEFINE_FUNCTION(beastMothershipSelfDamage, void, (ShipStaticInfo* shipstatic), 0x005BC900);
 	DEFINE_FUNCTION(clCommandMessage, void, (const char CommandMessage[MAX_MESSAGE_LENGTH], udword flags), 0x004AC820);
@@ -168,6 +173,11 @@ namespace Functions
 	DEFINE_FUNCTION(univUpdate, bool32, (real32 phystimeelapsed), 0x0054C3F0);
 	DEFINE_FUNCTION(univUpdateReset, void, (), 0x0054ACD0);
 	DEFINE_FUNCTION(UpdateMidLevelHyperspacingShips, void, (), 0x00519700);
+	DEFINE_FUNCTION(ranRandomFn, udword, (sdword ranIndex), 0x004EF860);
+	DEFINE_FUNCTION(GetShipStaticInfo, ShipStaticInfo*, (ShipType shiptype), 0x0053EA50);
+	DEFINE_FUNCTION(clWrapSetKamikaze, void, (CommandLayer* comlayer, SelectCommand* selectcom), 0x00453820);
+	DEFINE_FUNCTION(clWrapScuttle, void, (CommandLayer* comlayer, SelectCommand* selectcom), 0x00453390);
+	DEFINE_FUNCTION(clWrapBuildShip, void, (CommandLayer* comlayer, ShipType shipType, ShipRace shipRace, uword playerIndex, ShipPtr creator), 0x00452FA0);
 }
 
 // Global/static variables in the game executable.
@@ -210,6 +220,8 @@ namespace Globals
 
 	inline udword* opDeviceCRC = (udword*)0x00A4CC20;
 
+	inline scriptStructEntry* ShipStaticScriptTable = (scriptStructEntry*)0x008B2428;
+
 	// Resolution/renderer selection
 	inline char* glToSelect = (char*)0x008B8644;
 	inline sdword* MAIN_WindowWidth = (sdword*)0x008B85E8;
@@ -233,14 +245,14 @@ namespace Globals
 	inline sdword* dbgInt3Enabled = (sdword*)0x0087922C;
 
 	// AI
+	inline udword* aiBuildingShip = (udword*)0x008DFC64; // Array, TOTAL_STD_SHIPS
 	inline GamePointer<Ship> aiCarrier1Ship(0x008DFC38);
 	inline GamePointer<Ship> aiCarrier2Ship(0x008DFC3C);
 	inline GamePointer<AIPlayer> aiCurrentAIPlayer(0x008DF604);
 	inline AISTeamEntry* aisTeams = (AISTeamEntry*)0x008DFD60; // Array, NUM_AIS_TEAMS
 	inline bool32* aiHasExternalConstruction = (bool32*)0x00A2D984;
 	inline bool32* aiHasCarrier1ModuleQueued = (bool32*)0x00A2D98C;
-	inline udword* dword_A2D9B4 = (udword*)0x00A2D9B4;
 	inline bool32* aiHasSupportModuleQueued = (bool32*)0x00A2D994;
 	inline bool32* aiHasCarrier2ModuleQueued = (bool32*)0x00A2D9A8;
-	
+	inline sdword* aiSupportUnitsPending = (sdword*)0x00A2D9B4;
 }

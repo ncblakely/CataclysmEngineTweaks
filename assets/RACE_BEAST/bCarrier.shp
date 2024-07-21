@@ -1,0 +1,390 @@
+[bCarrier]
+
+;Source Files
+;=----------=
+LODFile								bCarrier.lod
+pMexData							bCarrier\Rl0\LOD0\bCarrier.mex
+
+;Ship Physics
+;=----------=
+mass								10000				; ship mass [fighter = 1]
+momentOfInertiaX					10000				; resistance to rotation
+momentOfInertiaY					10000				; [fighter = 1]
+momentOfInertiaZ					10000
+maxvelocity							250					; [fighter = 1000]
+maxrot								10					; maximum rotation speed [don't make faster than ~10]
+thruststrength[TRANS_UP]			40					; acceleration (m/s^2) [1-1000 approx. range]
+thruststrength[TRANS_DOWN]			40	
+thruststrength[TRANS_RIGHT]			40	
+thruststrength[TRANS_LEFT]			40
+thruststrength[TRANS_FORWARD]		40
+thruststrength[TRANS_BACK]			40
+rotstrength[ROT_YAWLEFT]			0.25				; rotational acceleration (deg/s^2) [0.01 - 1.0]
+rotstrength[ROT_YAWRIGHT]			0.25
+rotstrength[ROT_PITCHUP]        	0.25
+rotstrength[ROT_PITCHDOWN]      	0.25
+rotstrength[ROT_ROLLRIGHT]      	0.2
+rotstrength[ROT_ROLLLEFT]       	0.2
+turnspeed[TURN_YAW]					0.2					; speed at which ship tries to turn (1=standard)
+turnspeed[TURN_PITCH]				0.2
+turnspeed[TURN_ROLL]				0.2
+
+;Basic Ship Stats
+;=--------------=
+shipclass							CLASS_Carrier
+isCapitalShip                       TRUE
+buildCost							3500				; resource units to build
+buildTime							300					; time in seconds to build
+supportUnits			    		0					; Support Units required
+providesSU			    			96					; The carrier ship provides 20 support units	
+TimeShockedByEMP					1.5 				; time in seconds the ship will be paralized when hit by one EMP charge
+maxhealth							40000               ; hit points
+groupSize							1                   ; size of group ships of this type tend to form
+repairTime							5					; every this many seconds
+repairDamage						240					; this much damage is repaired
+repairCombatTime                    5					; every this many seconds
+repairCombatDamage                  70					; this much damage is repaired
+repairDroids						0
+externalBuild						TRUE				; if TRUE, ship is built externally
+fowRadius							12000
+forceFieldProtectionDistanceScale	1.5
+approxcollmodifier					1.0					; use only % of collspheresize for rough approximations
+avoidcollmodifier					0.9					; use only % of collspheresize for collision avoidance
+blastRadiusShockWave				3.0
+blastRadiusDamage					125
+minimumZoomDistance					1075
+UpgradeByDocking					FALSE
+
+;Special
+;=-----=
+canBuildShips                       TRUE                ; ship can build ships
+canReceiveShips                     TRUE                ; other ships can dock in this ship
+canReceiveResources                 TRUE                ; Resource Collectors,etc can deposit resources in this ship
+canReceiveShipsPermanently          TRUE                ; ships can dock permanently here
+canReceiveShipsForRetire            TRUE				; ships can dock here and be converted to RU's!
+
+canReceiveFighters                  TRUE
+canReceiveCorvettes                 TRUE
+canReceiveResourceCollectors        TRUE
+canReceiveOtherNonCapitalShips      TRUE
+
+maxDockableFighters                 50
+maxDockableCorvettes                25
+
+dockShipRange                       1000.0              ; how close ships should get before considering docking (to ship surface)
+
+dockLightNear						300
+dockLightFar						800
+dockLightColor						255,0,0
+
+upgradeTimeModifier                 1.0
+
+
+; Pilot View
+;=---------=
+pilotViewOffsetX	-50.0
+pilotViewOffsetY	-455.0
+pilotViewOffsetZ	845.0
+
+;Weapons
+;=-----=
+rotateToRetaliate			FALSE
+passiveRetaliateZone		5000
+canTargetMultipleTargets	TRUE
+
+NUMBER_OF_GUNS				12
+
+GUN		0
+{
+Type						GUN_HiddenGimble
+GunSize						GUNSIZE_MEDIUM
+StartUpgradeLevel			WEAPON_PROJECTILE
+EndUpgradeLevel				WEAPON_ENERGY
+DamageMult					1.5							; modifies standard damage
+BulletLength				20							; visual only.  Length of bullet on screen
+BulletRange					5000						; distance bullets travel before disappearing
+BulletSpeed					5000						; measured in m/s.
+BulletMass					0.05						; mass of bullet
+FireTime					0.4							; fire repeat rate (reciprocal = shots/second)
+MinAngle					0
+MaxAngle					85
+
+FireTime2					1.0
+BulletSpeed2                1600			; measured in m/s.
+}
+
+GUN		1
+{
+Type						GUN_HiddenGimble
+GunSize						GUNSIZE_MEDIUM
+StartUpgradeLevel			WEAPON_PROJECTILE
+EndUpgradeLevel				WEAPON_ENERGY
+DamageMult					1.5							; modifies standard damage
+BulletLength				20							; visual only.  Length of bullet on screen
+BulletRange					5000						; distance bullets travel before disappearing
+BulletSpeed					5000						; measured in m/s.
+BulletMass					0.05						; mass of bullet
+FireTime					0.4							; fire repeat rate (reciprocal = shots/second)
+MinAngle					0
+MaxAngle					85
+
+FireTime2					1.0
+BulletSpeed2                1600			; measured in m/s.
+}
+
+GUN		2
+{
+Type						GUN_HiddenGimble
+GunSize						GUNSIZE_MEDIUM
+StartUpgradeLevel			WEAPON_PROJECTILE
+EndUpgradeLevel				WEAPON_ENERGY
+DamageMult					1.5							; modifies standard damage
+BulletLength				20							; visual only.  Length of bullet on screen
+BulletRange					5000						; distance bullets travel before disappearing
+BulletSpeed					5000						; measured in m/s.
+BulletMass					0.05						; mass of bullet
+FireTime					0.4							; fire repeat rate (reciprocal = shots/second)
+MinAngle					0
+MaxAngle					85
+
+FireTime2					1.0
+BulletSpeed2                1600			; measured in m/s.
+}
+
+GUN		3
+{
+Type						GUN_HiddenGimble
+GunSize						GUNSIZE_MEDIUM
+StartUpgradeLevel			WEAPON_PROJECTILE
+EndUpgradeLevel				WEAPON_ENERGY
+DamageMult					1.5							; modifies standard damage
+BulletLength				20							; visual only.  Length of bullet on screen
+BulletRange					5000						; distance bullets travel before disappearing
+BulletSpeed					5000						; measured in m/s.
+BulletMass					0.05						; mass of bullet
+FireTime					0.4							; fire repeat rate (reciprocal = shots/second)
+MinAngle					0
+MaxAngle					85
+
+FireTime2					1.0
+BulletSpeed2                1600			; measured in m/s.
+}
+
+GUN		4
+{
+Type						GUN_HiddenGimble
+GunSize						GUNSIZE_MEDIUM
+StartUpgradeLevel			WEAPON_BEASTINFECT
+EndUpgradeLevel				WEAPON_BEASTINFECT
+DamageMult					1.0
+BulletLength				8000.0		; visual only.  Length of bullet on screen
+BulletRange					8000.0		; distance bullets travel before disappearing
+BulletSpeed					8000.0		; measured in m/s.
+BulletMass					0.0				; mass of bullet
+FireTime					240.0			; fire repeat rate (reciprocal = shots/second)
+BurstFireTime				0
+BurstWaitTime				0
+MinAngle					0
+MaxAngle					90
+}
+
+GUN		5
+{
+Type						GUN_HiddenGimble
+GunSize						GUNSIZE_MEDIUM
+StartUpgradeLevel			WEAPON_BEASTINFECT
+EndUpgradeLevel				WEAPON_BEASTINFECT
+DamageMult					1.0
+BulletLength				8000.0		; visual only.  Length of bullet on screen
+BulletRange					8000.0		; distance bullets travel before disappearing
+BulletSpeed					8000.0		; measured in m/s.
+BulletMass					0.0				; mass of bullet
+FireTime					240.0			; fire repeat rate (reciprocal = shots/second)
+BurstFireTime				0
+BurstWaitTime				0
+MinAngle					0
+MaxAngle					90
+}
+
+GUN		6
+{
+Type						GUN_HiddenGimble
+GunSize						GUNSIZE_MEDIUM
+StartUpgradeLevel			WEAPON_BEASTINFECT
+EndUpgradeLevel				WEAPON_BEASTINFECT
+DamageMult					1.0
+BulletLength				8000.0		; visual only.  Length of bullet on screen
+BulletRange					8000.0		; distance bullets travel before disappearing
+BulletSpeed					8000.0		; measured in m/s.
+BulletMass					0.0				; mass of bullet
+FireTime					240.0			; fire repeat rate (reciprocal = shots/second)
+BurstFireTime				0
+BurstWaitTime				0
+MinAngle					0
+MaxAngle					90
+}
+
+GUN		7
+{
+Type						GUN_HiddenGimble
+GunSize						GUNSIZE_MEDIUM
+StartUpgradeLevel			WEAPON_BEASTINFECT
+EndUpgradeLevel				WEAPON_BEASTINFECT
+DamageMult					1.0
+BulletLength				8000.0		; visual only.  Length of bullet on screen
+BulletRange					8000.0		; distance bullets travel before disappearing
+BulletSpeed					8000.0		; measured in m/s.
+BulletMass					0.0				; mass of bullet
+FireTime					240.0			; fire repeat rate (reciprocal = shots/second)
+BurstFireTime				0
+BurstWaitTime				0
+MinAngle					0
+MaxAngle					90
+}
+
+GUN		8
+{
+Type						GUN_HiddenGimble
+GunSize						GUNSIZE_MEDIUM
+StartUpgradeLevel			WEAPON_BEASTINFECT
+EndUpgradeLevel				WEAPON_BEASTINFECT
+DamageMult					1.0
+BulletLength				8000.0		; visual only.  Length of bullet on screen
+BulletRange					8000.0		; distance bullets travel before disappearing
+BulletSpeed					8000.0		; measured in m/s.
+BulletMass					0.0				; mass of bullet
+FireTime					240.0			; fire repeat rate (reciprocal = shots/second)
+BurstFireTime				0
+BurstWaitTime				0
+MinAngle					0
+MaxAngle					90
+}
+
+GUN		9
+{
+Type						GUN_HiddenGimble
+GunSize						GUNSIZE_MEDIUM
+StartUpgradeLevel			WEAPON_BEASTINFECT
+EndUpgradeLevel				WEAPON_BEASTINFECT
+DamageMult					1.0
+BulletLength				8000.0		; visual only.  Length of bullet on screen
+BulletRange					8000.0		; distance bullets travel before disappearing
+BulletSpeed					8000.0		; measured in m/s.
+BulletMass					0.0				; mass of bullet
+FireTime					240.0			; fire repeat rate (reciprocal = shots/second)
+BurstFireTime				0
+BurstWaitTime				0
+MinAngle					0
+MaxAngle					90
+}
+
+GUN		10
+{
+Type						GUN_HiddenGimble
+GunSize						GUNSIZE_MEDIUM
+StartUpgradeLevel			WEAPON_BEASTINFECT
+EndUpgradeLevel				WEAPON_BEASTINFECT
+DamageMult					1.0
+BulletLength				8000.0		; visual only.  Length of bullet on screen
+BulletRange					8000.0		; distance bullets travel before disappearing
+BulletSpeed					8000.0		; measured in m/s.
+BulletMass					0.0				; mass of bullet
+FireTime					240.0			; fire repeat rate (reciprocal = shots/second)
+BurstFireTime				0
+BurstWaitTime				0
+MinAngle					0
+MaxAngle					90
+}
+
+GUN		11
+{
+Type						GUN_HiddenGimble
+GunSize						GUNSIZE_MEDIUM
+StartUpgradeLevel			WEAPON_BEASTINFECT
+EndUpgradeLevel				WEAPON_BEASTINFECT
+DamageMult					1.0
+BulletLength				8000.0		; visual only.  Length of bullet on screen
+BulletRange					8000.0		; distance bullets travel before disappearing
+BulletSpeed					8000.0		; measured in m/s.
+BulletMass					0.0				; mass of bullet
+FireTime					240.0			; fire repeat rate (reciprocal = shots/second)
+BurstFireTime				0
+BurstWaitTime				0
+MinAngle					0
+MaxAngle					90
+}
+
+;Gun Bindings:
+;=----------=
+;NONE
+
+;Dock Points
+;=---------=
+NUMBER_OF_DOCK_POINTS		25		//MG Updated June 12, 2000
+
+; format is DockPoint		name,type,flyawaydist,mindist,maxdist,[headingdirection,updirection]  (0=up,1=right,2=forward,4=down,5=left,6=back) for direction
+DockPoint					Out1,DPT_Repairbot,800,800,800,2,0
+DockPoint					In1,DPT_Small_In,0,1400,1500,6,0
+DockPoint					In2,DPT_Small_In,0,1400,1500,6,0
+DockPoint					In3,DPT_Small_In,0,1300,1400,6,0
+DockPoint					In4,DPT_Small_In,0,1300,1400,6,0
+DockPoint					Out1,DPT_Small_Out,1200,1200,1200,2,0
+DockPoint					Out2,DPT_Small_Out,1200,1200,1200,2,0
+DockPoint					FrigateIn,DPT_Med_In,0,1350,1350,6,0
+DockPoint					Frigate,DPT_Med_Out,1300,1300,1300,2,0
+DockPoint					Res0,DPT_Worker_RU_Transfer,700,700,1000,0,2
+DockPoint					Res1,DPT_Worker_RU_Transfer,700,700,1000,0,2
+DockPoint					Leech0,DPT_Leech,700,700,1000,0,2
+DockPoint					Leech1,DPT_Leech,700,700,1000,0,2			
+DockPoint					Leech2,DPT_Leech,700,700,1000,0,2			
+DockPoint					Leech3,DPT_Leech,700,700,1000,0,2			
+DockPoint					Leech4,DPT_Leech,700,700,1000,0,2			
+DockPoint					Leech5,DPT_Leech,700,700,1000,0,2			
+DockPoint					Leech6,DPT_Leech,700,700,1000,0,2			
+DockPoint					Leech7,DPT_Leech,700,700,1000,0,2			
+DockPoint					Leech8,DPT_Leech,700,700,1000,0,2			
+DockPoint					Leech9,DPT_Leech,700,700,1000,0,2			
+DockPoint					Leech10,DPT_Leech,700,700,1000,0,2			
+DockPoint					Leech11,DPT_Leech,700,700,1000,0,2			
+;DockPoint                   Salvage1,DPT_Salvage,500,500,600,0,2
+;DockPoint                   Salvage2,DPT_Salvage,500,500,600,0,2
+;DockPoint                   Salvage3,DPT_Salvage,500,500,600,0,2
+;DockPoint                   Salvage4,DPT_Salvage,500,500,600,0,2
+;DockPoint                   Salvage5,DPT_Salvage,500,500,600,0,2
+DockPoint                   Crystal,DPT_Crystal_Process,500,0,10,0,2
+DockPoint                   CrysEffect,DPT_Crystal_Effect,500,500,600,0,2
+
+;Explosions
+;=--------=
+explosionType				ET_CarrierExplosion
+
+;Engine
+;=----=
+trailWidth					425
+trailHeight					325
+trailLength					575
+trailStyle					0
+trailScaleCap				0.000005		; N-LIPS for engine glow -- should be same as N-Lips value
+
+;Scaling effects
+;=--------=
+N-LIPS						0.000005		; Max value for Interceptors 0.0005
+
+;Navlights
+;=---------=
+NUMBER_OF_NAV_LIGHTS           8
+
+; format is NavLight		name,		type,			blinkrate (in seconds), size (in meters), min LOD, texture name
+NavLight					caution1,	NAVLIGHT_FadeOnOff, 1,   1,     0,      10,					2, etg\textures\star32
+NavLight					caution2,	NAVLIGHT_FadeOnOff, 1,   1,     0,      10,					2, etg\textures\star32
+NavLight					bow1,		NAVLIGHT_FadeOnOff, 0.5, 1,     0,      10,					2, etg\textures\star32
+NavLight					bow2,		NAVLIGHT_FadeOnOff, 0.5, 1,     0,      10,					2, etg\textures\star32
+NavLight					antenna1,	NAVLIGHT_FadeOnOff, 2,   0.5,   0,      7,					2, etg\textures\star32
+NavLight					antenna2,	NAVLIGHT_FadeOnOff, 2,   0.5,   0,      7,					2, etg\textures\star32
+NavLight					antenna3,	NAVLIGHT_FadeOnOff, 2,   0.5,   0,      7,					2, etg\textures\star32
+NavLight					side,		NAVLIGHT_FadeOnOff, 2,   0.8,   0,      7,					2, etg\textures\star32
+
+;Animation
+;=--------=
+;NONE
+

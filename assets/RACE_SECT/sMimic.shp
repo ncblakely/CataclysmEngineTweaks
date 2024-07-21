@@ -1,0 +1,652 @@
+[sMimic]
+
+;Source Files
+;=----------=
+LODFile								sMimic.lod
+pMexData							sMimic\Rl0\LOD0\sMimic.mex
+
+;Ship Physics
+;=----------=
+mass								10					; ship mass [fighter = 1]
+momentOfInertiaX					10					; resistance to rotation
+momentOfInertiaY					10					; [fighter = 1]
+momentOfInertiaZ					10
+maxvelocity							750					; [fighter = 1000]
+maxrot								10					; maximum rotation speed [don't make faster than ~10]
+thruststrength[TRANS_UP]			800					; acceleration (m/s^2) [1-1000 approx. range]
+thruststrength[TRANS_DOWN]			800	
+thruststrength[TRANS_RIGHT]			600	
+thruststrength[TRANS_LEFT]			600
+thruststrength[TRANS_FORWARD]		1000
+thruststrength[TRANS_BACK]			400
+rotstrength[ROT_YAWLEFT]			80					; rotational acceleration (deg/s^2) [0.01 - 1.0]
+rotstrength[ROT_YAWRIGHT]			80
+rotstrength[ROT_PITCHUP]        	80
+rotstrength[ROT_PITCHDOWN]      	80
+rotstrength[ROT_ROLLRIGHT]      	80
+rotstrength[ROT_ROLLLEFT]       	80
+turnspeed[TURN_YAW]					1.5					; speed at which ship tries to turn (1=standard)
+turnspeed[TURN_PITCH]				1.5
+turnspeed[TURN_ROLL]				1.5
+
+;Basic Ship Stats
+;=--------------=
+shipclass							CLASS_Fighter
+isCapitalShip                       FALSE
+buildCost							70					; resource units to build
+buildTime							15					; time in seconds to build
+supportUnits			    		3					; Support Units required
+providesSU			    			0	
+TimeShockedByEMP					2.5					; time in seconds the ship will be paralized when hit by one EMP charge
+maxhealth							40					; hit points
+groupSize							5					; size of group ships of this type tend to form
+repairTime							0					; every this many seconds
+repairDamage						0					; this much damage is repaired
+repairCombatTime                    0					; every this many seconds
+repairCombatDamage                  0					; this much damage is repaired
+repairDroids						0
+externalBuild						FALSE				; if TRUE, ship is built externally
+fowRadius							12000
+forceFieldProtectionDistanceScale	9.0
+approxcollmodifier					1.0					; use only % of collspheresize for rough approximations
+avoidcollmodifier					1.0					; use only % of collspheresize for collision avoidance
+blastRadiusShockWave                0.5		//MG don't kill other mimics
+blastRadiusDamage                   275
+minimumZoomDistance                 100
+UpgradeByDocking					TRUE
+bUseRayTriangleIntersectionForHitLocation	FALSE
+
+;Special
+;=-----=
+linkDistance                        50.0
+upgradeTimeModifier 					1.0
+
+; Pilot View
+;=---------=
+pilotViewOffsetX	10.0
+pilotViewOffsetY	0.0
+pilotViewOffsetZ	20.0
+
+;Weapons
+;=-----=
+rotateToRetaliate			TRUE
+passiveRetaliateZone		4000
+canTargetMultipleTargets	FALSE
+
+NUMBER_OF_GUNS				0
+
+; PG - guns have been removed from mimic craft
+;GUN		0
+;{
+;Type						GUN_HiddenGimble
+;GunSize						GUNSIZE_SMALL
+;StartUpgradeLevel			WEAPON_PROJECTILE
+;EndUpgradeLevel				WEAPON_ENERGY
+;DamageMult					1.0
+;BulletLength                15.0							; visual only.  Length of bullet on screen
+;BulletRange                 4000							; distance bullets travel before disappearing
+;BulletSpeed                 4000							; measured in m/s.
+;BulletMass                  0.0								; mass of bullet
+;FireTime                    0.3								; fire repeat rate (reciprocal = shots/second)
+;BurstFireTime               1.3
+;BurstWaitTime               1.0
+;MinAngle                    0
+;MaxAngle                    11
+;FireTime2					2.0
+;BulletSpeed2                1600.0			; measured in m/s.
+;}
+
+;Gun Bindings:
+;=----------=
+;NONE
+
+;Ship AI
+;=-----=
+
+;|||||||||||||||||||||||||||||||||||||||||------EVASIVE-------||||||||||||||||||||||||||||||||||||||||||||||||||||||
+;|||||||||||||||||||||||||||||||||||||||||------EVASIVE-------||||||||||||||||||||||||||||||||||||||||||||||||||||||
+;|||||||||||||||||||||||||||||||||||||||||------EVASIVE-------||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+;[Default]  --  used for ships where nothing else is defined (default behaviour)
+;
+flyPastDist             Evasive     Default             3300.0       ; dist which ship will try to fly past target - relative to CENTRE of ship
+maxFlyAwayDist          Evasive     Default             3600.0       ; maximum distance ship will fly away from target - relative to CENTRE of ship
+breakRange              Evasive     Default              925.0       ; range at which ship will break off for another pass - relative to SURFACE of ship
+triggerHappy            Evasive     Default               11.0       ; how close in degrees the ship needs to be to fire fixed guns
+faceTargetAccuracy      Evasive     Default                2.0       ; within how many degrees will try to align itself with target
+maxAttackTime           Evasive     Default                8.0       ; maximum time ship will attack before breaking
+
+                                                       ; Relative frequencies for:
+flightmanTurnaround     Evasive     Default             0,1,1,1,1              ; Turnaround: DONOTHING, FLIPTURN, HARDBANK, IMMELMAN, SPLIT_S
+flightmanAIP            Evasive     Default             0,1,0,0,0              ; Attack in progrees: NO_AIP, BARREL_ROLL, WHIP_STRAFE, HELIX_DELIVERY, BARRELROLL_OUT
+flightmanEvasiveBehind  Evasive     Default             5,5,30,30,10,10,10,0   ; Enemy behind evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasiveFront   Evasive     Default             5,5,30,30,10,10,10,0   ; Enemy in front evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasivePure    Evasive     Default             10,10,15,20,15,10,10,0 ; Just run away!: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+
+;[CLASS_Mothership]
+;
+flyPastDist             Evasive     CLASS_Mothership    6000.0
+maxFlyAwayDist          Evasive     CLASS_Mothership    8000.0
+breakRange              Evasive     CLASS_Mothership    3000.0
+triggerHappy            Evasive     CLASS_Mothership      11.0
+faceTargetAccuracy      Evasive     CLASS_Mothership       2.5
+maxAttackTime           Evasive     CLASS_Mothership       8.0
+
+                                                       ; Relative frequencies for:
+flightmanTurnaround     Evasive     CLASS_Mothership    2,3,3,2,0             ; Turnaround: DONOTHING, FLIPTURN, HARDBANK, IMMELMAN, SPLIT_S
+flightmanAIP            Evasive     CLASS_Mothership    8,3,0,0,0             ; Attack in progrees: NO_AIP, BARREL_ROLL, WHIP_STRAFE, HELIX_DELIVERY, BARRELROLL_OUT
+flightmanEvasiveBehind  Evasive     CLASS_Mothership    13,13,18,0,18,13,13,0 ; Enemy behind evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasiveFront   Evasive     CLASS_Mothership    13,13,18,0,18,13,13,0 ; Enemy in front evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasivePure    Evasive     CLASS_Mothership    13,13,18,0,18,13,13,0 ; Just run away!: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+
+
+;[CLASS_Carrier]
+;
+flyPastDist             Evasive     CLASS_Carrier       5000.0
+maxFlyAwayDist          Evasive     CLASS_Carrier       5500.0
+breakRange              Evasive     CLASS_Carrier       3000.0
+triggerHappy            Evasive     CLASS_Carrier         11.0
+faceTargetAccuracy      Evasive     CLASS_Carrier          2.5
+maxAttackTime           Evasive     CLASS_Carrier          8.0
+                                                       ; Relative frequencies for:
+flightmanTurnaround     Evasive     CLASS_Carrier       0,4,2,1,1       ; Turnaround: DONOTHING, FLIPTURN, HARDBANK, IMMELMAN, SPLIT_S
+flightmanAIP            Evasive     CLASS_Carrier       1,1,1,0,0       ; Attack in progrees: NO_AIP, BARREL_ROLL, WHIP_STRAFE, HELIX_DELIVERY, BARRELROLL_OUT
+flightmanEvasiveBehind  Evasive     CLASS_Carrier       0,0,0,0,0,0,0,0 ; Enemy behind evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasiveFront   Evasive     CLASS_Carrier       0,0,0,0,0,0,0,0 ; Enemy in front evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasivePure    Evasive     CLASS_Carrier       0,0,0,0,0,0,0,0 ; Just run away!: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+
+;[CLASS_HeavyCruiser]
+;
+flyPastDist             Evasive     CLASS_HeavyCruiser  5000.0
+maxFlyAwayDist          Evasive     CLASS_HeavyCruiser  5500.0
+breakRange              Evasive     CLASS_HeavyCruiser  3000.0
+triggerHappy            Evasive     CLASS_HeavyCruiser    11.0
+faceTargetAccuracy      Evasive     CLASS_HeavyCruiser     2.5
+maxAttackTime           Evasive     CLASS_HeavyCruiser     8.0
+                                                       ; Relative frequencies for:
+flightmanTurnaround     Evasive     CLASS_HeavyCruiser  0,4,2,1,1       ; Turnaround: DONOTHING, FLIPTURN, HARDBANK, IMMELMAN, SPLIT_S
+flightmanAIP            Evasive     CLASS_HeavyCruiser  1,1,1,0,0       ; Attack in progrees: NO_AIP, BARREL_ROLL, WHIP_STRAFE, HELIX_DELIVERY, BARRELROLL_OUT
+flightmanEvasiveBehind  Evasive     CLASS_HeavyCruiser  0,,0,0,0,0,0,0 ; Enemy behind evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasiveFront   Evasive     CLASS_HeavyCruiser  0,0,0,0,0,0,0,0 ; Enemy in front evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasivePure    Evasive     CLASS_HeavyCruiser  0,0,0,0,0,0,0,0 ; Just run away!: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+
+;[CLASS_Destroyer]
+;
+flyPastDist             Evasive     CLASS_Destroyer     5000.0
+maxFlyAwayDist          Evasive     CLASS_Destroyer     5500.0
+breakRange              Evasive     CLASS_Destroyer     3000.0
+triggerHappy            Evasive     CLASS_Destroyer       11.0
+faceTargetAccuracy      Evasive     CLASS_Destroyer        2.5
+maxAttackTime           Evasive     CLASS_Destroyer        8.0
+                                                       ; Relative frequencies for:
+flightmanTurnaround     Evasive     CLASS_Destroyer     0,2,2,1,1       ; Turnaround: DONOTHING, FLIPTURN, HARDBANK, IMMELMAN, SPLIT_S
+flightmanAIP            Evasive     CLASS_Destroyer     1,1,1,0,0       ; Attack in progrees: NO_AIP, BARREL_ROLL, WHIP_STRAFE, HELIX_DELIVERY, BARRELROLL_OUT
+flightmanEvasiveBehind  Evasive     CLASS_Destroyer     0,0,0,0,0,0,0,0 ; Enemy behind evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasiveFront   Evasive     CLASS_Destroyer     0,0,0,0,0,0,0,0 ; Enemy in front evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasivePure    Evasive     CLASS_Destroyer     0,0,0,0,0,0,0,0 ; Just run away!: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+
+;[CLASS_Frigate]
+;
+flyPastDist             Evasive     CLASS_Frigate       5000.0   //3000
+maxFlyAwayDist          Evasive     CLASS_Frigate       5500.0   //3300
+breakRange              Evasive     CLASS_Frigate       3000.0   //725
+triggerHappy            Evasive     CLASS_Frigate         11.0   //4
+faceTargetAccuracy      Evasive     CLASS_Frigate          2.0
+maxAttackTime           Evasive     CLASS_Frigate          8.0
+                                                       ; Relative frequencies for:
+flightmanTurnaround     Evasive     CLASS_Frigate       0,2,2,1,1       ; Turnaround: DONOTHING, FLIPTURN, HARDBANK, IMMELMAN, SPLIT_S
+flightmanAIP            Evasive     CLASS_Frigate       1,1,1,0,0       ; Attack in progrees: NO_AIP, BARREL_ROLL, WHIP_STRAFE, HELIX_DELIVERY, BARRELROLL_OUT
+flightmanEvasiveBehind  Evasive     CLASS_Frigate       0,0,0,0,0,0,0,0 ; Enemy behind evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasiveFront   Evasive     CLASS_Frigate       0,0,0,0,0,0,0,0 ; Enemy in front evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasivePure    Evasive     CLASS_Frigate       0,0,0,0,0,0,0,0 ; Just run away!: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+
+;[CLASS_Corvette]
+;
+flyPastDist             Evasive     CLASS_Corvette       3200.0
+maxFlyAwayDist          Evasive     CLASS_Corvette       3600.0
+breakRange              Evasive     CLASS_Corvette       550.0
+triggerHappy            Evasive     CLASS_Corvette        11.0
+faceTargetAccuracy      Evasive     CLASS_Corvette         3.5
+maxAttackTime           Evasive     CLASS_Corvette         8.0
+                                                       ; Relative frequencies for:
+flightmanTurnaround     Evasive     CLASS_Corvette      2,3,3,4,0             ; Turnaround: DONOTHING, FLIPTURN, HARDBANK, IMMELMAN, SPLIT_S
+flightmanAIP            Evasive     CLASS_Corvette      1,1,0,0,0             ; Attack in progrees: NO_AIP, BARREL_ROLL, WHIP_STRAFE, HELIX_DELIVERY, BARRELROLL_OUT
+flightmanEvasiveBehind  Evasive     CLASS_Corvette      13,13,18,0,18,13,13,0 ; Enemy behind evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasiveFront   Evasive     CLASS_Corvette      13,13,18,0,18,13,13,0 ; Enemy in front evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasivePure    Evasive     CLASS_Corvette      13,13,18,0,18,13,13,0 ; Just run away!: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+
+;[CLASS_Fighter]
+;
+flyPastDist             Evasive     CLASS_Fighter        2600.0
+maxFlyAwayDist          Evasive     CLASS_Fighter        2800.0
+breakRange              Evasive     CLASS_Fighter         600.0
+triggerHappy            Evasive     CLASS_Fighter         11.0
+faceTargetAccuracy      Evasive     CLASS_Fighter          0.5
+maxAttackTime           Evasive     CLASS_Fighter          8.0
+                                                       ; Relative frequencies for:
+flightmanTurnaround     Evasive     CLASS_Fighter       0,1,1,1,1              ; Turnaround: DONOTHING, FLIPTURN, HARDBANK, IMMELMAN, SPLIT_S
+flightmanAIP            Evasive     CLASS_Fighter       1,0,0,0,0              ; Attack in progrees: NO_AIP, BARREL_ROLL, WHIP_STRAFE, HELIX_DELIVERY, BARRELROLL_OUT
+flightmanEvasiveBehind  Evasive     CLASS_Fighter       5,5,30,30,10,10,10,0   ; Enemy behind evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasiveFront   Evasive     CLASS_Fighter       0,0,0,0,0,0,0,0   ; Enemy in front evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasivePure    Evasive     CLASS_Fighter       10,10,15,20,15,10,10,0 ; Just run away!: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+
+;[CLASS_Resource]
+;
+flyPastDist             Evasive     CLASS_Resource      5000.0
+maxFlyAwayDist          Evasive     CLASS_Resource      5500.0
+breakRange              Evasive     CLASS_Resource      3000.0
+triggerHappy            Evasive     CLASS_Resource        11.0
+faceTargetAccuracy      Evasive     CLASS_Resource         2.0
+maxAttackTime           Evasive     CLASS_Resource         8.0
+                                                       ; Relative frequencies for:
+flightmanTurnaround     Evasive     CLASS_Resource      0,4,2,1,1       ; Turnaround: DONOTHING, FLIPTURN, HARDBANK, IMMELMAN, SPLIT_S
+flightmanAIP            Evasive     CLASS_Resource      1,1,0,0,0       ; Attack in progrees: NO_AIP, BARREL_ROLL, WHIP_STRAFE, HELIX_DELIVERY, BARRELROLL_OUT
+flightmanEvasiveBehind  Evasive     CLASS_Resource      0,0,0,0,0,0,0,0 ; Enemy behind evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasiveFront   Evasive     CLASS_Resource      0,0,0,0,0,0,0,0 ; Enemy in front evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasivePure    Evasive     CLASS_Resource      0,0,0,0,0,0,0,0 ; Just run away!: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+
+;[CLASS_NonCombat]
+;
+flyPastDist             Evasive     CLASS_NonCombat     5000.0
+maxFlyAwayDist          Evasive     CLASS_NonCombat     5500.0
+breakRange              Evasive     CLASS_NonCombat     3000.0
+triggerHappy            Evasive     CLASS_NonCombat       11.0
+faceTargetAccuracy      Evasive     CLASS_NonCombat        2.5
+maxAttackTime           Evasive     CLASS_NonCombat        8.0
+                                                       ; Relative frequencies for:
+flightmanTurnaround     Evasive     CLASS_NonCombat     0,4,2,1,1       ; Turnaround: DONOTHING, FLIPTURN, HARDBANK, IMMELMAN, SPLIT_S
+flightmanAIP            Evasive     CLASS_NonCombat     1,1,0,0,0       ; Attack in progrees: NO_AIP, BARREL_ROLL, WHIP_STRAFE, HELIX_DELIVERY, BARRELROLL_OUT
+flightmanEvasiveBehind  Evasive     CLASS_NonCombat     0,0,0,0,0,0,0,0 ; Enemy behind evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasiveFront   Evasive     CLASS_NonCombat     0,0,0,0,0,0,0,0 ; Enemy in front evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasivePure    Evasive     CLASS_NonCombat     0,0,0,0,0,0,0,0 ; Just run away!: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+
+
+
+;|||||||||||||||||||||||||||||||||||||||||------NEUTRAL-------||||||||||||||||||||||||||||||||||||||||||||||||||||||
+;|||||||||||||||||||||||||||||||||||||||||------NEUTRAL-------||||||||||||||||||||||||||||||||||||||||||||||||||||||
+;|||||||||||||||||||||||||||||||||||||||||------NEUTRAL-------||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+;[Default]  --  used for ships where nothing else is defined (default behaviour)
+;
+flyPastDist             Neutral     Default             3300.0    ; dist which ship will try to fly past target - relative to CENTRE of ship
+maxFlyAwayDist          Neutral     Default             3600.0    ; maximum distance ship will fly away from target - relative to CENTRE of ship
+breakRange              Neutral     Default              925.0    ; range at which ship will break off for another pass - relative to SURFACE of ship
+triggerHappy            Neutral     Default               11.0    ; how close in degrees the ship needs to be to fire fixed guns
+faceTargetAccuracy      Neutral     Default                2.0    ; within how many degrees will try to align itself with target
+maxAttackTime           Neutral     Default                8.0    ; maximum time ship will attack before breaking
+
+                                                       ; Relative frequencies for:
+flightmanTurnaround     Neutral     Default             0,1,1,1,1              ; Turnaround: DONOTHING, FLIPTURN, HARDBANK, IMMELMAN, SPLIT_S
+flightmanAIP            Neutral     Default             0,1,0,0,0              ; Attack in progrees: NO_AIP, BARREL_ROLL, WHIP_STRAFE, HELIX_DELIVERY, BARRELROLL_OUT
+flightmanEvasiveBehind  Neutral     Default             5,5,30,30,10,10,10,0   ; Enemy behind evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasiveFront   Neutral     Default             5,5,30,30,10,10,10,0   ; Enemy in front evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasivePure    Neutral     Default             10,10,15,20,15,10,10,0 ; Just run away!: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+
+;[CLASS_Mothership]
+;
+flyPastDist             Neutral     CLASS_Mothership    6000.0
+maxFlyAwayDist          Neutral     CLASS_Mothership    8000.0
+breakRange              Neutral     CLASS_Mothership    3000.0
+triggerHappy            Neutral     CLASS_Mothership      11.0
+faceTargetAccuracy      Neutral     CLASS_Mothership       2.5
+maxAttackTime           Neutral     CLASS_Mothership       8.0
+
+                                                       ; Relative frequencies for:
+flightmanTurnaround     Neutral     CLASS_Mothership    2,3,3,2,0             ; Turnaround: DONOTHING, FLIPTURN, HARDBANK, IMMELMAN, SPLIT_S
+flightmanAIP            Neutral     CLASS_Mothership    8,3,1,0,0             ; Attack in progrees: NO_AIP, BARREL_ROLL, WHIP_STRAFE, HELIX_DELIVERY, BARRELROLL_OUT
+flightmanEvasiveBehind  Neutral     CLASS_Mothership    13,13,18,0,18,13,13,0 ; Enemy behind evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasiveFront   Neutral     CLASS_Mothership    13,13,18,0,18,13,13,0 ; Enemy in front evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasivePure    Neutral     CLASS_Mothership    13,13,18,0,18,13,13,0 ; Just run away!: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+
+
+;[CLASS_Carrier]
+;
+flyPastDist             Neutral     CLASS_Carrier       5000.0
+maxFlyAwayDist          Neutral     CLASS_Carrier       5500.0
+breakRange              Neutral     CLASS_Carrier       3000.0
+triggerHappy            Neutral     CLASS_Carrier         11.0
+faceTargetAccuracy      Neutral     CLASS_Carrier          2.5
+maxAttackTime           Neutral     CLASS_Carrier          8.0
+                                                       ; Relative frequencies for:
+flightmanTurnaround     Neutral     CLASS_Carrier       0,4,2,1,1       ; Turnaround: DONOTHING, FLIPTURN, HARDBANK, IMMELMAN, SPLIT_S
+flightmanAIP            Neutral     CLASS_Carrier       1,1,0,0,0       ; Attack in progrees: NO_AIP, BARREL_ROLL, WHIP_STRAFE, HELIX_DELIVERY, BARRELROLL_OUT
+flightmanEvasiveBehind  Neutral     CLASS_Carrier       0,0,0,0,0,0,0,0 ; Enemy behind evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasiveFront   Neutral     CLASS_Carrier       0,0,0,0,0,0,0,0 ; Enemy in front evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasivePure    Neutral     CLASS_Carrier       0,0,0,0,0,0,0,0 ; Just run away!: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+
+;[CLASS_HeavyCruiser]
+;
+flyPastDist             Neutral     CLASS_HeavyCruiser  5000.0
+maxFlyAwayDist          Neutral     CLASS_HeavyCruiser  5500.0
+breakRange              Neutral     CLASS_HeavyCruiser  3000.0
+triggerHappy            Neutral     CLASS_HeavyCruiser    11.0
+faceTargetAccuracy      Neutral     CLASS_HeavyCruiser     2.5
+maxAttackTime           Neutral     CLASS_HeavyCruiser     8.0
+                                                       ; Relative frequencies for:
+flightmanTurnaround     Neutral     CLASS_HeavyCruiser  0,4,2,1,1       ; Turnaround: DONOTHING, FLIPTURN, HARDBANK, IMMELMAN, SPLIT_S
+flightmanAIP            Neutral     CLASS_HeavyCruiser  1,1,0,0,0       ; Attack in progrees: NO_AIP, BARREL_ROLL, WHIP_STRAFE, HELIX_DELIVERY, BARRELROLL_OUT
+flightmanEvasiveBehind  Neutral     CLASS_HeavyCruiser  0,0,0,0,0,0,0,0 ; Enemy behind evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasiveFront   Neutral     CLASS_HeavyCruiser  0,0,0,0,0,0,0,0 ; Enemy in front evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasivePure    Neutral     CLASS_HeavyCruiser  0,0,0,0,0,0,0,0 ; Just run away!: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+
+;[CLASS_Destroyer]
+;
+flyPastDist             Neutral     CLASS_Destroyer     5000.0
+maxFlyAwayDist          Neutral     CLASS_Destroyer     5500.0
+breakRange              Neutral     CLASS_Destroyer     3000.0
+triggerHappy            Neutral     CLASS_Destroyer       11.0
+faceTargetAccuracy      Neutral     CLASS_Destroyer        2.5
+maxAttackTime           Neutral     CLASS_Destroyer        8.0
+                                                       ; Relative frequencies for:
+flightmanTurnaround     Neutral     CLASS_Destroyer     0,2,2,1,1       ; Turnaround: DONOTHING, FLIPTURN, HARDBANK, IMMELMAN, SPLIT_S
+flightmanAIP            Neutral     CLASS_Destroyer     1,0,0,0,0       ; Attack in progrees: NO_AIP, BARREL_ROLL, WHIP_STRAFE, HELIX_DELIVERY, BARRELROLL_OUT
+flightmanEvasiveBehind  Neutral     CLASS_Destroyer     0,0,0,0,0,0,0,0 ; Enemy behind evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasiveFront   Neutral     CLASS_Destroyer     0,0,0,0,0,0,0,0 ; Enemy in front evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasivePure    Neutral     CLASS_Destroyer     0,0,0,0,0,0,0,0 ; Just run away!: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+
+;[CLASS_Frigate]
+;
+flyPastDist             Neutral     CLASS_Frigate       5000.0
+maxFlyAwayDist          Neutral     CLASS_Frigate       5500.0
+breakRange              Neutral     CLASS_Frigate       3000.0  //725
+triggerHappy            Neutral     CLASS_Frigate         11.0
+faceTargetAccuracy      Neutral     CLASS_Frigate          1.0
+maxAttackTime           Neutral     CLASS_Frigate          8.0
+                                                       ; Relative frequencies for:
+flightmanTurnaround     Neutral     CLASS_Frigate       0,2,2,1,1       ; Turnaround: DONOTHING, FLIPTURN, HARDBANK, IMMELMAN, SPLIT_S
+flightmanAIP            Neutral     CLASS_Frigate       1,0,0,0,0       ; Attack in progrees: NO_AIP, BARREL_ROLL, WHIP_STRAFE, HELIX_DELIVERY, BARRELROLL_OUT
+flightmanEvasiveBehind  Neutral     CLASS_Frigate       0,0,0,0,0,0,0,0 ; Enemy behind evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasiveFront   Neutral     CLASS_Frigate       0,0,0,0,0,0,0,0 ; Enemy in front evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasivePure    Neutral     CLASS_Frigate       0,0,0,0,0,0,0,0 ; Just run away!: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+
+;[CLASS_Corvette]
+;
+flyPastDist             Neutral     CLASS_Corvette      3200.0
+maxFlyAwayDist          Neutral     CLASS_Corvette      3600.0
+breakRange              Neutral     CLASS_Corvette      550.0
+triggerHappy            Neutral     CLASS_Corvette       11.0
+faceTargetAccuracy      Neutral     CLASS_Corvette        4.5
+maxAttackTime           Neutral     CLASS_Corvette        8.0
+                                                        Relative frequenciesfor:
+flightmanTurnaround     Neutral     CLASS_Corvette     2,3,3,4,0            ; Turnaround: DONOTHING, FLIPTURN, HARDBANK, IMMELMAN, SPLIT_S
+flightmanAIP            Neutral     CLASS_Corvette     1,0,0,0,0            ; Attack in progrees: NO_AIP, BARREL_ROLL, WHIP_STRAFE, HELIX_DELIVERY, BARRELROLL_OUT
+flightmanEvasiveBehind  Neutral     CLASS_Corvette     13,13,18,0,18,13,13,0; Enemy behind evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasiveFront   Neutral     CLASS_Corvette     13,13,18,0,18,13,13,0; Enemy in front evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasivePure    Neutral     CLASS_Corvette     13,13,18,0,18,13,13,0; Just run away!: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+
+;[CLASS_Fighter]
+;
+flyPastDist             Neutral     CLASS_Fighter        2600.0
+maxFlyAwayDist          Neutral     CLASS_Fighter        2800.0
+breakRange              Neutral     CLASS_Fighter         600.0
+triggerHappy            Neutral     CLASS_Fighter         11.0
+faceTargetAccuracy      Neutral     CLASS_Fighter          0.5
+maxAttackTime           Neutral     CLASS_Fighter          8.0
+                                                       ; Relative frequencies for:
+flightmanTurnaround     Neutral     CLASS_Fighter       0,1,1,1,1              ; Turnaround: DONOTHING, FLIPTURN, HARDBANK, IMMELMAN, SPLIT_S
+flightmanAIP            Neutral     CLASS_Fighter       1,0,0,0,0              ; Attack in progrees: NO_AIP, BARREL_ROLL, WHIP_STRAFE, HELIX_DELIVERY, BARRELROLL_OUT
+flightmanEvasiveBehind  Neutral     CLASS_Fighter       5,5,30,30,10,10,10,0   ; Enemy behind evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasiveFront   Neutral     CLASS_Fighter       0,0,0,0,0,0,0,0   ; Enemy in front evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasivePure    Neutral     CLASS_Fighter       10,10,15,20,15,10,10,0 ; Just run away!: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+
+;[CLASS_Resource]
+;
+flyPastDist             Neutral     CLASS_Resource      5000.0
+maxFlyAwayDist          Neutral     CLASS_Resource      5500.0
+breakRange              Neutral     CLASS_Resource      3000.0
+triggerHappy            Neutral     CLASS_Resource        11.0
+faceTargetAccuracy      Neutral     CLASS_Resource         2.0
+maxAttackTime           Neutral     CLASS_Resource         8.0
+                                                       ; Relative frequencies for:
+flightmanTurnaround     Neutral     CLASS_Resource      0,4,2,1,1       ; Turnaround: DONOTHING, FLIPTURN, HARDBANK, IMMELMAN, SPLIT_S
+flightmanAIP            Neutral     CLASS_Resource      1,1,0,0,0       ; Attack in progrees: NO_AIP, BARREL_ROLL, WHIP_STRAFE, HELIX_DELIVERY, BARRELROLL_OUT
+flightmanEvasiveBehind  Neutral     CLASS_Resource      0,0,0,0,0,0,0,0 ; Enemy behind evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasiveFront   Neutral     CLASS_Resource      0,0,0,0,0,0,0,0 ; Enemy in front evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasivePure    Neutral     CLASS_Resource      0,0,0,0,0,0,0,0 ; Just run away!: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+
+;[CLASS_NonCombat]
+;
+flyPastDist             Neutral     CLASS_NonCombat     5000.0
+maxFlyAwayDist          Neutral     CLASS_NonCombat     5500.0
+breakRange              Neutral     CLASS_NonCombat     3000.0
+triggerHappy            Neutral     CLASS_NonCombat       11.0
+faceTargetAccuracy      Neutral     CLASS_NonCombat        2.5
+maxAttackTime           Neutral     CLASS_NonCombat        8.0
+                                                       ; Relative frequencies for:
+flightmanTurnaround     Neutral     CLASS_NonCombat     0,4,2,1,1       ; Turnaround: DONOTHING, FLIPTURN, HARDBANK, IMMELMAN, SPLIT_S
+flightmanAIP            Neutral     CLASS_NonCombat     1,1,0,0,0       ; Attack in progrees: NO_AIP, BARREL_ROLL, WHIP_STRAFE, HELIX_DELIVERY, BARRELROLL_OUT
+flightmanEvasiveBehind  Neutral     CLASS_NonCombat     0,0,0,0,0,0,0,0 ; Enemy behind evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasiveFront   Neutral     CLASS_NonCombat     0,0,0,0,0,0,0,0 ; Enemy in front evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasivePure    Neutral     CLASS_NonCombat     0,0,0,0,0,0,0,0 ; Just run away!: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+
+
+
+;|||||||||||||||||||||||||||||||||||||||||------AGGRESSIVE-------||||||||||||||||||||||||||||||||||||||||||||||||||||||
+;|||||||||||||||||||||||||||||||||||||||||------AGGRESSIVE-------||||||||||||||||||||||||||||||||||||||||||||||||||||||
+;|||||||||||||||||||||||||||||||||||||||||------AGGRESSIVE-------||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+;[Default]  --  used for ships where nothing else is defined (default behaviour)
+;
+flyPastDist             Aggressive      Default             3300.0    ; dist which ship will try to fly past target - relative to CENTRE of ship
+maxFlyAwayDist          Aggressive      Default             3600.0    ; maximum distance ship will fly away from target - relative to CENTRE of ship
+breakRange              Aggressive      Default              925.0    ; range at which ship will break off for another pass - relative to SURFACE of ship
+triggerHappy            Aggressive      Default               11.0    ; how close in degrees the ship needs to be to fire fixed guns
+faceTargetAccuracy      Aggressive      Default                2.0    ; within how many degrees will try to align itself with target
+maxAttackTime           Aggressive      Default                8.0    ; maximum time ship will attack before breaking
+
+                                                       ; Relative frequencies for:
+flightmanTurnaround     Aggressive      Default             0,1,1,1,1              ; Turnaround: DONOTHING, FLIPTURN, HARDBANK, IMMELMAN, SPLIT_S
+flightmanAIP            Aggressive      Default             0,1,0,0,0              ; Attack in progrees: NO_AIP, BARREL_ROLL, WHIP_STRAFE, HELIX_DELIVERY, BARRELROLL_OUT
+flightmanEvasiveBehind  Aggressive      Default             5,5,30,30,10,10,10,0   ; Enemy behind evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasiveFront   Aggressive      Default             5,5,30,30,10,10,10,0   ; Enemy in front evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasivePure    Aggressive      Default             10,10,15,20,15,10,10,0 ; Just run away!: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+
+;[CLASS_Mothership]
+;
+flyPastDist             Aggressive      CLASS_Mothership    6000.0
+maxFlyAwayDist          Aggressive      CLASS_Mothership    8000.0
+breakRange              Aggressive      CLASS_Mothership    3000.0
+triggerHappy            Aggressive      CLASS_Mothership      11.0
+faceTargetAccuracy      Aggressive      CLASS_Mothership       2.5
+maxAttackTime           Aggressive      CLASS_Mothership       8.0
+
+                                                       ; Relative frequencies for:
+flightmanTurnaround     Aggressive      CLASS_Mothership    2,3,3,2,0             ; Turnaround: DONOTHING, FLIPTURN, HARDBANK, IMMELMAN, SPLIT_S
+flightmanAIP            Aggressive      CLASS_Mothership    8,3,1,0,0             ; Attack in progrees: NO_AIP, BARREL_ROLL, WHIP_STRAFE, HELIX_DELIVERY, BARRELROLL_OUT
+flightmanEvasiveBehind  Aggressive      CLASS_Mothership    13,13,18,0,18,13,13,0 ; Enemy behind evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasiveFront   Aggressive      CLASS_Mothership    13,13,18,0,18,13,13,0 ; Enemy in front evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasivePure    Aggressive      CLASS_Mothership    13,13,18,0,18,13,13,0 ; Just run away!: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+
+
+;[CLASS_Carrier]
+;
+flyPastDist             Aggressive      CLASS_Carrier       5000.0
+maxFlyAwayDist          Aggressive      CLASS_Carrier       5500.0
+breakRange              Aggressive      CLASS_Carrier       3000.0
+triggerHappy            Aggressive      CLASS_Carrier         11.0
+faceTargetAccuracy      Aggressive      CLASS_Carrier          2.5
+maxAttackTime           Aggressive      CLASS_Carrier          8.0
+                                                           ; Relative frequencies for:
+flightmanTurnaround     Aggressive      CLASS_Carrier       0,4,2,1,1       ; Turnaround: DONOTHING, FLIPTURN, HARDBANK, IMMELMAN, SPLIT_S
+flightmanAIP            Aggressive      CLASS_Carrier       1,1,0,0,0       ; Attack in progrees: NO_AIP, BARREL_ROLL, WHIP_STRAFE, HELIX_DELIVERY, BARRELROLL_OUT
+flightmanEvasiveBehind  Aggressive      CLASS_Carrier       0,0,0,0,0,0,0,0 ; Enemy behind evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasiveFront   Aggressive      CLASS_Carrier       0,0,0,0,0,0,0,0 ; Enemy in front evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasivePure    Aggressive      CLASS_Carrier       0,0,0,0,0,0,0,0 ; Just run away!: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+
+;[CLASS_HeavyCruiser]
+;
+flyPastDist             Aggressive      CLASS_HeavyCruiser  5000.0
+maxFlyAwayDist          Aggressive      CLASS_HeavyCruiser  5500.0
+breakRange              Aggressive      CLASS_HeavyCruiser  3000.0
+triggerHappy            Aggressive      CLASS_HeavyCruiser    11.0
+faceTargetAccuracy      Aggressive      CLASS_HeavyCruiser     2.5
+maxAttackTime           Aggressive      CLASS_HeavyCruiser     8.0
+                                                           ; Relative frequencies for:
+flightmanTurnaround     Aggressive      CLASS_HeavyCruiser  0,4,2,1,1       ; Turnaround: DONOTHING, FLIPTURN, HARDBANK, IMMELMAN, SPLIT_S
+flightmanAIP            Aggressive      CLASS_HeavyCruiser  1,1,0,0,0       ; Attack in progrees: NO_AIP, BARREL_ROLL, WHIP_STRAFE, HELIX_DELIVERY, BARRELROLL_OUT
+flightmanEvasiveBehind  Aggressive      CLASS_HeavyCruiser  0,0,0,0,0,0,0,0 ; Enemy behind evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasiveFront   Aggressive      CLASS_HeavyCruiser  0,0,0,0,0,0,0,0 ; Enemy in front evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasivePure    Aggressive      CLASS_HeavyCruiser  0,0,0,0,0,0,0,0 ; Just run away!: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+
+;[CLASS_Destroyer]
+;
+flyPastDist             Aggressive      CLASS_Destroyer     5000.0
+maxFlyAwayDist          Aggressive      CLASS_Destroyer     5500.0
+breakRange              Aggressive      CLASS_Destroyer     3000.0
+triggerHappy            Aggressive      CLASS_Destroyer       11.0
+faceTargetAccuracy      Aggressive      CLASS_Destroyer        2.5
+maxAttackTime           Aggressive      CLASS_Destroyer        8.0
+                                                           ; Relative frequencies for:
+flightmanTurnaround     Aggressive      CLASS_Destroyer     0,2,2,1,1       ; Turnaround: DONOTHING, FLIPTURN, HARDBANK, IMMELMAN, SPLIT_S
+fightmanAIP            Aggressive      CLASS_Destroyer     1,0,0,0,0       ; Attack in progrees: NO_AIP, BARREL_ROLL, WHIP_STRAFE, HELIX_DELIVERY, BARRELROLL_OUT
+flightmanEvasiveBehind  Aggressive      CLASS_Destroyer     0,0,0,0,0,0,0,0 ; Enemy behind evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasiveFront   Aggressive      CLASS_Destroyer     0,0,0,0,0,0,0,0 ; Enemy in front evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasivePure    Aggressive      CLASS_Destroyer     0,0,0,0,0,0,0,0 ; Just run away!: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+
+;[CLASS_Frigate]
+;
+flyPastDist             Aggressive      CLASS_Frigate       5000.0
+maxFlyAwayDist          Aggressive      CLASS_Frigate       5500.0
+breakRange              Aggressive      CLASS_Frigate       3000.0 //725
+triggerHappy            Aggressive      CLASS_Frigate         11.0
+faceTargetAccuracy      Aggressive      CLASS_Frigate          2.0
+maxAttackTime           Aggressive      CLASS_Frigate          8.0
+
+                                                           ; Relative frequencies for:
+flightmanTurnaround     Aggressive      CLASS_Frigate       0,2,2,1,1       ; Turnaround: DONOTHING, FLIPTURN, HARDBANK, IMMELMAN, SPLIT_S
+flightmanAIP            Aggressive      CLASS_Frigate       1,0,0,0,0       ; Attack in progrees: NO_AIP, BARREL_ROLL, WHIP_STRAFE, HELIX_DELIVERY, BARRELROLL_OUT
+flightmanEvasiveBehind  Aggressive      CLASS_Frigate       0,0,0,0,0,0,0,0 ; Enemy behind evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasiveFront   Aggressive      CLASS_Frigate       0,0,0,0,0,0,0,0 ; Enemy in front evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasivePure    Aggressive      CLASS_Frigate       0,0,0,0,0,0,0,0 ; Just run away!: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+
+;[CLASS_Corvette]
+;
+flyPastDist             Aggressive      CLASS_Corvette       3000.0
+maxFlyAwayDist          Aggressive      CLASS_Corvette       3600.0
+breakRange              Aggressive      CLASS_Corvette       450.0
+triggerHappy            Aggressive      CLASS_Corvette        11.0
+faceTargetAccuracy      Aggressive      CLASS_Corvette         3.5
+maxAttackTime           Aggressive      CLASS_Corvette         8.0
+                                                           ; Relative frequencies for:
+flightmanTurnaround     Aggressive      CLASS_Corvette      2,3,3,2,0             ; Turnaround: DONOTHING, FLIPTURN, HARDBANK, IMMELMAN, SPLIT_S
+flightmanAIP            Aggressive      CLASS_Corvette      1,0,0,0,0             ; Attack in progrees: NO_AIP, BARREL_ROLL, WHIP_STRAFE, HELIX_DELIVERY, BARRELROLL_OUT
+flightmanEvasiveBehind  Aggressive      CLASS_Corvette      13,13,18,0,18,13,13,0 ; Enemy behind evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasiveFront   Aggressive      CLASS_Corvette      13,13,18,0,18,13,13,0 ; Enemy in front evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasivePure    Aggressive      CLASS_Corvette      13,13,18,0,18,13,13,0 ; Just run away!: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+
+;[CLASS_Fighter]
+;
+flyPastDist             Aggressive      CLASS_Fighter        2600.0
+maxFlyAwayDist          Aggressive      CLASS_Fighter        2800.0
+breakRange              Aggressive      CLASS_Fighter         600.0
+triggerHappy            Aggressive      CLASS_Fighter         11.0
+faceTargetAccuracy      Aggressive      CLASS_Fighter          0.5
+maxAttackTime           Aggressive      CLASS_Fighter          8.0
+                                                           ; Relative frequencies for:
+flightmanTurnaround     Aggressive      CLASS_Fighter       0,1,1,1,1              ; Turnaround: DONOTHING, FLIPTURN, HARDBANK, IMMELMAN, SPLIT_S
+flightmanAIP            Aggressive      CLASS_Fighter       1,0,0,0,0              ; Attack in progrees: NO_AIP, BARREL_ROLL, WHIP_STRAFE, HELIX_DELIVERY, BARRELROLL_OUT
+flightmanEvasiveBehind  Aggressive      CLASS_Fighter       5,5,30,30,10,10,10,0   ; Enemy behind evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasiveFront   Aggressive      CLASS_Fighter       0,0,0,0,0,0,0,0   ; Enemy in front evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasivePure    Aggressive      CLASS_Fighter       10,10,15,20,15,10,10,0 ; Just run away!: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+
+;[CLASS_Resource]
+;
+flyPastDist             Aggressive      CLASS_Resource      5000.0
+maxFlyAwayDist          Aggressive      CLASS_Resource      5500.0
+breakRange              Aggressive      CLASS_Resource      3000.0
+triggerHappy            Aggressive      CLASS_Resource        11.0
+faceTargetAccuracy      Aggressive      CLASS_Resource         2.0
+maxAttackTime           Aggressive      CLASS_Resource         8.0
+                                                           ; Relative frequencies for:
+flightmanTurnaround     Aggressive      CLASS_Resource      0,4,2,1,1       ; Turnaround: DONOTHING, FLIPTURN, HARDBANK, IMMELMAN, SPLIT_S
+flightmanAIP            Aggressive      CLASS_Resource      1,1,0,0,0       ; Attack in progrees: NO_AIP, BARREL_ROLL, WHIP_STRAFE, HELIX_DELIVERY, BARRELROLL_OUT
+flightmanEvasiveBehind  Aggressive      CLASS_Resource      0,0,0,0,0,0,0,0 ; Enemy behind evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasiveFront   Aggressive      CLASS_Resource      0,0,0,0,0,0,0,0 ; Enemy in front evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasivePure    Aggressive      CLASS_Resource      0,0,0,0,0,0,0,0 ; Just run away!: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+
+;[CLASS_NonCombat]
+;
+flyPastDist             Aggressive      CLASS_NonCombat     5000.0
+maxFlyAwayDist          Aggressive      CLASS_NonCombat     5500.0
+breakRange              Aggressive      CLASS_NonCombat     3000.0
+triggerHappy            Aggressive      CLASS_NonCombat       11.0
+faceTargetAccuracy      Aggressive      CLASS_NonCombat        2.5
+maxAttackTime           Aggressive      CLASS_NonCombat        8.0
+                                                           ; Relative frequencies for:
+flightmanTurnaround     Aggressive      CLASS_NonCombat     0,4,2,1,1       ; Turnaround: DONOTHING, FLIPTURN, HARDBANK, IMMELMAN, SPLIT_S
+flightmanAIP            Aggressive      CLASS_NonCombat     1,1,0,0,0       ; Attack in progrees: NO_AIP, BARREL_ROLL, WHIP_STRAFE, HELIX_DELIVERY, BARRELROLL_OUT
+flightmanEvasiveBehind  Aggressive      CLASS_NonCombat     0,0,0,0,0,0,0,0 ; Enemy behind evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasiveFront   Aggressive      CLASS_NonCombat     0,0,0,0,0,0,0,0 ; Enemy in front evasive: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+flightmanEvasivePure    Aggressive      CLASS_NonCombat     0,0,0,0,0,0,0,0 ; Just run away!: ROLLAWAY, SOFTBANK, SPLITS_EVASIVE, SLALOM, SIDESTEP, LOYOYO, HIYOYO, SPEEDBRAKE
+
+;Dock Points
+;=---------=
+NUMBER_OF_DOCK_POINTS		1
+
+; format is DockPoint		name,type,flyawaydist,mindist,maxdist,[headingdirection,updirection]  (0=up,1=right,2=forward,4=down,5=left,6=back) for direction
+
+DockPoint					Link,DPT_Link,135,135,150,0,2
+
+;Explosions
+;=--------=
+explosionType					ET_InterceptorExplosion
+
+;Engine
+;=-------=
+trailSegments					10
+trailGranularity				2
+trailColor						0, 0, 0, 0, 0           ;grey team
+trailColor						0, 1, 238, 238, 238
+trailColor						0, 4, 141, 106, 87
+trailColor						0, 9, 0, 0, 0
+trailColor						1, 0, 0, 0, 0           ;red team
+trailColor						1, 1, 225, 124, 33
+trailColor						1, 4, 146, 0, 0
+trailColor						1, 9, 0, 0, 0
+trailColor						2, 0, 0, 0, 0           ;blue team
+trailColor						2, 1, 11, 255, 255
+trailColor						2, 4, 51, 0, 243
+trailColor						2, 9, 0, 0, 0
+trailColor						3, 0, 0, 0, 0           ;green team
+trailColor						3, 1, 201, 254, 39
+trailColor						3, 4, 0, 84, 4
+trailColor						3, 9, 0, 0, 0
+trailColor						4, 0, 0, 0, 0           ;yellow team
+trailColor						4, 1, 255, 240, 97
+trailColor						4, 4, 160, 124, 0
+trailColor						4, 9, 0, 0, 0
+trailColor						5, 0, 0, 0, 0           ;orange team
+trailColor						5, 1, 225, 255, 11
+trailColor						5, 4, 160, 124, 0
+trailColor						5, 9, 0, 0, 0
+trailColor						6, 0, 0, 0, 0           ;purple team
+trailColor						6, 1, 255, 135, 157
+trailColor						6, 4, 121, 0, 135
+trailColor						6, 9, 0, 0, 0
+trailColor						7, 0, 0, 0, 0           ;pale blue-green team
+trailColor						7, 1, 45, 255, 149
+trailColor						7, 4, 0, 105, 137
+trailColor						7, 9, 0, 0, 0
+
+trailWidth						12
+trailHeight						6
+trailAngle						0
+
+;Scaling effects
+;=--------=
+N-LIPS							0.000200				; Max value for Interceptors 0.0005
+
+;Navlights
+;=---------=
+;NONE
+
+;Animation
+;=--------=
+NUMBER_OF_ANIMS		2
+
+ANIM 0				link
+ANIM 1				unlink
+;ANIM 2				Mimic
+
+
+l0

@@ -24,6 +24,7 @@
 #include <keystone/keystone.h>
 #include <fmt/format.h>
 #include <fmt/xchar.h>
+#include <fmt/compile.h>
 #include <spdlog/spdlog.h>
 #include <MinHook.h>
 
@@ -31,5 +32,9 @@
 #include "Main.h"
 
 typedef unsigned long long uint64;
+
+#define countof(array) (sizeof(array) / sizeof(array[0]))
+
+#define ASSERT_OFFSET(_struct, field, offset) static_assert(offsetof(_struct, field) == offset, #_struct "." #field " at unexpected offset.")
 
 #endif //PCH_H

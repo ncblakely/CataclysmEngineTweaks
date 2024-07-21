@@ -1,0 +1,230 @@
+[bMultiBeamFrigate]
+
+;Source Files
+;=----------=
+LODFile								bMultiBeamFrigate.lod
+pMexData							bMultiBeamFrigate\Rl0\LOD0\bMultiBeamFrigate.mex
+
+;Ship Physics
+;=----------=
+mass								400					; ship mass [fighter = 1]
+momentOfInertiaX					400					; resistance to rotation
+momentOfInertiaY					400					; [fighter = 1]
+momentOfInertiaZ					400
+maxvelocity							330					; [fighter = 1000]
+maxrot								10					; maximum rotation speed [don't make faster than ~10]
+thruststrength[TRANS_UP]            75.0                         ; acceleration (m/s^2) [1-1000 approx. range]
+thruststrength[TRANS_DOWN]          75.0
+thruststrength[TRANS_RIGHT]         75.0
+thruststrength[TRANS_LEFT]          75.0
+thruststrength[TRANS_FORWARD]       125.0
+thruststrength[TRANS_BACK]          75.0
+rotstrength[ROT_YAWLEFT]            0.35                          ; rotational acceleration (deg/s^2) [0.01 - 10]
+rotstrength[ROT_YAWRIGHT]           0.35
+rotstrength[ROT_PITCHUP]            0.08
+rotstrength[ROT_PITCHDOWN]          0.08
+rotstrength[ROT_ROLLRIGHT]          0.08
+rotstrength[ROT_ROLLLEFT]           0.08
+turnspeed[TURN_YAW]                 0.5                          ; speed at which ship tries to turn (1=standard)
+turnspeed[TURN_PITCH]               0.5
+turnspeed[TURN_ROLL]                0.5
+
+;Basic Ship Stats
+;=--------------=
+shipclass							CLASS_Frigate
+isCapitalShip                       TRUE
+buildCost							800					; resource units to build
+buildTime							70					; time in seconds to build
+supportUnits			    		12					; Support Units required
+providesSU			    			0	
+TimeShockedByEMP					2.0				; time in seconds the ship will be paralized when hit by one EMP charge
+maxhealth							11500				; hit points
+groupSize							2					; size of group ships of this type tend to form
+repairTime							5					; every this many seconds
+repairDamage						85					; this much damage is repaired
+repairCombatTime                    5					; every this many seconds
+repairCombatDamage                  17					; this much damage is repaired
+repairDroids						0
+externalBuild						FALSE				; if TRUE, ship is built externally
+fowRadius							12000
+forceFieldProtectionDistanceScale	3.0
+approxcollmodifier					1.0					; use only % of collspheresize for rough approximations
+avoidcollmodifier					1.0					; use only % of collspheresize for collision avoidance
+blastRadiusShockWave                2.75
+blastRadiusDamage                   275
+minimumZoomDistance                 300
+UpgradeByDocking					FALSE
+
+;Special
+;=------=
+MultiBeamRangeRatio					0.75				; ratio of gun range (desired range to target)
+
+; PG - This is so that the Beast ship can take over other Beast ships in multiplayer
+beastAttackCascadeCost				10					; number of points required for attack to cascade to this ship
+beastAttacksRequired				1					; number of times you must hit this ship before it converts.
+beastAttackConvertTo				bMultiBeamFrigate   ; convert to this kind of ship
+
+upgradeTimeModifier                 2.0
+
+repositionTime                      0.6                        ; time in seconds which corvette will spend to reposition
+                                                               ; itself to a new location for it to fire.
+circleRange                         1500.0
+fullMovementFreedom					FALSE
+
+; Pilot View
+;=---------=
+pilotViewOffsetX	25.0
+pilotViewOffsetY	0.0
+pilotViewOffsetZ	80.0
+
+;Weapons
+;=-----=
+rotateToRetaliate			TRUE
+passiveRetaliateZone		4000
+canTargetMultipleTargets	TRUE
+
+NUMBER_OF_GUNS				5
+
+GUN		0
+{
+Type						GUN_HiddenGimble
+GunSize						GUNSIZE_SMALL
+StartUpgradeLevel			WEAPON_ION
+EndUpgradeLevel				WEAPON_ION
+DamageMult					2.2
+BulletLength				4000			; visual only.  Length of bullet on screen
+BulletRange					4000			; distance bullets travel before disappearing
+BulletSpeed					100000			; measured in m/s.
+BulletLifeTime              0.6
+BulletMass					0				; mass of bullet
+FireTime					4.0				; fire repeat rate (reciprocal = shots/second)
+MinAngle					0
+MaxAngle					60
+}
+
+GUN		1
+{
+Type						GUN_HiddenGimble
+GunSize						GUNSIZE_SMALL
+StartUpgradeLevel			WEAPON_ION
+EndUpgradeLevel				WEAPON_ION
+DamageMult					2.2
+BulletLength				4000			; visual only.  Length of bullet on screen
+BulletRange					4000			; distance bullets travel before disappearing
+BulletSpeed					100000			; measured in m/s.
+BulletLifeTime              0.6
+BulletMass					0				; mass of bullet
+FireTime					4.0				; fire repeat rate (reciprocal = shots/second)
+MinAngle					0
+MaxAngle					60
+}
+
+GUN		2
+{
+Type						GUN_HiddenGimble
+GunSize						GUNSIZE_SMALL
+StartUpgradeLevel			WEAPON_ION
+EndUpgradeLevel				WEAPON_ION
+DamageMult					2.2
+BulletLength				4000			; visual only.  Length of bullet on screen
+BulletRange					4000			; distance bullets travel before disappearing
+BulletSpeed					100000			; measured in m/s.
+BulletLifeTime              0.6
+BulletMass					0				; mass of bullet
+FireTime					4.0				; fire repeat rate (reciprocal = shots/second)
+MinAngle					0
+MaxAngle					60
+}
+
+GUN		3
+{
+Type						GUN_HiddenGimble
+GunSize						GUNSIZE_SMALL
+StartUpgradeLevel			WEAPON_ION
+EndUpgradeLevel				WEAPON_ION
+DamageMult					2.2
+BulletLength				4000			; visual only.  Length of bullet on screen
+BulletRange					4000			; distance bullets travel before disappearing
+BulletSpeed					100000			; measured in m/s.
+BulletLifeTime              0.6
+BulletMass					0				; mass of bullet
+FireTime					4.0				; fire repeat rate (reciprocal = shots/second)
+MinAngle					0
+MaxAngle					60
+}
+
+GUN		4
+{
+Type						GUN_HiddenGimble
+GunSize						GUNSIZE_SMALL
+StartUpgradeLevel			WEAPON_ION
+EndUpgradeLevel				WEAPON_ION
+DamageMult					2.2
+BulletLength				4000			; visual only.  Length of bullet on screen
+BulletRange					4000			; distance bullets travel before disappearing
+BulletSpeed					100000			; measured in m/s.
+BulletLifeTime              0.6
+BulletMass					0				; mass of bullet
+FireTime					4.0				; fire repeat rate (reciprocal = shots/second)
+MinAngle					0
+MaxAngle					60
+}
+
+;Gun Bindings:
+;=----------=
+;NONE
+
+;Dock Points
+;=---------=
+NUMBER_OF_DOCK_POINTS		14
+
+; format is DockPoint		name,type,flyawaydist,mindist,maxdist,[headingdirection,updirection]  (0=up,1=right,2=forward,4=down,5=left,6=back) for direction
+DockPoint					Leech0,DPT_Leech,85,85,200,0,2
+DockPoint					Leech1,DPT_Leech,85,85,200,0,2
+DockPoint					Leech2,DPT_Leech,85,85,200,0,2
+DockPoint					Leech3,DPT_Leech,85,85,200,0,2
+DockPoint					Leech4,DPT_Leech,85,85,200,0,2
+DockPoint					Leech5,DPT_Leech,85,85,200,0,2
+DockPoint					Leech6,DPT_Leech,85,85,200,0,2
+DockPoint					Leech7,DPT_Leech,85,85,200,0,2
+DockPoint					Leech8,DPT_Leech,85,85,200,0,2
+DockPoint					Leech9,DPT_Leech,85,85,200,0,2
+DockPoint					RepairBots,DPT_Repairbot,500,500,600,2,0
+DockPoint					RepairBots1,DPT_Repairbot,500,500,600,2,0
+DockPoint                   Point1,DPT_Salvage,500,500,600,0,2
+DockPoint                   Point2,DPT_Salvage,500,500,600,0,2
+
+;Explosions
+;=--------=
+explosionType                       ET_FrigateExplosion
+
+;Engine
+;=------=
+trailWidth					64
+trailHeight					64
+trailLength					100
+;trailAngle					30
+trailStyle					0
+trailScaleCap				0.00025
+
+;Scaling effects
+;=---------------=
+N-LIPS						0.000100		; Max value for Interceptors 0.0005
+
+
+;Navlights
+;=---------=
+NUMBER_OF_NAV_LIGHTS			6
+
+format is NavLight            name, type, blinkrate (in seconds), size (in meters), min LOD 2, texture name
+NavLight                        front1,		NAVLIGHT_FadeOnOff, .5,   .5, 0,    10, 2, etg\textures\star32
+NavLight                        front2,		NAVLIGHT_FadeOnOff, .5,   .5, 0,    10, 2, etg\textures\star32
+NavLight                        star, 		NAVLIGHT_FadeOnOff, .5,   .5, 0,    10, 2, etg\textures\star32
+NavLight                        port,		NAVLIGHT_FadeOnOff, .5,   .5, 0,    10, 2, etg\textures\star32
+NavLight                        stareng, 		NAVLIGHT_FadeOnOff, .5,   .5, 0,    10, 2, etg\textures\star32
+NavLight                        porteng,		NAVLIGHT_FadeOnOff, .5,   .5, 0,    10, 2, etg\textures\star32
+
+;Animation
+;=--------=
+;NONE
+

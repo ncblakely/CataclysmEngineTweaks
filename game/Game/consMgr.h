@@ -67,7 +67,7 @@ typedef struct
 {
     Node node;
     struct Ship *ship;
-    bool canBuildBigShips;
+    bool32 canBuildBigShips;
     shipinprogress progress[TOTAL_STD_SHIPS];
 }
 shipsinprogress;

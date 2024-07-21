@@ -1,0 +1,209 @@
+[bHeavyCorvette]
+
+;Source Files
+;=----------=
+LODFile								bHeavyCorvette.lod
+pMexData							bHeavyCorvette\Rl0\LOD0\bHeavyCorvette.mex
+
+;Ship Physics
+;=----------=
+mass								200					; ship mass [fighter = 1]
+momentOfInertiaX					200					; resistance to rotation
+momentOfInertiaY					200					; [fighter = 1]
+momentOfInertiaZ					200
+maxvelocity							500					; [fighter = 1000]
+maxrot								10					; maximum rotation speed [don't make faster than ~10]
+thruststrength[TRANS_UP]			160					; acceleration (m/s^2) [1-1000 approx. range]
+thruststrength[TRANS_DOWN]			160	
+thruststrength[TRANS_RIGHT]			160	
+thruststrength[TRANS_LEFT]			160
+thruststrength[TRANS_FORWARD]		160
+thruststrength[TRANS_BACK]			160
+rotstrength[ROT_YAWLEFT]			0.9					; rotational acceleration (deg/s^2) [0.01 - 1.0]
+rotstrength[ROT_YAWRIGHT]			0.9
+rotstrength[ROT_PITCHUP]        	0.9
+rotstrength[ROT_PITCHDOWN]      	0.9
+rotstrength[ROT_ROLLRIGHT]      	0.9
+rotstrength[ROT_ROLLLEFT]       	0.9
+turnspeed[TURN_YAW]					1.5					; speed at which ship tries to turn (1=standard)
+turnspeed[TURN_PITCH]				1.5
+turnspeed[TURN_ROLL]				1.5
+
+;Basic Ship Stats
+;=--------------=
+shipclass							CLASS_Corvette
+isCapitalShip                       FALSE
+buildCost							350					; resource units to build
+buildTime							40					; time in seconds to build
+supportUnits			    		5					; Support Units required
+providesSU			    			0	
+TimeShockedByEMP					2.0					; time in seconds the ship will be paralized when hit by one EMP charge
+maxhealth							2500				; hit points
+groupSize							5					; size of group ships of this type tend to form
+repairTime							5					; every this many seconds
+repairDamage						60					; this much damage is repaired
+repairCombatTime                    5					; every this many seconds
+repairCombatDamage                  12					; this much damage is repaired
+repairDroids						0
+externalBuild						FALSE				; if TRUE, ship is built externally
+fowRadius							12000
+forceFieldProtectionDistanceScale	5.5
+approxcollmodifier					1.0					; use only % of collspheresize for rough approximations
+avoidcollmodifier					1.0					; use only % of collspheresize for collision avoidance
+blastRadiusShockWave				1.5
+blastRadiusDamage					230
+minimumZoomDistance                 100
+UpgradeByDocking					FALSE
+
+;Special
+;=-----=
+repositionTime						0.6					; time in seconds which corvette will spend to reposition itself to a new location for it to fire.
+circleRange							1000
+
+; PG - This is so that the Beast ship can take over other Beast ships in multiplayer
+beastAttackCascadeCost				4					; number of points required for attack to cascade to this ship
+beastAttacksRequired				1					; number of times you must hit this ship before it converts.
+beastAttackConvertTo				bHeavyCorvette      ; convert to this kind of ship
+
+upgradeTimeModifier                 0.5
+
+; Pilot View
+;=---------=
+pilotViewOffsetX	5.0
+pilotViewOffsetY	0.0
+pilotViewOffsetZ	40.0
+
+;Weapons
+;=-----=
+rotateToRetaliate			TRUE
+passiveRetaliateZone		5000
+canTargetMultipleTargets	TRUE
+
+NUMBER_OF_GUNS				2
+
+GUN		0
+{
+Type						GUN_VisibleGimble
+GunSize						GUNSIZE_MEDIUM
+StartUpgradeLevel			WEAPON_PROJECTILE
+EndUpgradeLevel				WEAPON_ENERGY
+DamageMult					1.5							; modifies standard damage
+BulletLength				15							; visual only.  Length of bullet on screen
+BulletRange					5000						; distance bullets travel before disappearing
+BulletSpeed					7000						; measured in m/s.
+BulletMass					0.01						; mass of bullet
+FireTime					2.7							; fire repeat rate (reciprocal = shots/second)
+TriggerHappy				5.0
+minturnangle				-90							; degrees
+maxturnangle				30
+mindeclination				0
+maxdeclination				30
+maxanglespeed				360							; degrees/s
+maxdeclinationspeed			360
+angletracking				4
+declinationtracking			4
+BarrelLength				8
+RecoilLength				7
+
+FireTime2					2.0
+BulletSpeed2                1600.0			; measured in m/s.
+
+}
+
+GUN		1
+{
+Type						GUN_VisibleGimble
+GunSize						GUNSIZE_MEDIUM
+StartUpgradeLevel			WEAPON_PROJECTILE
+EndUpgradeLevel				WEAPON_ENERGY
+DamageMult					1.5							; modifies standard damage
+BulletLength				15							; visual only.  Length of bullet on screen
+BulletRange					5000						; distance bullets travel before disappearing
+BulletSpeed					7000						; measured in m/s.
+BulletMass					0.01						; mass of bullet
+FireTime					2.7							; fire repeat rate (reciprocal = shots/second)
+TriggerHappy				5.0
+minturnangle				-30							; degrees
+maxturnangle				90
+mindeclination				0
+maxdeclination				30
+maxanglespeed				360							; degrees/s
+maxdeclinationspeed			360
+angletracking				4
+declinationtracking			4
+BarrelLength				8
+RecoilLength				7
+
+FireTime2					2.0
+BulletSpeed2                1600.0			; measured in m/s.
+
+}
+
+;Gun Bindings
+;=----------=
+//Left
+BindGun						CorvetteGun(2)  Gun0,Azimuth,Recoil,Frequency 1
+//Right
+BindGun						CorvetteGun(1)  Gun1,Azimuth,Recoil,Frequency 1
+
+;Dock Points
+;=---------=
+;NONE
+
+;Explosions
+;=----------=
+explosionType				ET_CorvetteExplosion
+
+;Engine
+;=----=
+trailSegments				10
+trailGranularity			2
+trailColor					0, 0, 0, 0, 0           ;grey team
+trailColor					0, 1, 238, 238, 238
+trailColor					0, 4, 141, 106, 87
+trailColor					0, 9, 0, 0, 0
+trailColor					1, 0, 0, 0, 0           ;red team
+trailColor					1, 1, 225, 124, 33
+trailColor					1, 4, 146, 0, 0
+trailColor					1, 9, 0, 0, 0
+trailColor					2, 0, 0, 0, 0           ;blue team
+trailColor					2, 1, 11, 255, 255
+trailColor					2, 4, 51, 0, 243
+trailColor					2, 9, 0, 0, 0
+trailColor					3, 0, 0, 0, 0           ;green team
+trailColor					3, 1, 201, 254, 39
+trailColor					3, 4, 0, 84, 4
+trailColor					3, 9, 0, 0, 0
+trailColor					4, 0, 0, 0, 0           ;yellow team
+trailColor					4, 1, 255, 240, 97
+trailColor					4, 4, 160, 124, 0
+trailColor					4, 9, 0, 0, 0
+trailColor					5, 0, 0, 0, 0           ;orange team
+trailColor					5, 1, 225, 255, 11
+trailColor					5, 4, 160, 124, 0
+trailColor					5, 9, 0, 0, 0
+trailColor					6, 0, 0, 0, 0           ;purple team
+trailColor					6, 1, 255, 135, 157
+trailColor					6, 4, 121, 0, 135
+trailColor					6, 9, 0, 0, 0
+trailColor					7, 0, 0, 0, 0           ;pale blue-green team
+trailColor					7, 1, 45, 255, 149
+trailColor					7, 4, 0, 105, 137
+trailColor					7, 9, 0, 0, 0
+
+trailWidth					42
+trailHeight					4
+trailAngle					0
+
+;Scaling effects
+;=--------=
+N-LIPS						0.000200				; Max value for Interceptors 0.0005
+
+;Navlights
+;=---------=
+;NONE
+
+;Animation
+;=--------=
+;NONE
+

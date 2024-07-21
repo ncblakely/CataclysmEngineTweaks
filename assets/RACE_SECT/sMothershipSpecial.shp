@@ -1,0 +1,99 @@
+[sMothershipSpecial]
+
+;Source Files
+;=----------=
+LODFile								sMothershipSpecial.lod
+pMexData							sMothershipSpecial\RL0\LOD0\sMothershipSpecial.mex
+
+;Ship Physics
+;=----------=
+mass								1000				; ship mass [fighter = 1]
+momentOfInertiaX					1000				; resistance to rotation
+momentOfInertiaY					1000				; [fighter = 1]
+momentOfInertiaZ					1000
+maxvelocity							1000				; [fighter = 1000]
+maxrot								5					; maximum rotation speed [don't make faster than ~10]
+thruststrength[TRANS_UP]			0					; acceleration (m/s^2) [1-1000 approx. range]
+thruststrength[TRANS_DOWN]			0	
+thruststrength[TRANS_RIGHT]			0	
+thruststrength[TRANS_LEFT]			0
+thruststrength[TRANS_FORWARD]		0
+thruststrength[TRANS_BACK]			0
+rotstrength[ROT_YAWLEFT]			0					; rotational acceleration (deg/s^2) [0.01 - 1.0]
+rotstrength[ROT_YAWRIGHT]			0
+rotstrength[ROT_PITCHUP]        	0
+rotstrength[ROT_PITCHDOWN]      	0
+rotstrength[ROT_ROLLRIGHT]      	0
+rotstrength[ROT_ROLLLEFT]       	0
+turnspeed[TURN_YAW]					0					; speed at which ship tries to turn (1=standard)
+turnspeed[TURN_PITCH]				0
+turnspeed[TURN_ROLL]				0
+
+;Basic Ship Stats
+;=--------------=
+shipclass							CLASS_Component
+buildCost							1350				; resource units to build
+buildTime							135					; time in seconds to build
+supportUnits			    		0					; Support Units required
+providesSU			    			0	
+maxhealth							10000				; hit points
+groupSize							1					; size of group ships of this type tend to form
+repairTime							1					; every this many seconds
+repairDamage						10					; this much damage is repaired
+repairDroids						1
+externalBuild						TRUE				; if TRUE, ship is built externally
+fowRadius							9000
+forceFieldProtectionDistanceScale	1.1
+approxcollmodifier					1.0					; use only % of collspheresize for rough approximations
+avoidcollmodifier					1.0					; use only % of collspheresize for collision avoidance
+blastRadiusShockWave				1.75
+blastRadiusDamage					275
+
+;Special 
+;=--------=
+;NONE
+
+;Weapons
+;=-----=
+;NONE
+
+;Gun Bindings:
+;=----------=
+;NONE
+
+;Dock Points
+;=---------=
+;NONE
+
+;Explosions
+;=--------=
+explosionType					ET_FrigateExplosion
+
+;Engine
+;=------=
+;NONE
+
+;Scaling effects
+;=--------=
+N-LIPS							0.00001				; Max value for Interceptors 0.0005
+
+;Navlights
+;=---------=
+NUMBER_OF_NAV_LIGHTS		4
+
+; format is NavLight	name,		type,			blinkperiod/on,	blinkperiod/off,	startdelay,	size,	min LOD,	texture name
+
+NavLight	fore,		NAVLIGHT_FadeOnOff,	1,	1,	0,	35,	2,	etg\textures\star32
+NavLight	aft,		NAVLIGHT_FadeOnOff,	1,	1,	0,	35,	2,	etg\textures\star32
+NavLight	panel1,	NAVLIGHT_FadeOnOff,	1,	1,	0,	35,	2,	etg\textures\star32
+NavLight	panel2,	NAVLIGHT_FadeOnOff,	1,	1,	0,	35,	2,	etg\textures\star32
+
+
+;Animation
+;=--------=
+;NONE
+
+; Camera Zoom Minimum Distance for In-game View and Construction Manager View
+;=--------=
+minimumZoomDistance                 500 ; PG - Tuned
+

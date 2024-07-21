@@ -1,0 +1,391 @@
+[sMothership]
+
+;Source Files
+;=----------=
+pMexData							sMothership\Rl0\LOD0\sMothership.mex
+LODFile								sMothership.lod
+
+;Ship Physics
+;=----------=
+mass								100000				; ship mass [fighter = 1]
+momentOfInertiaX					100000				; resistance to rotation
+momentOfInertiaY					1e30				; [fighter = 1]
+momentOfInertiaZ					1e30
+maxvelocity							140					; [fighter = 1000]
+maxrot								5					; maximum rotation speed [don't make faster than ~10]
+thruststrength[TRANS_UP]			15					; acceleration (m/s^2) [1-1000 approx. range]
+thruststrength[TRANS_DOWN]			15	
+thruststrength[TRANS_RIGHT]			15	
+thruststrength[TRANS_LEFT]			15
+thruststrength[TRANS_FORWARD]		10
+thruststrength[TRANS_BACK]			10
+rotstrength[ROT_YAWLEFT]			0.1					; rotational acceleration (deg/s^2) [0.01 - 1.0]
+rotstrength[ROT_YAWRIGHT]			0.1
+rotstrength[ROT_PITCHUP]        	0.001
+rotstrength[ROT_PITCHDOWN]      	0.001
+rotstrength[ROT_ROLLRIGHT]      	0.001
+rotstrength[ROT_ROLLLEFT]       	0.001
+turnspeed[TURN_YAW]					0.2					; speed at which ship tries to turn (1=standard)
+turnspeed[TURN_PITCH]				0.2
+turnspeed[TURN_ROLL]				0.2
+
+;Basic Ship Stats
+;=--------------=
+shipclass							CLASS_Mothership
+isCapitalShip						TRUE
+buildCost							8000				; resource units to build
+buildTime							1000				; time in seconds to build
+supportUnits			    		0					; Support Units required
+providesSU			    			70	
+TimeShockedByEMP					0.0					; time in seconds the ship will be paralized when hit by one EMP charge
+maxhealth							130000				; hit points
+groupSize							1					; size of group ships of this type tend to form
+repairTime							5					; every this many seconds
+repairDamage						350					; this much damage is repaired
+repairCombatTime                    0					; every this many seconds
+repairCombatDamage                  0					; this much damage is repaired
+repairDroids						12
+externalBuild						FALSE				; if TRUE, ship is built externally
+fowRadius							12000
+forceFieldProtectionDistanceScale	5.4
+approxcollmodifier					0.5				; use only % of collspheresize for rough approximations
+avoidcollmodifier					0.5				; use only % of collspheresize for collision avoidance
+blastRadiusShockWave                3.0
+blastRadiusDamage                   10000
+minimumZoomDistance                 2300
+UpgradeByDocking					FALSE
+
+; When the spheres are drawn in the game:
+; - collsphere is bright green, and bounds all parts of ship.
+; - approxshpere is not drawsn, and more closely represents size of ship (ie, jutting parts may not included)
+; - avoidcollsphere is dark green, and used for avoidance.
+
+;Special
+;=------=
+Overlay_Selection_Scalar            2.0         ; scale the tactical overlay by this amount
+
+canBuildShips                       TRUE                ; ship can build ships
+canReceiveShips                     TRUE                ; other ships can dock in this ship
+canReceiveResources                 TRUE                ; Resource Collectors,etc can deposit resources in this ship
+canReceiveShipsPermanently          TRUE                ; ships can dock permanently here
+canReceiveShipsForRetire            TRUE				; ships can dock here and be converted to RU's!
+canBuildBigShips                    TRUE                ; can build Destroyers, Carriers, Heavy Cruisers, etc.
+
+canReceiveFighters                  TRUE
+canReceiveCorvettes                 TRUE
+canReceiveResourceCollectors        TRUE
+canReceiveOtherNonCapitalShips      TRUE
+
+maxDockableFighters                 100
+maxDockableCorvettes                50
+
+dockShipRange                       2500.0              ; how close ships should get before considering docking (to ship surface)
+
+dockLightNear						500
+dockLightFar						1000
+dockLightColor						0,255,0
+
+specialActivateIsContinuous         TRUE				; DG - This must be TRUE for the Big Gun to function properly!
+regenerateRUrate                    511					; every number of game frames to regenerate RU's -- value must be 0,1,3,7,15,31,63,127, 255, 511, (2^n)-1
+regenerateRUsIfUnder                200					; only regenerate this max number of RU's
+regenerateRUs                       10					; regenerate this # of RU's each regeneration
+collSideModifiers[TRANS_UP]         1.0					; Override face-specific damage
+collSideModifiers[TRANS_DOWN]       1.0 
+collSideModifiers[TRANS_RIGHT]      1.0
+collSideModifiers[TRANS_LEFT]       1.0
+collSideModifiers[TRANS_FORWARD]    1.0
+collSideModifiers[TRANS_BACK]       1.0
+
+hyperspaceBoxScale  6.0		; JS - Make the hyperspace around the spine encompass all the components
+upgradeTimeModifier 					1.0
+
+blastRadiusShockWave	3.0	; JS - blast radius is puny without this...
+
+
+; Pilot View
+;=---------=
+pilotViewOffsetX	140.0
+pilotViewOffsetY	0.0
+pilotViewOffsetZ	1790.0
+
+;Weapons
+;=-----=
+rotateToRetaliate			FALSE
+passiveRetaliateZone		6000
+canTargetMultipleTargets		TRUE
+
+NUMBER_OF_GUNS				7
+
+GUN		0
+{
+Type						GUN_HiddenGimble
+GunSize						GUNSIZE_LARGE
+StartUpgradeLevel			WEAPON_BIGGUN
+EndUpgradeLevel				WEAPON_BIGGUN
+DamageMult					1.0
+BulletLength				200				; visual only.  Length of bullet on screen
+BulletRange					900000			; distance bullets travel before disappearing
+BulletSpeed					1500			; measured in m/s.
+BulletMass					2000			; mass of bullet
+FireTime					240				; fire repeat rate (reciprocal = shots/second)
+MinAngle					0
+MaxAngle					4
+}
+
+GUN		1
+{
+Type						GUN_HiddenGimble
+GunSize						GUNSIZE_LARGE
+StartUpgradeLevel			WEAPON_PROJECTILE
+EndUpgradeLevel				WEAPON_ENERGY
+DamageMult					1.1
+BulletLength				18							; visual only.  Length of bullet on screen
+BulletRange					6000						; distance bullets travel before disappearing
+BulletSpeed					6000						; measured in m/s.
+BulletMass					0.05						; mass of bullet
+FireTime					0.25							; fire repeat rate (reciprocal = shots/second)
+MinAngle					0
+MaxAngle					85
+
+FireTime2					1.0
+BulletSpeed2                1800.0			; measured in m/s.
+}
+
+GUN		2
+{
+Type						GUN_HiddenGimble
+GunSize						GUNSIZE_LARGE
+StartUpgradeLevel			WEAPON_PROJECTILE
+EndUpgradeLevel				WEAPON_ENERGY
+DamageMult					1.1
+BulletLength				18							; visual only.  Length of bullet on screen
+BulletRange					6000						; distance bullets travel before disappearing
+BulletSpeed					6000						; measured in m/s.
+BulletMass					0.05						; mass of bullet
+FireTime					0.25							; fire repeat rate (reciprocal = shots/second)
+MinAngle					0
+MaxAngle					85
+
+FireTime2					1.0
+BulletSpeed2                1800.0			; measured in m/s.
+}
+
+GUN		3
+{
+Type						GUN_HiddenGimble
+GunSize						GUNSIZE_LARGE
+StartUpgradeLevel			WEAPON_PROJECTILE
+EndUpgradeLevel				WEAPON_ENERGY
+DamageMult					1.1
+BulletLength				18							; visual only.  Length of bullet on screen
+BulletRange					6000						; distance bullets travel before disappearing
+BulletSpeed					6000						; measured in m/s.
+BulletMass					0.05						; mass of bullet
+FireTime					0.25							; fire repeat rate (reciprocal = shots/second)
+MinAngle					0
+MaxAngle					85
+
+FireTime2					1.0
+BulletSpeed2                1800.0			; measured in m/s.
+}
+
+GUN		4
+{
+Type						GUN_HiddenGimble
+GunSize						GUNSIZE_LARGE
+StartUpgradeLevel			WEAPON_PROJECTILE
+EndUpgradeLevel				WEAPON_ENERGY
+DamageMult					1.1
+BulletLength				18							; visual only.  Length of bullet on screen
+BulletRange					6000						; distance bullets travel before disappearing
+BulletSpeed					6000						; measured in m/s.
+BulletMass					0.05						; mass of bullet
+FireTime					0.25							; fire repeat rate (reciprocal = shots/second)
+MinAngle					0
+MaxAngle					85
+
+FireTime2					1.0
+BulletSpeed2                1800.0			; measured in m/s.
+}
+
+GUN		5
+{
+Type						GUN_HiddenGimble
+GunSize						GUNSIZE_LARGE
+StartUpgradeLevel			WEAPON_PROJECTILE
+EndUpgradeLevel				WEAPON_ENERGY
+DamageMult					1.1
+BulletLength				18							; visual only.  Length of bullet on screen
+BulletRange					6000						; distance bullets travel before disappearing
+BulletSpeed					6000						; measured in m/s.
+BulletMass					0.05						; mass of bullet
+FireTime					0.25							; fire repeat rate (reciprocal = shots/second)
+MinAngle					0
+MaxAngle					60
+
+FireTime2					1.0
+BulletSpeed2                1800.0			; measured in m/s.
+}
+
+GUN		6
+{
+Type						GUN_HiddenGimble
+GunSize						GUNSIZE_LARGE
+StartUpgradeLevel			WEAPON_PROJECTILE
+EndUpgradeLevel				WEAPON_ENERGY
+DamageMult					1.1
+BulletLength				18							; visual only.  Length of bullet on screen
+BulletRange					6000						; distance bullets travel before disappearing
+BulletSpeed					6000						; measured in m/s.
+BulletMass					0.05						; mass of bullet
+FireTime					0.25							; fire repeat rate (reciprocal = shots/second)
+MinAngle					0
+MaxAngle					60
+
+FireTime2					1.0
+BulletSpeed2                1800.0			; measured in m/s.
+}
+
+;Gun Bindings:
+;=----------=
+;None
+
+;Dock Points
+;=---------=
+NUMBER_OF_DOCK_POINTS	75	//MG updated July 16, 2000
+
+; format is DockPoint		name,type,flyawaydist,mindist,maxdist,[headingdirection,updirection]  (0=up,1=right,2=forward,4=down,5=left,6=back) for direction
+DockPoint					dbsmalloutp0,DPT_Small_Out,	1300,1300,1300,5,0
+DockPoint					dbsmalloutp1,DPT_Small_Out,	1300,1300,1300,5,0
+DockPoint                   dbsmalloutsb0,DPT_Small_Out,1300,1300,1300,1,0
+DockPoint                   dbsmalloutsb1,DPT_Small_Out,1300,1300,1300,1,0
+DockPoint					dbsmallinp0,DPT_Small_In,	1600,1600,1700,1,0
+DockPoint					dbsmallinp1,DPT_Small_In,	1600,1600,1650,1,0
+DockPoint					dbsmallinp2,DPT_Small_In,	1600,1600,1700,1,0
+DockPoint					dbsmallinp3,DPT_Small_In,	1600,1600,1650,1,0
+DockPoint					dbsmallinsb0,DPT_Small_In,	1600,1600,1700,5,0
+DockPoint					dbsmallinsb1,DPT_Small_In,	1600,1600,1650,5,0
+DockPoint					dbsmallinsb2,DPT_Small_In,	1600,1600,1700,5,0
+DockPoint					dbsmallinsb3,DPT_Small_In,	1600,1600,1650,5,0
+
+DockPoint					dbmedoutsb,DPT_Med_Out,     1300,1300,1300,2,0
+DockPoint					dbmedoutp,DPT_Med_Out,      1300,1300,1300,2,0
+DockPoint					dbmedinsb,DPT_Med_In,       1650,1650,1750,2,0
+DockPoint					dbmedinp,DPT_Med_In,        1650,1650,1750,2,0
+
+DockPoint					rpsmallout0,DPT_Small_Out_Engineering,900,1100,1200,5,0
+DockPoint					rpsmallout1,DPT_Small_Out_Engineering,900,1100,1200,5,0
+DockPoint					rpsmallin0,DPT_Small_In_Engineering,0,1100,1200,1,0
+DockPoint					rpsmallin1,DPT_Small_In_Engineering,0,1100,1250,1,0
+DockPoint					rpsmallin2,DPT_Small_In_Engineering,0,1100,1300,1,0
+DockPoint					rpsmallin3,DPT_Small_In_Engineering,0,1100,1200,1,0
+DockPoint					rpmedout,DPT_Med_Out_Engineering,900,1100,1200,5,0
+DockPoint					rpmedin,DPT_Med_In_Engineering,0,1200,1500,1,0
+
+DockPoint					Weapons,DPT_Module_EB,0,0,0,2,0
+DockPoint					Armour,DPT_Module_EB,0,0,0,2,0
+DockPoint					Micro,DPT_Module_EB,0,0,0,2,0
+DockPoint					Special,DPT_Module_EB,0,0,0,2,0
+DockPoint					Dockbay,DPT_Module_EB,0,0,0,2,0
+DockPoint					Genetics,DPT_Module_EB,0,0,0,2,0
+DockPoint					BigGun,DPT_Module_EB,0,0,0,2,0
+
+DockPoint					Res0,DPT_Worker_RU_Transfer,600,600,600,0,2
+DockPoint					Res1,DPT_Worker_RU_Transfer,600,600,600,4,2
+
+DockPoint					ResLeech0,DPT_Leech_RU_Transfer,500,500,600,0,2
+DockPoint					ResLeech1,DPT_Leech_RU_Transfer,500,500,600,0,2
+DockPoint					ResLeech2,DPT_Leech_RU_Transfer,500,500,600,0,2
+DockPoint					ResLeech3,DPT_Leech_RU_Transfer,500,500,600,0,2
+
+DockPoint					Destroyer0,DPT_Destroyer_EB,500,500,600,2,0
+
+DockPoint					Repairbots0,DPT_Repairbot,500,500,500,2,0
+DockPoint					Repairbots1,DPT_Repairbot,500,500,500,2,0
+DockPoint					Repairbots2,DPT_Repairbot,500,500,500,2,0
+
+DockPoint					support1,DPT_Support_EB,0,0,0,2,0
+DockPoint					support2,DPT_Support_EB,0,0,0,2,0
+DockPoint					support3,DPT_Support_EB,0,0,0,2,0
+DockPoint					support4,DPT_Support_EB,0,0,0,2,0
+DockPoint					support5,DPT_Support_EB,0,0,0,2,0
+DockPoint					support6,DPT_Support_EB,0,0,0,2,0
+DockPoint					support7,DPT_Support_EB,0,0,0,2,0
+DockPoint					support8,DPT_Support_EB,0,0,0,2,0
+DockPoint					support9,DPT_Support_EB,0,0,0,2,0
+DockPoint					support10,DPT_Support_EB,0,0,0,2,0
+DockPoint					support11,DPT_Support_EB,0,0,0,2,0
+DockPoint					support12,DPT_Support_EB,0,0,0,2,0
+
+DockPoint                   Crystal,DPT_Crystal_Process,500,0,10,0,2
+DockPoint                   CrysEffect,DPT_Crystal_Effect,500,500,600,0,2
+
+DockPoint					Leech0,DPT_Leech,800,800,800,0,2
+DockPoint					Leech1,DPT_Leech,800,800,800,0,2
+DockPoint					Leech2,DPT_Leech,800,800,800,0,2
+DockPoint					Leech3,DPT_Leech,800,800,800,0,2
+DockPoint					Leech4,DPT_Leech,800,800,800,0,2
+DockPoint					Leech5,DPT_Leech,800,800,800,0,2
+DockPoint					Leech6,DPT_Leech,800,800,800,0,2
+DockPoint					Leech7,DPT_Leech,800,800,800,0,2
+DockPoint					Leech8,DPT_Leech,800,800,800,0,2
+DockPoint					Leech9,DPT_Leech,800,800,800,0,2
+DockPoint					Leech10,DPT_Leech,800,800,800,0,2
+DockPoint					Leech11,DPT_Leech,800,800,800,0,2
+DockPoint					Leech12,DPT_Leech,800,800,800,0,2
+DockPoint					Leech13,DPT_Leech,800,800,800,0,2
+DockPoint					Leech14,DPT_Leech,800,800,800,0,2
+DockPoint					Leech15,DPT_Leech,800,800,800,0,2
+DockPoint					Leech16,DPT_Leech,800,800,800,0,2
+DockPoint					Leech17,DPT_Leech,800,800,800,0,2
+DockPoint					Leech18,DPT_Leech,800,800,800,0,2
+DockPoint					Leech19,DPT_Leech,800,800,800,0,2
+
+;Explosions
+;=----------=
+explosionType				ET_CarrierExplosion
+
+;Engine
+;=-------=
+trailWidth					700
+trailHeight					700
+trailLength					700
+trailStyle					3
+trailScaleCap				0.000025
+
+trailWidth2					700
+trailHeight2				500
+trailLength2				400
+trailStyle2					3
+trailScaleCap2				0.000025
+
+;Scaling effects
+;=--------=
+N-LIPS						0.000001			; Max value for Interceptors 0.0005
+
+;Navlights
+;=---------=
+NUMBER_OF_NAV_LIGHTS		13
+
+; format is NavLight	name,		type,			blinkperiod/on,	blinkperiod/off,	startdelay,	size,	min LOD,	texture name
+
+NavLight	spine1,		NAVLIGHT_FadeOnOff,	1,	1,	0,	35,	2,	etg\textures\star32
+NavLight	spine2,		NAVLIGHT_FadeOnOff,	1,	1,	0,	35,	2,	etg\textures\star32
+NavLight	spine3,		NAVLIGHT_FadeOnOff,	1,	1,	0,	35,	2,	etg\textures\star32
+NavLight	spine4,		NAVLIGHT_FadeOnOff,	1,	1,	0,	35,	2,	etg\textures\star32
+NavLight	spine5,		NAVLIGHT_FadeOnOff,	1,	1,	0,	35,	2,	etg\textures\star32
+NavLight	spine6,		NAVLIGHT_FadeOnOff,	1,	1,	0,	35,	2,	etg\textures\star32
+NavLight	spine7,		NAVLIGHT_FadeOnOff,	1,	1,	0,	35,	2,	etg\textures\star32
+NavLight	big1a,		NAVLIGHT_FadeOnOff,	2,	1,	0.5,	40,	2,	etg\textures\star32
+NavLight	big1b,		NAVLIGHT_FadeOnOff,	2,	1,	0.5,	40,	2,	etg\textures\star32
+NavLight	big2a,		NAVLIGHT_FadeOnOff,	2,	1,	0.5,	40,	2,	etg\textures\star32
+NavLight	big2b,		NAVLIGHT_FadeOnOff,	2,	1,	0.5,	40,	2,	etg\textures\star32
+NavLight	big3a,		NAVLIGHT_FadeOnOff,	2,	1,	0.5,	40,	2,	etg\textures\star32
+NavLight	big3b,		NAVLIGHT_FadeOnOff,	2,	1,	0.5,	40,	2,	etg\textures\star32
+
+;Animation
+;=--------=
+NUMBER_OF_ANIMS		0
+
+
+	
