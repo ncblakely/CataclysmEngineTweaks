@@ -116,6 +116,21 @@ static void trailSegmentsRead(char* directory, char* field, void* dataToFillIn)
 	orig_trailSegmentsRead(directory, (char*)fmt::format("{}", tpNSegments).c_str(), dataToFillIn);
 }
 
+static void scriptSetReal32CBSkipIfNLipsDisabled(char* directory, char* field, void* dataToFillIn)
+{
+	using namespace Functions;
+
+	if (g_Config.DisableNLips)
+	{
+		*((real32*)dataToFillIn) = 0.0f;
+	}
+	else
+	{
+		scriptSetReal32CB(directory, field, dataToFillIn);
+	}
+	
+}
+
 static Functions::fn_beastMothershipSelfDamage orig_BeastMothershipSelfDamage;
 static void beastMothershipSelfDamage(ShipStaticInfo* shipstatic)
 {
@@ -424,6 +439,11 @@ void ApplyUniversePatches(Assembler& assembler, Config& config)
 	PatchNisUpdateTask(assembler);
 
 	*Globals::TimerResolutionMax = (float)s_TimerResolutionMax;
+	*Globals::shipNLipsRead = &scriptSetReal32CBSkipIfNLipsDisabled;
+	*Globals::trailScaleCapRead = &scriptSetReal32CBSkipIfNLipsDisabled;
+	*Globals::trailScaleCapRead2 = &scriptSetReal32CBSkipIfNLipsDisabled;
+	*Globals::trailScaleCapRead3 = &scriptSetReal32CBSkipIfNLipsDisabled;
+	*Globals::trailScaleCapRead4 = &scriptSetReal32CBSkipIfNLipsDisabled;
 
 	CreateAndEnableHooks(assembler);
 

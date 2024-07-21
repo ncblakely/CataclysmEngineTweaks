@@ -129,13 +129,17 @@ namespace Functions
 	DEFINE_FUNCTION(allianceFormWith, void, (udword playerindex), 0x00420880);
 	DEFINE_FUNCTION(beastMothershipSelfDamage, void, (ShipStaticInfo* shipstatic), 0x005BC900);
 	DEFINE_FUNCTION(clCommandMessage, void, (const char CommandMessage[MAX_MESSAGE_LENGTH], udword flags), 0x004AC820);
+	DEFINE_FUNCTION(clWrapBuildShip, void, (CommandLayer* comlayer, ShipType shipType, ShipRace shipRace, uword playerIndex, ShipPtr creator), 0x00452FA0);
 	DEFINE_FUNCTION(clWrapCreateShip, void, (CommandLayer* comlayer, ShipType shipType, ShipRace shipRace, uword playerIndex, ShipPtr creator), 0x00452F30);
+	DEFINE_FUNCTION(clWrapScuttle, void, (CommandLayer* comlayer, SelectCommand* selectcom), 0x00453390);
+	DEFINE_FUNCTION(clWrapSetKamikaze, void, (CommandLayer* comlayer, SelectCommand* selectcom), 0x00453820);
 	DEFINE_FUNCTION(etgEffectDelete, void, (Effect* effect), 0x0046A6F0);
 	DEFINE_FUNCTION(etgFrequencyExceeded, bool32, (etgeffectstatic* stat), 0x00470BD0);
 	DEFINE_FUNCTION(etgFunctionCall, sdword, (Effect* effect, struct etgeffectstatic* stat, ubyte* opcode), 0x0046E7B0);
 	DEFINE_FUNCTION(etgNParticleBlocksSet, sdword, (struct etgeffectstatic* stat, ubyte* dest, char* opcodeString, char* params, char* ret), 0x0046E110);
 	DEFINE_FUNCTION(feToggleButtonSet, void, (char* name, sdword bPressed), 0x00475990);
 	DEFINE_FUNCTION(fqEqualize, int, (float* aBlock, float* aEq), 0x00558F20);
+	DEFINE_FUNCTION(GetShipStaticInfo, ShipStaticInfo*, (ShipType shiptype), 0x0053EA50);
 	DEFINE_FUNCTION(glCapNT, bool32, (), 0x00559AC0);
 	DEFINE_FUNCTION(glCapStartup, void, (), 0x00559BE0);
 	DEFINE_FUNCTION(lodLevelGet, int, (void* spaceObj, vector* camera, vector* ship), 0x004A4D70);
@@ -147,6 +151,7 @@ namespace Functions
 	DEFINE_FUNCTION(mgResourceLumpSumInterval, void, (char* name, featom* atom), 0x004BE090);
 	DEFINE_FUNCTION(mistrailUpdate, void, (missiletrail* trail, vector* position), 0x005A4D90);
 	DEFINE_FUNCTION(opOptionsAccept, void, (char* name, featom* atom), 0x004D7E30);
+	DEFINE_FUNCTION(ranRandomFn, udword, (sdword ranIndex), 0x004EF860);
 	DEFINE_FUNCTION(rinDeviceCRC, udword, (), 0x0057DCF0);
 	DEFINE_FUNCTION(rinEnumDisplayModes_cb, HRESULT, (LPDDSURFACEDESC2 ddsd, LPVOID lpContext), 0x0057E5C0);
 	DEFINE_FUNCTION(rinEnumPrimaryDisplayModes_cb, HRESULT, (LPDDSURFACEDESC2 ddsd, LPVOID lpContext), 0x0057E710);
@@ -156,10 +161,11 @@ namespace Functions
 	DEFINE_FUNCTION(SaveGame, bool32, (const char* filename), 0x004FDAF0);
 	DEFINE_FUNCTION(scriptSet, void, (const char* directory, const char* filename, scriptEntry info[]), 0x00526420);
 	DEFINE_FUNCTION(scriptSetFramesCB, void, (char* directory, char* field, void* dataToFillIn), 0x0053AC70);
+	DEFINE_FUNCTION(scriptSetReal32CB, void, (char* directory, char* field, void* dataToFillIn), 0x005259D0);
 	DEFINE_FUNCTION(scriptSetTweakableGlobals, void, (), 0x00527820);
 	DEFINE_FUNCTION(scriptSetUdwordCB, void, (char* directory, char* field, void* dataToFillIn), 0x00525C20);
-	DEFINE_FUNCTION(ShipTypeToStr, char*, (ShipType shiptype), 0x004D6BC0);
 	DEFINE_FUNCTION(selNumShipsInSelection, int, (MaxSelection* sel, ShipType shipType), 0x005118D0);
+	DEFINE_FUNCTION(ShipTypeToStr, char*, (ShipType shiptype), 0x004D6BC0);
 	DEFINE_FUNCTION(singlePlayerGameUpdate, void, (), 0x005197D0);
 	DEFINE_FUNCTION(soundStartDSound, sdword, (HWND hWnd), 0x005808E0);
 	DEFINE_FUNCTION(speechEventQueue, sdword, (void* object, sdword event, sdword var, sdword variation, sdword actornum, sdword playernum, sdword linkto, real32 timeout, sword volume), 0x00522560);
@@ -173,11 +179,6 @@ namespace Functions
 	DEFINE_FUNCTION(univUpdate, bool32, (real32 phystimeelapsed), 0x0054C3F0);
 	DEFINE_FUNCTION(univUpdateReset, void, (), 0x0054ACD0);
 	DEFINE_FUNCTION(UpdateMidLevelHyperspacingShips, void, (), 0x00519700);
-	DEFINE_FUNCTION(ranRandomFn, udword, (sdword ranIndex), 0x004EF860);
-	DEFINE_FUNCTION(GetShipStaticInfo, ShipStaticInfo*, (ShipType shiptype), 0x0053EA50);
-	DEFINE_FUNCTION(clWrapSetKamikaze, void, (CommandLayer* comlayer, SelectCommand* selectcom), 0x00453820);
-	DEFINE_FUNCTION(clWrapScuttle, void, (CommandLayer* comlayer, SelectCommand* selectcom), 0x00453390);
-	DEFINE_FUNCTION(clWrapBuildShip, void, (CommandLayer* comlayer, ShipType shipType, ShipRace shipRace, uword playerIndex, ShipPtr creator), 0x00452FA0);
 }
 
 // Global/static variables in the game executable.
@@ -255,4 +256,12 @@ namespace Globals
 	inline bool32* aiHasSupportModuleQueued = (bool32*)0x00A2D994;
 	inline bool32* aiHasCarrier2ModuleQueued = (bool32*)0x00A2D9A8;
 	inline sdword* aiSupportUnitsPending = (sdword*)0x00A2D9B4;
+
+	// N-LIPS
+	inline Functions::fn_scriptSetReal32CB* shipNLipsRead = (Functions::fn_scriptSetReal32CB*)0x008B2B9C;
+	inline Functions::fn_scriptSetReal32CB* trailScaleCapRead = (Functions::fn_scriptSetReal32CB*)0x008B2C0C;
+	inline Functions::fn_scriptSetReal32CB* trailScaleCapRead2 = (Functions::fn_scriptSetReal32CB*)0x008B2C7C;
+	inline Functions::fn_scriptSetReal32CB* trailScaleCapRead3 = (Functions::fn_scriptSetReal32CB*)0x008B2CEC;
+	inline Functions::fn_scriptSetReal32CB* trailScaleCapRead4 = (Functions::fn_scriptSetReal32CB*)0x008B2D5C;
+	
 }

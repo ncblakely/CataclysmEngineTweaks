@@ -24,6 +24,7 @@ Config Config::FromFile(const char* path)
 	config.NewRendererSelection = reader.GetBoolean("Display", "NewRendererSelection", true);
 	config.BorderlessWindow = reader.GetBoolean("Display", "BorderlessWindow", true);
 	config.DisableIntroMovies = reader.GetBoolean("Display", "DisableIntroMovies", true);
+	config.DisableNLips = reader.GetBoolean("Display", "DisableNLips", false);
 
 	////////////////////////////////////////////////////////////////
 	// Game section

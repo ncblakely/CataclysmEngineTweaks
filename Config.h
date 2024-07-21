@@ -40,6 +40,7 @@ struct Config
 	bool NewRendererSelection = true;
 	bool BorderlessWindow = true;
 	bool DisableIntroMovies = true;
+	bool DisableNLips = false;
 	udword AutoSaveInterval = 5;
 	bool OpenGLFix = true;
 	bool DisableFramerateLimit = false;
