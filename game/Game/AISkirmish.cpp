@@ -22,7 +22,7 @@ using namespace Globals;
 		(sdword)Globals::aiCurrentAIPlayer->aiplayerDifficultyLevel, \
 		__VA_ARGS__); 
 #else
-#define aiplayerLog(x)    {;}
+#define aiplayerLog(x, ...)    {;}
 #endif
 
 #define MAX_CARRIERS 2
@@ -454,7 +454,7 @@ void aisFleetUpdate()
 		: GetUnassignedShipCount(sWorker);
 
 	sdword resourceUnits = aiCurrentAIPlayer->player->resourceUnits;
-	udword workerTargetCount = resourceUnits > AIS_HIGH_RESOURCE_THRESHOLD ?
+	udword workerTargetCount = (udword)resourceUnits > AIS_HIGH_RESOURCE_THRESHOLD ?
 		AIS_WORKER_HIGH_RESOURCE_TARGET_COUNT[aiCurrentAIPlayer->aiplayerDifficultyLevel] :
 		AIS_WORKER_NORMAL_TARGET_COUNT[aiCurrentAIPlayer->aiplayerDifficultyLevel];
 
