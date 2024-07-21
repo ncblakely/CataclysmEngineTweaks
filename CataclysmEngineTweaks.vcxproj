@@ -215,8 +215,7 @@
     <ClCompile Include="PatchUniverse.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="assets\aiskirmish.script" />
-    <None Include="assets\soundfx\shipcmnevents.lut" />
+    <None Include="assets\**\*.*" />
     <None Include="CataclysmEngineTweaks.ini" />
     <None Include="LICENSE" />
     <None Include="README.md" />

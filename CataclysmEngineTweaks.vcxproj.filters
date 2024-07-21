@@ -356,5 +356,7 @@
     <None Include="README.md" />
     <None Include="assets\aiskirmish.script" />
     <None Include="assets\soundfx\shipcmnevents.lut" />
+    <None Include="assets\english.script" />
+    <None Include="assets\tweak.script" />
   </ItemGroup>
 </Project>
