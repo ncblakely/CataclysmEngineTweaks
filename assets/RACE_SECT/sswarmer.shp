@@ -1,0 +1,137 @@
+[sSwarmer]
+
+;Source Files
+;=----------=
+LODFile								sSwarmer.lod
+pMexData							sSwarmer\Rl0\LOD0\sSwarmer.mex
+
+;Ship Physics
+;=----------=
+mass								5					; ship mass [fighter = 1]
+momentOfInertiaX					5					; resistance to rotation
+momentOfInertiaY					5					; [fighter = 1]
+momentOfInertiaZ					5
+maxvelocity							1100				; [fighter = 1000]
+maxrot								10					; maximum rotation speed [don't make faster than ~10]
+thruststrength[TRANS_UP]			600					; acceleration (m/s^2) [1-1000 approx. range]
+thruststrength[TRANS_DOWN]			600	
+thruststrength[TRANS_RIGHT]			600	
+thruststrength[TRANS_LEFT]			600
+thruststrength[TRANS_FORWARD]		1000
+thruststrength[TRANS_BACK]			300
+rotstrength[ROT_YAWLEFT]			140					; rotational acceleration (deg/s^2) [0.01 - 1.0]
+rotstrength[ROT_YAWRIGHT]			140
+rotstrength[ROT_PITCHUP]        	140
+rotstrength[ROT_PITCHDOWN]      	140
+rotstrength[ROT_ROLLRIGHT]      	140
+rotstrength[ROT_ROLLLEFT]       	140
+turnspeed[TURN_YAW]					3.5					; speed at which ship tries to turn (1=standard)
+turnspeed[TURN_PITCH]				3.5
+turnspeed[TURN_ROLL]				3.5
+
+;Basic Ship Stats
+;=--------------=
+shipclass							CLASS_Micro
+isCapitalShip                       FALSE
+buildCost							25					; resource units to build
+buildTime							6					; time in seconds to build
+supportUnits			    		0					; Support Units required
+providesSU			    			0	
+TimeShockedByEMP					0.0	  			    ; time in seconds the ship will be paralized when hit by one EMP charge
+maxhealth							35					; hit points
+groupSize							10					; size of group ships of this type tend to form
+repairTime							0					; every this many seconds
+repairDamage						0					; this much damage is repaired
+repairCombatTime                    0					; every this many seconds
+repairCombatDamage                  0					; this much damage is repaired
+repairDroids						0
+externalBuild						FALSE				; if TRUE, ship is built externally
+fowRadius							8000
+forceFieldProtectionDistanceScale	10.0
+approxcollmodifier					0.8					; use only % of collspheresize for rough approximations
+avoidcollmodifier					0.5					; use only % of collspheresize for collision avoidance
+blastRadiusShockWave                6.0
+blastRadiusDamage                   75
+minimumZoomDistance                 60
+UpgradeByDocking					FALSE				;MG shouldn't be upgrading
+bUseRayTriangleIntersectionForHitLocation	FALSE
+
+;Special
+;=-----=
+repositionTime						0.6					; time in seconds which corvette will spend to reposition itself to a new location for it to fire.
+circleRange							800.0
+fullMovementFreedom					TRUE
+
+; Pilot View
+;=---------=
+pilotViewOffsetX	5.0
+pilotViewOffsetY	0.0
+pilotViewOffsetZ	10.0
+
+;Weapons
+;=-----=
+rotateToRetaliate			TRUE
+passiveRetaliateZone		4500
+canTargetMultipleTargets	FALSE
+
+NUMBER_OF_GUNS				1
+
+GUN		0
+{
+Type						GUN_HiddenGimble
+GunSize						GUNSIZE_SMALL
+StartUpgradeLevel			WEAPON_PROJECTILE
+EndUpgradeLevel				WEAPON_PROJECTILE
+DamageMult					3.5							   ; PG - there are only 6 swarmers now, so they have to do aprx. 2x damage
+MinAngle                    0
+MaxAngle                    11
+BulletLength                15.0                           ; visual only.  Length of bullet on screen
+BulletRange                 4500.0                         ; distance bullets travel before disappearing
+BulletSpeed                 4000.0                         ; measured in m/s.
+BulletMass                  0.0                            ; mass of bullet
+FireTime                    0.2			                   ; fire repeat rate (reciprocal = shots/second)
+BurstFireTime               1.4
+BurstWaitTime               0.9
+}
+
+;Gun Bindings:
+;=----------=
+;NONE
+
+;Dock Points
+;=---------=
+;NONE
+
+;Explosions
+;=----------=
+explosionType				ET_InterceptorExplosion
+
+;Engine trails
+;=-----------=
+trailWidth						7.8
+trailHeight						4.8
+trailLength                     22
+trailAngle						0
+trailSpriteRadius				100
+trailSpriteOffset				200
+
+;Engine
+;=------=
+;trailSegments				0
+;trailGranularity			2
+
+;trailWidth					5
+;trailHeight					3
+;trailAngle					0
+
+;Scaling effects
+;=--------=
+N-LIPS						0.000200		; Max value for Interceptors 0.0005
+
+;Navlights
+;=---------=
+;NONE
+
+;Animation
+;=--------=
+;NONE
