@@ -71,6 +71,8 @@ int InjectDll(const PROCESS_INFORMATION& processInformation)
 		return lastError;
     }
 
+    WaitForSingleObject(hLoadThread, INFINITE);
+
     return 0;
 }
 
