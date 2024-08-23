@@ -190,7 +190,7 @@ static void __declspec(naked) aiUpdateExternalShipBuild_CalculateTimerDuration()
 	}
 }
 
-bool IsMothershipOrModule(ShipType shiptype)
+static bool IsMothershipOrModule(ShipType shiptype)
 {
 	switch (shiptype)
 	{
@@ -201,6 +201,13 @@ bool IsMothershipOrModule(ShipType shiptype)
 		case sMothershipMicro:
 		case sMothershipWeapons:
 		case sMothershipDockingBay:
+		case sMothershipSupport:
+		case sMothershipCommand:
+		case sMothershipEnginesLower:
+		case sMothershipEnginesUpper:
+		case sMothershipLowerSpine:
+		case sMothershipBigGun:
+		case sMothershipOreCanArmour:
 		case bMothership:
 		case bMothershipDockingBay:
 		case bMothershipSupport:
@@ -224,25 +231,25 @@ static void univBulletCollidedWithTarget(int unknown, SpaceObjRotImpTarg* target
 		Player* targetOwner = targetShip->playerowner;
 		Player* bulletOwnerPlayer = bulletOwner->playerowner;
 
-		if (IsMothershipOrModule(targetShip->shiptype) &&
-			targetOwner == bulletOwnerPlayer)
+		if (targetOwner == bulletOwnerPlayer &&
+			IsMothershipOrModule(targetShip->shiptype) &&
+			IsMothershipOrModule(bulletOwner->shiptype))
 		{
 			// Skip collision
 			return;
 		}
 	}
+
 	// Adjust for higher update rates: skip the bullet collision for beam weapons if we aren't on the correct frame
 	if (bullet->bulletType == BULLET_Beam)
 	{
-		if ((*Globals::universe_univUpdateCounter % g_Config.GetUniverseUpdateRateFactor()) == 0)
+		if (!(*Globals::universe_univUpdateCounter % g_Config.GetUniverseUpdateRateFactor()) == 0)
 		{
-			orig_univBulletCollidedWithTarget(unknown, target, targetstaticheader, bullet, collideLineDist, collSide);
+			return;
 		}
 	}
-	else
-	{
-		orig_univBulletCollidedWithTarget(unknown, target, targetstaticheader, bullet, collideLineDist, collSide);
-	}
+
+	orig_univBulletCollidedWithTarget(unknown, target, targetstaticheader, bullet, collideLineDist, collSide);
 }
 
 
